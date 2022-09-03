@@ -8,7 +8,7 @@
 title                       : iHeadWater Hackweek Tutorials  # The title of the book. Will be placed in the left navbar.
 author                      : Wenyu Ouyang  # The author of the book
 copyright                   : "2022"  # Copyright year to be placed in the footer
-logo                        : logo.png  # A path to the book logo
+logo                        : logo.jpg  # A path to the book logo
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html

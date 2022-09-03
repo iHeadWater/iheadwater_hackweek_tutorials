@@ -4,5 +4,7 @@
 format: jb-book
 root: intro
 chapters:
-- file: markdown
-- file: notebooks
+- file: open_science_workflow
+- file: file_formats
+- file: version_control
+- file: python

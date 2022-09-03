@@ -1,16 +1,13 @@
-# Welcome to your Jupyter Book
+# 欢迎来到水资源科研编程入门教程
 
-This is a small sample book to give you a feel for how book content is
-structured.
+![](img/waxlake_2014298_lrg.jpg)
+
+如果你在找一个能帮助你快速进入科研状态的编程教程，避免陷入计算机专业书籍的海量内容中，迅速了解最需要掌握的重点，那么本书就是值得你一览的那一个。
 
 :::{note}
-Here is a note!
+近期（预计2022年09月份）我们举办一次培训会议，大家一起来学习下水资源科研编程入门的基础知识。
 :::
 
-And here is a code block:
+📖 在本教程中你会看到8个文档，内容都是最基础的编程入门知识，我们会通过Jupyter笔记本来记录内容，其中交互式的程序能帮助大家更好地了解这些内容。
 
-```
-e = mc^2
-```
-
-Check out the content pages bundled with this sample book to see more.
+💡 团队目前在构建研发体系，致力于人工智能与水科学的结合应用来赋能智慧水利的建设，本教程旨在帮助大家更快地获取研发能力，希望大家能更多交流，互相学习进步，如果觉得这个教程不错，以后我们还可以制作更多。

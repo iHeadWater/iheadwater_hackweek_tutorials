@@ -20,6 +20,8 @@
 
 如果你想让你撰写的内容也展示在网页上，推送你的分支到本代码仓即可，后续我们会合并并发布到网上。
 
+我们会将文件推送到github上，在终端进入iheadwater_hackweek_tutorials文件夹，然后执行 `ghp-import -n -p -f _build/html`，就会将新内容发布到网页上。
+
 ## 本书作者
 
 欢迎大家积极贡献，这里是目前的贡献者：[contributors tab](https://github.com/iHeadWater/iheadwater_hackweek_tutorials/graphs/contributors)

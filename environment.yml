@@ -1,9 +1,11 @@
-name: ml-base 
+name: ml-base
 channels:
   - conda-forge
   - defaults
 dependencies:
-  - jupyter-book
-  - matplotlib
-  - numpy
-  - ghp-import
+  - pip
+  - pip:
+    - jupyter-book
+    - matplotlib
+    - numpy
+    - ghp-import

@@ -25,12 +25,14 @@ jobs:
         environment-file: environment.yml
         python-version: ${{ matrix.python-version }}
         auto-activate-base: false
+    # Activate conda env
+    - shell: bash -l {0}
+      run: |
+        conda activate ml-base
     # Build the book
     - name: Build the book
       run: |
-        conda activate ml-base
         jupyter-book build iheadwater_hackweek_tutorials
-
     # Deploy the book's HTML to gh-pages branch
     - name: GitHub Pages action
       uses: peaceiris/actions-gh-pages@v3.6.1

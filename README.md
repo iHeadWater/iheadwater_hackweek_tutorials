@@ -20,7 +20,7 @@
 
 如果你想让你撰写的内容也展示在网页上，推送你的分支到本代码仓即可，后续我们会合并并发布到网上。
 
-我们会将文件推送到github上，在终端进入iheadwater_hackweek_tutorials文件夹，然后执行 `ghp-import -n -p -f _build/html`，就会将新内容发布到网页上。
+我们会将文件推送到github本仓的main分支，之后有自动化程序会创建代码运行环境，build代码，并将生成的文件推送到gh-pages分支上等，然后网页就会自动显示刚推送的内容了。
 
 ## 本书作者
 
@@ -28,4 +28,4 @@
 
 ## 致谢
 
-本书使用了开源工具 [Jupyter Book project](https://jupyterbook.org/)和[executablebooks/cookiecutter-jupyter-book template](https://github.com/executablebooks/cookiecutter-jupyter-book)，感谢开源社区的贡献者们。
+本书使用了开源工具 [Jupyter Book project](https://jupyterbook.org/) 和 [executablebooks/cookiecutter-jupyter-book template](https://github.com/executablebooks/cookiecutter-jupyter-book)，感谢开源社区的贡献者们。

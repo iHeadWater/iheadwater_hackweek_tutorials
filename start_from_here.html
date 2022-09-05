@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>开放科学一般工作流程 &#8212; iHeadWater Hackweek Tutorials</title>
+    <title>从这里开始 &#8212; iHeadWater Hackweek Tutorials</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="常见文件格式" href="file_formats.html" />
+    <link rel="next" title="编程对我们意味着什么" href="open_science_workflow/chp0_intro.html" />
     <link rel="prev" title="欢迎来到水资源科研编程入门教程" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -116,8 +116,50 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   开放科学一般工作流程
+   从这里开始
   </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="open_science_workflow/chp0_intro.html">
+   编程对我们意味着什么
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="open_science_workflow/chp1.1_workflow.html">
+     1.1 开放可复现科研的一般工作流程
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="open_science_workflow/chp1.2_tools.html">
+     1.2 常用工具
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="open_science_workflow/chp2.1_bash.html">
+     2.1 Bash 简介以及在命令行中操作文件和目录
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="open_science_workflow/chp2.2_common.html">
+     2.2 管理目录和文件的 Bash 命令
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="open_science_workflow/chp3_git.html">
+     3 初步认识Git和Github
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="open_science_workflow/chp4_jupyter.html">
+     4 Jupyter XXX
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="file_formats.html">
@@ -132,6 +174,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="python.html">
    Python基础
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="citations.html">
+   参考资料
   </a>
  </li>
 </ul>
@@ -185,35 +232,6 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/iHeadWater/iheadwater_hackweek_tutorials/main?urlpath=tree/docs/open_science_workflow.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -253,7 +271,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials/issues/new?title=Issue%20on%20page%20%2Fopen_science_workflow.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials/issues/new?title=Issue%20on%20page%20%2Fstart_from_here.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -281,7 +299,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/open_science_workflow.ipynb"
+        <a href="_sources/start_from_here.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -292,7 +310,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="headerbtn__text-container">.md</span>
 </a>
 
       </li>
@@ -330,7 +348,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>开放科学一般工作流程</h1>
+                <h1>从这里开始</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -343,7 +361,17 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>开放科学一般工作流程<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1>从这里开始<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<p>工欲善其事，必先利其器。为了后续我们交流学习的方便，推荐大家注册使用团队平台的JupyterHub，通过内网（教研室和研发中心），使用浏览器就能便捷访问到专属于个人的编程环境，非常方便。如果你是完全是编程小白，那么你就更应该用这个了，其他开启编程的方式对你都只会意味着更高门槛。</p>
+<p>注册地址在这里：<a class="reference external" href="http://jupyterhub.waterism.com:666/hub/signup">源平台JupyterHub内网访问注册</a>，如果已经注册过了则直接从<a class="reference external" href="http://jupyterhub.waterism.com:666/">这里</a>登录。</p>
+<p>如果你访问不了内网，需要要在本地搭建相同的环境，那么你可以跳到<a class="reference external" href="https://github.com/iHeadWater/WaterResources/blob/master/tools/jupyterlab%26markdown.md">这里</a>查看具体方法。后面我们也会有一节来讨论相关问题。</p>
+<p>接下来，就让我们使用平台提供的工具，看看怎么开启科研编程吧。</p>
+<p>待到完成本教程后，我们将能够：</p>
+<ol class="simple">
+<li><p>了解开放式、可重现科学并学会使用一般工作流中用到的编程相关工具。</p></li>
+<li><p>认识我们日常科研经常处理的数据文件</p></li>
+</ol>
+<p>本文的结构和部分内容重点参考了：<a class="reference external" href="https://www.earthdatascience.org/">Earth Lab的资源</a>，感兴趣的同学可以去看一看他们的优质教程。</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -355,16 +383,16 @@ title="Print to PDF"
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "ml-base"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "ml-base",
+            kernelName: "python3",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'ml-base'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
@@ -380,10 +408,10 @@ title="Print to PDF"
             <p class="prev-next-title">欢迎来到水资源科研编程入门教程</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="file_formats.html" title="next page">
+    <a class='right-next' id="next-link" href="open_science_workflow/chp0_intro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">常见文件格式</p>
+        <p class="prev-next-title">编程对我们意味着什么</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

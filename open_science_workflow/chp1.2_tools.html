@@ -1,0 +1,545 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1.2 常用工具 &#8212; iHeadWater Hackweek Tutorials</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.1 Bash 简介以及在命令行中操作文件和目录" href="chp2.1_bash.html" />
+    <link rel="prev" title="1.1 开放可复现科研的一般工作流程" href="chp1.1_workflow.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">iHeadWater Hackweek Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    欢迎来到水资源科研编程入门教程
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../start_from_here.html">
+   从这里开始
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="chp0_intro.html">
+   编程对我们意味着什么
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp1.1_workflow.html">
+     1.1 开放可复现科研的一般工作流程
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.2 常用工具
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp2.1_bash.html">
+     2.1 Bash 简介以及在命令行中操作文件和目录
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp2.2_common.html">
+     2.2 管理目录和文件的 Bash 命令
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp3_git.html">
+     3 初步认识Git和Github
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp4_jupyter.html">
+     4 Jupyter XXX
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../file_formats.html">
+   常见文件格式
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../version_control.html">
+   版本控制
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python.html">
+   Python基础
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../citations.html">
+   参考资料
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials/issues/new?title=Issue%20on%20page%20%2Fopen_science_workflow/chp1.2_tools.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/open_science_workflow/chp1.2_tools.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   通过编程来自动执行工作流
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shell-linux-bash">
+   使用 Shell（Linux Bash）操作和管理文件
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-github">
+   使用 Git 和 GitHub 进行版本控制和协作
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter">
+   Jupyter 项目
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>1.2 常用工具</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   通过编程来自动执行工作流
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shell-linux-bash">
+   使用 Shell（Linux Bash）操作和管理文件
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-github">
+   使用 Git 和 GitHub 进行版本控制和协作
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter">
+   Jupyter 项目
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>1.2 常用工具<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<p>要实现上节提到的工作流，我们需要能够帮助记录、自动化和共享工作的工具。例如，记录如何收集数据、数据处理方式以及用于汇总数据的分析方法等。</p>
+<p>本节我们就来看看有哪些常用的工具，总的来说，这些工具将帮助我们：</p>
+<ul class="simple">
+<li><p>记录工作流，这样其他人和未来的自己就可以理解现在的工作流程</p></li>
+<li><p>生成连接数据、代码（即用于处理数据的方法）的报告，并以不同的格式发布</p></li>
+<li><p>自动化工作流程，以便其他人和未来的自己可以复制它们。</p></li>
+<li><p>共享工作流程</p></li>
+<li><p>与他人协作</p></li>
+</ul>
+<p>有许多工具支持开放式可复现科学，但本教程主要使用bash、git、GitHub、Python、Jupyter Notebooks等。</p>
+<section id="id2">
+<h2>通过编程来自动执行工作流<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>许多人习惯在具有图形用户界面（GUI）的Microsoft Excel（用于处理表格）或ArcGIS（用于空间数据）等工具中使用数据。当然，GUI有很多优点，例如我们更容易上手，它们的可视化界面使得初学者的学习曲线不那么陡峭，在不少情况下也是更好的选择，例如我们想快速可视化一些数据。但是，随着使用的数据越来越复杂，我们经常会遇到基于这些GUI工具无法简单处理的情况，通常需要手动实现一系列步骤，或者构建宏或小型的自动化脚本，这会使工作流难以重现。另外，如上一节所说，某些工具（如ArcGIS）需要付费许可证，这有局限性，并且对于在云端远程环境中包含工作流是不利的，不利于大家协同工作。</p>
+<p>而使用开源、免费的编程语言进行科学编程是开始构建可重复且易于共享的工作流的有效且高效的方式。</p>
+<p>本教程会以Python为主，和大家一起学习科研编程涉及的基础知识，但许多原则也是通用于其他编程语言的。</p>
+<p>但开始具体学习Python前，让我们先看看三类必要的工具。</p>
+</section>
+<section id="shell-linux-bash">
+<h2>使用 Shell（Linux Bash）操作和管理文件<a class="headerlink" href="#shell-linux-bash" title="Permalink to this headline">#</a></h2>
+<p>Shell是计算机用来接收代码（即命令）并返回通过执行这些命令（即输出）生成的信息的程序。这些命令可以通过终端 Terminal（也称为命令行界面 CLI）输入。</p>
+<p>使用Shell能帮助我们：</p>
+<ul class="simple">
+<li><p>访问和管理文件和文件夹（即目录）</p></li>
+<li><p>一次高效地处理多个文件和目录</p></li>
+<li><p>运行程序，例如用于版本控制的程序git</p></li>
+</ul>
+<p>如果需要在高性能计算群集 （HPC） 或云远程计算机上工作，Shell也很重要。在下一节，我们就将学习如何访问和管理计算机上的文件，以及启动或运行的其他程序，我们主要使用Linux的Bash。</p>
+</section>
+<section id="git-github">
+<h2>使用 Git 和 GitHub 进行版本控制和协作<a class="headerlink" href="#git-github" title="Permalink to this headline">#</a></h2>
+<p>Git能帮助我们监视和跟踪文件中的更改，这一过程就是版本控制。Git 提供了一种为项目创建和跟踪“存储库”的方法，即保存所有相关文件的文件夹。GitHub 是一个托管 git 存储库的基于云的平台，它允许我们存储和管理文件并跟踪更改。GitHub 还包括项目管理等功能，这些功能在处理协作项目时很有用。例如，使用git在本地处理文件，然后将更改上传到GitHub网站. 如果公开代码库，那么其他人可以在 GitHub 上找到它并为该代码做出贡献，这使其成为协作和共享的理想选择。GitHub 对于代码审查也很有用，因为其他人可以评论工作流程的更改，我们可以选择接受或拒绝提议的更改。</p>
+<p>本教程后面专门有一章节来介绍如何使用git/GitHub工作流来实现文件的版本控制、共享工作以及与他人协作。</p>
+</section>
+<section id="jupyter">
+<h2>Jupyter 项目<a class="headerlink" href="#jupyter" title="Permalink to this headline">#</a></h2>
+<p>jupyter 项目是从 IPython 项目演变而来的开源项目，旨在支持交互式数据科学和计算。虽然该项目是从 Python 发展而来的，但它它被设计为与语言无关,支持许多不同的编程语言，包括Julia、Python、R等。Jupyter 平台已被科研界广泛采用。</p>
+<p>与 Jupyter 相关的三个核心工具是：</p>
+<ul class="simple">
+<li><p><strong>Jupyter Notebook</strong>： Jupyter Notebook 是一个基于浏览器的开源应用程序，允许您创建和共享包含实时代码、方程式、可视化和叙述性文本的文档。用途包括：数据清理和转换、数值模拟、统计建模、数据可视化、机器学习等等。</p></li>
+<li><p><strong>JupyterLab</strong>： JupyterLab 是一个基于浏览器的 Jupyter 笔记本、代码和数据的交互式开发环境。JupyterLab 非常灵活：您可以配置和安排用户界面，以支持数据科学、科学计算和机器学习中的各种工作流。JupyterLab 是可扩展和模块化的：您可以编写插件来添加新组件并与现有组件集成。</p></li>
+<li><p><strong>JupyterHub</strong>：可以在服务器上运行的多人版 Jupyter Notebook and Lab。团队专门构建了一个内网访问的Jupyterhub云平台，本课程使用的就是它。</p></li>
+</ul>
+<p>在JupyterHub上我们注册登陆自己的账号，然后就可以使用 JupyterLab编辑Jupyter Notebook 文件组织和记录我们的工作流（访问数据、方法和结果输出）了。</p>
+<p>在这本教科书中，我们将使用Jupyter Notebook编写Python，实现自己工作的自动化，通过记录数据输入、用于分析和可视化的代码以及结果的文档来支持开放的可重复科学，还可以轻松地与其他人共享我们的工作。</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./open_science_workflow"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="chp1.1_workflow.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">1.1 开放可复现科研的一般工作流程</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="chp2.1_bash.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2.1 Bash 简介以及在命令行中操作文件和目录</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Wenyu Ouyang<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

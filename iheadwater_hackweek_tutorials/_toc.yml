@@ -4,7 +4,16 @@
 format: jb-book
 root: intro
 chapters:
-- file: open_science_workflow
+- file: start_from_here
+- file: open_science_workflow/chp0_intro
+  sections:
+  - file: open_science_workflow/chp1.1_workflow
+  - file: open_science_workflow/chp1.2_tools
+  - file: open_science_workflow/chp2.1_bash
+  - file: open_science_workflow/chp2.2_common
+  - file: open_science_workflow/chp3_git
+  - file: open_science_workflow/chp4_jupyter
 - file: file_formats
 - file: version_control
 - file: python
+- file: citations

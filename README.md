@@ -8,7 +8,7 @@
 
 1. 克隆本代码库
 2. 运行 `pip install -r requirements.txt`（推荐在虚拟环境中）
-3. 编辑`iheadwater_hackweek_tutorials/`文件夹中的源文件（编辑哪些内容请参考[jupyterbook的文档](https://jupyterbook.org/en/stable/start/new-file.html)）
+3. 编辑`iheadwater_hackweek_tutorials/`文件夹中的源文件（怎么编辑内容请参考[jupyterbook的文档](https://jupyterbook.org/en/stable/start/new-file.html)）
 4. 运行 `jupyter-book clean iheadwater_hackweek_tutorials/` 来删除之前构建的文件
 5. 运行 `jupyter-book build iheadwater_hackweek_tutorials/`
 

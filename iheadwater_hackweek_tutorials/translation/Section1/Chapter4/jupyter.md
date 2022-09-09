@@ -1,4 +1,4 @@
-# Jupyter 
+# Jupyter Hub/Lab/Notebook 简介
 
 Jupyter 是一个开源平台，其中包含一套工具，包括：
 
@@ -6,7 +6,7 @@ Jupyter 是一个开源平台，其中包含一套工具，包括：
 - Jupyter Lab：一个基于浏览器的应用程序，可以访问多个 Jupyter Notebook 文件以及其他代码和数据文件
 - Jupyter Hub：可以在服务器上运行的多人版 Jupyter Notebook and Lab
 
-因此，`Jupyter Notebook` 是`Hub`和`Lab`的基础，我们了解`Notebook`就可以子自行理解`Hub`和`Lab`
+我们用的是Jupyter Lab，写的是Notebook，Hub只是支持多人
 
 ## Ⅰ. 什么是Jupyter NoteBook？
 
@@ -64,22 +64,4 @@ Jupyter Notebook 文件格式 ( .ipynb) 将描述性文本、代码块和代码�
 
 要使用键盘快捷键，请按下`esc`键。之后，通过点击`m`键将一个单元格改为`Markdown`，或者通过点击`y`键将一个单元格改为`Code`。
 
-**运行单元格**
-
-使用菜单工具或键盘快捷键来运行任何单元,不管是 `Code` 还是 `Markdown`。快捷键为`Run Cell : Ctrl + enter`
-
-**重新排列单元格**
-
-使用菜单栏上的向上箭头和向下箭头按钮来改变`Jupyter Notebook` 中单元格的顺序。
-
-**清除单元格**
-
-可用快捷键`Esc+x`来删除单元格，也可用菜单栏里的操作来删除
-
-**保存`.ipynb`**
-
-与work文件一样，通过快捷键`Esc+s`即可保存`ipynb`笔记本。对着笔记本中单元格中的内容尝试一下`Esc+x 、Esc+z`等常用的文本快捷键吧。
-
-**`ipynb`文件重命名、删除等操作**
-
-对着`ipynb`文件右击鼠标，会出现重命名、删除选项，并查看一下右击出现其他的选项吧！
+接下来就开始创建一个单元格

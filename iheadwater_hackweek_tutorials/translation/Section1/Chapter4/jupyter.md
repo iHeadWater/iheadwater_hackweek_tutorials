@@ -6,11 +6,11 @@ Jupyter 是一个开源平台，其中包含一套工具，包括：
 - Jupyter Lab：一个基于浏览器的应用程序，可以访问多个 Jupyter Notebook 文件以及其他代码和数据文件
 - Jupyter Hub：可以在服务器上运行的多人版 Jupyter Notebook and Lab
 
-我们用的是Jupyter Lab，写的是Notebook，Hub只是支持多人
+我们用的是Lab，写的是Notebook，Hub支持多人使用Lab。
 
 ## Ⅰ. 什么是Jupyter NoteBook？
 
-简单讲，Jupyter Notebook就是一个集成开发环境 (IDE)，允许编写代码、在计算机上导航文件、检查变量等。
+简单讲，Jupyter Notebook就是一个集成开发环境 (IDE)，允许我们编写代码、导航文件、检查变量等。
 
 ## Ⅱ. 开放可重复性的Jupyter Notebook
 
@@ -25,6 +25,9 @@ Jupyter Notebook 文件格式 ( .ipynb) 将描述性文本、代码块和代码�
 ## Ⅲ. Jupyter Notebook的组件
 
 - **Environment** : 环境是你编写和运行代码必备的条件！环境中包含很多依赖包。拿**Python**语言编写代码为例，我们用`Numpy`依赖包储存和处理大型矩阵、用`Matplotlib`依赖包进行2D绘图实现结果的可视化（用图来表示结果，如此更形象）等等
+
+![](../../../img/依赖包.jpg)
+
 - **.ipynb**  : 笔记本的文件类型，是编写 `Code` 与`Markdown` 的地方，也就是我们实际操作的地方
 - **Kernels** ： 一个内核以一种特定的编程语言运行代码。`Jupyter Notebook`支持超过40种不同的语言。
 

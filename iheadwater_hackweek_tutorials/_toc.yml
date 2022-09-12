@@ -5,6 +5,7 @@ format: jb-book
 root: intro
 chapters:
 - file: start_from_here
+
 - file: open_science_workflow/chp0_intro
   sections:
   - file: open_science_workflow/chp1.1_workflow
@@ -13,7 +14,23 @@ chapters:
   - file: open_science_workflow/chp2.2_common
   - file: open_science_workflow/chp3_git
   - file: open_science_workflow/chp4_jupyter
-- file: file_formats
+  
+- file: file_formats/chp0_intro
+  sections:
+  - file: file_formats/chp1_md_and_ipynb
+  - file: file_formats/chp2_txt_csv
+  
 - file: version_control
+  sections:
+  - file: open_science_workflow/chp1.1_workflow
+  
 - file: python
+  sections:
+  - file: open_science_workflow/chp1.1_workflow
+  
+- file: python_data_science
+- file: deep_learning_review
+- file: intro_to_pytorch
+- file: lstm_camels
 - file: citations
+  

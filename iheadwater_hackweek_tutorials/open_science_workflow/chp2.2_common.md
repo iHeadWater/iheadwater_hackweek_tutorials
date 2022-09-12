@@ -1,264 +1,83 @@
-# 2.2 管理目录和文件的 Bash 命令
+# 2.2 管理目录和文件的Bash命令
 
-:::{note}
-本节正在编辑中……
-:::
+回想一下，根据计算机设置，会看到不同的字符作为提示或提示之前的附加信息，例如在计算机文件结构中的当前位置（即当前的工作目录）。
 
-在前面关于终端会话的部分中，您了解到终端会显示一个提示，提示您Bash正在等待输入。
+**注意:** 输入命令时，请勿键入美元符号（或其他字符提示符），只键入它后面的命令即可。
 
-$bash  
+下面是一些常用的`bash`命令，让我们来操作下吧。
 
-回想一下，根据您的计算机设置，您可能会看到不同的字符作为提示和/或提示之前的附加信息，例如您在计算机文件结构中的当前位置（即您当前的工作目录）。
+## 1. 打印当前工作目录 ( pwd )
 
-键入命令（来自本教科书或其他来源）时，请勿键入美元符号（或其他字符提示符）。只键入它后面的命令。
+首要要明确，当前的工作目录是执行命令的目录。它通常打印为目录的完整路径（意味着可以看到父目录）。
 
-注意：在本页的示例中，提示符后面的缩进行不以美元符号$开头是命令的输出。以下命令在您的计算机上的结果会略有不同，具体取决于您的操作系统以及您自定义文件系统的方式。
+要打印当前工作目录的名称，键入命令 pwd : `$ pwd`
 
-下面是一些常用的bash命令，让我们来操作下吧。
+由于这是Bash在此会话中执行的第一个命令，因此结果pwd是主目录的完整路径。主目录是每次启动新Bash会话时将位于的默认目录。
 
-## 1. 打印当前工作目录 ( pwd)
+Windows 用户：请注意，Terminal使用正斜杠 (/) 来指示路径中的目录。这与使用反斜杠 (\) 指示路径中的目录的 Windows 文件资源管理器不同。
 
-您当前的工作目录是执行命令的目录。它通常打印为目录的完整路径（意味着您可以看到父目录）。
+## 2. 更改当前工作目录 (cd)
 
-要打印当前工作目录的名称，请使用命令pwd。
+通常，想要更改当前工作目录，以便可以访问不同的子目录和文件。
 
-$ pwd    
-   
-   /users/jpalomino  
-由于这是您Bash在此会话中执行的第一个命令，因此结果pwd是您的主目录的完整路径。主目录是您每次启动新Bash会话时将位于的默认目录。
+要更改目录，请使用`cd`后跟目录名称的命令（例如`cd downloads`）。然后，可以再次打印当前工作目录以检查新路径。
 
-Windows 用户：请注意，Terminal使用正斜杠 ( /) 来指示路径中的目录。这与使用反斜杠 ( \) 指示路径中的目录的 Windows 文件资源管理器不同。
+可以使用`cd ..`命令返回任何当前目录的父目录，因为当前工作目录的完整路径可以被Bash.
 
-## 2. 更改当前工作目录 ( cd)
+也可以随时使用`cd ~`命令（称为波浪号的字符）返回主目录
 
-通常，您可能想要更改当前工作目录，以便可以访问不同的子目录和文件。
+## 3.创建新目录 (mkdir)
 
-要更改目录，请使用cd后跟目录名称的命令（例如cd downloads）。然后，您可以再次打印当前工作目录以检查新路径。
+创建新目录的第一步是导航到希望成为该新目录的父目录的目录
 
-例如，您可以将工作目录更改为主documents目录下的现有目录，然后检查当前工作目录是否已更新。
+然后，使用命令`mkdir`后跟要为新目录命名的名称（例如`mkdir directory-name`）
 
-$cd documents  
+**注意:**`mkdir`命令没有输出。
 
-$pwd  
-    /users/jpalomino/documents  
-您可以使用该命令返回任何当前目录的父目录cd ..，因为当前工作目录的完整路径可以被Bash.
+## 4. 打印文件和子目录列表 (ls)
 
-$ cd ..    
+要查看**当前**工作目录中所有**子目录**和**文件**的列表，请使用`ls`命令。
 
-$ pwd  
-    /users/jpalomino  
-/users/jpalomino您也可以随时使用命令cd ~（称为波浪号的字符）返回您的主目录（例如）。
+## 5. 删除文件 (rm)
 
-$ cd ~  
+要删除特定文件，可以使用`rm`命令后跟要删除的文件的名称（例如`rm filename`）
 
-$ pwd  
-    /users/jpalomino
-    
-    
-    
-## 3.创建新目录 ( mkdir)
+## 6.删除目录 (rm -r)
 
+要删除一个目录及其包含的所有子目录和文件，请导航到其父目录，然后使用`rm -r`命令后跟要删除的目录的名称（例如`rm -r directory-name`）
 
-创建新目录的第一步是导航到您希望成为该新目录的父目录的目录，使用cd.
+`rm`代表删除，而有`-r`必须告诉`Bash`它需要通过父目录中所有文件和子目录的列表递归（或重复）命令。
 
-然后，使用命令mkdir后跟您要为新目录命名的名称（例如mkdir directory-name）。
+## 7. 复制文件 (cp)
 
-例如，您可以在documentscalled下创建一个新目录assignments。然后，您可以导航到名为 的新目录assignments，并打印当前工作目录以检查新路径。
+还可以使用`cp`命令将特定文件复制到新目录，`cp`后跟要复制的文件的名称以及要将文件复制到的目录的名称（例如`cp filename directory-name`）
 
-$ cd documents
+请注意，文件的原始副本仍保留在原始目录中
 
-$ mkdir assignments
+## 8. 复制目录及其内容 (cp -r)
 
-$ cd assignments
+同样，可以将整个目录复制到另一个目录，使用`cp -r`后跟要复制的目录名称和要复制目录的目录名称（例如`cp -r directory-name-1 directory-name-2`）。
 
-$ pwd
-   
-   /users/jpalomino/documents/assignments
+与`rm -r`类似，`cp -r`有必要`Bash`通过父目录中所有文件和子目录的列表来告诉它需要递归（或重复）命令。
 
-请注意，mkdir命令没有输出。此外，由于assignments提供 toBash作为相对路径（即，没有前导斜杠或附加路径信息），documents默认情况下在当前工作目录（例如 ）中创建新目录。
+## 9. 使用单个命令 (touch)创建新文件
 
-## 4. 打印文件和子目录列表 ( ls)
-
-
-
-要查看当前工作目录中所有子目录和文件的列表，请使用命令ls。
-
-$ cd ~
-
-$ pwd
-    
-/users/jpalomino
-
-$ ls 
-    
-addresses.txt    documents    downloads    grades.txt    
-
-在上面的示例中，ls打印了主目录的内容，其中包含名为 and 的子目录和名为anddocuments的downloads文件。addresses.txtgrades.txt
-
-您可以继续将当前工作目录更改为子目录，例如documents并打印所有文件和子目录的新列表以查看新创建的assignments目录。
-
-$ cd documents
-
-$ ls    
-    
-assignments  
-
-assignments也可以在叫下新建一个子目录homeworks，然后列出目录的内容就assignments可以看到新创建的了homeworks。
-
-$ cd assignments
-
-$ mkdir homeworks
-
-$ ls    
-    
-homeworks  
-
-## 5. 删除文件 ( rm)
-
-要删除特定文件，您可以使用命令rm后跟要删除的文件的名称（例如rm filename）。
-
-例如，您可以删除addresses.txt主目录下的文件。
-
-$ pwd
-
-/users/jpalomino
-
-$ ls 
-    
-addresses.txt    documents    downloads    grades.txt 
-
-$ rm addresses.txt
-
-$ ls 
-    
-documents    downloads    grades.txt
-
-## 6.删除目录 ( rm -r)
-
-要删除（即删除）一个目录及其包含的所有子目录和文件，请导航到其父目录，然后使用命令rm -r后跟要删除的目录的名称（例如rm -r directory-name）。
-
-例如，您可以删除assignments目录下的documents目录，因为它不符合目录好名的要求（即描述性不够——什么样的分配？）。
-
-$ cd ~
-
-$ cd documents
-
-$ pwd
-
-/users/jpalomino/documents
-
-$ ls    
-
-assignments  
-
-$ rm -r assignments
-
-rm代表删除，而有-r必要告诉Bash它需要通过父目录中所有文件和子目录的列表递归（或重复）命令。
-
-这样，在删除时，新创建的homeworks目录assignments也将assignments被删除。
-
-$ pwd
-
-/users/jpalomino/documents
-
-$ ls
-
-## 7. 复制文件 ( cp)
-
-您还可以使用命令将特定文件复制到新目录，cp后跟要复制的文件的名称以及要将文件复制到的目录的名称（例如cp filename directory-name）。
-
-例如，您可以grades.txt从主目录复制到documents.
-
-$ cd ~
-
-$ pwd
-
-/users/jpalomino
-
-$ ls 
-
-documents    downloads    grades.txt
-
-$ cp grades.txt documents
-
-$ cd documents
-
-$ ls
-
-grades.txt
-
-请注意，文件的原始副本仍保留在原始目录中，因此您现在将拥有 的两个副本grades.txt，一个位于主目录中，另一个位于documents.
-
-$ cd ~
-
-$ pwd
-
-/users/jpalomino
-
-$ ls 
-
-documents    downloads    grades.txt
-
-## 8. 复制目录及其内容 ( cp -r)
-
-同样，您可以将整个目录复制到另一个目录，使用cp -r后跟要复制的目录名称和要复制目录的目录名称（例如cp -r directory-name-1 directory-name-2）。
-
-与 类似rm -r，-rincp -r有必要Bash通过父目录中所有文件和子目录的列表来告诉它需要递归（或重复）命令。
-
-$ cd ~
-
-$ pwd
-
-/users/jpalomino
-
-$ ls 
-
-documents    downloads    grades.txt
-
-$ mkdir pics
-
-$ ls 
-
-documents    downloads    grades.txt    pics
-
-$ cp -r pics documents
-
-$ cd documents
-
-$ ls
-
-grades.txt    pics
-
-再次，目录的原始副本保留在原始目录中。
-
-$ cd ~
-
-$ pwd
-
-/users/jpalomino
-
-$ ls 
-
-documents    downloads    grades.txt    pics
-
-## 9.使用单个命令 ( touch)创建新文件
-
-
-您可以使用单个命令touch（例如touch file-name.txt）创建一个新的空文件。此命令最初是为了管理文件的时间戳而创建的。但是，如果文件尚不存在，则该命令将生成该文件。
+可以使用单个`touch`命令（例如`touch file-name.txt`）创建一个新的空文件。此命令最初是为了管理文件的时间戳而创建的。但是，如果文件尚不存在，则该命令将生成该文件。
 
 这是一种以编程方式快速创建新的空文件的非常有用的方法，该文件可以在以后填充。
 
-$ cd ~
+## 10. 使用vim编辑文件
 
-$ cd downloads
+刚刚我们使用torch创建了file-name.txt文件，接下来，如果我们想编辑这个文件的内容要怎么做呢？
 
-$ pwd
+使用vim等工具能帮助我们做到这一点。
 
-/users/jpalomino/downloads
+首先使用下面的命令即可用vim打开file-name.txt文件
 
-$ touch veg-data.txt
+```Shell
+$ vim file-name.txt
+```
 
-$ ls
+vim有不同的模式，浏览和编辑属于不同模式，我们刚进入vim的时候默认是浏览模式，要想进入编辑模式，需要键盘点击“i”键，然后就能进入编辑模式，编辑文件。
 
-veg-data.txt
-
+编辑后我们需要保存我们编辑的内容，此时就需要键盘点击“ESC”进入浏览模式，然后再使用“:“进入命令模式，接着在命令中输入：wq，w表示write写入，q表示quit退出。

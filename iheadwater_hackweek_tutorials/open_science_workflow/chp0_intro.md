@@ -1,8 +1,8 @@
-# 编程对我们意味着什么
+# 编程概念及相关工具
 
 在本书的第一部分中，我们首先探讨一个问题，即编程或者计算机技术在水资源相关专业中在发挥什么作用？
 
-首先，看看和我们专业相关的一些文献中是怎么说的 {cite}`open_science_2021,hess-26-647-2022,hess-23-2939-2019`。
+先看看和我们专业相关的一些文献中是怎么说的 {cite}`open_science_2021,hess-26-647-2022,hess-23-2939-2019`。
 
 Clark等指出；"data/model availability is a requirement to publish in AGU journals. The FAIR initiative (data/models should be Findable, Accessible, Interoperable, and Reusable) arguably reduces duplication of effort, and can help to accelerate progress on key problems in hydrology and other sciences"
 

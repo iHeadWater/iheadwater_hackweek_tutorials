@@ -17,8 +17,9 @@ chapters:
   
 - file: file_formats/chp0_intro
   sections:
-  - file: file_formats/chp1_md_and_ipynb
-  - file: file_formats/chp2_txt_csv
+  - file: file_formats/chp1_txt_csv
+  - file: file_formats/chp2.1_vector_data
+  - file: file_formats/chp2.2_raster_data
   
 - file: version_control
   sections:

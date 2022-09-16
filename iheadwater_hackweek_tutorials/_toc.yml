@@ -21,9 +21,12 @@ chapters:
   - file: file_formats/chp2.1_vector_data
   - file: file_formats/chp2.2_raster_data
   
-- file: version_control
+- file: version_control/chp0_introduction
   sections:
-  - file: open_science_workflow/chp1.1_workflow
+  - file: version_control/chp1.1_get_files_from_github
+  - file: version_control/chp1.2_setup_git
+  - file: version_control/chp1.3_git_setup_and_commands
+  - file: version_control/chp2_practice_git_skills
   
 - file: python
   sections:

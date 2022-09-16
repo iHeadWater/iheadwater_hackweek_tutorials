@@ -7,8 +7,11 @@ dependencies:
   - xarray
   - openpyxl
   - pip
+  - netCDF4
   - pip:
     - jupyter-book
     - matplotlib
     - numpy
     - ghp-import
+    - wis-downloader
+    - PIL

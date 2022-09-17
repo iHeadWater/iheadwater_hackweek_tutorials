@@ -1,4 +1,4 @@
-name: ml-base
+name: tutorial
 channels:
   - conda-forge
   - defaults

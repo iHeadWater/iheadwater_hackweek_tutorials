@@ -76,7 +76,7 @@ git clone https://github.com/waterDLut/WaterResources.git
 ```Python
 git remote -v
 ```
-![](../../../img/https1.png)
+![](../img/https1.png)
 
 如果之前是直接使用https下载的repo，那么应该可以看到origin后面是“https:...”，现在切换:
 
@@ -84,8 +84,8 @@ git remote -v
 git remote set-url origin git@github.com:USERNAME/REPOSITORY.git  
 ```
 
-![](../../../img/https2.png)
+![](../img/https2.png)
 
 再次查看远程仓库，可以看到发生了如下变化
 
-![](../../../img/https3.png)
+![](../img/https3.png)

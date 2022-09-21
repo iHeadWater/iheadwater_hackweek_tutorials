@@ -5,7 +5,6 @@ format: jb-book
 root: intro
 chapters:
 - file: start_from_here
-
 - file: open_science_workflow/chp0_intro
   sections:
   - file: open_science_workflow/chp1.1_workflow
@@ -14,20 +13,17 @@ chapters:
   - file: open_science_workflow/chp2.2_common
   - file: open_science_workflow/chp3_git
   - file: open_science_workflow/chp4_jupyter
-  
 - file: file_formats/chp0_intro
   sections:
   - file: file_formats/chp1_txt_csv
   - file: file_formats/chp2.1_vector_data
   - file: file_formats/chp2.2_raster_data
-  
 - file: version_control/chp0_introduction
   sections:
   - file: version_control/chp1.1_get_files_from_github
   - file: version_control/chp1.2_setup_git
   - file: version_control/chp1.3_git_setup_and_commands
   - file: version_control/chp2_practice_git_skills
-  
 - file: intro_to_python/ch0_intro
   sections:
   - file: intro_to_python/chp1_about_python
@@ -37,10 +33,24 @@ chapters:
   - file: intro_to_python/chp5_conditional_statements
   - file: intro_to_python/chp6_loops
   - file: intro_to_python/chp7_functions
-  
-- file: python_data_science
-- file: deep_learning_review
-- file: intro_to_pytorch
-- file: lstm_camels
+- file: python_data_science/chp0_intro
+  sections:
+  - file: python_data_science/chp1_numpy
+  - file: python_data_science/chp2_pandas
+  - file: python_data_science/chp3_matplotlib
+- file: deep_learning_review/chp0_intro
+  sections:
+  - file: deep_learning_review/chp1_common_nn
+  - file: deep_learning_review/chp2_hydro
+- file: intro_to_pytorch/chp0_intro
+  sections:
+ - file: intro_to_pytorch/chp1_tensor
+ - file: intro_to_pytorch/chp2_neural_network
+ - file: intro_to_pytorch/chp3_dataloader
+- file: lstm_camels/chp0_intro
+  sections:
+  - file: lstm_camels/chp1_run_in_jupyter
+  - file: lstm_camels/chp2_run_in_vscode
+  - file: lstm_camels/chp3_replay
 - file: citations
   

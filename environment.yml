@@ -8,6 +8,7 @@ dependencies:
   - openpyxl
   - pip
   - netCDF4
+  - pandas
   - pip:
     - jupyter-book
     - matplotlib

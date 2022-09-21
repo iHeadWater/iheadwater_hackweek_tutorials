@@ -8,7 +8,7 @@
 
 - support：主要由项目服务人员构成，除了和study-group人员一起参与项目贡献外，还包括对项目的维护，审核pull request或者添加成员等操作。
 
-![](../../../img/协作.png)
+![](../img/协作.png)
 
 如果我们在 waterDLut 内，直接在本repo下pull和push即可，不必fork到个人仓库（当然想fork的话也行）。
 
@@ -16,11 +16,11 @@
 
 如果新建了一个repo还没有dev分支，那么由repo创建者在本地新建一个dev分支推送上去即可，或者如下图所示直接在github页面上点击输入分支名称后，下面会跳出Create branch，点击即可创建。
 
-![](../../../img/fork1.png)
+![](../img/fork1.png)
 
 分支创建完毕后，会自动跳转到dev分支。由于dev分支是从master分支上创建的，因此刚建成时，内容与master分支一致。
 
-![](../../../img/fork2.png)
+![](../img/fork2.png)
 
 下面是一起维护的基本流程。
 
@@ -28,17 +28,17 @@
 
 克隆后，只能看到master分支，并没有把dev分支clone下来。使用 `git branch` 命令查看本地分支，发现本地只有master分支。
 
-![](../../../img/6.1.1.png)
+![](../img/6.1.1.png)
 
 使用 `git branch -a` 查看所有分支，就能看到远程分支。
 
-![](../../../img/6.1.2.png)
+![](../img/6.1.2.png)
 
 根据远程分支，我们可以用`git checkout -b dev origin/dev` 创建一个dev分支（-b），并把远程dev分支（origin/dev）的内容放在该分支内。接着切换到该分支（checkout）。
 
 现在使用 `git branch` 可以查看两个分支，并且用 `ls` 或者 `dir` 就能看到dev分支的内容了。想切换回master分支的时候，再用 `git checkout master` 即可。
 
-![](../../../img/6.1.3.png)
+![](../img/6.1.3.png)
 
 **注意：**
 
@@ -52,15 +52,15 @@
 
 首先查看有没有设置upstream，使用 `git remote -v` 命令来查看。
 
-![](../../../img/6.2.1.png)
+![](../img/6.2.1.png)
 
 如果没有显示upstream，则使用 `git remote add upstream` 团队项目地址命令。接着再次使用 `git remote -v` ，显示出了upstream，那么就设置好了。
 
-![](../../../img/6.2.2.png)
+![](../img/6.2.2.png)
 
 开始同步。首先执行 `git fetch upstream` 获取团队项目最新版本。此时并没有把最新版本合并到本地的分支上，因此还需要一步。 **当前分支是dev分支，执行 `git merge upstream/dev` 命令后，会将源分支（upstream/dev）合并到当前分支（dev）。**
 
-![](../../../img/6.2.3.png)
+![](../img/6.2.3.png)
 
 如果是在本地的master分支上开发，那么在使用该命令前，先切换到master分支。merge的时候，有可能碰到冲突。需要解决冲突才能继续下面的操作。
 
@@ -68,7 +68,7 @@
 
 解决冲突后，就可以使用 `git push` 命令将本地的修改同步到自己的GitHub仓库上了。注意，在当前所在分支使用push，会push到与这个分支相关联的远程仓库分支。这里dev分支与origin/dev关联，因此push到GitHub上的dev分支。
 
-![](../../../img/6.3.1.png)
+![](../img/6.3.1.png)
 
 以上操作结束后，流程基本就结束了。最后一步交给 support小组来完成。
 

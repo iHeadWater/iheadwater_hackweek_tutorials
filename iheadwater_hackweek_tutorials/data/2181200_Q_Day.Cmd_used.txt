@@ -7304,3 +7304,5 @@ YYYY-MM-DD;hh:mm; Value
 2000-12-29;--:--;     22.100
 2000-12-30;--:--;     24.100
 2000-12-31;--:--;     23.000
+Above is the full data
+Above is the full data

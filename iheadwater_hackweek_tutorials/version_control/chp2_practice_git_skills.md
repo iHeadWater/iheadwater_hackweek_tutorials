@@ -1,93 +1,125 @@
-# 多人协作
+# GitHub仓库的基本使用
 
-这里以和本repo的交互为例，简单介绍下**waterDLut organization**下的repo，以及如何一起维护它。
+通过前面的章节我们已经学习到Git与GitHub的一些基本用法，在本节中，我们将学习如何在GitHub中创建分支以及如何将自己的本地项目上传到仓库中。下面就让我们一起来看看吧！
 
-本repo和**waterDLut organization**中的其他repo一起由**study-group** 和 **support** 两个team共同管理维护。
+## 如何在GitHub仓库中上传文件
 
-- study-group：主要由团队开发人员构成，负责分享基础知识、参与项目贡献，具有read、clone、push的权限。
+我们在做项目的过程中，可能会需要将一些软件代码储存在GitHub中来方便团队协作，那么如何在GitHub中上传文件呢？我们可以按照以下步骤：
 
-- support：主要由项目服务人员构成，除了和study-group人员一起参与项目贡献外，还包括对项目的维护，审核pull request或者添加成员等操作。
+一、 新建一个存储仓库
 
+<<<<<<< HEAD
 ![](../img/协作.png)
+=======
+![](../img/1创建仓库.jpg)
+>>>>>>> 8efa378cd8d8b2c0c99410cb977dcb17d384eb26
 
-如果我们在 waterDLut 内，直接在本repo下pull和push即可，不必fork到个人仓库（当然想fork的话也行）。
+填写项目说明：
 
-一般repo都有master分支和dev分支。master用来发布稳定版本，dev分支（开发分支）用来发布开发版本。
+![](../img/2创建仓库.jpg)
 
-如果新建了一个repo还没有dev分支，那么由repo创建者在本地新建一个dev分支推送上去即可，或者如下图所示直接在github页面上点击输入分支名称后，下面会跳出Create branch，点击即可创建。
+1. 填写仓库名称；
 
+<<<<<<< HEAD
 ![](../img/fork1.png)
+=======
+2. 仓库说明描述；
+>>>>>>> 8efa378cd8d8b2c0c99410cb977dcb17d384eb26
 
-分支创建完毕后，会自动跳转到dev分支。由于dev分支是从master分支上创建的，因此刚建成时，内容与master分支一致。
+3. 根据需要确定所创建的仓库是Public or Private (Public是公开仓库，可以在GitHub上搜到，Private是私密仓库，只有自己和成员才能看到）；
 
+<<<<<<< HEAD
 ![](../img/fork2.png)
+=======
+4. 点击Create repository（创建仓库），生成如下页面，在这里我们需要复制仓库的链接，后面会用到。
+>>>>>>> 8efa378cd8d8b2c0c99410cb977dcb17d384eb26
 
-下面是一起维护的基本流程。
+![](../img/3创建仓库.jpg)
 
-## 1. git clone仓库到本地
+二、 将本地文件上传到GitHub主页中
 
-克隆后，只能看到master分支，并没有把dev分支clone下来。使用 `git branch` 命令查看本地分支，发现本地只有master分支。
+1. 在文件夹中找到所要上传的项目，选择Git Bash Here命令。
 
+<<<<<<< HEAD
 ![](../img/6.1.1.png)
+=======
+![](../img/3.png)
+>>>>>>> 8efa378cd8d8b2c0c99410cb977dcb17d384eb26
 
-使用 `git branch -a` 查看所有分支，就能看到远程分支。
+2. 点击Git Bash Here，输入git clone，并把之前在GitHub复制的链接粘上去（粘贴时鼠标右键点击paste，不要用快捷键ctrl+v）。
 
+<<<<<<< HEAD
 ![](../img/6.1.2.png)
+=======
+![](../img/clone.jpg)
+>>>>>>> 8efa378cd8d8b2c0c99410cb977dcb17d384eb26
 
-根据远程分支，我们可以用`git checkout -b dev origin/dev` 创建一个dev分支（-b），并把远程dev分支（origin/dev）的内容放在该分支内。接着切换到该分支（checkout）。
+3. 输入cd+目标文件夹路径（注意如果这里出现 No such file or directory命令，原因是我们并不能一步就cd到指定文件夹，需要一步一步转换，即一步一步的到你指定路径，如下图所示。
 
-现在使用 `git branch` 可以查看两个分支，并且用 `ls` 或者 `dir` 就能看到dev分支的内容了。想切换回master分支的时候，再用 `git checkout master` 即可。
+![](../img/cd步骤.jpg)
 
+<<<<<<< HEAD
 ![](../img/6.1.3.png)
+=======
+4. 输入git switch main：切换到main分支。
+>>>>>>> 8efa378cd8d8b2c0c99410cb977dcb17d384eb26
 
-**注意：**
+5. 输入git status: 查看当前状态。
 
-- 如果发现现有文档上有一些小问题，可以快速修改掉，那么请直接在 dev 分支上编辑更新现有内容；
+6. 输入git add ./：将项目上的所有文件添加到仓库中，如果想添加某个特定的文件，只需要把.换成特定的文件名即可。
 
-- 如果有较大改变，那么请创建新的特性分支(feature_xxx)，然后再在此分支上编辑，这样可以避免混乱。如果是一个 feature_xxx 完成，那么请将其合并到dev分支上。
+7. 输入git commit -m "对信息的描述"。
+      
+![](../img/main.jpg)
+      
+8. 输入git push：将代码上传到github仓库。
+      
+![](../img/2main分支.jpg)
 
-上面的操作完成后，就可以在本地进行开发了。但是如果要将修改完的代码合并到团队项目上，还需要进行下面的操作。
+9. 返回自己的GitHub仓库中查看文件是否提交成功。
 
-## 2 和团队项目保持同步
+![](../img/3main分支.png)
 
-首先查看有没有设置upstream，使用 `git remote -v` 命令来查看。
+## 如何创建分支
 
+<<<<<<< HEAD
 ![](../img/6.2.1.png)
+=======
+Git分支是由指针管理起来的，所以创建、切换、合并、删除分支都非常快，非常适合大型项目的开发。在分支上做开发，调试好了后再合并到主分支。那么每个人开发模块式都不会影响到别人，这里有一些使用分支的策略，供大家参考：
+- 主分支（默认创建的main分支）只用来分布重大版本（对于每个版本可以创建不同的标签，以便于查找）；
+>>>>>>> 8efa378cd8d8b2c0c99410cb977dcb17d384eb26
 
-如果没有显示upstream，则使用 `git remote add upstream` 团队项目地址命令。接着再次使用 `git remote -v` ，显示出了upstream，那么就设置好了。
+- 日常开发可以在另一条分支上完成，可以取名为dev；
 
+<<<<<<< HEAD
 ![](../img/6.2.2.png)
+=======
+- 临时性分支，用完后最好删除，以免分支混乱.
+>>>>>>> 8efa378cd8d8b2c0c99410cb977dcb17d384eb26
 
-开始同步。首先执行 `git fetch upstream` 获取团队项目最新版本。此时并没有把最新版本合并到本地的分支上，因此还需要一步。 **当前分支是dev分支，执行 `git merge upstream/dev` 命令后，会将源分支（upstream/dev）合并到当前分支（dev）。**
+了解完这些后，我们内心可能仍然会存在一些疑问，比如怎样创建分支呢？我们只需按照以下步骤就可以：
 
+<<<<<<< HEAD
 ![](../img/6.2.3.png)
+=======
+1. 输入git branch,查看main分支；
+>>>>>>> 8efa378cd8d8b2c0c99410cb977dcb17d384eb26
 
-如果是在本地的master分支上开发，那么在使用该命令前，先切换到master分支。merge的时候，有可能碰到冲突。需要解决冲突才能继续下面的操作。
+2. 输入git branch dev1，创建新分支dev1；
 
-## 3 push修改到自己的项目上
+3. 输入git switch dev1,切换至dev1分支；
 
-解决冲突后，就可以使用 `git push` 命令将本地的修改同步到自己的GitHub仓库上了。注意，在当前所在分支使用push，会push到与这个分支相关联的远程仓库分支。这里dev分支与origin/dev关联，因此push到GitHub上的dev分支。
+4. 如果想要往dev分支传送文件时，步骤和主分支类似，依次输入：git add ./、 git commit -m "对提交信息的描述"、git push origin dev1，这里不再赘述。
+       
+![](../img/dev.jpg)
+       
+5. 输入完成后，在自己的GitHub主页上查看是否创建成功。
 
+<<<<<<< HEAD
 ![](../img/6.3.1.png)
+=======
+![](../img/dev分支查看.png)
+>>>>>>> 8efa378cd8d8b2c0c99410cb977dcb17d384eb26
 
-以上操作结束后，流程基本就结束了。最后一步交给 support小组来完成。
+本章的学习就到这里了，希望可以帮助到大家！
 
-## 4 support小组审核后合并到master分支
-
-首先在本地将修改后的远程dev分支pull下来,查看对项目做了哪些修改。如果没有问题，需要把代码合并到主分支 master上来，用`git checkout master` 切换到master分支，执行 `git merge dev` ，意思就是把dev 分支的代码合并过来，不出意外，这个时候 dev分支的代码就顺利合并到 master 分支来了，最后，将master分支push到远程即可。
-
-**总结**
-
-查看分支：`git branch`
- 
-创建分支：`git branch <name>`
- 
-切换分支：`git checkout <name>`
- 
-创建+切换分支：`git checkout -b <name>`
- 
-合并某分支到当前分支：`git merge <name>`
- 
-删除分支：`git branch -d <name>`
-
-大家可对其进行补充！

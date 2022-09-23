@@ -57,7 +57,7 @@ git add .
 
 ## 4. 用git commit提交修改过的文件
 
-如果我们想要将文件从暂存区移出，就可以运行`git commit`。通常`git commit` 命令后面还需要添加一个提交信息，用来描述我们在该次提交中所做的改动。这样的话就能更好地进行多人协作的工作，也可以：
+如果我们想要将文件从暂存区移出，就可以运行`git commit`。通常`git commit` 命令后面还需要添加一个提交信息，用来描述我们在该次提交中所做的改动。这样的话就能更好地进行多人协作的工作，同时也可以：
 
 1. 帮助合作者和未来的自己了解哪些地方被修改了，为什么。
 2. 让我们和合作者能够找到（必要时撤销）之前所做的修改。
@@ -159,15 +159,15 @@ git fetch origin 远程分支名x:本地分支名x
 
 首先，点击项目简介下的 **Pull Request** 按钮
 
-![](../../../img/pull1.png)
+![](../img/pull1.png)
 
 再点击**New Pull Request**
 
-![](../../../img/pull2.png)
+![](../img/pull2.png)
 
 最后点击**Create Pull Request**即可，其中自己的仓库默认设置为源仓库（head fork）、询问指定源分支（compare）、目标仓库（base fork）和目标分支（base）。
 
-![](../../../img/pull3.png)
+![](../img/pull3.png)
 
 通过以上的步骤，对方就会在在他自己的 GitHub 仓库下的**Pull Request**选项卡中看到所有的**Pull Request**。点击 **Pull Request** 会显示这个**Pull Request**的简介、dev 分支的提交历史，以及这次提交包含的更改。
 

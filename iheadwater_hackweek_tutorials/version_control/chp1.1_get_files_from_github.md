@@ -2,7 +2,7 @@
 
 ## 1. 仓库的目录结构
 
-上述提到，**GitHub**的资源以仓库（**repository**，缩写 **repo**）为单位。从本质上讲，仓库是一个特定项目的目录，它之所以被**git**和**GitHub**认定为仓库，是因为它包含一个名为` .git` 的子目录。
+上述提到，**GitHub**的资源以仓库（**repository**）为单位。从本质上讲，仓库是一个特定项目的目录，它之所以被**git**和**GitHub**认定为仓库，是因为它包含一个名为` .git` 的子目录。
 
 `.git` 子目录是自动创建的，如果是在 **GitHub.com** 上创建仓库的，则由 **GitHub** 创建；如果是在电脑上先创建的仓库，则由 **git** 创建（即初始化为一个仓库）。 `.git` 子目录非常重要，所有的版本信息，更新记录，以及**git**进行仓库管理的相关信息全部保存在这个文件夹中。因此，一定不要修改或删除 `.git` 子目录中的文件，以免造成数据的丢失。
 
@@ -41,7 +41,7 @@ fork仓库:
 
 要**fork**一个repo，首先导航到想**fork**的repo。然后点击屏幕右上角的**fork**按钮。然后就可以在我们的账户中创建一个该 repo 的副本。
 
-![](../../../img/fork.jpg)
+![](../img/fork.jpg)
 
 在这本教科书的后面，我们将学习如何对原始版本库提出修改建议，从原始版本库接收更新到我们的fork版本，并与他人合作。
 
@@ -64,12 +64,12 @@ fork仓库:
 `git clone with HTTPS`是官方推荐的，它不用配置ssh钥匙就可以完成。以一个仓库为例，在该仓库的**GitHub.com**主页上，我们可以点击`Clone or download`的绿色按钮，然后复制提供的URL，看起来就像是
 `https://github.com/iHeadWater/iheadwater_hackweek_tutorials.git`
 
-![](../../../img/https.jpg)
+![](../img/https.jpg)
 
 也可以根据SSH钥匙，来复制仓库（可将SSH钥匙理解成远程连接本地电脑的一把钥匙）。在 `Clone with HTTPS`那里，点击 `Use SSH `，就会切换成根据SSH钥匙来复制仓库，此时就可以复制提供的URL，看起来就像是
 `git@github.com:iHeadWater/iheadwater_hackweek_tutorials.git`
 
-![](../../../img/ssh.jpg)
+![](../img/ssh.jpg)
 
 ### 4.3 在终端运行 Git 克隆命令
 

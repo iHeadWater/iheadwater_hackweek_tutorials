@@ -28,9 +28,15 @@ chapters:
   - file: version_control/chp1.3_git_setup_and_commands
   - file: version_control/chp2_practice_git_skills
   
-- file: python
+- file: intro_to_python/ch0_intro
   sections:
-  - file: open_science_workflow/chp1.1_workflow
+  - file: intro_to_python/chp1_about_python
+  - file: intro_to_python/chp2_python_variables
+  - file: intro_to_python/chp3_list_dict_tuble_set
+  - file: intro_to_python/chp4_python_operators
+  - file: intro_to_python/chp5_conditional_statements
+  - file: intro_to_python/chp6_loops
+  - file: intro_to_python/chp7_functions
   
 - file: python_data_science
 - file: deep_learning_review

@@ -89,7 +89,7 @@ Git分支是由指针管理起来的，所以创建、切换、合并、删除�
 
 ![](../img/6.2.1.png)
 
-**补充：**对于 upstream ，我们可以先梳理一下来更好地理解他。我们 fork 了一个项目，origin 则指向我们自己的项目，那么 upstream 指向 fork 的项目。
+**补充：**对于 upstream ，我们用户通俗。我们 fork 了一个项目，origin 则指向我们自己的项目，那么 upstream 指向 fork 的项目。
 
 2. 如果没有显示 upstream ,我们可以使用`git remote add upstream 团队项目地址`命令。随后再次使用`git remote -v`，我们就可以看到 upstream 已经设置好了。
 

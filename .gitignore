@@ -130,3 +130,5 @@ dmypy.json
 
 # build
 */_build/
+
+/iheadwater_hackweek_tutorials/lstm_camels/*.png

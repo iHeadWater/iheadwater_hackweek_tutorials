@@ -8,11 +8,14 @@ dependencies:
   - openpyxl
   - pip
   - netCDF4
-  - pandas
+  - pytorch
+  - torchvision
+  - pyarrow
+  - black
   - pip:
     - jupyter-book
     - matplotlib
-    - numpy
     - ghp-import
     - wis-downloader
     - PIL
+    - hydrodataset

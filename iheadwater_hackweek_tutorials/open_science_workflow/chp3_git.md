@@ -39,16 +39,23 @@
 
 接下来自己去注册一个Github账号吧。
 
-如果你不能科学上网，导致Github的访问很慢，或者根本就不能访问，那这边还是建议想办法解决下这个问题，就本教程来说，我们还提供了一个内部网站的Gitlab版本供大家使用，注册不了可以先不注册。
+如果你不能科学上网，导致Github的访问很慢，或者根本就不能访问，那这边还是建议自己想办法解决下这个问题。
 
 接下来我们把本代码仓拉下来。
 
-还记得刚刚提到了我们能使用Bash打开和运行软件吗，这里我们在使用Bash操作Git去下载本教程：
+1. 打开GitHub上的本代码仓：https://github.com/iHeadWater/iheadwater_hackweek_tutorials
+2. fork到自己GitHub账号下：![](../img/github_fork.png)
+3. 使用Git Clone命令clone下来。还记得刚刚提到了我们能使用Bash打开和运行软件吗，这里我们在使用Bash操作Git去下载本教程，在平台终端上输入以下命令：
 
 ```Shell
-# 如果愿意，可以先fork到你的github账号下
+# 如果你想创建一个新文件夹放这些代码就执行：
+mkdir xx
 # 移动到你想放的文件夹
 cd xx
-# 把代码clone下来，xxx是本项目的地址
-git clone xxxx
+# 把代码clone下来，xxx是项目的地址
+git clone xxx
 ```
+
+xxx项目地址在你fork后的页面上，如下操作（点击绿色的code按钮，然后再点击图中所示的copy图标）即可看到：
+
+![](../img/github_clone.png)

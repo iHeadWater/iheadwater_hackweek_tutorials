@@ -20,8 +20,6 @@ git status
 
 接下来，用文本编辑器打开 README.md 文件并做一个小改动。然后，运行`git status`命令，检查是否对文件进行了修改，也可以查看文件的状态。
 
-### 2.1 向版本控制添加和提交文件更改
-
 我们先来看看如何用**git**来跟踪这个文件的变化:
 
 1. 先用`git add`把改动添加到跟踪区（暂存区）
@@ -30,10 +28,9 @@ git status
 以上两条命令构成了许多使用**git**进行版本控制的工作流程的主体，可以简单解释如下，具体操作我们可以参考后面的部分。
 
 - git add：在工作目录中获取一个修改过的文件，并将修改后的版本放在一个暂存区供审查。
-
 - git commit：从暂存区获取所有内容，并为仓库的当前状态制作一个具有唯一标识符的永久快照。
 
-此外，我们修改过的文件可以先使用命令`git add`暂存一下。
+接下来，试一试命令`git add`。
 
 ## 3. 使用git add添加已更改的文件
 
@@ -188,7 +185,7 @@ git remote -v
 接着确定一个将被同步给 fork 远程的上游仓库:
 
 ```Python
-git remote add upstream git@github.com:waterDLut/WaterResources.git
+git remote add upstream git@github.com:iHeadWater/iheadwater_hackweek_tutorials.git
 ```
 
 然后再次查看远程状态，已经可以看到upstream的信息了。
@@ -263,10 +260,10 @@ git branch -r
 git pull <远程库名> <远程分支名>:<本地分支名>
 ```
 
-举个例子，如果我们想要取回远程库中的dev分支，并与本地的develop分支进行merge，就可以写成：
+举个例子，如果我们想要取回远程库中的dev分支，并与本地的dev分支进行merge，就可以写成：
 
 ```Python
-git pull origin develop:develop
+git pull origin dev:dev
 ```
 
 **如果是要与本地当前分支merge，则冒号后面的<本地分支名>可以不写。**

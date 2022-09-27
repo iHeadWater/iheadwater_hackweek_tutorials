@@ -66,7 +66,7 @@ The authenticity of host 'github.com (xxx.xxx.xxx.xxx)' can't be established. RS
 https下下载的方式和ssh下一样，在github中clone时选择HTTPS即可，比如下载本repo：
 
 ```Python
-git clone https://github.com/waterDLut/WaterResources.git
+git clone https://github.com/iHeadWater/iheadwater_hackweek_tutorials.git
 ```
 
 如果已经使用了https，想要切换成ssh 变化远程仓库地址 可以按照下面方式操作（参考了这里）。
@@ -76,7 +76,6 @@ git clone https://github.com/waterDLut/WaterResources.git
 ```Python
 git remote -v
 ```
-![](../img/https1.png)
 
 如果之前是直接使用https下载的repo，那么应该可以看到origin后面是“https:...”，现在切换:
 
@@ -84,8 +83,4 @@ git remote -v
 git remote set-url origin git@github.com:USERNAME/REPOSITORY.git  
 ```
 
-![](../img/https2.png)
-
-再次查看远程仓库，可以看到发生了如下变化
-
-![](../img/https3.png)
+再次执行`git remote -v`查看远程仓库，可以看到发生了变化。

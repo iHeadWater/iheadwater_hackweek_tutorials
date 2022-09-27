@@ -23,7 +23,7 @@ chapters:
   - file: version_control/chp1.1_get_files_from_github
   - file: version_control/chp1.2_setup_git
   - file: version_control/chp1.3_git_setup_and_commands
-  - file: version_control/chp2_practice_git_skills
+  - file: version_control/chp2_team_work
 - file: intro_to_python/ch0_intro
   sections:
   - file: intro_to_python/chp1_about_python
@@ -51,6 +51,6 @@ chapters:
   sections:
   - file: lstm_camels/chp1_run_in_jupyter
   - file: lstm_camels/chp2_run_in_vscode
-  - file: lstm_camels/chp3_replay
+- file: tldr
 - file: citations
   

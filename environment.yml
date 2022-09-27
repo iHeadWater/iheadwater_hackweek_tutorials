@@ -5,6 +5,7 @@ channels:
 dependencies:
   - geopandas
   - xarray
+  - rioxarray
   - openpyxl
   - pip
   - netCDF4

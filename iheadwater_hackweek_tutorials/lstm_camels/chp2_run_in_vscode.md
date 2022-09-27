@@ -80,19 +80,19 @@ Host jupyterhub.waterism.com
 
 然后保存即可。
 
-如无意外，SSH Targets中会生成一个jupyterhub.waterism.com项（和你粘贴进去的Host一致），右击此项，选择在当前窗口或者新建窗口打开，remote ssh插件便会为你自动连上jupyter服务器，连接成功后，窗口左下角远程小窗口会出现jupyterhub.waterism.com字样：
+### 连接平台
+
+如无意外，SSH Targets中会生成一个jupyterhub.waterism.com项（和你粘贴进去的Host一致），鼠标右键点击此项，选择在“当前窗口”或者“新建窗口”打开，两个选项选择任意一个即可。
+
+![](../img/vscode_ssh_connect.png)
+
+remote ssh插件便会为你自动连上jupyter服务器，连接成功后，窗口左下角远程小窗口会出现jupyterhub.waterism.com字样：
 
 ![](../img/vscode_ssh_login.png)
 
 此刻便已连接成功。
 
-### 连接平台
-
-现在就可以连接到平台服务器了，右键刚添加进来的远程服务器（你的应该显示的是jupyterhub.waterism.com），弹出的两个选项选择任意一个即可连接。
-
-![](../img/vscode_ssh_connect.png)
-
-然后，选择“文件”-> “打开文件夹”：
+选择“文件”-> “打开文件夹”：
 
 ![](../img/vscode_ssh_opendir.png)
 

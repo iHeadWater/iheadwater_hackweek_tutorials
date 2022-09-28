@@ -1,0 +1,989 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>使用Git命令进行版本控制 &#8212; iHeadWater Hackweek Tutorials</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="在GitHub上协作工作" href="chp3.4_team_work.html" />
+    <link rel="prev" title="配置Git" href="chp3.2_setup_git.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">iHeadWater Hackweek Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    欢迎来到水资源科研编程入门教程
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../start_from_here.html">
+   从这里开始
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp1_open_science_workflow/chp1.0_intro.html">
+   编程概念及相关工具
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.1.1_workflow.html">
+     可复现科研的一般工作流程
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.1.2_tools.html">
+     常用工具
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.2.1_bash.html">
+     Bash 简介以及在命令行中操作文件和目录
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.2.2_common.html">
+     管理目录和文件的Bash命令
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.3_git.html">
+     关于Git和GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.4_jupyter.html">
+     Jupyter Hub/Lab/Notebook 简介
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp2_file_formats/chp2.0_intro.html">
+   常见的数据文件格式
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp2_file_formats/chp2.1_txt_csv.html">
+     文本类数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp2_file_formats/chp2.2_vector_data.html">
+     地理空间数据–矢量
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp2_file_formats/chp2.3_raster_data.html">
+     地理空间数据–栅格
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="chp3.0_introduction.html">
+   使用版本控制工具
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp3.1_get_files_from_github.html">
+     从Github获取文件
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp3.2_setup_git.html">
+     配置Git
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     使用Git命令进行版本控制
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp3.4_team_work.html">
+     在GitHub上协作工作
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp4_intro_to_python/chp4.0_intro.html">
+   Python编程基础
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.1_about_python.html">
+     Python编程语言简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.2_python_variables.html">
+     Python 中的变量
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.3_list_dict_tuble_set.html">
+     常用数据结构
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.4_python_operators.html">
+     基本运算符
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.5_conditional_statements.html">
+     条件语句
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.6_loops.html">
+     循环
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.7_functions.html">
+     函数
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp5_python_data_science/chp5.0_intro.html">
+   Python 数据分析常用工具包
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp5_python_data_science/chp5.1_numpy.html">
+     Numpy 简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp5_python_data_science/chp5.2_pandas.html">
+     Pandas 简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp5_python_data_science/chp5.3_matplotlib.html">
+     matplotlib简介
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp6_deep_learning_review/chp6.0_intro.html">
+   深度学习简介
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp6_deep_learning_review/chp6.1_common_nn.html">
+     深度学习常见算法及模型的简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp6_deep_learning_review/chp6.2_hydro.html">
+     深度学习在水文领域中的应用研究
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.0_intro.html">
+   初探PyTorch
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.1_tensor.html">
+     PyTorch中的Tensor基础
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.2_neural_network.html">
+     torch.nn简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.3_dataloader.html">
+     Dataset和DataLoader简介
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp8_lstm_camels/chp8.0_intro.html">
+   使用CAMELS数据集构建基于LSTM的降雨径流模型
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp8_lstm_camels/chp8.1_run_in_jupyter.html">
+     LSTM降雨径流建模
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp8_lstm_camels/chp8.2_run_in_vscode.html">
+     使用VSCode编写运行代码
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tldr.html">
+   TLDR页
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../citations.html">
+   参考资料
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials/issues/new?title=Issue%20on%20page%20%2Fchp3_version_control/chp3.3_git_setup_and_commands.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/chp3_version_control/chp3.3_git_setup_and_commands.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gitgithub">
+   1. Git和GitHub的版本控制工作流程
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-status">
+   2. git status 检查更改的状态
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-add">
+   3. 使用git add添加已更改的文件
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-commit">
+   4. 用git commit提交修改过的文件
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#github-com">
+   5. 推送修改后的文件到GitHub.com
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     5.1 创建分支并推送到远程分支
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     5.2 拉取远程分支
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pull-request">
+     5.3 pull request
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fork">
+     5.4 fork后同步源仓库新更新的内容
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     5.5 查看历史版本
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#github-comrepo">
+   6. 从GitHub.com上拉出修改过的文件到克隆Repo上
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gitignore-git">
+   7. 用.gitignore文件告诉 Git 忽略文件
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>使用Git命令进行版本控制</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gitgithub">
+   1. Git和GitHub的版本控制工作流程
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-status">
+   2. git status 检查更改的状态
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-add">
+   3. 使用git add添加已更改的文件
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-commit">
+   4. 用git commit提交修改过的文件
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#github-com">
+   5. 推送修改后的文件到GitHub.com
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     5.1 创建分支并推送到远程分支
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     5.2 拉取远程分支
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pull-request">
+     5.3 pull request
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fork">
+     5.4 fork后同步源仓库新更新的内容
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     5.5 查看历史版本
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#github-comrepo">
+   6. 从GitHub.com上拉出修改过的文件到克隆Repo上
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gitignore-git">
+   7. 用.gitignore文件告诉 Git 忽略文件
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="git">
+<h1>使用Git命令进行版本控制<a class="headerlink" href="#git" title="Permalink to this headline">#</a></h1>
+<section id="gitgithub">
+<h2>1. Git和GitHub的版本控制工作流程<a class="headerlink" href="#gitgithub" title="Permalink to this headline">#</a></h2>
+<p>通过前面两部分的学习，相信大家已经学会了如何<code class="docutils literal notranslate"><span class="pre">fork</span></code> GitHub 仓库以复制其他用户的仓库，也掌握了如何下载 GitHub 仓库的副本（即克隆）到本地电脑上。那么在这一节，我们将学习使用 git 来实现版本控制的三个重要步骤。如下所示：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> 对已更改的文件进行版本控制跟踪</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> 改变文件来创建本地版本库的唯一快照</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>这些改变的文件，从本地仓库的副本到云端（<a class="reference external" href="http://GitHub.com">GitHub.com</a>）。</p></li>
+</ul>
+</section>
+<section id="git-status">
+<h2>2. git status 检查更改的状态<a class="headerlink" href="#git-status" title="Permalink to this headline">#</a></h2>
+<p>首先，我们需要了解到的是，git内部主要有untrack,modified,committted和staged四种状态。我们可以先把它们简单地理解为“没有记录”，“修改过”，“已提交”和“暂存”。有了基本的认识之后，我们可以尝试一下操作。</p>
+<p>在开始工作之前，<strong>我们先克隆一个远程GitHub仓库到本地</strong>。用<strong>终端</strong>导航到实践<strong>git</strong>的地方<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">practice-git-skillz</span></code></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<p>接下来，用文本编辑器打开 <a class="reference external" href="http://README.md">README.md</a> 文件并做一个小改动。然后，运行<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>命令，检查是否对文件进行了修改，也可以查看文件的状态。</p>
+<p>我们先来看看如何用<strong>git</strong>来跟踪这个文件的变化:</p>
+<ol class="simple">
+<li><p>先用<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>把改动添加到跟踪区（暂存区）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>对版本控制的更改</p></li>
+</ol>
+<p>以上两条命令构成了许多使用<strong>git</strong>进行版本控制的工作流程的主体，可以简单解释如下，具体操作我们可以参考后面的部分。</p>
+<ul class="simple">
+<li><p>git add：在工作目录中获取一个修改过的文件，并将修改后的版本放在一个暂存区供审查。</p></li>
+<li><p>git commit：从暂存区获取所有内容，并为仓库的当前状态制作一个具有唯一标识符的永久快照。</p></li>
+</ul>
+<p>接下来，试一试命令<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>。</p>
+</section>
+<section id="git-add">
+<h2>3. 使用git add添加已更改的文件<a class="headerlink" href="#git-add" title="Permalink to this headline">#</a></h2>
+<p>在我们进行修改后，可以将单个文件或文件组添加到版本控制跟踪中。那么要如何添加<strong>单个文件</strong>，可以运行以下命令：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="n">file</span><span class="o">-</span><span class="n">name</span><span class="o">.</span><span class="n">extension</span>
+</pre></div>
+</div>
+<p>举个简单的例子，如果想要添加<code class="docutils literal notranslate"><span class="pre">README.md</span></code>文件，可以使用：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>我们也可以同时添加<strong>所有编辑过的文件</strong>，使用：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="git-commit">
+<h2>4. 用git commit提交修改过的文件<a class="headerlink" href="#git-commit" title="Permalink to this headline">#</a></h2>
+<p>如果我们想要将文件从暂存区移出，就可以运行<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>。通常<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> 命令后面还需要添加一个提交信息，用来描述我们在该次提交中所做的改动。这样的话就能更好地进行多人协作的工作，同时也可以：</p>
+<ol class="simple">
+<li><p>帮助合作者和未来的自己了解哪些地方被修改了，为什么。</p></li>
+<li><p>让我们和合作者能够找到（必要时撤销）之前所做的修改。</p></li>
+</ol>
+<p>如果没有提交大量的修改时，可以使用 <code class="docutils literal notranslate"><span class="pre">-m</span></code> 标志创建一个简短的单行提交信息，如下所示。</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Update title and author name in homework for week 3&quot;</span>
+</pre></div>
+</div>
+<p>每个提交都有一个唯一的标识符（SHA-1哈希值），并包括提交时对暂存区文件的所有修改（即用<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>添加到暂存区的所有文件）</p>
+</section>
+<section id="github-com">
+<h2>5. <a class="reference external" href="http://%E6%8E%A8%E9%80%81%E4%BF%AE%E6%94%B9%E5%90%8E%E7%9A%84%E6%96%87%E4%BB%B6%E5%88%B0GitHub.com">推送修改后的文件到GitHub.com</a><a class="headerlink" href="#github-com" title="Permalink to this headline">#</a></h2>
+<p>到目前的操作为止，我们只是修改了仓库的本地副本并完成了对仓库的本地提交。如果我们想要更新 <strong><a class="reference external" href="http://GitHub.com">GitHub.com</a></strong> 上的文件，则还需要把修改的文件<strong>push(推送)</strong> 到 <strong><a class="reference external" href="http://GitHub.com">GitHub.com</a></strong> 上的仓库。</p>
+<p>这时就可以用以下命令把改动推送到 <strong>GitHub</strong>:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">main</span>
+</pre></div>
+</div>
+<p><strong>补充：</strong> main是远程的（主）分支。我们可以将分支简单地理解成一条平行直线，每个分支都能够进行版本控制，并且团队协作中的每个人都可以创建一个属于自己的分支，然后在自己的分支上进行修改等事宜。版本控制还允许我们将分支进行融合等操作。</p>
+<p><strong>下面我们就创建一个分支，并将分支推送到远程仓库（分支）下</strong></p>
+<section id="id1">
+<h3>5.1 创建分支并推送到远程分支<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>首先，输入以下命令查看当前分支：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span>
+</pre></div>
+</div>
+<p><strong>出现<code class="docutils literal notranslate"><span class="pre">*</span></code>表示当前处在该分支下</strong></p>
+<p>下一步，再新建一个本地分支：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span>  <span class="o">&lt;</span><span class="n">你的分支名称</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>比如常见的新建一个“开发”分支：<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">dev</span></code></p>
+<p>虽然我们已经建立了分支，但可以看到 * 并没有出现在dev上面，这时我们可以输入：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">dev</span>
+</pre></div>
+</div>
+<p>即可切换到dev分支上。通过以上操作，我们可以清楚地认识到命令<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code>是用于切换分支的。</p>
+<p>下一步，我们需要把新建的本地分支push到远程服务器，远程分支与本地分支同名（当然可以随意起名）：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="o">&lt;</span><span class="n">你的分支名称</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">你的分支名称</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>最后，我们来使用命令<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-a</span></code>查看一下所有分支，此时就会看到remotes/origin/&lt;你的分支名称&gt; 这个远程分支，这就说明新建远程分支成功。</p>
+</section>
+<section id="id2">
+<h3>5.2 拉取远程分支<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<p>首先，我们查看一下<strong>远程</strong>分支：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">r</span>
+</pre></div>
+</div>
+<p>然后，我们来看一下拉取远程分支的方式。第一种方式：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">本地分支名x</span> <span class="n">origin</span><span class="o">/</span><span class="n">远程分支名x</span>  
+</pre></div>
+</div>
+<p>需要注意的是，使用该方式会在本地新建分支 x ，并自动切换到该本地分支 x 。采用此种方法建立的本地分支会和远程分支建立映射关系。</p>
+<p>方式二：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">fetch</span> <span class="n">origin</span> <span class="n">远程分支名x</span><span class="p">:</span><span class="n">本地分支名x</span>  
+</pre></div>
+</div>
+<p>使用该方式会在本地新建分支x，但是不会自动切换到该本地分支x，需要手动checkout。</p>
+<p>采用此种方法建立的本地分支不会和远程分支建立映射关系。以上就是拉取远程分支的两种方式。</p>
+<p>当我们在 dev 分支完成了自己的部分时，主分支并不会发生变化，这个时候就需要把我们的代码合并到主分支 main 上来，执行<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code>命令就可以合并分支。</p>
+<p>需注意，合并分为两步！！！</p>
+<ol class="simple">
+<li><p>切换到 main 分支，如果你已经在了就不用切换了;</p></li>
+<li><p>执行 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">dev</span></code> ，意思就是把 dev 分支的代码合并过来，不出意外，这个时候 dev分支的代码就顺利合并到 main 分支来了。</p></li>
+</ol>
+<p>有添加就有删除，假如分支新建错了，或者dev分支的代码已经顺利合并到 main 分支来了，那么 dev 分支没用了，我们可以用 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-d</span></code> 删除。删除分支dev 的语句为 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-d</span> <span class="pre">dev</span></code> 。</p>
+</section>
+<section id="pull-request">
+<h3>5.3 pull request<a class="headerlink" href="#pull-request" title="Permalink to this headline">#</a></h3>
+<p>我们在之前已经介绍过如何创建分支并且推送到远程，那么现在自己的github上已经有了创建的dev分支，这个分支将是随后发起 Pull Request 时要用到的源分支。</p>
+<p>首先，点击项目简介下的 <strong>Pull Request</strong> 按钮</p>
+<p><img alt="" src="../_images/pull1.png" /></p>
+<p>再点击<strong>New Pull Request</strong></p>
+<p><img alt="" src="../_images/pull2.png" /></p>
+<p>最后点击<strong>Create Pull Request</strong>即可，其中自己的仓库默认设置为源仓库（head fork）、询问指定源分支（compare）、目标仓库（base fork）和目标分支（base）。</p>
+<p><img alt="" src="../_images/pull3.png" /></p>
+<p>通过以上的步骤，对方就会在在他自己的 GitHub 仓库下的<strong>Pull Request</strong>选项卡中看到所有的<strong>Pull Request</strong>。点击 <strong>Pull Request</strong> 会显示这个<strong>Pull Request</strong>的简介、dev 分支的提交历史，以及这次提交包含的更改。</p>
+<p>如果对方认为 dev 分支已经可以合并了，他只需点击 <strong>Merge Pull Request</strong>按钮来通过这个 <strong>Pull Request</strong>，将dev分支并入他的 <strong>main</strong> 分支。</p>
+<p>最后，对方接受了这些修改，将 dev 分支并入了 main 分支，关闭了这个<strong>Pull Request</strong>。通过以上的操作，所修改的东西现在也已经整合到了项目中，这时其他在 main 分支上工作的开发者就可以使用标准的 <strong>git pull</strong> 命令将这些修改拉取到自己的本地仓库。</p>
+</section>
+<section id="fork">
+<h3>5.4 fork后同步源仓库新更新的内容<a class="headerlink" href="#fork" title="Permalink to this headline">#</a></h3>
+<p>在我们fork了其他人的repo后，如果他们的内容有更新，我们又应该怎样把他们的最新内容同步过来呢？</p>
+<p>首先，我们需要先查看远程状态:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="o">-</span><span class="n">v</span>
+</pre></div>
+</div>
+<p>接着确定一个将被同步给 fork 远程的上游仓库:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">upstream</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">iHeadWater</span><span class="o">/</span><span class="n">iheadwater_hackweek_tutorials</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>然后再次查看远程状态，已经可以看到upstream的信息了。</p>
+<p>随后从上游仓库 fetch 分支：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">fetch</span> <span class="n">upstream</span>
+</pre></div>
+</div>
+<p>转换到main(或者master)分支</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+</pre></div>
+</div>
+<p>最后就是合并远程分支：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">merge</span> <span class="n">upstream</span><span class="o">/</span><span class="n">main</span>
+<span class="c1"># 或者</span>
+<span class="n">git</span> <span class="n">rebase</span> <span class="n">upstream</span><span class="o">/</span><span class="n">main</span>
+</pre></div>
+</div>
+<p>如果本地没有更改，那git就直接自动执行一个fast-forward，如果有更改，就手动调整一下有冲突的地方，然后commit即可。</p>
+<p>最后push到自己的origin上即可。</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>5.5 查看历史版本<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<p>我们可以使用以下的命令：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span>
+</pre></div>
+</div>
+<p>来查看历史提交记录。</p>
+<p>同时，如果使用</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span>git checkout xxx（某个历史版本的哈希值，即git log下显示的每次commit对应的一串数字字母）
+</pre></div>
+</div>
+<p>即可回到xxx的那个版本。</p>
+</section>
+</section>
+<section id="github-comrepo">
+<h2>6. 从GitHub.com上拉出修改过的文件到克隆Repo上<a class="headerlink" href="#github-comrepo" title="Permalink to this headline">#</a></h2>
+<p>当我们运行<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code>时，会将 git repo的完整副本从github.com复制到本地计算机。它包括所有的.git历史信息，我们需要这些信息来跟踪repo的变化。<strong>因此我们只需要运行一次git clone</strong>。运行完git clone后，就可以用<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>来更新 repo。</p>
+<p>注意：<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>、<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>和<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>是将本地的修改推送到远程，而<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>是从远程库中获取某个分支的更新，再与本地指定的分支进行自动merge。</p>
+<p>首先，查看我们处于哪个分支，因为我们可能会有许多分支，但是只需对特定分支进行更新。</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span>
+</pre></div>
+</div>
+<p>再查看一下远程分支：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">r</span>
+</pre></div>
+</div>
+<p>运行<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span> <span class="o">&lt;</span><span class="n">远程库名</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">远程分支名</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">本地分支名</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>举个例子，如果我们想要取回远程库中的dev分支，并与本地的dev分支进行merge，就可以写成：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">dev</span><span class="p">:</span><span class="n">dev</span>
+</pre></div>
+</div>
+<p><strong>如果是要与本地当前分支merge，则冒号后面的&lt;本地分支名&gt;可以不写。</strong></p>
+<p>通常，git会将本地库分支与远程分支之间建立一种追踪关系。比如，在git clone的时候，所有本地分支默认与远程库的同名分支建立追踪关系。也就是说，本地的main分支自动追踪origin/main分支。因此，如果当前处于本地dev分支上，并且本地dev分支与远程的dev分支有追踪关系，那么远程的分支名可以省略：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span>
+</pre></div>
+</div>
+</section>
+<section id="gitignore-git">
+<h2>7. 用.gitignore文件告诉 Git 忽略文件<a class="headerlink" href="#gitignore-git" title="Permalink to this headline">#</a></h2>
+<p>有时我们不想在git repo中有些文件被追踪到。例如：</p>
+<ul class="simple">
+<li><p>_DS_STORE or</p></li>
+<li><p>.ipynb checkpoint files.</p></li>
+</ul>
+<p>其他时候，如果我们仓库里有敏感的文件，永远不想用<strong>git</strong>来追踪，比如API凭证或其他包含个人信息的文件。这个时候我们就可以把任何文件类型或名称添加到<code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>文件中，这样<strong>git</strong>就不会追踪它们。这意味着，当运行<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>或<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>时，它将不会追踪任何列在<code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>文件中的文件。因此，这些文件将永远不会被添加到 <strong><a class="reference external" href="http://GitHub.com">GitHub.com</a></strong> 上。</p>
+<p>我们看一个简单的例子，假设有一个名为 <code class="docutils literal notranslate"><span class="pre">social-security.txt</span></code> 的文件，其中包含敏感信息。我们可以将该文件添加到一个 <strong>.gitignore</strong>文件中。如果仓库中还没有 <strong>.gitignore</strong>文件，可以用文本手动创建，或者使用下面的<code class="docutils literal notranslate"><span class="pre">bash</span></code>命令。</p>
+<p>在文本编辑器中打开这个<code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>文件，添加<strong>git</strong>忽略的文件名（不需要其他信息），比如说:<code class="docutils literal notranslate"><span class="pre">social-security.txt</span></code></p>
+<p>任何列在<code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>文件中的文件都会被<strong>git</strong>忽略。另外我们也可以通过在<code class="docutils literal notranslate"><span class="pre">gitignore</span></code>文件中添加目录名称来告诉<strong>git</strong>忽略目录（比如忽略一个名为<code class="docutils literal notranslate"><span class="pre">private-directory</span></code>的目录）</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chp3_version_control"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="chp3.2_setup_git.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">配置Git</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="chp3.4_team_work.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">在GitHub上协作工作</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Wenyu Ouyang, Ziwen Meng, Xiaoning Liu, Xiangyi Le, Yaxin Lou, Jingyuan Huang<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

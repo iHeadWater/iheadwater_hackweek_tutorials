@@ -1,0 +1,788 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>TLDR页 &#8212; iHeadWater Hackweek Tutorials</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="参考资料" href="citations.html" />
+    <link rel="prev" title="使用VSCode编写运行代码" href="chp8_lstm_camels/chp8.2_run_in_vscode.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">iHeadWater Hackweek Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    欢迎来到水资源科研编程入门教程
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="start_from_here.html">
+   从这里开始
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="chp1_open_science_workflow/chp1.0_intro.html">
+   编程概念及相关工具
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp1_open_science_workflow/chp1.1.1_workflow.html">
+     可复现科研的一般工作流程
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp1_open_science_workflow/chp1.1.2_tools.html">
+     常用工具
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp1_open_science_workflow/chp1.2.1_bash.html">
+     Bash 简介以及在命令行中操作文件和目录
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp1_open_science_workflow/chp1.2.2_common.html">
+     管理目录和文件的Bash命令
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp1_open_science_workflow/chp1.3_git.html">
+     关于Git和GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp1_open_science_workflow/chp1.4_jupyter.html">
+     Jupyter Hub/Lab/Notebook 简介
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="chp2_file_formats/chp2.0_intro.html">
+   常见的数据文件格式
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp2_file_formats/chp2.1_txt_csv.html">
+     文本类数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp2_file_formats/chp2.2_vector_data.html">
+     地理空间数据–矢量
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp2_file_formats/chp2.3_raster_data.html">
+     地理空间数据–栅格
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="chp3_version_control/chp3.0_introduction.html">
+   使用版本控制工具
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp3_version_control/chp3.1_get_files_from_github.html">
+     从Github获取文件
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp3_version_control/chp3.2_setup_git.html">
+     配置Git
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp3_version_control/chp3.3_git_setup_and_commands.html">
+     使用Git命令进行版本控制
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp3_version_control/chp3.4_team_work.html">
+     在GitHub上协作工作
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="chp4_intro_to_python/chp4.0_intro.html">
+   Python编程基础
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp4_intro_to_python/chp4.1_about_python.html">
+     Python编程语言简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp4_intro_to_python/chp4.2_python_variables.html">
+     Python 中的变量
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp4_intro_to_python/chp4.3_list_dict_tuble_set.html">
+     常用数据结构
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp4_intro_to_python/chp4.4_python_operators.html">
+     基本运算符
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp4_intro_to_python/chp4.5_conditional_statements.html">
+     条件语句
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp4_intro_to_python/chp4.6_loops.html">
+     循环
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp4_intro_to_python/chp4.7_functions.html">
+     函数
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="chp5_python_data_science/chp5.0_intro.html">
+   Python 数据分析常用工具包
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp5_python_data_science/chp5.1_numpy.html">
+     Numpy 简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp5_python_data_science/chp5.2_pandas.html">
+     Pandas 简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp5_python_data_science/chp5.3_matplotlib.html">
+     matplotlib简介
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="chp6_deep_learning_review/chp6.0_intro.html">
+   深度学习简介
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp6_deep_learning_review/chp6.1_common_nn.html">
+     深度学习常见算法及模型的简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp6_deep_learning_review/chp6.2_hydro.html">
+     深度学习在水文领域中的应用研究
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="chp7_intro_to_pytorch/chp7.0_intro.html">
+   初探PyTorch
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp7_intro_to_pytorch/chp7.1_tensor.html">
+     PyTorch中的Tensor基础
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp7_intro_to_pytorch/chp7.2_neural_network.html">
+     torch.nn简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp7_intro_to_pytorch/chp7.3_dataloader.html">
+     Dataset和DataLoader简介
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="chp8_lstm_camels/chp8.0_intro.html">
+   使用CAMELS数据集构建基于LSTM的降雨径流模型
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp8_lstm_camels/chp8.1_run_in_jupyter.html">
+     LSTM降雨径流建模
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp8_lstm_camels/chp8.2_run_in_vscode.html">
+     使用VSCode编写运行代码
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   TLDR页
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="citations.html">
+   参考资料
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials/issues/new?title=Issue%20on%20page%20%2Ftldr.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/tldr.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   1.连接研发中心内网
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyterhub">
+   2.平台JupyterHub账号注册与登录
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyterlab">
+   3.使用JupyterLab
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   4.与他人协作
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   5.使用集成开发环境工具
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   6.技术研发类项目的数字化管理
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>TLDR页</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   1.连接研发中心内网
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyterhub">
+   2.平台JupyterHub账号注册与登录
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyterlab">
+   3.使用JupyterLab
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   4.与他人协作
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   5.使用集成开发环境工具
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   6.技术研发类项目的数字化管理
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="tldr">
+<h1>TLDR页<a class="headerlink" href="#tldr" title="Permalink to this headline">#</a></h1>
+<p>整个内容以科研编程入门为主线串联，更加适合新生入学学习，内容有点多，Too Long; Didn’t Read（TLDR），所以这里我们提供一个手册页，主要以串联日常使用平台需要的操作为主，具体内容会有链接提供。</p>
+<p>手册主要包括以下几个部分：</p>
+<ol class="simple">
+<li><p><strong>连接研发中心内网</strong>：研发中心VPN或本地/远程连接到在研发中心/411教研室的计算机</p></li>
+<li><p><strong>平台JupyterHub账号注册与登录</strong>：团队搭建了<a class="reference external" href="http://jupyterhub.waterism.com:666/">Jupyterhub</a></p></li>
+<li><p><strong>登录后使用JupyterLab</strong>：编写markdown与jupyter notebook</p></li>
+<li><p><strong>与他人协作</strong>：使用Git、GitHub</p></li>
+<li><p><strong>使用集成开发环境工具</strong>：用VSCode连接平台使用或贡献代码资源</p></li>
+<li><p><strong>技术研发类项目的数字化管理</strong>：联合使用各类工具，与大家分享各种资源</p></li>
+</ol>
+<section id="id1">
+<h2>1.连接研发中心内网<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>有电脑在研发中心或者411的同志就比较容易了，不需要做任何操作，可以跳过这一步。</p>
+<p>其他教研室因为各方面原因，暂时还没有或不方便开通内网连接，所以推荐大家在本地电脑安装使用研发中心VPN。</p>
+<p>VPN的安装使用方式请参考<a class="reference external" href="https://dlut-water.yuque.com/docs/share/4cab7471-0be7-4570-a51a-8936b1c612d1">这里</a></p>
+</section>
+<section id="jupyterhub">
+<h2>2.平台JupyterHub账号注册与登录<a class="headerlink" href="#jupyterhub" title="Permalink to this headline">#</a></h2>
+<p>注册与登录和一般网站的没有区别，当你连接入内网后，在浏览器中输入： <a class="reference external" href="http://jupyterhub.waterism.com:666/">http://jupyterhub.waterism.com:666/</a> 就能访问。</p>
+<p>如果你需要注册和登录的详细介绍请参考<a class="reference external" href="https://iheadwater.github.io/iheadwater_hackweek_tutorials/start_from_here.html">这里</a></p>
+</section>
+<section id="jupyterlab">
+<h2>3.使用JupyterLab<a class="headerlink" href="#jupyterlab" title="Permalink to this headline">#</a></h2>
+<p>关于JupyterLab与JupyterHub还有Jupyter Notebook之间的联系，可以参考<a class="reference external" href="https://iheadwater.github.io/iheadwater_hackweek_tutorials/chp1_open_science_workflow/chp1.4_jupyter.html">这里</a>，简而言之，我们不用管Hub，我们用的是Lab，写的是Notebook</p>
+<p>写Notebook的时候主要写代码和文字：</p>
+<ul class="simple">
+<li><p>代码主要是Python，另外平台还添加了对R、Julia和Java的支持，但是对Java的支持并不友好，所以还是推荐大家使用前面几种语言编写脚本程序。推荐Python或者R等的原因，主要是因为它们更加简单，且开源资源更丰富，如果你会使用Java编写一些计算程序，那学习使用Python或R只有很少的时间成本，并且是值得的，因为收益会更大。不推荐Java的原因还有它更加适合于软件开发，尤其是部署运行各类软件系统的程序，科学工程计算中使用它的相对还是比较少。如果你对计算效率有很高的要求，那建议用C/C++或者Julia来编写相关程序，前者仍然是最常见的高效率编程语言，后者是近10年来发展起来的，学习成本和Python相当，运算效率还很高，已被地学相关领域广泛使用。教程提供了Python基础的介绍，详见<a class="reference external" href="https://iheadwater.github.io/iheadwater_hackweek_tutorials/chp4_intro_to_python/chp4.0_intro.html">这里</a></p></li>
+<li><p>文字主要通过markdown来编写，和在后缀名为.md的文件中编写方式一样。markdown能够帮助我们在使用少量格式标记的情况下，就能编写格式漂亮的文档，从而让我们专注于制作更优质的内容，功能虽不如word强大，但是已经足够我们日常使用，且非常轻量级，易于在网页端和其他人分享你写的内容。关于markdown的写法以及如何在jupyterlab上写markdown文件请点击<a class="reference external" href="https://iheadwater.github.io/iheadwater_hackweek_tutorials/chp1_open_science_workflow/chp1.4_jupyter.html">这里</a>查看。</p></li>
+</ul>
+<p>使用JupyterLab的一个完整示例可以参考<a class="reference external" href="https://iheadwater.github.io/iheadwater_hackweek_tutorials/chp8_lstm_camels/chp8.1_run_in_jupyter.html">这个例子</a>，这是一个深度学习水文建模的简单实例。这里你可以在网页看看就行了，具体怎么运行它，完成下一步（4.与他人协作）的相关操作后就能学会。</p>
+<p>另外，大家如果遇到问题，不是太好解决的，可以考虑保存好自己的文件后实施重启大法:</p>
+<p><img alt="" src="_images/jupyterhub_control_panel.png" /></p>
+<p>选中后，点击“stop my server”，然后再“start my server”，即可重启。</p>
+<p><img alt="" src="_images/jupyterhub_stop_server.png" />
+<img alt="" src="_images/jupyterhub_start_server.png" /></p>
+</section>
+<section id="id2">
+<h2>4.与他人协作<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>平台借助Git和GitHub/GitLab等工具实现团队协作。现代科技的进步越来越依赖团队协作，即便是前沿科研，对于我们这种工科类学科，单兵作战的局限性也越来越强，对于技术研发更是如此。</p>
+<p>Git是一个版本控制工具，可以帮助我们有效地管理本地代码等文件的历史版本，通过GitHub或GitLab这类Git云软件服务，结合本地Git的使用，能够有效地支持多人协作。关于它们的介绍，可以参考<a class="reference external" href="https://iheadwater.github.io/iheadwater_hackweek_tutorials/chp3_version_control/chp3.0_introduction.html">这里</a>。</p>
+<p>平台上已经预置了Git，本地软件就不必再安装了（如果你想在自己电脑上也使用git，Windows下默认是没有的，所以你需要去<a class="reference external" href="https://git-scm.com/downloads">git官网</a>下载git软件并安装，安装时候一路默认即可），连接到平台后可以直接使用。</p>
+<p>尽管我们在平台上也有Git插件，能支持大家可视化操作Git（如下图所示），但是还是建议通过终端来使用Git，结合终端和可视化界面能帮助我们更灵活地使用计算机。</p>
+<p><img alt="" src="_images/jupyterhub_git_plugin.png" /></p>
+<p>关于Linux终端的一些特别常用的命令介绍可以参考<a class="reference external" href="https://iheadwater.github.io/iheadwater_hackweek_tutorials/chp1_open_science_workflow/chp1.2.2_common.html">这里</a>，通过简单练习，就能掌握一些基本使用方法来操作文件和文件夹以及使用一些软件。更多的Linux终端Bash指令，可以参考<a class="reference external" href="https://github.com/Idnan/bash-guide">这里</a>。</p>
+<p>平台上打开终端只需要如下图所示操作即可：</p>
+<p><img alt="" src="_images/jupyterhub_terminal.png" /></p>
+<p>最开始常用的Git指令包括以下几个：</p>
+<div class="highlight-Shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 下载代码，xxx表示git仓库的远程地址</span>
+git clone xxxxx
+<span class="c1"># git提交三连操作</span>
+git add -A
+git commit -m <span class="s2">&quot;说明文字，说明本次提交的内容主要是什么&quot;</span>
+git push
+</pre></div>
+</div>
+<p>其他常用的git指令可以参考<a class="reference external" href="https://iheadwater.github.io/iheadwater_hackweek_tutorials/chp3_version_control/chp3.3_git_setup_and_commands.html">这里</a></p>
+<p>Github的账号需要自己注册，去<a class="reference external" href="https://github.com/">GitHub官网</a>注册，Github是国外的网站，所以访问不是特别稳定，但是它上面汇集了全球的开源资源，例如<a class="reference external" href="https://github.com/iHeadWater/awesome-open-hydrology">awesome-open-hydrology</a>列出了很多和水文相关的开源资源，还是非常值得大家在上面学习的。</p>
+<p>Github现在已经不支持HTTPS协议下对代码的推送（可以简单理解为不支持输入用户名密码的验证方式了），所以我们需要通过SSH来建立本地和Github远程上我们的代码仓之间的连接（可以简单理解为一种密钥配对的验证方式），我们需要首先在本地生成一对密钥，一个公钥一个私钥，公钥上传到GitHub上，私钥留在本地以配对验证。具体的方式需要大家参考<a class="reference external" href="https://iheadwater.github.io/iheadwater_hackweek_tutorials/chp3_version_control/chp3.2_setup_git.html">这里</a>，<strong>一定要照着操作一遍</strong>，因为下一步使用VSCode连接平台的时候也会用到这对密钥。</p>
+<p>因为Github访问不是特别稳定，且适合开源代码，大家可以自行想办法解决访问不稳定的问题（因为这个有点敏感，所以这里就不介绍了）。另外，为了内部研发项目，我们还搭建了内部的GitLab服务，GitLab和GitHub是一种东西，只不过这里我们用它来管理内部不便于公开的代码、数据等文件。因为GitLab目前只有一些内部项目代码，不方便让大家操作，所以这里暂时不进一步介绍，大家在熟练Git和Github的相关操作后，使用Gitlab是一样的。</p>
+<p>掌握这些工具后，你应该就能在平台上fork并clone<a class="reference external" href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials">本教程</a>的代码，并运行其中</p>
+</section>
+<section id="id3">
+<h2>5.使用集成开发环境工具<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<p>Jupyter是很好的工具，但是也存在一些局限，典型地是它对代码调试不是特别友好，基本上只能在Notebook一个计算单元内调试，另外，对于比较成体系的代码项目，尤其是模型算法等的自主研发，使用它不是很好的选择，所以这里给出使用集成开发环境（IDE）工具来编写代码的方式，并重点介绍关于如何连接到平台的数据和计算资源方面的内容。</p>
+<p>因为VSCode是一个以插件驱动各类编程语言开发环境的工具，能有效应对多语言，所以这里就以它为主介绍，这部分内容我们在<a class="reference external" href="https://iheadwater.github.io/iheadwater_hackweek_tutorials/chp8_lstm_camels/chp8.2_run_in_vscode.html">这里</a>提供了详细的步骤介绍，大家可以跟着一步步执行。</p>
+</section>
+<section id="id4">
+<h2>6.技术研发类项目的数字化管理<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<p>本教程主要还是初级内容，但是内容已经不少了，所以就不再继续涉及过多关于技术研发所需的编程相关内容了，等大家熟练掌握初级内容后，并且觉得这种教程形式还不错，那么后续我们还会推出新的教程介绍更多研发用得到的内容。但是这里还是有必要提一提关于研发项目的数字化管理这个不是本质问题（本教程介绍的都是手段，不涉及本质问题）的问题的重要性。</p>
+<p>要开展研发工作，信息化、交流、汇报的模式也应转型到真正研发队伍的模式，构建信息化开发的标准流程，文档、文献、代码全部升级管理，这些内容对形成团队力量特别重要。没有良好的数字化管理，有再好的想法和问题引领也很难有效率、有质量地实施，尤其对于技术类的项目内容。实质上，科研工作有了这些东西，开展也会更顺利。</p>
+<p>这里推荐以<a class="reference external" href="https://www.yuque.com/">语雀</a>为管理项目研发的主要交流阵地，我们常用的工具大多是即时通讯工具或者流程管理工具，例如微信和钉钉，它们并不是知识管理工具，实际上，和钉钉一样，语雀也是阿里自己开发使用的。因为项目研发的内容通常还是需要有所沉淀，即时通讯工具在这方面并不能很好地胜任，通过语雀我们能较好地管理我们的研发内容，例如：</p>
+<p><img alt="" src="_images/yuque.png" /></p>
+<p>资源的共享能让进入小组的同学快速地了解组内已有内容，不至于因为信息不足导致实力不能发挥。</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="chp8_lstm_camels/chp8.2_run_in_vscode.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">使用VSCode编写运行代码</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="citations.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">参考资料</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Wenyu Ouyang, Ziwen Meng, Xiaoning Liu, Xiangyi Le, Yaxin Lou, Jingyuan Huang<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

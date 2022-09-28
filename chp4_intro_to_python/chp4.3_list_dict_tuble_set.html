@@ -1,0 +1,1469 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>常用数据结构 &#8212; iHeadWater Hackweek Tutorials</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="基本运算符" href="chp4.4_python_operators.html" />
+    <link rel="prev" title="Python 中的变量" href="chp4.2_python_variables.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">iHeadWater Hackweek Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    欢迎来到水资源科研编程入门教程
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../start_from_here.html">
+   从这里开始
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp1_open_science_workflow/chp1.0_intro.html">
+   编程概念及相关工具
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.1.1_workflow.html">
+     可复现科研的一般工作流程
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.1.2_tools.html">
+     常用工具
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.2.1_bash.html">
+     Bash 简介以及在命令行中操作文件和目录
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.2.2_common.html">
+     管理目录和文件的Bash命令
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.3_git.html">
+     关于Git和GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.4_jupyter.html">
+     Jupyter Hub/Lab/Notebook 简介
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp2_file_formats/chp2.0_intro.html">
+   常见的数据文件格式
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp2_file_formats/chp2.1_txt_csv.html">
+     文本类数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp2_file_formats/chp2.2_vector_data.html">
+     地理空间数据–矢量
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp2_file_formats/chp2.3_raster_data.html">
+     地理空间数据–栅格
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp3_version_control/chp3.0_introduction.html">
+   使用版本控制工具
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp3_version_control/chp3.1_get_files_from_github.html">
+     从Github获取文件
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp3_version_control/chp3.2_setup_git.html">
+     配置Git
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp3_version_control/chp3.3_git_setup_and_commands.html">
+     使用Git命令进行版本控制
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp3_version_control/chp3.4_team_work.html">
+     在GitHub上协作工作
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="chp4.0_intro.html">
+   Python编程基础
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp4.1_about_python.html">
+     Python编程语言简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp4.2_python_variables.html">
+     Python 中的变量
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     常用数据结构
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp4.4_python_operators.html">
+     基本运算符
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp4.5_conditional_statements.html">
+     条件语句
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp4.6_loops.html">
+     循环
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp4.7_functions.html">
+     函数
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp5_python_data_science/chp5.0_intro.html">
+   Python 数据分析常用工具包
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp5_python_data_science/chp5.1_numpy.html">
+     Numpy 简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp5_python_data_science/chp5.2_pandas.html">
+     Pandas 简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp5_python_data_science/chp5.3_matplotlib.html">
+     matplotlib简介
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp6_deep_learning_review/chp6.0_intro.html">
+   深度学习简介
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp6_deep_learning_review/chp6.1_common_nn.html">
+     深度学习常见算法及模型的简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp6_deep_learning_review/chp6.2_hydro.html">
+     深度学习在水文领域中的应用研究
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.0_intro.html">
+   初探PyTorch
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.1_tensor.html">
+     PyTorch中的Tensor基础
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.2_neural_network.html">
+     torch.nn简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.3_dataloader.html">
+     Dataset和DataLoader简介
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp8_lstm_camels/chp8.0_intro.html">
+   使用CAMELS数据集构建基于LSTM的降雨径流模型
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp8_lstm_camels/chp8.1_run_in_jupyter.html">
+     LSTM降雨径流建模
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp8_lstm_camels/chp8.2_run_in_vscode.html">
+     使用VSCode编写运行代码
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tldr.html">
+   TLDR页
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../citations.html">
+   参考资料
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/iHeadWater/iheadwater_hackweek_tutorials/main?urlpath=tree/docs/chp4_intro_to_python/chp4.3_list_dict_tuble_set.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials/issues/new?title=Issue%20on%20page%20%2Fchp4_intro_to_python/chp4.3_list_dict_tuble_set.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/chp4_intro_to_python/chp4.3_list_dict_tuble_set.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   常用数据结构
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list">
+   list[]列表
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python">
+     1. 什么是 Python 列表
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       1.1 Python 列表中的项目可以使用索引进行子集处理
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       1.2 列表索引
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     2. 如何创建列表
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#len">
+     2.1 使用len()打印列表的长度
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     3. 访问存储在列表中的对象：索引
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     4. 更新（替换）列表中的项目
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     5. 将项目插入列表
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     6. 从列表中删除项目
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     7. 将项目附加到列表
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dict">
+   dict{} 字典
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tuple">
+   tuple() 元组
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     “可变的”tuple
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     练习
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set">
+   set() 集合
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>常用数据结构</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   常用数据结构
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list">
+   list[]列表
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python">
+     1. 什么是 Python 列表
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       1.1 Python 列表中的项目可以使用索引进行子集处理
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       1.2 列表索引
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     2. 如何创建列表
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#len">
+     2.1 使用len()打印列表的长度
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     3. 访问存储在列表中的对象：索引
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     4. 更新（替换）列表中的项目
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     5. 将项目插入列表
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     6. 从列表中删除项目
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     7. 将项目附加到列表
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dict">
+   dict{} 字典
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tuple">
+   tuple() 元组
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     “可变的”tuple
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     练习
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set">
+   set() 集合
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>常用数据结构<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="list">
+<h1>list[]列表<a class="headerlink" href="#list" title="Permalink to this headline">#</a></h1>
+<section id="python">
+<h2>1. 什么是 Python 列表<a class="headerlink" href="#python" title="Permalink to this headline">#</a></h2>
+<p><strong>Python</strong>列表是一种数据结构，它以指定的顺序 (或序列) 存储值或对象的集合。<strong>Python</strong>列表的一些特征有：</p>
+<ul class="simple">
+<li><p>它们是可变的，这意味着它们可以被改变或更新。</p></li>
+<li><p><strong>Python</strong>列表可以存储不同类型的对象和不同的数据类型。因此，例如一个列表可以包含 <code class="docutils literal notranslate"><span class="pre">int</span></code>、<code class="docutils literal notranslate"><span class="pre">float</span></code> 和 <code class="docutils literal notranslate"><span class="pre">str</span></code> 值的混合。一个列表还可以包含子列表、数组和其它<strong>Python</strong>数据结构。</p></li>
+<li><p><strong>Python</strong>列表是用<strong>方括号</strong>创建的，对象用<strong>逗号</strong>分隔,像这样<code class="docutils literal notranslate"> <span class="pre">[1,2,3]</span></code></p></li>
+</ul>
+<section id="id2">
+<h3>1.1 Python 列表中的项目可以使用索引进行子集处理<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<p>列表中的每个值都被称为一个项目。由于列表是按指定顺序排列的项的序列，所以列表中每个项的位置或顺序号都有一个标签。这个顺序标签被称为<strong>索引</strong>。<strong>索引</strong>允许列表是可迭代的，这意味着可以按照项目在列表对象中出现的顺序访问列表中的每个项目。</p>
+</section>
+<section id="id3">
+<h3>1.2 列表索引<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<p>可以在 <strong>Python</strong> 中使用一个索引值来访问列表中的对象。默认情况下，Python 的索引总是从 <code class="docutils literal notranslate"><span class="pre">[0]</span></code> 开始，而不是 <code class="docutils literal notranslate"><span class="pre">[1]</span></code>。因此，Python 列表中的第一个项目有一个索引 <code class="docutils literal notranslate"><span class="pre">[0]</span></code>，列表中的第二个项目有一个索引 <code class="docutils literal notranslate"><span class="pre">[1]</span></code>，以此类推，可以使用一个项的索引来访问它的值。例如，使用索引 <code class="docutils literal notranslate"><span class="pre">[1]</span></code> 来获取以下列表中第 2 项 <code class="docutils literal notranslate"><span class="pre">(0.75)</span></code> 的值 <code class="docutils literal notranslate"><span class="pre">[0.70,</span> <span class="pre">0.75,</span> <span class="pre">1.85]</span></code>。</p>
+</section>
+</section>
+<section id="id4">
+<h2>2. 如何创建列表<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<p>用以下语法创建Python列表：<code class="docutils literal notranslate"><span class="pre">list_name</span> <span class="pre">=</span> <span class="pre">[item_1,</span> <span class="pre">item_2,</span> <span class="pre">item_3]</span></code></p>
+<p>这些值（列表中的项目）括在方括号<code class="docutils literal notranslate"><span class="pre">[]</span></code>内，并使用逗号相互分隔。还可以创建<code class="docutils literal notranslate"><span class="pre">str</span></code>值列表，使用引号将各个文本字符串括起来<code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>即可</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;January&quot;</span><span class="p">,</span> <span class="s2">&quot;February&quot;</span><span class="p">,</span> <span class="s2">&quot;March&quot;</span><span class="p">]</span>
+<span class="n">months</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;January&#39;, &#39;February&#39;, &#39;March&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>还可以创建一个包含不同类型数据（例如int、float、str）的列表，包括其他定义的变量</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jan</span> <span class="o">=</span> <span class="mf">0.70</span>
+<span class="n">boulder_avg_precip</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">jan</span><span class="p">,</span> <span class="s2">&quot;January&quot;</span><span class="p">]</span>
+<span class="n">boulder_avg_precip</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 0.7, &#39;January&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>为什么值<code class="docutils literal notranslate"><span class="pre">jan</span></code>会转换为0.7呢？</strong></p>
+<p>与上节一样，课使用type（）函数确定对象类型</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">boulder_avg_precip</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="len">
+<h2>2.1 使用len()打印列表的长度<a class="headerlink" href="#len" title="Permalink to this headline">#</a></h2>
+<p>要有效地使用列表索引，了解列表的长度会很有帮助。在这种情况下，长度是指列表中存储了多少项目。可以使用<code class="docutils literal notranslate"><span class="pre">len()</span></code>函数通过将列表的名称作为参数或输入来查询长度，如下所示：<code class="docutils literal notranslate"><span class="pre">len(list_name)</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">months</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;January&#39;, &#39;February&#39;, &#39;March&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The length of the months list is:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">months</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The length of the months list is: 3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id5">
+<h2>3. 访问存储在列表中的对象：索引<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<p>上诉提及索引，大家尝试索引<code class="docutils literal notranslate"><span class="pre">months</span></code>列表的第三个值吧。如果想索引最后一个值，可以用<code class="docutils literal notranslate"><span class="pre">-1</span></code>做索引，例如<code class="docutils literal notranslate"><span class="pre">months[-1]</span></code>，查看一下是不是<code class="docutils literal notranslate"><span class="pre">months</span></code>最后一个值吧。以此类推，可以获取倒数第2个、倒数第3个，<code class="docutils literal notranslate"><span class="pre">months[-2]</span></code> <code class="docutils literal notranslate"><span class="pre">months[-3]</span></code>,当然倒数第4个就越界了</p>
+</section>
+<section id="id6">
+<h2>4. 更新（替换）列表中的项目<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<p>除了查询值之外，我们还可以使用列表索引来更新列表中的项目，方法是为该索引位置分配一个新值，例如：<code class="docutils literal notranslate"><span class="pre">months[index]</span> <span class="pre">=</span> <span class="pre">value</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">months</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Feb&quot;</span>
+<span class="n">months</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;January&#39;, &#39;Feb&#39;, &#39;March&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h2>5. 将项目插入列表<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<p>还可以使用列表索引将新项目插入到列表中，方法是指定新值位于哪个索引位置，如：<code class="docutils literal notranslate"><span class="pre">list_name.insert(0,</span> <span class="pre">value)</span></code></p>
+<p>下面示例中，月份列表不完整，并且将<strong>一月的值</strong>插入到列表的<strong>开头</strong>，如下：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Month list missing the first value for January</span>
+<span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;February&quot;</span><span class="p">,</span> <span class="s2">&quot;March&quot;</span><span class="p">]</span>
+
+<span class="c1"># check index value at 0</span>
+<span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;February&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modify list to add January at the beginning</span>
+<span class="n">months</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;January&quot;</span><span class="p">)</span>
+<span class="n">months</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;January&#39;, &#39;February&#39;, &#39;March&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check index value at 0 in modified list</span>
+<span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;January&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id8">
+<h2>6. 从列表中删除项目<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
+<p>可以使用<code class="docutils literal notranslate"><span class="pre">del</span></code>语句从现有列表中删除不需要的项目： <code class="docutils literal notranslate"><span class="pre">del</span> <span class="pre">list_name[index]</span></code></p>
+<p>在使用列表索引修改列表之前，最好检查一下列表的长度</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">months</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">months</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;January&#39;, &#39;February&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>删除列表末尾元素也可用<code class="docutils literal notranslate"><span class="pre">pop()</span></code>方法</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<p>要删除指定位置的元素，用<code class="docutils literal notranslate"><span class="pre">pop(i)</span></code>方法，其中<code class="docutils literal notranslate"><span class="pre">i</span></code>是索引位置，需要注意的是，索引是从<code class="docutils literal notranslate"><span class="pre">0</span></code>开始的：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id9">
+<h2>7. 将项目附加到列表<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
+<p>要在列表的<strong>末尾</strong>添加一个项目，可以使用与列表相关的 <code class="docutils literal notranslate"><span class="pre">.append()</span> </code>函数。调用这个方法向列表中添加数值:<code class="docutils literal notranslate"><span class="pre">listname.append(value)</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">months</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;March&quot;</span><span class="p">)</span>
+<span class="n">months</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;January&#39;, &#39;February&#39;, &#39;March&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>还可以使用添加操作<code class="docutils literal notranslate"><span class="pre">+</span></code>将项目添加到列表中：<code class="docutils literal notranslate"><span class="pre">listname</span> <span class="pre">=</span> <span class="pre">[value]</span> <span class="pre">+</span> <span class="pre">listname</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;月份&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">months</span>
+<span class="n">months</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;月份&#39;, &#39;January&#39;, &#39;February&#39;, &#39;March&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="mi">123</span><span class="p">]</span> <span class="o">+</span> <span class="n">months</span>
+
+<span class="n">months</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[123, &#39;月份&#39;, &#39;January&#39;, &#39;February&#39;, &#39;March&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="dict">
+<h1>dict{} 字典<a class="headerlink" href="#dict" title="Permalink to this headline">#</a></h1>
+<p><strong>Python</strong>内置了字典：<code class="docutils literal notranslate"><span class="pre">dict</span></code>的支持，<code class="docutils literal notranslate"><span class="pre">dict</span></code>全称<code class="docutils literal notranslate"><span class="pre">dictionary</span></code>，使用<code class="docutils literal notranslate"><span class="pre">{}</span></code>与<strong>键-值</strong>（<code class="docutils literal notranslate"><span class="pre">key-value</span></code>）存储，具有极快的查找速度。</p>
+<p>举个例子，假设要根据同学的名字查找对应的成绩，如果用<code class="docutils literal notranslate"><span class="pre">list</span></code>实现，需要两个<code class="docutils literal notranslate"><span class="pre">list</span></code>：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Michael&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Tracy&#39;</span><span class="p">]</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">95</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">85</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>给定一个名字，要查找对应的成绩，就先要在<code class="docutils literal notranslate"><span class="pre">names</span></code>中找到对应的位置，再从<code class="docutils literal notranslate"><span class="pre">scores</span></code>取出对应的成绩，<code class="docutils literal notranslate"><span class="pre">list</span></code>越长，耗时越长。如果用<code class="docutils literal notranslate"><span class="pre">dict</span></code>实现，只需要一个“名字”-“成绩”的对照表，直接根据名字查找成绩，无论这个表有多大，查找速度都不会变慢。写一个<code class="docutils literal notranslate"><span class="pre">dict</span></code>如下：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Michael&#39;</span><span class="p">:</span> <span class="mi">95</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span> <span class="s1">&#39;Tracy&#39;</span><span class="p">:</span> <span class="mi">85</span><span class="p">}</span>
+<span class="n">d</span><span class="p">[</span><span class="s1">&#39;Michael&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>95
+</pre></div>
+</div>
+</div>
+</div>
+<p>为什么<code class="docutils literal notranslate"><span class="pre">dict</span></code>查找速度这么快？因为<code class="docutils literal notranslate"><span class="pre">dict</span></code>的实现原理和查字典是一样的。假设字典包含了1万个汉字，我们要查某一个字，一个办法是把字典从第一页往后翻，直到找到我们想要的字为止，这种方法就是在list中查找元素的方法，list越大，查找越慢。</p>
+<p>第二种方法是先在字典的索引表里（比如部首表）查这个字对应的页码，然后直接翻到该页，找到这个字。无论找哪个字，这种查找速度都非常快，不会随着字典大小的增加而变慢。</p>
+<p><code class="docutils literal notranslate"><span class="pre">dict</span></code>就是第二种实现方式，给定一个名字，比如<code class="docutils literal notranslate"><span class="pre">'Michael'</span></code>，<code class="docutils literal notranslate"><span class="pre">dict</span></code>在内部就可以直接计算出<code class="docutils literal notranslate"><span class="pre">Michael</span></code>对应的存放成绩的“页码”，也就是<code class="docutils literal notranslate"><span class="pre">95</span></code>这个数字存放的内存地址，直接取出来，所以速度非常快。</p>
+<p>可以猜到，这种<code class="docutils literal notranslate"><span class="pre">key-value</span></code>存储方式，在放进去的时候，必须根据<code class="docutils literal notranslate"><span class="pre">key</span></code>算出<code class="docutils literal notranslate"><span class="pre">value</span></code>的存放位置，这样，取的时候才能根据<code class="docutils literal notranslate"><span class="pre">key</span></code>直接拿到<code class="docutils literal notranslate"><span class="pre">value</span></code>。</p>
+<p>把数据放入<code class="docutils literal notranslate"><span class="pre">dict</span></code>的方法，除了初始化时指定外，还可以通过<code class="docutils literal notranslate"><span class="pre">key</span></code>放入：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Michael&#39;</span><span class="p">:</span> <span class="mi">95</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span> <span class="s1">&#39;Tracy&#39;</span><span class="p">:</span> <span class="mi">85</span><span class="p">}</span>
+<span class="n">d</span><span class="p">[</span><span class="s1">&#39;Adam&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">67</span>
+<span class="n">d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Michael&#39;: 95, &#39;Bob&#39;: 75, &#39;Tracy&#39;: 85, &#39;Adam&#39;: 67}
+</pre></div>
+</div>
+</div>
+</div>
+<p>由于一个key只能对应一个value，所以，多次对一个key放入value，后面的值会把前面的值冲掉：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;Jack&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">90</span>
+<span class="n">d</span><span class="p">[</span><span class="s1">&#39;Jack&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>90
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;Jack&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">88</span>
+<span class="n">d</span><span class="p">[</span><span class="s1">&#39;Jack&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>88
+</pre></div>
+</div>
+</div>
+</div>
+<p>如果key不存在，dict就会报错：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;Thomas&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;Thomas&#39;</span><span class="p">]</span>
+
+<span class="ne">KeyError</span>: &#39;Thomas&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>要避免<code class="docutils literal notranslate"><span class="pre">key</span></code>不存在的错误，有两种办法，一是通过<code class="docutils literal notranslate"><span class="pre">in</span></code>判断<code class="docutils literal notranslate"><span class="pre">key</span></code>是否存在:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Thomas&#39;</span> <span class="ow">in</span> <span class="n">d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>二是通过<code class="docutils literal notranslate"><span class="pre">dict</span></code>提供的<code class="docutils literal notranslate"><span class="pre">get()</span></code>方法，如果<code class="docutils literal notranslate"><span class="pre">key</span></code>不存在，可以返回<code class="docutils literal notranslate"><span class="pre">None</span></code>，或者自己指定的<code class="docutils literal notranslate"><span class="pre">value</span></code>：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Thomas&#39;</span><span class="p">)</span>
+<span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Thomas&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>注意</strong> : 返回None的时候Python的交互环境不显示结果。</p>
+<p>要删除一个<code class="docutils literal notranslate"><span class="pre">key</span></code>，用<code class="docutils literal notranslate"><span class="pre">pop(key)</span></code>方法，对应的<code class="docutils literal notranslate"><span class="pre">value</span></code>也会从<code class="docutils literal notranslate"><span class="pre">dict</span></code>中删除：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>75
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Michael&#39;: 95, &#39;Tracy&#39;: 85, &#39;Adam&#39;: 67, &#39;Jack&#39;: 88}
+</pre></div>
+</div>
+</div>
+</div>
+<p>和<code class="docutils literal notranslate"><span class="pre">list</span></code>比较，<code class="docutils literal notranslate"><span class="pre">dict</span></code>有以下几个特点：</p>
+<ol class="simple">
+<li><p>查找和插入的速度极快，不会随着key的增加而变慢；</p></li>
+<li><p>需要占用大量的内存，内存浪费多。</p></li>
+</ol>
+<p>而<code class="docutils literal notranslate"><span class="pre">list</span></code>相反：</p>
+<ol class="simple">
+<li><p>查找和插入的时间随着元素的增加而增加；</p></li>
+<li><p>占用空间小，浪费内存很少。</p></li>
+</ol>
+<p>所以，<code class="docutils literal notranslate"><span class="pre">dict</span></code>是用空间来换取时间的一种方法。</p>
+<p><code class="docutils literal notranslate"><span class="pre">dict</span></code>可以用在需要高速查找的很多地方，在<strong>Python</strong>代码中几乎无处不在，正确使用<code class="docutils literal notranslate"><span class="pre">dict</span></code>非常重要，需要牢记的第一条就是dict的key必须是<strong>不可变对象</strong>。</p>
+<p>这是因为<code class="docutils literal notranslate"><span class="pre">dict</span></code>根据<code class="docutils literal notranslate"><span class="pre">key</span></code>来计算<code class="docutils literal notranslate"><span class="pre">value</span></code>的存储位置，如果每次计算相同的<code class="docutils literal notranslate"><span class="pre">key</span></code>得出的结果不同，那<code class="docutils literal notranslate"><span class="pre">dict</span></code>内部就完全混乱了。这个通过<code class="docutils literal notranslate"><span class="pre">key</span></code>计算位置的算法称为哈希算法（Hash）。</p>
+<p>要保证hash的正确性，作为<code class="docutils literal notranslate"><span class="pre">key</span></code>的对象就不能变。在<strong>Python</strong>中，字符串、整数等都是不可变的，因此，可以放心地作为<code class="docutils literal notranslate"><span class="pre">key</span></code>。而<code class="docutils literal notranslate"><span class="pre">list</span></code>是可变的，就不能作为<code class="docutils literal notranslate"><span class="pre">key</span></code>：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>   
+<span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;a list&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_20112</span><span class="o">/</span><span class="mf">206909650.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">key</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;a list&#39;</span>
+
+<span class="ne">TypeError</span>: unhashable type: &#39;list&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="tuple">
+<h1>tuple() 元组<a class="headerlink" href="#tuple" title="Permalink to this headline">#</a></h1>
+<p>另一种有序列表叫元组：<code class="docutils literal notranslate"><span class="pre">tuple</span></code>。<code class="docutils literal notranslate"><span class="pre">tuble</span></code>用的是小括号<code class="docutils literal notranslate"><span class="pre">()</span></code>。<code class="docutils literal notranslate"><span class="pre">tuple</span></code>和<code class="docutils literal notranslate"><span class="pre">list</span></code>非常类似，但是<code class="docutils literal notranslate"><span class="pre">tuple</span></code>一旦初始化就不能修改，比如列出同学的名字:<code class="docutils literal notranslate"><span class="pre">classmates</span> <span class="pre">=</span> <span class="pre">('Michael',</span> <span class="pre">'Bob',</span> <span class="pre">'Tracy')</span></code></p>
+<p>现在，<code class="docutils literal notranslate"><span class="pre">classmates</span></code>这个<code class="docutils literal notranslate"><span class="pre">tuple</span></code>不能变了，它也没有<code class="docutils literal notranslate"><span class="pre">append()</span></code>，<code class="docutils literal notranslate"><span class="pre">insert()</span></code>这样的方法。其他获取元素的方法和<code class="docutils literal notranslate"><span class="pre">list</span></code>是一样的，我们可以正常地使用<code class="docutils literal notranslate"><span class="pre">classmates[0]</span></code>，<code class="docutils literal notranslate"><span class="pre">classmates[-1]</span></code>，但<strong>不能赋值</strong>成另外的元素。</p>
+<p><strong>不可变的tuple有什么意义？</strong></p>
+<p>因为<code class="docutils literal notranslate"><span class="pre">tuple</span></code>不可变，所以代码更安全！如果可能，能用<code class="docutils literal notranslate"><span class="pre">tuple</span></code>代替<code class="docutils literal notranslate"><span class="pre">list</span></code>就尽量用<code class="docutils literal notranslate"><span class="pre">tuple</span></code>。</p>
+<p>定义一个只有1个元素的tuple，如果我们这么定义：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<p>定义的不是<code class="docutils literal notranslate"><span class="pre">tuple</span></code>，是<code class="docutils literal notranslate"><span class="pre">1</span></code>这个数！这是因为括号<code class="docutils literal notranslate"><span class="pre">()</span></code>既可以表示<code class="docutils literal notranslate"><span class="pre">tuple</span></code>，又可以表示数学公式中的小括号，这就产生了歧义，因此，<strong>Python</strong>规定，这种情况下，按小括号进行计算，计算结果自然是<code class="docutils literal notranslate"><span class="pre">1</span></code>。</p>
+<p>所以，只有1个元素的tuple定义时必须加一个逗号<code class="docutils literal notranslate"><span class="pre">,</span></code>，来消除歧义：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span>
+<span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1,)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id10">
+<h2>“可变的”tuple<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">])</span>
+<span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
+<span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Y&#39;</span>
+<span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;a&#39;, &#39;b&#39;, [&#39;X&#39;, &#39;Y&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>这个<code class="docutils literal notranslate"><span class="pre">tuple</span></code>定义的时候有3个元素，分别是<code class="docutils literal notranslate"><span class="pre">'a'</span></code>，<code class="docutils literal notranslate"><span class="pre">'b'</span></code>和一个list。不是说<code class="docutils literal notranslate"><span class="pre">tuple</span></code>一旦定义后就不可变了吗？怎么后来又变了？</p>
+<p>当我们把<code class="docutils literal notranslate"><span class="pre">list</span></code>的元素<code class="docutils literal notranslate"><span class="pre">'A'</span></code>和<code class="docutils literal notranslate"><span class="pre">'B'</span></code>修改为<code class="docutils literal notranslate"><span class="pre">'X'和'Y'</span></code>后，表面上看，<code class="docutils literal notranslate"><span class="pre">tuple</span></code>的元素确实变了，但其实变的不是<code class="docutils literal notranslate"><span class="pre">tuple</span></code>的元素，而是<code class="docutils literal notranslate"><span class="pre">list</span></code>的元素。所以，<code class="docutils literal notranslate"><span class="pre">tuple</span></code>所谓的“不变”是说，<code class="docutils literal notranslate"><span class="pre">tuple</span></code>的每个元素，指向永远不变。即指向<code class="docutils literal notranslate"><span class="pre">'a'</span></code>，就不能改成指向<code class="docutils literal notranslate"><span class="pre">'b'</span></code>，指向一个<code class="docutils literal notranslate"><span class="pre">list</span></code>，就不能改成指向其他对象，但指向的这个<code class="docutils literal notranslate"><span class="pre">list</span></code>本身是可变的！</p>
+<p>理解了“指向不变”后，要创建一个内容也不变的<code class="docutils literal notranslate"><span class="pre">tuple</span></code>怎么做？那就必须保证<code class="docutils literal notranslate"><span class="pre">tuple</span></code>的每一个元素本身也不能变。</p>
+</section>
+<section id="id11">
+<h2>练习<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h2>
+<p>请用索引取出下面<code class="docutils literal notranslate"><span class="pre">list</span></code>的指定元素：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span>L = [
+    [&#39;Apple&#39;, &#39;Google&#39;, &#39;Microsoft&#39;],
+    [&#39;Java&#39;, &#39;Python&#39;, &#39;Ruby&#39;, &#39;PHP&#39;],
+    [&#39;Adam&#39;, &#39;Bart&#39;, &#39;Lisa&#39;]
+]
+
+#打印Apple:
+
+print(?)
+
+#打印Python:
+
+print(?)
+
+#打印Lisa:
+
+print(?)
+</pre></div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="set">
+<h1>set() 集合<a class="headerlink" href="#set" title="Permalink to this headline">#</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">set</span></code>和<code class="docutils literal notranslate"><span class="pre">dict</span></code>类似，也是一组<code class="docutils literal notranslate"><span class="pre">key</span></code>的集合，但不存储<code class="docutils literal notranslate"><span class="pre">value</span></code>。由于<code class="docutils literal notranslate"><span class="pre">key</span></code>不能重复，所以，在<code class="docutils literal notranslate"><span class="pre">set</span></code>中，没有重复的<code class="docutils literal notranslate"><span class="pre">key</span></code>。</p>
+<p>要创建一个set，需要提供一个list作为输入集合：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1, 2, 3}
+</pre></div>
+</div>
+</div>
+</div>
+<p>注意，传入的参数<code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>是一个<code class="docutils literal notranslate"><span class="pre">list</span></code>，而显示的<code class="docutils literal notranslate"><span class="pre">{1,</span> <span class="pre">2,</span> <span class="pre">3}</span></code>只是告诉你这个set内部有1，2，3这3个元素，显示的顺序也不表示<code class="docutils literal notranslate"><span class="pre">set</span></code>是有序的。</p>
+<p>重复元素在<code class="docutils literal notranslate"><span class="pre">set</span></code>中自动被过滤：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1, 2, 3}
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>添加元素</strong></p>
+<p>通过<code class="docutils literal notranslate"><span class="pre">add(key)</span></code>方法可以添加元素到<code class="docutils literal notranslate"><span class="pre">set</span></code>中，可以重复添加，但不会有效果：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1, 2, 3, 4}
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>删除元素</strong></p>
+<p>通过<code class="docutils literal notranslate"><span class="pre">remove(key)</span></code>方法可以删除元素：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1, 2, 3}
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">set</span></code>可以看成数学意义上的无序和无重复元素的集合，因此，两个<code class="docutils literal notranslate"><span class="pre">set</span></code>可以做数学意义上的交集、并集等操作：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">s1</span> <span class="o">&amp;</span> <span class="n">s2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{2, 3}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">|</span> <span class="n">s2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1, 2, 3, 4}
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">set</span></code>和<code class="docutils literal notranslate"><span class="pre">dict</span></code>的唯一区别仅在于没有存储对应的<code class="docutils literal notranslate"><span class="pre">value</span></code>，但是，<code class="docutils literal notranslate"><span class="pre">set</span></code>的原理和<code class="docutils literal notranslate"><span class="pre">dict</span></code>一样，所以，同样不可以放入可变对象，因为无法判断两个可变对象是否相等，也就无法保证<code class="docutils literal notranslate"><span class="pre">set</span></code>内部“不会有重复元素”。试试把<code class="docutils literal notranslate"><span class="pre">list</span></code>放入<code class="docutils literal notranslate"><span class="pre">set</span></code>，看看是否会报错。</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "tutorial"
+        },
+        kernelOptions: {
+            kernelName: "tutorial",
+            path: "./chp4_intro_to_python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'tutorial'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="chp4.2_python_variables.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Python 中的变量</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="chp4.4_python_operators.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">基本运算符</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Wenyu Ouyang, Ziwen Meng, Xiaoning Liu, Xiangyi Le, Yaxin Lou, Jingyuan Huang<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

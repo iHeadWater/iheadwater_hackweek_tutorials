@@ -1,0 +1,769 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>深度学习常见算法及模型的简介 &#8212; iHeadWater Hackweek Tutorials</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="深度学习在水文领域中的应用研究" href="chp6.2_hydro.html" />
+    <link rel="prev" title="深度学习简介" href="chp6.0_intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">iHeadWater Hackweek Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    欢迎来到水资源科研编程入门教程
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../start_from_here.html">
+   从这里开始
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp1_open_science_workflow/chp1.0_intro.html">
+   编程概念及相关工具
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.1.1_workflow.html">
+     可复现科研的一般工作流程
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.1.2_tools.html">
+     常用工具
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.2.1_bash.html">
+     Bash 简介以及在命令行中操作文件和目录
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.2.2_common.html">
+     管理目录和文件的Bash命令
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.3_git.html">
+     关于Git和GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.4_jupyter.html">
+     Jupyter Hub/Lab/Notebook 简介
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp2_file_formats/chp2.0_intro.html">
+   常见的数据文件格式
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp2_file_formats/chp2.1_txt_csv.html">
+     文本类数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp2_file_formats/chp2.2_vector_data.html">
+     地理空间数据–矢量
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp2_file_formats/chp2.3_raster_data.html">
+     地理空间数据–栅格
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp3_version_control/chp3.0_introduction.html">
+   使用版本控制工具
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp3_version_control/chp3.1_get_files_from_github.html">
+     从Github获取文件
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp3_version_control/chp3.2_setup_git.html">
+     配置Git
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp3_version_control/chp3.3_git_setup_and_commands.html">
+     使用Git命令进行版本控制
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp3_version_control/chp3.4_team_work.html">
+     在GitHub上协作工作
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp4_intro_to_python/chp4.0_intro.html">
+   Python编程基础
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.1_about_python.html">
+     Python编程语言简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.2_python_variables.html">
+     Python 中的变量
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.3_list_dict_tuble_set.html">
+     常用数据结构
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.4_python_operators.html">
+     基本运算符
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.5_conditional_statements.html">
+     条件语句
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.6_loops.html">
+     循环
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.7_functions.html">
+     函数
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp5_python_data_science/chp5.0_intro.html">
+   Python 数据分析常用工具包
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp5_python_data_science/chp5.1_numpy.html">
+     Numpy 简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp5_python_data_science/chp5.2_pandas.html">
+     Pandas 简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp5_python_data_science/chp5.3_matplotlib.html">
+     matplotlib简介
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="chp6.0_intro.html">
+   深度学习简介
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     深度学习常见算法及模型的简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp6.2_hydro.html">
+     深度学习在水文领域中的应用研究
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.0_intro.html">
+   初探PyTorch
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.1_tensor.html">
+     PyTorch中的Tensor基础
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.2_neural_network.html">
+     torch.nn简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.3_dataloader.html">
+     Dataset和DataLoader简介
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp8_lstm_camels/chp8.0_intro.html">
+   使用CAMELS数据集构建基于LSTM的降雨径流模型
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp8_lstm_camels/chp8.1_run_in_jupyter.html">
+     LSTM降雨径流建模
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp8_lstm_camels/chp8.2_run_in_vscode.html">
+     使用VSCode编写运行代码
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tldr.html">
+   TLDR页
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../citations.html">
+   参考资料
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials/issues/new?title=Issue%20on%20page%20%2Fchp6_deep_learning_review/chp6.1_common_nn.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/chp6_deep_learning_review/chp6.1_common_nn.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   深度学习之神经网络的结构
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   深度学习之梯度下降法
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   深度学习之反向传播
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   常见的深度学习模型
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     卷积神经网络
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lstm">
+     循环神经网络与LSTM神经网络
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lstmcnn">
+   LSTM与CNN在水文中的研究与应用
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>深度学习常见算法及模型的简介</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   深度学习之神经网络的结构
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   深度学习之梯度下降法
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   深度学习之反向传播
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   常见的深度学习模型
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     卷积神经网络
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lstm">
+     循环神经网络与LSTM神经网络
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lstmcnn">
+   LSTM与CNN在水文中的研究与应用
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>深度学习常见算法及模型的简介<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<p>通过前一节的学习我们知道，深度学习的核心是让计算机自动学习各类算法，对大量样本数据进行分析并寻求规律，从而对未知数据进行预测。此过程与水文预报通过分析历史水文数据获取规律，并在其基础上概化模型预测水文过程高度一致，因此深度学习在水文领域获得了广泛的关注。本教程主要面向水文领域研究人员，系统地介绍深度学习水文预报中常见深度学习模型的原理与结构，深度学习水文预报模型一般构建方法以及深度学习与水文物理机制的整合方式。 前边的一节主要是讲的深度学习的一些常识，那么在本节当中，我们将能够学习到深度学习的一些基本算法结构以及常用的模型结构。</p>
+<section id="id2">
+<h2>深度学习之神经网络的结构<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>在深度学习的空前发展影响下，深度学习可以应用在各大领域中，根据应用情况的不同，深度神经网络的形态也各不相同，现在机器学习中最为受欢迎的算法已经从SVM算法变为当今的神经网络，我们常常使用深度学习这个术语来指代神经网络训练的过程,特别是大规模的训练，那么神经网络是什么呢？神经网络为什么是这样的结构呢？神经元又是如何连接起来的？如何利用神经网络进行学习呢？相信阅读完下边的视频，我们的疑问就可以得到解决啦。相应视频链接为：<a class="reference external" href="https://www.bilibili.com/video/BV1bx411M7Zx?vd_source=c766b103a42723692760409937dfbe92">https://www.bilibili.com/video/BV1bx411M7Zx?vd_source=c766b103a42723692760409937dfbe92</a></p>
+</section>
+<section id="id3">
+<h2>深度学习之梯度下降法<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<p>在了解完神经网络的基本概念以及作用原理之后，我们再来学习下梯度下降法，梯度下降法（Gradient Descent Optimization）是神经网络模型训练最常用的优化算法，对于深度学习模型，基本都是采用梯度下降法来进行优化训练，它不仅是神经网络学习的基础，机器学习中很多其他技术也是基于这个方法。下边的视频主要是介绍了什么是梯度下降法？神经网络是怎么学习的？神经网络的能力以及隐含层神经元的真实的目的是什么？另外通过这个视频，我们还可以学习一些深度学习方面的术语，偏置值的含义等。
+相应的视频链接为：<a class="reference external" href="https://www.bilibili.com/video/BV1Ux411j7ri?vd_source=c766b103a42723692760409937dfbe92">https://www.bilibili.com/video/BV1Ux411j7ri?vd_source=c766b103a42723692760409937dfbe92</a></p>
+</section>
+<section id="id4">
+<h2>深度学习之反向传播<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<p>反向传播（英语：Backpropagation，缩写为BP）是“误差反向传播”的简称，是一种与最优化方法（如梯度下降法）结合使用用来训练人工神经网络的常见方法。该方法计算网络中所有权重计算损失函数的梯度，这个梯度会反馈给最优化方法，用来更新权值以最小化损失函数，深度学习的核心便是反向传播算法，它算的是单个训练样本想怎么修改权重与偏置，不仅是说每个参数应该变大还是变小，还计算了这些变化的比例是多大，怎样才能最快的降低代价。那么如何更加直观的理解反向传播？以及反向传播的原理是什么？
+怎么反向应用链式法则来计算代价函数对之前的权重和偏置的敏感度？让我们通过下边的视频来寻找答案吧。</p>
+<p><a class="reference external" href="https://www.bilibili.com/video/BV16x411V7Qg?p=2&amp;vd_source=c766b103a42723692760409937dfbe92">https://www.bilibili.com/video/BV16x411V7Qg?p=2&amp;vd_source=c766b103a42723692760409937dfbe92</a></p>
+</section>
+<section id="id5">
+<h2>常见的深度学习模型<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<p>在学习完深度学习常用的几种算法后，我们接着向下学习深度学习中常见的几种学习模型。</p>
+<section id="id6">
+<h3>卷积神经网络<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<p>卷积神经网络（Convolutional Neural Network, CNN）是一类使用卷积运算代替全连接矩阵乘法的神经网络，是深度学习的代表模型之一。它能够将大数据里的图片有效的降维成小数据量(并不影响结果)，同时也能够保留图片的特征。CNN由输入层、卷积层、池化层、全连接层及输出层构成，其模型结构如下：</p>
+<p><img alt="" src="../_images/CNN.png" /></p>
+<ul class="simple">
+<li><p>卷积层 – 主要作用是保留图片的特征；</p></li>
+<li><p>池化层 – 主要作用是把数据降维，减少网络中参数的数量，可以有效的避免过拟合；</p></li>
+<li><p>全连接层 – 根据不同任务输出我们想要的结果。</p></li>
+</ul>
+<p>通过这种结构设计，CNN克服了MLP难以处理高维复杂时空模式数据的缺点，CNN需训练参数减少，降低了网络模型复杂度，使得模型更容易训练，同时，CNN能获取到一系列输入数据时空维度局部特征，最后再经过全连接层汇总，从而有效地挖掘高维数据的时空模式。</p>
+</section>
+<section id="lstm">
+<h3>循环神经网络与LSTM神经网络<a class="headerlink" href="#lstm" title="Permalink to this headline">#</a></h3>
+<p>循环神经网络（Recurrent Neural Network, RNN）是一种有效处理序列数据的算法，之所以他能处理序列数据，是因为在序列中前面的输入也会影响到后面的输出，相当于有了“记忆功能”。RNN同样包含输入层、隐含层、输出层。其能用于建模动态系统，但反向传播计算中梯度的连乘效应会导致梯度消失和爆炸问题，使得其无法处理很长的输入序列。长短期记忆（Long Short-Term Memory, LSTM）神经网络是一种递归神经网络，包括长时间储存信息的专用记忆单元，该模型建立了称为“门”的内部处理单元作为记忆模块，来实现序列信息的有效存储和更新。LSTM不存在梯度消失的问题，这就使得它们可以学习输入和输出特征之间的长期依赖关系，其有单元状态和隐含状态两个传输状态，单元状态随时间缓慢改变，而不同时刻的隐含输出可能会很不同。我们可以将循环神经网络结构与LSTM神经网络计算过程归结为一张图，如下：</p>
+<p><img alt="" src="../_images/RNN.png" /></p>
+</section>
+</section>
+<section id="lstmcnn">
+<h2>LSTM与CNN在水文中的研究与应用<a class="headerlink" href="#lstmcnn" title="Permalink to this headline">#</a></h2>
+<p>水文预报是典型的时间序列预测问题，且一些变量之间存在较长时期的依赖关系，比如流域退水过程、积雪对径流的影响等，而LSTM能处理序列内单元之间彼此有复杂关联的任务。常见的应用包括降水预报、径流预报、洪水预报、土壤含水量时空分布预测、地下水位及流量模拟、水库水位出流预测、水质分析预测等多方面。此外，将多时刻的水文网格数据连接一起可构成视频信息，结合CNN和LSTM能构建提取复杂时空特征的深度神经网络应用于水文预报。</p>
+<p>总而言之，深度学习已经成为了机器学习研究中的一个新的发展热点。基于水文数据的大量性和水文原理的复杂性,掌握深度学习技术可对水文数据进行有效模拟,对水文工作起到指导作用。</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chp6_deep_learning_review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="chp6.0_intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">深度学习简介</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="chp6.2_hydro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">深度学习在水文领域中的应用研究</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Wenyu Ouyang, Ziwen Meng, Xiaoning Liu, Xiangyi Le, Yaxin Lou, Jingyuan Huang<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

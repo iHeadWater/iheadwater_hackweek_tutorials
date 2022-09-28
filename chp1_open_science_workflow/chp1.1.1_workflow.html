@@ -1,0 +1,661 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>可复现科研的一般工作流程 &#8212; iHeadWater Hackweek Tutorials</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="常用工具" href="chp1.1.2_tools.html" />
+    <link rel="prev" title="编程概念及相关工具" href="chp1.0_intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">iHeadWater Hackweek Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    欢迎来到水资源科研编程入门教程
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../start_from_here.html">
+   从这里开始
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="chp1.0_intro.html">
+   编程概念及相关工具
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     可复现科研的一般工作流程
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp1.1.2_tools.html">
+     常用工具
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp1.2.1_bash.html">
+     Bash 简介以及在命令行中操作文件和目录
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp1.2.2_common.html">
+     管理目录和文件的Bash命令
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp1.3_git.html">
+     关于Git和GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp1.4_jupyter.html">
+     Jupyter Hub/Lab/Notebook 简介
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp2_file_formats/chp2.0_intro.html">
+   常见的数据文件格式
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp2_file_formats/chp2.1_txt_csv.html">
+     文本类数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp2_file_formats/chp2.2_vector_data.html">
+     地理空间数据–矢量
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp2_file_formats/chp2.3_raster_data.html">
+     地理空间数据–栅格
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp3_version_control/chp3.0_introduction.html">
+   使用版本控制工具
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp3_version_control/chp3.1_get_files_from_github.html">
+     从Github获取文件
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp3_version_control/chp3.2_setup_git.html">
+     配置Git
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp3_version_control/chp3.3_git_setup_and_commands.html">
+     使用Git命令进行版本控制
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp3_version_control/chp3.4_team_work.html">
+     在GitHub上协作工作
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp4_intro_to_python/chp4.0_intro.html">
+   Python编程基础
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.1_about_python.html">
+     Python编程语言简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.2_python_variables.html">
+     Python 中的变量
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.3_list_dict_tuble_set.html">
+     常用数据结构
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.4_python_operators.html">
+     基本运算符
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.5_conditional_statements.html">
+     条件语句
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.6_loops.html">
+     循环
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.7_functions.html">
+     函数
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp5_python_data_science/chp5.0_intro.html">
+   Python 数据分析常用工具包
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp5_python_data_science/chp5.1_numpy.html">
+     Numpy 简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp5_python_data_science/chp5.2_pandas.html">
+     Pandas 简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp5_python_data_science/chp5.3_matplotlib.html">
+     matplotlib简介
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp6_deep_learning_review/chp6.0_intro.html">
+   深度学习简介
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp6_deep_learning_review/chp6.1_common_nn.html">
+     深度学习常见算法及模型的简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp6_deep_learning_review/chp6.2_hydro.html">
+     深度学习在水文领域中的应用研究
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.0_intro.html">
+   初探PyTorch
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.1_tensor.html">
+     PyTorch中的Tensor基础
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.2_neural_network.html">
+     torch.nn简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.3_dataloader.html">
+     Dataset和DataLoader简介
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp8_lstm_camels/chp8.0_intro.html">
+   使用CAMELS数据集构建基于LSTM的降雨径流模型
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp8_lstm_camels/chp8.1_run_in_jupyter.html">
+     LSTM降雨径流建模
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp8_lstm_camels/chp8.2_run_in_vscode.html">
+     使用VSCode编写运行代码
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tldr.html">
+   TLDR页
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../citations.html">
+   参考资料
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials/issues/new?title=Issue%20on%20page%20%2Fchp1_open_science_workflow/chp1.1.1_workflow.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/chp1_open_science_workflow/chp1.1.1_workflow.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>可复现科研的一般工作流程</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>可复现科研的一般工作流程<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<p>尽管我们有很多数据是不能公开的，但是不能公开的数据我们就没法拿来复现相关成果，并当作我们公开学习讨论的资源，所以我们这里还是重点从<strong>开放科学研究</strong>方面来讨论可复现科研的一般工作流程。至于那些只能小范围内传播的不可公开数据，以及需要保密地内部研发工作，如果我们在小范围内同样遵循本章接下来要讨论的内容涉及的原则和方法，那也是有利于我们的科研或者面向实际生产的研发工作的。</p>
+<p>网上有<a class="reference external" href="https://openscience.org/what-exactly-is-open-science/">资料</a>很详细地展开介绍了Open Science是什么，感兴趣地可以去看看，这里综合其他资料<span id="id2">[<a class="reference internal" href="../citations.html#id3" title="Martyn P. Clark, Charles H. Luce, Amir AghaKouchak, Wouter Berghuijs, Cédric H. David, Qingyun Duan, Shemin Ge, Ilja van Meerveld, Chunmiao Zheng, Marc B. Parlange, and Scott W. Tyler. Open science: open data, open models, …and open publications? Water Resources Research, 57(4):e2020WR029480, 2021. e2020WR029480 2020WR029480. URL: https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2020WR029480, arXiv:https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2020WR029480, doi:https://doi.org/10.1029/2020WR029480.">CLA+21</a>]</span>简单概括下，开放主要包括以下几个方面：</p>
+<ul class="simple">
+<li><p>数据公开</p></li>
+<li><p>方法公开</p></li>
+<li><p>涉及的代码开源</p></li>
+<li><p>成果公开发表</p></li>
+</ul>
+<p>简而言之就是发表论文涉及的那些东西都是开放的，这样任何人（包括他人和未来的自己）都可以理解和复制分析的步骤，应用于相同（或者新的）数据上，得到一致的结果。这样就能很好地符合科研上非常重要的可复现原则。</p>
+<p>科研工作一般整体框架如图所示，包括提出问题，收集数据，编写代码分析处理数据，得到结果，最后发表。提出问题、发表论文等就是科研具体的内容了，是大家日常最主要的工作之一，本教程里我们重点了解数据、代码等内容，以及通过它们怎么实现中间整个实践过程的工作流的。</p>
+<p><img alt="" src="../_images/flow_chart.jpg" /></p>
+<p>另外，注意以下方面能帮助我们更好地完成整个工作流并使相应成果能流传下去。</p>
+<p><strong>尽可能地使用编程自动化工作流</strong></p>
+<p>许多人习惯在具有图形用户界面（GUI）的Microsoft Excel（用于处理表格）或ArcGIS（用于空间数据）等工具中处理数据。当然，GUI有很多优点，例如我们更容易上手，它们的可视化界面使得初学者的学习曲线不那么陡峭，在一些情况下也的确是最优选择，例如我们想快速可视化一些数据。但是，随着使用的数据越来越复杂，我们经常会遇到基于这些GUI工具无法简单处理的情况，通常需要手动实现一系列步骤，或者构建宏或小型的自动化脚本，这会使工作流难以重现。另外，如上一节所说，某些工具（如ArcGIS）需要付费许可证，这有局限性，并且对于在云端远程环境中包含工作流是不利的，不利于大家协同工作。</p>
+<p><strong>优雅地组织文件</strong></p>
+<p>良好的目录和文件名能帮助我们快速找到所需的内容，还可以提示我们文件或目录包含的内容及其用途，帮助其他人了解这些内容。</p>
+<p><strong>使用符合FAIR原则的数据</strong></p>
+<p>尽管由于各种原因，我们研究中会涉及很多不可公开的数据，但尽量确保项目中使用的数据符合FAIR原则<span id="id3">[<a class="reference internal" href="../citations.html#id6" title="Mark D. Wilkinson, Michel Dumontier, IJsbrand Jan Aalbersberg, Gabrielle Appleton, Myles Axton, Arie Baak, Niklas Blomberg, Jan-Willem Boiten, Luiz Bonino da Silva Santos, Philip E. Bourne, Jildau Bouwman, Anthony J. Brookes, Tim Clark, Mercè Crosas, Ingrid Dillo, Olivier Dumon, Scott Edmunds, Chris T. Evelo, Richard Finkers, Alejandra Gonzalez-Beltran, Alasdair J.G. Gray, Paul Groth, Carole Goble, Jeffrey S. Grethe, Jaap Heringa, Peter A.C ’t Hoen, Rob Hooft, Tobias Kuhn, Ruben Kok, Joost Kok, Scott J. Lusher, Maryann E. Martone, Albert Mons, Abel L. Packer, Bengt Persson, Philippe Rocca-Serra, Marco Roos, Rene van Schaik, Susanna-Assunta Sansone, Erik Schultes, Thierry Sengstag, Ted Slater, George Strawn, Morris A. Swertz, Mark Thompson, Johan van der Lei, Erik van Mulligen, Jan Velterop, Andra Waagmeester, Peter Wittenburg, Katherine Wolstencroft, Jun Zhao, and Barend Mons. The FAIR Guiding Principles for scientific data management and stewardship. Scientific Data, 3(1):160018, March 2016. URL: https://doi.org/10.1038/sdata.2016.18, doi:10.1038/sdata.2016.18.">WDA+16</a>]</span>，并且制作有关于如何访问它们文档，以便使它们可查找，可访问和可重用等，对大家的研究和团队研发工作还是至关重要的。</p>
+<p><strong>保护原始数据</strong></p>
+<p>不要修改（或覆盖）原始数据。将数据输出与输入分开，以便可以根据需要轻松地重新运行工作流。</p>
+<p><strong>使用版本控制工具</strong></p>
+<p>版本控制能帮助我们管理和跟踪对文件的更改，最常用的工具是Git。如果可以公开共享代码，请实现版本控制，然后在云上发布代码和工作流，也有许多工具可以做到这一点，比如GitHub等。</p>
+<p><strong>记录工作流程</strong></p>
+<p>写文档来解释工作流中的步骤是必要的。可以使用Jupyter Notebooks等工具来构建包含Markdown格式的文本，文本叙述中穿插代码来提供对工作流的解释。这种交互的，穿插文字和代码的方式是科研编程的一种很友好方式。</p>
+<p>文档还可以包括有关编程函数的标准化代码文档，以及描述整个科研项目工作流，目录结构，数据等更宏观内容的README文件。</p>
+<p><strong>设计可轻松重建的工作流程</strong></p>
+<p>可以通过以下方式设计可由其他人轻松重新创建和复制的工作流：</p>
+<ul class="simple">
+<li><p>在代码文件的顶部列出运行工作流所需的所有包和依赖项</p></li>
+<li><p>将代码按模块组织，并用注释解释代码。</p></li>
+<li><p>使用平台提供的代码环境创建易重用的环境</p></li>
+</ul>
+<p>我们这整个教程就是为了帮助大家学习如何构架良好的科研代码体系，遵循上面提到的原则，现在你不必过于纠结这些原则中提到的内容，简单认识，知道有这些东西即可，后面我们最终复现一个科研工作时你就会比较好地认识这些内容了。</p>
+<p>接下来就让我们先看看常用的工具吧。</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chp1_open_science_workflow"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="chp1.0_intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">编程概念及相关工具</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="chp1.1.2_tools.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">常用工具</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Wenyu Ouyang, Ziwen Meng, Xiaoning Liu, Xiangyi Le, Yaxin Lou, Jingyuan Huang<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

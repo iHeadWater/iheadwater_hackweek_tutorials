@@ -1,0 +1,1053 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>地理空间数据–矢量 &#8212; iHeadWater Hackweek Tutorials</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="地理空间数据–栅格" href="chp2.3_raster_data.html" />
+    <link rel="prev" title="文本类数据" href="chp2.1_txt_csv.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">iHeadWater Hackweek Tutorials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    欢迎来到水资源科研编程入门教程
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../start_from_here.html">
+   从这里开始
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp1_open_science_workflow/chp1.0_intro.html">
+   编程概念及相关工具
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.1.1_workflow.html">
+     可复现科研的一般工作流程
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.1.2_tools.html">
+     常用工具
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.2.1_bash.html">
+     Bash 简介以及在命令行中操作文件和目录
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.2.2_common.html">
+     管理目录和文件的Bash命令
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.3_git.html">
+     关于Git和GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp1_open_science_workflow/chp1.4_jupyter.html">
+     Jupyter Hub/Lab/Notebook 简介
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="chp2.0_intro.html">
+   常见的数据文件格式
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp2.1_txt_csv.html">
+     文本类数据
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     地理空间数据–矢量
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp2.3_raster_data.html">
+     地理空间数据–栅格
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp3_version_control/chp3.0_introduction.html">
+   使用版本控制工具
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp3_version_control/chp3.1_get_files_from_github.html">
+     从Github获取文件
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp3_version_control/chp3.2_setup_git.html">
+     配置Git
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp3_version_control/chp3.3_git_setup_and_commands.html">
+     使用Git命令进行版本控制
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp3_version_control/chp3.4_team_work.html">
+     在GitHub上协作工作
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp4_intro_to_python/chp4.0_intro.html">
+   Python编程基础
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.1_about_python.html">
+     Python编程语言简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.2_python_variables.html">
+     Python 中的变量
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.3_list_dict_tuble_set.html">
+     常用数据结构
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.4_python_operators.html">
+     基本运算符
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.5_conditional_statements.html">
+     条件语句
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.6_loops.html">
+     循环
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp4_intro_to_python/chp4.7_functions.html">
+     函数
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp5_python_data_science/chp5.0_intro.html">
+   Python 数据分析常用工具包
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp5_python_data_science/chp5.1_numpy.html">
+     Numpy 简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp5_python_data_science/chp5.2_pandas.html">
+     Pandas 简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp5_python_data_science/chp5.3_matplotlib.html">
+     matplotlib简介
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp6_deep_learning_review/chp6.0_intro.html">
+   深度学习简介
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp6_deep_learning_review/chp6.1_common_nn.html">
+     深度学习常见算法及模型的简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp6_deep_learning_review/chp6.2_hydro.html">
+     深度学习在水文领域中的应用研究
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.0_intro.html">
+   初探PyTorch
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.1_tensor.html">
+     PyTorch中的Tensor基础
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.2_neural_network.html">
+     torch.nn简介
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.3_dataloader.html">
+     Dataset和DataLoader简介
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chp8_lstm_camels/chp8.0_intro.html">
+   使用CAMELS数据集构建基于LSTM的降雨径流模型
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp8_lstm_camels/chp8.1_run_in_jupyter.html">
+     LSTM降雨径流建模
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp8_lstm_camels/chp8.2_run_in_vscode.html">
+     使用VSCode编写运行代码
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tldr.html">
+   TLDR页
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../citations.html">
+   参考资料
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/iHeadWater/iheadwater_hackweek_tutorials/main?urlpath=tree/docs/chp2_file_formats/chp2.2_vector_data.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials/issues/new?title=Issue%20on%20page%20%2Fchp2_file_formats/chp2.2_vector_data.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/chp2_file_formats/chp2.2_vector_data.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1. 矢量数据
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   2. 存储矢量数据的格式
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#geojson">
+     读写Geojson
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#json-dumps-json">
+     使用json.dumps()对json文件进行写入
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shp">
+   读写.shp文件
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>地理空间数据–矢量</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1. 矢量数据
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   2. 存储矢量数据的格式
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#geojson">
+     读写Geojson
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#json-dumps-json">
+     使用json.dumps()对json文件进行写入
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shp">
+   读写.shp文件
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>地理空间数据–矢量<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<p><strong>地理空间数据</strong>是描述位于地球表面或附近位置的对象、事件或其他要素的信息。地理空间数据通常将<strong>位置信息</strong>（例如坐标）和<strong>属性信息</strong>（相关物体、事件或现象的特征）与<strong>时间信息</strong>（位置和属性存在的时间或寿命）相结合。</p>
+<p>地理空间数据通常涉及从许多不同来源以不同格式收集到的大量空间数据，并且可以包括人口普查数据，卫星图像和天气数据等信息。</p>
+<p>用于收集和分析地理空间数据的技术我们称之为地理空间技术。涉及地理空间技术的软件叫GIS软件，GIS（Geographic Information System），简单理解就是帮助我们处理这些地理空间数据的。常见的GIS工具有ArcGIS、QGIS等，未来我们都会接触到的。</p>
+<p>地理空间数据的两个主要类型为栅格数据和矢量数据。</p>
+<p><img alt="" src="../_images/raster_vector.png" /></p>
+<section id="id2">
+<h2>1. 矢量数据<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>矢量数据就是使用点、线和面表示地理要素的位置和形状的数据。</p>
+<p><strong>位置：</strong> 线和面都由点组成，这些点都是由空间坐标的</p>
+<p><strong>形状：</strong> 使用点表示的水文站点、由线表示的河流和由面表示流域</p>
+<ul class="simple">
+<li><p>点 : 每个点都由单个X、Y坐标定义。点是0维，既没有长度也没有面积。</p></li>
+<li><p>线 : 线由许多（至少2个）连接的点组成。线是1维，只能用于测量长度。</p></li>
+<li><p>面 : 面由3个或更多个连接且闭合的点组成。面数据是2维的，可测量面积和周长。</p></li>
+</ul>
+<p><img alt="" src="../_images/pnt_line_poly.png" /></p>
+</section>
+<section id="id3">
+<h2>2. 存储矢量数据的格式<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<p>矢量数据有很多类型，如下图红框所示。</p>
+<p><img alt="" src="../_images/vector_data_format.jpg" /></p>
+<p>我们常见的有Shapefile格式、GeoJSON格式、GML格式、KML格式等。</p>
+<ul class="simple">
+<li><p><strong>Shapefile</strong> 格式是一种非常流行的地理空间矢量数据格式，用于地理信息系统 (GIS) 软件，用于存储地理特征的位置、形状和属性。Shapefile 实际上由多个文件组成，除了一个包含实际几何数据的.shp文件外，还需要其他文件共同构成 Shapefile 文件。</p></li>
+</ul>
+<ol class="simple">
+<li><p>.shp——图形格式，保存元素的几何实体，点线面多点多线多面。</p></li>
+<li><p>.shx——图形索引格式。记录每一个几何体在shp文件之中的位置，能够加快向前或向后搜索一个几何体的效率，就是快速展示出前后的几何体。</p></li>
+<li><p>.dbf——属性数据格式，以特定格式（dBase IV的数据表格式）存储每个几何形状的属性数据。</p></li>
+</ol>
+<p><strong>以上是Shapefile必备文件，以下是可选文件</strong></p>
+<ol class="simple">
+<li><p>.prj——投影文件，用于保存地理坐标系统与投影信息（投影：将三维空间几何体投影成一个二维平面，.shp展示的是一个二维图形）</p></li>
+<li><p>.sbx——几何体的空间索引</p></li>
+<li><p>.fbx——只读的Shapefiles的几何体的空间索引</p></li>
+<li><p>.mxs——可读写Shapefile文件的地理编码索引(ODB格式)</p></li>
+<li><p>.ixs——可读写Shapefile文件的地理编码索引</p></li>
+<li><p>.cpg— 用于描述.dbf文件的代码页，指明其使用的字符编码。</p></li>
+<li><p>.sbn——空间索引文件，用于优化空间查询。此文件类型与.sbx 文件一起保存。这两个文件组成一个形状索引来加速空间查询。</p></li>
+<li><p>.sbx——类似于.sbn 文件，它们加快了加载时间。它与.sbn 文件一起使用以优化空间查询。</p></li>
+</ol>
+<p><img alt="" src="../_images/shp.jpg" /></p>
+<ul class="simple">
+<li><p><strong>GeoJSON</strong>是一种轻量级JSON（(JavaScript object notation，是一种有条理易于访问的存储信息的方法），是各种地理数据结构进行编码的格式。GeoJSON对象可以表示几何、特征或者特征集合。GeoJSON支持下面几何类型：点、线、面、多点、多线、多面和几何集合。GeoJSON里的特征包含一个几何对象和其他属性，特征集合表示一系列特征。</p></li>
+</ul>
+<p><img alt="" src="../_images/geojson.gif" /></p>
+<ul class="simple">
+<li><p><strong>GML</strong>是一个基于XML的地理信息编码标准，GML以文本的形式表示地理信息。XML是一个独立于软件和硬件的工具，用于存储和传输数据。</p></li>
+<li><p><strong>KML</strong>是基于XML的，主要用于谷歌地球。KML是一种XML符号，用于表达二维地图和三维浏览器中的地理注释和可视化。KML规定了一套有趣的特征，如地点标记、图像、多边形、文本描述和许多在许多地理空间软件中显示的特征。KML的扩展名是.kmz。</p></li>
+</ul>
+<p><strong>其中我们最常见的还是Geojson和shapefile。虽然两个文件格式是平行关系，不过是可以将Geojson格式转换为shapefile格式的，因为空间地理数据最基本的元素就是坐标，他们采取编码的形式不同而已。</strong></p>
+<p>以上的动图是我们提供的geojson文件在QGIS中打开的样式，可以看出是个流域。</p>
+<p>现在我们演示下在Python中对geojson与shapefile进行读写操作。</p>
+<section id="geojson">
+<h3>读写Geojson<a class="headerlink" href="#geojson" title="Permalink to this headline">#</a></h3>
+<p>Python自带json模块，因此我们可以直接导入json工具包，使用<code class="docutils literal notranslate"><span class="pre">json.load()</span></code>函数即可读取Geojson。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span> 
+<span class="c1"># Opening JSON file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/stationbasins.geojson&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">openfile</span><span class="p">:</span> 
+    <span class="c1"># Reading from json file</span>
+    <span class="n">json_object</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">openfile</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">json_object</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">json_object</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;displayFieldName&#39;: &#39;river&#39;, &#39;fieldAliases&#39;: {&#39;grdc_no&#39;: &#39;grdc_no&#39;, &#39;river&#39;: &#39;river&#39;, &#39;station&#39;: &#39;station&#39;, &#39;altitude&#39;: &#39;altitude&#39;, &#39;dist_km&#39;: &#39;dist_km&#39;, &#39;area_hys&#39;: &#39;area_hys&#39;}, &#39;geometryType&#39;: &#39;esriGeometryPolygon&#39;, &#39;spatialReference&#39;: {&#39;wkid&#39;: 4326, &#39;latestWkid&#39;: 4326}, &#39;fields&#39;: [{&#39;name&#39;: &#39;grdc_no&#39;, &#39;type&#39;: &#39;esriFieldTypeDouble&#39;, &#39;alias&#39;: &#39;grdc_no&#39;}, {&#39;name&#39;: &#39;river&#39;, &#39;type&#39;: &#39;esriFieldTypeString&#39;, &#39;alias&#39;: &#39;river&#39;, &#39;length&#39;: 80}, {&#39;name&#39;: &#39;station&#39;, &#39;type&#39;: &#39;esriFieldTypeString&#39;, &#39;alias&#39;: &#39;station&#39;, &#39;length&#39;: 80}, {&#39;name&#39;: &#39;altitude&#39;, &#39;type&#39;: &#39;esriFieldTypeDouble&#39;, &#39;alias&#39;: &#39;altitude&#39;}, {&#39;name&#39;: &#39;dist_km&#39;, &#39;type&#39;: &#39;esriFieldTypeDouble&#39;, &#39;alias&#39;: &#39;dist_km&#39;}, {&#39;name&#39;: &#39;area_hys&#39;, &#39;type&#39;: &#39;esriFieldTypeDouble&#39;, &#39;alias&#39;: &#39;area_hys&#39;}], &#39;features&#39;: [{&#39;attributes&#39;: {&#39;grdc_no&#39;: 2181200.0, &#39;river&#39;: &#39;ZAGUNAO HE&#39;, &#39;station&#39;: &#39;ZAGUNAO&#39;, &#39;altitude&#39;: -999.0, &#39;dist_km&#39;: 11.7, &#39;area_hys&#39;: 2400.0}, &#39;geometry&#39;: {&#39;rings&#39;: [[[102.8958, 31.1958], [102.8813, 31.198], [102.8294, 31.2052], [102.8105, 31.2144], [102.8103, 31.2228], [102.8265, 31.2441], [102.8098, 31.2615], [102.7813, 31.2688], [102.748, 31.2734], [102.752, 31.298], [102.7592, 31.3118], [102.7482, 31.3224], [102.7396, 31.3355], [102.7262, 31.3443], [102.7146, 31.3563], [102.6939, 31.3717], [102.6896, 31.4021], [102.685, 31.4157], [102.6855, 31.4396], [102.6605, 31.4477], [102.6604, 31.4564], [102.6768, 31.4722], [102.6848, 31.4956], [102.6688, 31.5266], [102.6686, 31.5354], [102.669, 31.552], [102.6564, 31.5641], [102.6508, 31.5812], [102.6414, 31.5758], [102.6286, 31.5563], [102.6108, 31.5636], [102.601, 31.6021], [102.6063, 31.6229], [102.6104, 31.6521], [102.6269, 31.6601], [102.6354, 31.6767], [102.6395, 31.7105], [102.6439, 31.7274], [102.6435, 31.7437], [102.6521, 31.7604], [102.6396, 31.7847], [102.6437, 31.798], [102.6539, 31.813], [102.6604, 31.8396], [102.673, 31.8562], [102.6854, 31.8772], [102.7064, 31.8768], [102.7187, 31.8896], [102.7482, 31.8937], [102.7789, 31.9145], [102.798, 31.9105], [102.8288, 31.898], [102.8359, 31.9023], [102.8451, 31.9119], [102.8562, 31.9062], [102.8747, 31.9017], [102.8854, 31.8854], [102.9064, 31.8562], [102.906, 31.8361], [102.9114, 31.8201], [102.8996, 31.8027], [102.9078, 31.7866], [102.8688, 31.7323], [102.8729, 31.727], [102.8792, 31.7272], [102.8875, 31.727], [102.8975, 31.7272], [102.9108, 31.7208], [102.9103, 31.6979], [102.923, 31.6938], [102.9437, 31.6854], [102.961, 31.6798], [102.9688, 31.6646], [102.9768, 31.648], [103.002, 31.6294], [103.0021, 31.6229], [103.0019, 31.6105], [103.0063, 31.6063], [103.0104, 31.5979], [103.0188, 31.5855], [103.0237, 31.5703], [103.0355, 31.5646], [103.0395, 31.5604], [103.0473, 31.5529], [103.0575, 31.5331], [103.0438, 31.5145], [103.0357, 31.5068], [103.0351, 31.4775], [103.0591, 31.4526], [103.0771, 31.4438], [103.0937, 31.4312], [103.1104, 31.4315], [103.1271, 31.4312], [103.1313, 31.4313], [103.1355, 31.4312], [103.16, 31.4479], [103.1649, 31.4436], [103.1645, 31.4231], [103.1726, 31.4147], [103.1893, 31.4066], [103.198, 31.3938], [103.202, 31.3854], [103.2104, 31.3692], [103.2021, 31.3604], [103.1979, 31.3563], [103.1934, 31.3335], [103.1687, 31.3188], [103.161, 31.303], [103.1404, 31.2815], [103.1186, 31.2981], [103.1105, 31.2895], [103.0931, 31.2767], [103.0815, 31.2646], [103.0604, 31.2729], [103.048, 31.2813], [103.0275, 31.2912], [103.0222, 31.3186], [103.0025, 31.319], [102.9855, 31.2859], [102.9813, 31.2645], [102.9624, 31.2584], [102.9563, 31.252], [102.9438, 31.2523], [102.9271, 31.2437], [102.9113, 31.236], [102.9053, 31.205], [102.8979, 31.198], [102.8958, 31.1958]]]}}]}
+&lt;class &#39;dict&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>我们将json对象（仔细看，我们用的名称还是json_object）全部读取出来了，可以看出里面有很多信息，例如属性、坐标等等。可以看出json对象使用花括号<code class="docutils literal notranslate"><span class="pre">{}</span></code>定义的，中间使用的是键值。</p>
+<p>同时我们还打印出json的类型，输出是’dict’，是’dictionary’的简称，这是Python中数据的一种类型，我们也遇见过，就在上一节。字典的特征也是使用大括号<code class="docutils literal notranslate"><span class="pre">{}</span></code>，中间也是键与值，例如<code class="docutils literal notranslate"><span class="pre">{'键1':'值1','键2':'值2'}</span></code>，键值之间用英文冒号<code class="docutils literal notranslate"><span class="pre">:</span></code>隔开，键值与键值之间用逗号隔开<code class="docutils literal notranslate"><span class="pre">,</span></code>，当然也是英文逗号！其中键是一个字符串，它的值可以是任何基本类型（例如 int、string、null）或复杂数据类型（例如数组）。而且我们也可以看出，读取出来不光有<code class="docutils literal notranslate"><span class="pre">{}</span></code>还有<code class="docutils literal notranslate"><span class="pre">[]</span></code>标记符，以下示例中<code class="docutils literal notranslate"><span class="pre">101</span></code>没用引号<code class="docutils literal notranslate"><span class="pre">''</span></code>，在Python的数据章节这些我们都会具体介绍。</p>
+<p>我们来写一个简单的json对象：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+ <span class="s1">&#39;id&#39;</span><span class="p">:</span><span class="mi">101</span><span class="p">,</span>
+ <span class="s1">&#39;company&#39;</span> <span class="p">:</span> <span class="s1">&#39;GeeksForGeeks&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>复杂json对象是那些在一个对象中嵌套一个对象，再来写一个复杂的json对象：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+ <span class="s1">&#39;id&#39;</span><span class="p">:</span><span class="mi">101</span><span class="p">,</span>
+ <span class="s1">&#39;company&#39;</span> <span class="p">:</span> <span class="s1">&#39;GeeksForGeeks&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Topics&#39;</span> <span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;Data Structure&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Algorithm&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Gate Topics&#39;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>我们用Python读取json，将json对象转换为Python对象，我们将其称为反序列化。</p>
+<p>那么序列化就是将python对象转化为json对象，即用python语言将数据写入json对象中。</p>
+<p>以下是python对象类型对应的json对象类型，以后在我们了解python数据类型后对这些就很清楚了，这里我们先暂时了解以下。</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>python object</p></th>
+<th class="head"><p>json object</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>dict</p></td>
+<td><p>object</p></td>
+</tr>
+<tr class="row-odd"><td><p>list,tuple</p></td>
+<td><p>array</p></td>
+</tr>
+<tr class="row-even"><td><p>str</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p>int,long,float</p></td>
+<td><p>numbers</p></td>
+</tr>
+<tr class="row-even"><td><p>True</p></td>
+<td><p>ture</p></td>
+</tr>
+<tr class="row-odd"><td><p>False</p></td>
+<td><p>false</p></td>
+</tr>
+<tr class="row-even"><td><p>None</p></td>
+<td><p>null</p></td>
+</tr>
+</tbody>
+</table>
+<p>json工具包中的<code class="docutils literal notranslate"><span class="pre">.dump()</span></code>或者<code class="docutils literal notranslate"><span class="pre">.dumps()</span></code>函数将python对象转化为各自json对象</p>
+</section>
+<section id="json-dumps-json">
+<h3>使用json.dumps()对json文件进行写入<a class="headerlink" href="#json-dumps-json" title="Permalink to this headline">#</a></h3>
+<p>json工具包中的<code class="docutils literal notranslate"><span class="pre">json.dumps()</span></code>函数，<strong>有助于</strong>将python对象（字典）转化为json对象，不过他需要两个参数（我们经常见的函数：y = ax1 + bx2，其中x1和x2就是函数的参数）：</p>
+<ul class="simple">
+<li><p>dictionary：转为json对象的字典名称</p></li>
+<li><p>indent：定义缩进的单位数</p></li>
+</ul>
+<p>以下我们创建一个json文件（当然也可以是geojson文件，geojson文件是一个轻量级的json文件）。</p>
+<p>当我们对json文件进行写入时，发现没有这个文件，那么python就会自动创建文件，以下我们就创建一个新的json文件，不对我们下载的json文件进行写入更改了。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span> 
+<span class="c1">#撰写数据（字典）</span>
+<span class="n">dictionary</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;river&#39;</span><span class="p">:</span> <span class="s1">&#39;ZAGUNAO HE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;station&#39;</span><span class="p">:</span> <span class="s1">&#39;ZAGUNAO&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;altitude&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">999.0</span><span class="p">,</span>
+    <span class="s1">&#39;dist_km&#39;</span><span class="p">:</span> <span class="mf">11.7</span><span class="p">,</span>
+    <span class="s1">&#39;area_hys&#39;</span><span class="p">:</span> <span class="mf">2400.0</span><span class="p">,</span>
+    <span class="s1">&#39;geometry&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;rings&#39;</span><span class="p">:</span> <span class="p">[[[</span><span class="mf">102.8958</span><span class="p">,</span> <span class="mf">31.1958</span><span class="p">],</span> <span class="p">[</span><span class="mf">102.8813</span><span class="p">,</span> <span class="mf">31.198</span><span class="p">],</span> <span class="p">[</span><span class="mf">102.8294</span><span class="p">,</span> <span class="mf">31.2052</span><span class="p">]]]}</span>
+<span class="p">}</span> 
+<span class="c1"># Serializing json</span>
+<span class="n">json_object</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> 
+<span class="c1"># Writing to sample.json</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../data/stationbasins_modified.geojson&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+    <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json_object</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>读取我们创建的json文件，读取的内容和我们创建dicttionary的是一样的。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span> 
+<span class="c1"># Opening JSON file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/stationbasins_modified.geojson&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">openfile</span><span class="p">:</span> 
+    <span class="c1"># Reading from json file</span>
+    <span class="n">json_object</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">openfile</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">json_object</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;river&#39;: &#39;ZAGUNAO HE&#39;, &#39;station&#39;: &#39;ZAGUNAO&#39;, &#39;altitude&#39;: -999.0, &#39;dist_km&#39;: 11.7, &#39;area_hys&#39;: 2400.0, &#39;geometry&#39;: {&#39;rings&#39;: [[[102.8958, 31.1958], [102.8813, 31.198], [102.8294, 31.2052]]]}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>以上是我们对geojson文件的读写，但是这种方式对后续的GIS分析并不友好，接下来看看使用GIS相关的计算包读写这类数据。</p>
+<p>以下我们将以shapefile这类更常见的格式为例介绍。</p>
+</section>
+</section>
+<section id="shp">
+<h2>读写.shp文件<a class="headerlink" href="#shp" title="Permalink to this headline">#</a></h2>
+<p>geopandas可以使用<code class="docutils literal notranslate"><span class="pre">geopandas.read_file()</span></code>函数读取几乎任何矢量的空间数据格式，包括shapefile、geojson。</p>
+<p>我们先试试把geojson转为shpafile，即先看看写一个shp文件。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">saveShapefile</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">save_path</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;../data/stationbasins.geojson&#39;</span><span class="p">)</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># 可视化，即显示生成的图片</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s1">&#39;ESRI Shapefile&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--保存成功，文件存放位置：&quot;</span><span class="o">+</span><span class="n">localPath</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------JSON文件不存在，请检查后重试！----&quot;</span><span class="p">)</span>
+        <span class="k">pass</span>
+<span class="n">saveShapefile</span><span class="p">(</span><span class="s1">&#39;../data/stationbasins.geojson&#39;</span><span class="p">,</span> <span class="s1">&#39;../data/basin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/chp2.2_vector_data_9_0.png" src="../_images/chp2.2_vector_data_9_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------JSON文件不存在，请检查后重试！----
+</pre></div>
+</div>
+</div>
+</div>
+<p>接下来我们再试试读取shpfile</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="n">df_shp</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;../data/basin/basin.shp&#39;</span><span class="p">)</span>
+<span class="n">df_shp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>grdc_no</th>
+      <th>river</th>
+      <th>station</th>
+      <th>altitude</th>
+      <th>dist_km</th>
+      <th>area_hys</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2181200.0</td>
+      <td>ZAGUNAO HE</td>
+      <td>ZAGUNAO</td>
+      <td>-999.0</td>
+      <td>11.7</td>
+      <td>2400.0</td>
+      <td>POLYGON ((102.89580 31.19580, 102.88130 31.198...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>我们再用<code class="docutils literal notranslate"><span class="pre">geopandas</span></code>读取刚刚的geojson文件，可以看到和读取shpfile是一样的</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="n">df_json</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;../data/stationbasins.geojson&#39;</span><span class="p">)</span>
+<span class="n">df_json</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>grdc_no</th>
+      <th>river</th>
+      <th>station</th>
+      <th>altitude</th>
+      <th>dist_km</th>
+      <th>area_hys</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2181200.0</td>
+      <td>ZAGUNAO HE</td>
+      <td>ZAGUNAO</td>
+      <td>-999.0</td>
+      <td>11.7</td>
+      <td>2400.0</td>
+      <td>POLYGON ((102.89580 31.19580, 102.88130 31.198...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "tutorial"
+        },
+        kernelOptions: {
+            kernelName: "tutorial",
+            path: "./chp2_file_formats"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'tutorial'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="chp2.1_txt_csv.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">文本类数据</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="chp2.3_raster_data.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">地理空间数据–栅格</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Wenyu Ouyang, Ziwen Meng, Xiaoning Liu, Xiangyi Le, Yaxin Lou, Jingyuan Huang<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

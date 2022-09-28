@@ -48,6 +48,36 @@ vscode上方会弹窗让用户选择采用Microsoft还是Github登录，若选�
 - [Python代码检查错误](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
 - [Python代码注释](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring)
 
+### Optional: Java相关插件
+
+尽管我们不鼓励使用Java进行科研编程，但考虑到以往一些历史科研代码是用Java编写的，所以这里仍然给出Java的相关说明。
+
+让我们先本地安装一个JDK，来测试接下来安装的Java插件是不是好用。
+
+从[openjdk官网](https://jdk.java.net/archive/)下载OpenJDK17（为什么是JDK17？因为它是目前最新的Java长期支持版本）。
+
+![](../img/openjdk_download.png)
+
+解压后就能用了，把解压后的文件夹放到你想放的任意位置，但是后面这个位置不能随便改了。
+
+然后我们配置环境变量：在系统环境变量内新建名为JAVA_HOME的变量，并将其变量值指定为JDK安装位置（vscode需要JAVA_HOME环境变量确定JDK位置）
+
+![](../img/env_var.png)
+
+![](../img/env_var_javahome.png)
+
+然后在VSCode下面安装 [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) 插件，这个插件会安装一系列VSCode下进行Java代码开发的必备插件。
+
+![](../img/vscode_java_plugin.png)
+
+然后会引导我们进入一个开始Java开发的教程界面，按照里面的操作做一遍，就知道VSCode下如何开展Java开发了（仔细阅读它提供的教程的全部内容）。
+
+![](../img/vscode_java_tutorial.png)
+
+比如这是本地运行hello world的情况：
+
+![](../img/vscode_run_java.png)
+
 ## 使用VSCode连接平台
 
 下面看看远程连接平台。
@@ -123,3 +153,5 @@ remote ssh插件便会为你自动连上jupyter服务器，连接成功后，窗
 ![](../img/vscode_ssh_runpython.png)
 
 你会得到和上一节jupyter上运行同样的结果。
+
+Optinal:Java代码的远程运行是类似的，只要你在平台服务器上有java项目，通过SSH连接后，打开它，然后在插件栏中的远程部分安装好[Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) 插件，就能运行你的java代码了。

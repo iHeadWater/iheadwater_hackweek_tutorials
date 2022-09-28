@@ -12,7 +12,7 @@
 # Country:               CN
 # Latitude (DD):       31.466667
 # Longitude (DD):      103.283333
-# Catchment area (km²):      2404.0
+# Catchment area (km?:      2404.0
 # Altitude (m ASL):        -999.00
 # Next downstream station:      2181600
 # Remarks:               
@@ -21,7 +21,7 @@
 #
 # Data Set Content:      MEAN DAILY DISCHARGE (Q)
 #                        --------------------
-# Unit of measure:                  m³/s
+# Unit of measure:                  m?s
 # Time series:           1981-01 - 2000-12
 # No. of years:          21
 # Last update:           2018-05-30

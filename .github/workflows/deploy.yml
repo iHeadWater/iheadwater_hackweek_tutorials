@@ -28,7 +28,7 @@ jobs:
     # Build the book
     - shell: bash -l {0}
       run: |
-        conda activate ml-base
+        conda activate tutorial
         python -m ipykernel install --user --name tutorial --display-name "Python (tutorial)" 
         jupyter-book build iheadwater_hackweek_tutorials
     # Deploy the book's HTML to gh-pages branch

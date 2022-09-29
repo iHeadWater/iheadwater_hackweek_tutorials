@@ -12,11 +12,10 @@ dependencies:
   - pytorch
   - torchvision
   - pyarrow
-  - black
   - pip:
     - jupyter-book
     - matplotlib
     - ghp-import
+    - black
     - wis-downloader
-    - PIL
     - hydrodataset

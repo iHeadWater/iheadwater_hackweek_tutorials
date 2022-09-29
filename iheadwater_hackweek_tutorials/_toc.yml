@@ -5,52 +5,52 @@ format: jb-book
 root: intro
 chapters:
 - file: start_from_here
-- file: open_science_workflow/chp0_intro
+- file: chp1_open_science_workflow/chp1.0_intro
   sections:
-  - file: open_science_workflow/chp1.1_workflow
-  - file: open_science_workflow/chp1.2_tools
-  - file: open_science_workflow/chp2.1_bash
-  - file: open_science_workflow/chp2.2_common
-  - file: open_science_workflow/chp3_git
-  - file: open_science_workflow/chp4_jupyter
-- file: file_formats/chp0_intro
+  - file: chp1_open_science_workflow/chp1.1.1_workflow
+  - file: chp1_open_science_workflow/chp1.1.2_tools
+  - file: chp1_open_science_workflow/chp1.2.1_bash
+  - file: chp1_open_science_workflow/chp1.2.2_common
+  - file: chp1_open_science_workflow/chp1.3_git
+  - file: chp1_open_science_workflow/chp1.4_jupyter
+- file: chp2_file_formats/chp2.0_intro
   sections:
-  - file: file_formats/chp1_txt_csv
-  - file: file_formats/chp2.1_vector_data
-  - file: file_formats/chp2.2_raster_data
-- file: version_control/chp0_introduction
+  - file: chp2_file_formats/chp2.1_txt_csv
+  - file: chp2_file_formats/chp2.2_vector_data
+  - file: chp2_file_formats/chp2.3_raster_data
+- file: chp3_version_control/chp3.0_introduction
   sections:
-  - file: version_control/chp1.1_get_files_from_github
-  - file: version_control/chp1.2_setup_git
-  - file: version_control/chp1.3_git_setup_and_commands
-  - file: version_control/chp2_team_work
-- file: intro_to_python/ch0_intro
+  - file: chp3_version_control/chp3.1_get_files_from_github
+  - file: chp3_version_control/chp3.2_setup_git
+  - file: chp3_version_control/chp3.3_git_setup_and_commands
+  - file: chp3_version_control/chp3.4_team_work
+- file: chp4_intro_to_python/chp4.0_intro
   sections:
-  - file: intro_to_python/chp1_about_python
-  - file: intro_to_python/chp2_python_variables
-  - file: intro_to_python/chp3_list_dict_tuble_set
-  - file: intro_to_python/chp4_python_operators
-  - file: intro_to_python/chp5_conditional_statements
-  - file: intro_to_python/chp6_loops
-  - file: intro_to_python/chp7_functions
-- file: python_data_science/chp0_intro
+  - file: chp4_intro_to_python/chp4.1_about_python
+  - file: chp4_intro_to_python/chp4.2_python_variables
+  - file: chp4_intro_to_python/chp4.3_list_dict_tuble_set
+  - file: chp4_intro_to_python/chp4.4_python_operators
+  - file: chp4_intro_to_python/chp4.5_conditional_statements
+  - file: chp4_intro_to_python/chp4.6_loops
+  - file: chp4_intro_to_python/chp4.7_functions
+- file: chp5_python_data_science/chp5.0_intro
   sections:
-  - file: python_data_science/chp1_numpy
-  - file: python_data_science/chp2_pandas
-  - file: python_data_science/chp3_matplotlib
-- file: deep_learning_review/chp0_intro
+  - file: chp5_python_data_science/chp5.1_numpy
+  - file: chp5_python_data_science/chp5.2_pandas
+  - file: chp5_python_data_science/chp5.3_matplotlib
+- file: chp6_deep_learning_review/chp6.0_intro
   sections:
-  - file: deep_learning_review/chp1_common_nn
-  - file: deep_learning_review/chp2_hydro
-- file: intro_to_pytorch/chp0_intro
+  - file: chp6_deep_learning_review/chp6.1_common_nn
+  - file: chp6_deep_learning_review/chp6.2_hydro
+- file: chp7_intro_to_pytorch/chp7.0_intro
   sections:
- - file: intro_to_pytorch/chp1_tensor
- - file: intro_to_pytorch/chp2_neural_network
- - file: intro_to_pytorch/chp3_dataloader
-- file: lstm_camels/chp0_intro
+  - file: chp7_intro_to_pytorch/chp7.1_tensor
+  - file: chp7_intro_to_pytorch/chp7.2_neural_network
+  - file: chp7_intro_to_pytorch/chp7.3_dataloader
+- file: chp8_lstm_camels/chp8.0_intro
   sections:
-  - file: lstm_camels/chp1_run_in_jupyter
-  - file: lstm_camels/chp2_run_in_vscode
+  - file: chp8_lstm_camels/chp8.1_run_in_jupyter
+  - file: chp8_lstm_camels/chp8.2_run_in_vscode
 - file: tldr
 - file: citations
   

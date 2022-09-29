@@ -133,4 +133,6 @@ dmypy.json
 
 /iheadwater_hackweek_tutorials/lstm_camels/*.png
 /iheadwater_hackweek_tutorials/data/dem/
+/iheadwater_hackweek_tutorials/data/basin/
+/iheadwater_hackweek_tutorials/data/*modified*
 /iheadwater_hackweek_tutorials/*.nc

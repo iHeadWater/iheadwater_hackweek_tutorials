@@ -8,17 +8,17 @@
 
 以下步骤第一次做会觉得有点麻烦，但是它是一次性的，以后带给你的方便会让你觉得值得的。
 
-## 下载安装配置VSCode
+## 1 下载安装配置VSCode
 
 首先在本地设置好vscode，你就能在本地用它了，不过本节重点讨论远程连接到平台。
 
-### 本地下载安装vscode
+### 1.1 本地下载安装vscode
 
 首先，要在你自己的电脑（本地）上下载安装vscode软件，直接在[vscode官网](https://code.visualstudio.com/)下载，然后一路默认安装即可。
 
 ![](../img/vscode_download.png)
 
-### 登录以同步设置
+### 1.2 登录以同步设置
 
 打开vscode，点击vscode窗口左下角的账户或设置按钮，选择“登录以同步设置”，这样后面你的设置就可以在多个地方同步，而不用换一台电脑就要重新配置一遍。
 
@@ -34,7 +34,7 @@ vscode上方会弹窗让用户选择采用Microsoft还是Github登录，若选�
 
 你什么都不用做，下次换台电脑再安装vscode，登录后，会自动同步好你的所有配置。
 
-### 安装Python相关插件
+### 1.3 安装Python相关插件
 
 插件窗口下搜索 Python，排名第一的插件下载下来：
 
@@ -48,7 +48,7 @@ vscode上方会弹窗让用户选择采用Microsoft还是Github登录，若选�
 - [Python代码检查错误](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
 - [Python代码注释](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring)
 
-### Optional: Java相关插件
+### 1.4 Optional: Java相关插件
 
 尽管我们不鼓励使用Java进行科研编程，但考虑到以往一些历史科研代码是用Java编写的，所以这里仍然给出Java的相关说明。
 
@@ -78,11 +78,11 @@ vscode上方会弹窗让用户选择采用Microsoft还是Github登录，若选�
 
 ![](../img/vscode_run_java.png)
 
-## 使用VSCode连接平台
+## 2 使用VSCode连接平台
 
 下面看看远程连接平台。
 
-### 安装远程连接插件
+### 2.1 安装远程连接插件
 
 选择左侧Extensions 选项卡，在输入框搜索 remote ，选择安装Remote-SSH插件。
 
@@ -92,7 +92,7 @@ vscode上方会弹窗让用户选择采用Microsoft还是Github登录，若选�
 
 ![](../img/vscode_remote_plugin.png)
 
-### 添加远程服务器连接配置
+### 2.2 添加远程服务器连接配置
 
 点击该选项卡，会进入SSH TARGETS的添加，如下图所示，点击设置按钮，vscode会弹框询问选择哪个配置文件，一般只需选择最上面的文件（C:\Users\你的用户名\.ssh\config）：
 
@@ -110,7 +110,7 @@ Host jupyterhub.waterism.com
 
 然后保存即可。
 
-### 连接平台
+### 2.3 连接平台
 
 如无意外，SSH Targets中会生成一个jupyterhub.waterism.com项（和你粘贴进去的Host一致），鼠标右键点击此项，选择在“当前窗口”或者“新建窗口”打开，两个选项选择任意一个即可。
 
@@ -140,7 +140,7 @@ remote ssh插件便会为你自动连上jupyter服务器，连接成功后，窗
 
 如果刚刚本地安装了很多插件，这时候远程也会提示你安装相同的插件，安装即可。
 
-## 运行代码
+## 2.4 运行代码
 
 如果你之前跟着一起实践了git和github部分的操作，那么这里你应该已经有一些代码在服务器上了。
 

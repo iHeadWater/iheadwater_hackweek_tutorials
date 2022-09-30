@@ -186,6 +186,11 @@ const thebe_selector_output = ".output, .cell_output"
      地理空间数据–栅格
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp2_file_formats/chp2.4_your_data.html">
+     在平台上上传下载数据
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -583,41 +588,39 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lstm-camels">
-   LSTM-CAMELS简介
+   1 LSTM-CAMELS简介
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#camels">
-   获取CAMELS数据
+   2 获取CAMELS数据
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pytorchlstm-camels">
-   PyTorch实现LSTM-CAMELS
+   3 PyTorch实现LSTM-CAMELS
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pytorch-datasetdataloadercamels">
-     用PyTorch Dataset与Dataloader组织CAMELS数据
+     3.1 用PyTorch Dataset与Dataloader组织CAMELS数据
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     3.2 搭建LSTM模型
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   搭建LSTM模型
+  <a class="reference internal nav-link" href="#id5">
+   4 训练模型
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     训练模型
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   评价模型
+   5 评价模型
   </a>
  </li>
 </ul>
@@ -641,41 +644,39 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lstm-camels">
-   LSTM-CAMELS简介
+   1 LSTM-CAMELS简介
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#camels">
-   获取CAMELS数据
+   2 获取CAMELS数据
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pytorchlstm-camels">
-   PyTorch实现LSTM-CAMELS
+   3 PyTorch实现LSTM-CAMELS
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pytorch-datasetdataloadercamels">
-     用PyTorch Dataset与Dataloader组织CAMELS数据
+     3.1 用PyTorch Dataset与Dataloader组织CAMELS数据
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     3.2 搭建LSTM模型
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   搭建LSTM模型
+  <a class="reference internal nav-link" href="#id5">
+   4 训练模型
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     训练模型
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   评价模型
+   5 评价模型
   </a>
  </li>
 </ul>
@@ -692,7 +693,7 @@ title="Print to PDF"
 <h1>LSTM降雨径流建模<a class="headerlink" href="#lstm" title="Permalink to this headline">#</a></h1>
 <p>本节给出一个关于如何建立和训练LSTM-CAMELS模型的例子。如果你使用了平台提供的jupyterlab，那就能直接使用平台上的GPU计算资源来完成相应的计算。因为我们会有一些人同时运行代码，所以为了避免机器资源不够，以及快速地交互给出结果，这里只给出了少量流域上训练测试模型的示例，更多流域的完整复现Kratzert等<span id="id1">[<a class="reference internal" href="../citations.html#id7" title="F. Kratzert, D. Klotz, C. Brenner, K. Schulz, and M. Herrnegger. Rainfall–runoff modelling using long short-term memory (lstm) networks. Hydrology and Earth System Sciences, 22(11):6005–6022, 2018. URL: https://hess.copernicus.org/articles/22/6005/2018/, doi:10.5194/hess-22-6005-2018.">KKB+18</a>]</span>论文的例子也是一样的，大家可以自行尝试。</p>
 <section id="lstm-camels">
-<h2>LSTM-CAMELS简介<a class="headerlink" href="#lstm-camels" title="Permalink to this headline">#</a></h2>
+<h2>1 LSTM-CAMELS简介<a class="headerlink" href="#lstm-camels" title="Permalink to this headline">#</a></h2>
 <p>首先，我们简单看看模型输入输出以及模型结构，如下图所示，左边是数据集数据情况，右边是模型的基本结构，中间深蓝色箭头表示哪些数据以什么形式送入模型中。</p>
 <p>CAMELS数据集包含的流域层面数据有径流数据、流域平均的气象时间序列数据和流域平均的气候地理属性数据；</p>
 <p>其中，属性数据也能为建模提供帮助（可以参考Kratzert等另一篇文章 <span id="id2">[<a class="reference internal" href="../citations.html#id8" title="F. Kratzert, D. Klotz, G. Shalev, G. Klambauer, S. Hochreiter, and G. Nearing. Towards learning universal, regional, and local hydrological behaviors via machine learning applied to large-sample datasets. Hydrology and Earth System Sciences, 23(12):5089–5110, 2019. URL: https://hess.copernicus.org/articles/23/5089/2019/, doi:10.5194/hess-23-5089-2019.">KKS+19</a>]</span>），因为LSTM接受的是时序输入，所以需要把它们复制到每个时段和其他时序输入拼接在一起后送入LSTM模型；径流数据就在训练中用于和模型输出比较计算损失函数值。</p>
@@ -701,37 +702,12 @@ title="Print to PDF"
 <p><img alt="" src="../_images/LSTM-CAMELS.png" /></p>
 </section>
 <section id="camels">
-<h2>获取CAMELS数据<a class="headerlink" href="#camels" title="Permalink to this headline">#</a></h2>
+<h2>2 获取CAMELS数据<a class="headerlink" href="#camels" title="Permalink to this headline">#</a></h2>
 <p>在开始正式实现LSTM-CAMELS之前，我们需要先获取CAMELS数据，为了方便大家使用CAMELS数据，我们已经将数据下载到平台服务器了，并且打包了读取CAMELS数据的代码，还将其内置在目前的python环境下了，所以我们现在直接写一些简单的调用代码就能读取CAMELS数据了。</p>
 <p>因为我们的包还不知道下载的CAMELS数据集在哪，所以开始前需要设置一个配置文件，运行以下代码即可：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-
-<span class="n">hydrodataset_setting_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;.hydrodataset&quot;</span><span class="p">)</span>
-<span class="n">hydrodataset_setting_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">hydrodataset_setting_file</span> <span class="o">=</span> <span class="n">hydrodataset_setting_dir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;settings.txt&quot;</span><span class="p">)</span>
-<span class="n">hydrodataset_setting_file</span><span class="o">.</span><span class="n">touch</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">sys_root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span>
-<span class="n">hydrodataset_setting_file</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sys_root_dir</span><span class="p">,</span> <span class="s2">&quot;ftproot&quot;</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
-</pre></div>
-</div>
-</div>
-</div>
-<p>接下来我们就可以试试读取CAMELS数据集了</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hydrodataset.camels</span> <span class="kn">import</span> <span class="n">Camels</span>
-
-<span class="n">camels_us_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;camels&quot;</span><span class="p">,</span> <span class="s2">&quot;camels_us&quot;</span><span class="p">)</span>
-<span class="n">us_region</span> <span class="o">=</span> <span class="s2">&quot;US&quot;</span>
-<span class="n">camels_us</span> <span class="o">=</span> <span class="n">Camels</span><span class="p">(</span><span class="n">camels_us_path</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">us_region</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hydrodataset</span>
 </pre></div>
 </div>
 </div>
@@ -748,15 +724,13 @@ title="Print to PDF"
 <span class="ne">-&gt; </span><span class="mi">1288</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_accessor</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1289</span> <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
 
-<span class="ne">PermissionError</span>: [Errno 13] Permission denied: &#39;/ftproot&#39;
+<span class="ne">PermissionError</span>: [Errno 13] Permission denied: &#39;/data/hydrodataset&#39;
 
 <span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
 
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">hydrodataset.camels</span> <span class="kn">import</span> <span class="n">Camels</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">camels_us_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;camels&quot;</span><span class="p">,</span> <span class="s2">&quot;camels_us&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">us_region</span> <span class="o">=</span> <span class="s2">&quot;US&quot;</span>
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">hydrodataset</span>
 
 <span class="n">File</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">tutorial</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">hydrodataset</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">39</span>
 <span class="g g-Whitespace">     </span><span class="mi">36</span>         <span class="n">hydrodataset_root_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -772,6 +746,32 @@ title="Print to PDF"
 <span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="n">ROOT_DIR</span> <span class="o">=</span> <span class="n">hydrodataset_root_dir</span>
 
 <span class="ne">TypeError</span>: can only concatenate str (not &quot;PosixPath&quot;) to str
+</pre></div>
+</div>
+</div>
+</div>
+<p>接下来，我们需要手动修改这个配置文件，让后续代码知道CAMELS数据在哪，如果你在前面<a class="reference external" href="https://iheadwater.github.io/iheadwater_hackweek_tutorials/chp2_file_formats/chp2.3_raster_data.html">第二章</a>有跟着一起操作，那这里就不用再做什么了，否则需要跟着下面的内容一起操作。</p>
+<p>在平台jupyterlab首页打开终端，然后输入以下命令打开hydrodataset配置文件：</p>
+<div class="highlight-Shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 进入配置文件所在文件夹</span>
+<span class="nb">cd</span> ~/.hydrodataset
+<span class="c1"># 使用vim打开配置文件</span>
+vim settings.txt
+</pre></div>
+</div>
+<p>打开后，按“i”键，将vim编辑器调整至INSERT模式，如下图所示：</p>
+<p><img alt="" src="../_images/vim_insert.png" /></p>
+<p>然后输入和上图中一样的内容，即 <code class="docutils literal notranslate"><span class="pre">/ftproot</span></code>，ftproot是我们在服务器上放置公共数据的默认文件夹，处理好的CAMELS数据集文件都在这个文件夹下面。</p>
+<p>然后再按“:”（注意是英文输入法下的冒号）进入命令模式，然后输入“wq”并按回车键，就能写入（即保存）并退出了。</p>
+<p><img alt="" src="../_images/vim_wq.png" /></p>
+<p>接下来我们就可以试试读取CAMELS数据集了</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">hydrodataset.camels</span> <span class="kn">import</span> <span class="n">Camels</span>
+
+<span class="n">camels_us_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;camels&quot;</span><span class="p">,</span> <span class="s2">&quot;camels_us&quot;</span><span class="p">)</span>
+<span class="n">us_region</span> <span class="o">=</span> <span class="s2">&quot;US&quot;</span>
+<span class="n">camels_us</span> <span class="o">=</span> <span class="n">Camels</span><span class="p">(</span><span class="n">camels_us_path</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">us_region</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1269,7 +1269,7 @@ Data variables:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;time&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/chp8.1_run_in_jupyter_14_1.png" src="../_images/chp8.1_run_in_jupyter_14_1.png" />
+<img alt="../_images/chp8.1_run_in_jupyter_15_1.png" src="../_images/chp8.1_run_in_jupyter_15_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1862,7 +1862,7 @@ Attributes:
 </div>
 </section>
 <section id="pytorchlstm-camels">
-<h2>PyTorch实现LSTM-CAMELS<a class="headerlink" href="#pytorchlstm-camels" title="Permalink to this headline">#</a></h2>
+<h2>3 PyTorch实现LSTM-CAMELS<a class="headerlink" href="#pytorchlstm-camels" title="Permalink to this headline">#</a></h2>
 <p>接下来，我们使用PyTorch来具体实现该模型，本节代码重点参考了：<a class="reference external" href="https://github.com/kratzert/pangeo_lstm_example/blob/master/LSTM_for_rainfall_runoff_modelling.ipynb">kratzert/pangeo_lstm_example</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1896,7 +1896,7 @@ Attributes:
 </div>
 </div>
 <section id="pytorch-datasetdataloadercamels">
-<h3>用PyTorch Dataset与Dataloader组织CAMELS数据<a class="headerlink" href="#pytorch-datasetdataloadercamels" title="Permalink to this headline">#</a></h3>
+<h3>3.1 用PyTorch Dataset与Dataloader组织CAMELS数据<a class="headerlink" href="#pytorch-datasetdataloadercamels" title="Permalink to this headline">#</a></h3>
 <p>首先，构建读取CAMELS数据集数据的PyTorch Dataset和Dataloader.</p>
 <p>模型训练时，会将样本分成一系列小批次（mini-batch），并使用随机梯度下降类算法完成各小批次的梯度下降计算。在计算机中执行运算时，每批次的输入数据会被组织成样本-时段-变量的三维数组，即tensor。其中，第一维的长度表示从总体样本中随机选择出的一部分样本的数目，即批次大小；第二维的长度表示LSTM的时序变量时段长度，训练中该长度是固定的；第三维代表各类型的输入变量。例如，数据集总流域数是100个，训练时间总长是1000天，变量共10种，一个批次时段长选择100天，则总样本数量就是100 *（1000-100+1），如果每个批次中包含从总样本中随机抽取的10个样本，那么每个样本就是数据量为100天*10个变量的二维张量，一个批次就是数据量为10*100*10的张量。</p>
 <p>Dataset和DataLoader就是处理这些内容的。</p>
@@ -2059,9 +2059,8 @@ Attributes:
 </div>
 </div>
 </section>
-</section>
 <section id="id4">
-<h2>搭建LSTM模型<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<h3>3.2 搭建LSTM模型<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <p>借助已有的神经网络模块，在PyTorch中实现一个深度学习模型是比较简单的。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2104,8 +2103,10 @@ Attributes:
 </div>
 </div>
 </div>
+</section>
+</section>
 <section id="id5">
-<h3>训练模型<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<h2>4 训练模型<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
 <p>训练用的主函数</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2840,9 +2841,8 @@ Data variables:
 </div>
 </div>
 </section>
-</section>
 <section id="id6">
-<h2>评价模型<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<h2>5 评价模型<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
 <p>最后，我们来看看如何评价模型</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2896,8 +2896,8 @@ Data variables:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/chp8.1_run_in_jupyter_46_0.png" src="../_images/chp8.1_run_in_jupyter_46_0.png" />
-<img alt="../_images/chp8.1_run_in_jupyter_46_1.png" src="../_images/chp8.1_run_in_jupyter_46_1.png" />
+<img alt="../_images/chp8.1_run_in_jupyter_47_0.png" src="../_images/chp8.1_run_in_jupyter_47_0.png" />
+<img alt="../_images/chp8.1_run_in_jupyter_47_1.png" src="../_images/chp8.1_run_in_jupyter_47_1.png" />
 </div>
 </div>
 </section>

@@ -186,6 +186,11 @@ const thebe_selector_output = ".output, .cell_output"
      地理空间数据–栅格
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp2_file_formats/chp2.4_your_data.html">
+     在平台上上传下载数据
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -581,95 +586,61 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   常用数据结构
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#list">
-   list[]列表
+   1 list[]列表
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#python">
-     1. 什么是 Python 列表
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id2">
-       1.1 Python 列表中的项目可以使用索引进行子集处理
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id3">
-       1.2 列表索引
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     2. 如何创建列表
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     1.1 如何创建列表
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#len">
-     2.1 使用len()打印列表的长度
+     1.2 使用len()打印列表的长度
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     1.3 访问存储在列表中的对象：索引
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     1.4 更新（替换）列表中的项目
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     3. 访问存储在列表中的对象：索引
+     1.5 将项目插入列表
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     4. 更新（替换）列表中的项目
+     1.6 从列表中删除项目
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     5. 将项目插入列表
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id8">
-     6. 从列表中删除项目
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
-     7. 将项目附加到列表
+     1.7 将项目附加到列表
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dict">
-   dict{} 字典
+   2 dict{} 字典
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tuple">
-   tuple() 元组
+   3 tuple() 元组
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id10">
-     “可变的”tuple
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id11">
-     练习
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#set">
-   set() 集合
+   4 set() 集合
   </a>
  </li>
 </ul>
@@ -691,95 +662,61 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   常用数据结构
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#list">
-   list[]列表
+   1 list[]列表
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#python">
-     1. 什么是 Python 列表
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id2">
-       1.1 Python 列表中的项目可以使用索引进行子集处理
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id3">
-       1.2 列表索引
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     2. 如何创建列表
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     1.1 如何创建列表
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#len">
-     2.1 使用len()打印列表的长度
+     1.2 使用len()打印列表的长度
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     1.3 访问存储在列表中的对象：索引
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     1.4 更新（替换）列表中的项目
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     3. 访问存储在列表中的对象：索引
+     1.5 将项目插入列表
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     4. 更新（替换）列表中的项目
+     1.6 从列表中删除项目
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     5. 将项目插入列表
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id8">
-     6. 从列表中删除项目
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
-     7. 将项目附加到列表
+     1.7 将项目附加到列表
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dict">
-   dict{} 字典
+   2 dict{} 字典
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tuple">
-   tuple() 元组
+   3 tuple() 元组
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id10">
-     “可变的”tuple
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id11">
-     练习
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#set">
-   set() 集合
+   4 set() 集合
   </a>
  </li>
 </ul>
@@ -794,28 +731,18 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>常用数据结构<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="list">
-<h1>list[]列表<a class="headerlink" href="#list" title="Permalink to this headline">#</a></h1>
-<section id="python">
-<h2>1. 什么是 Python 列表<a class="headerlink" href="#python" title="Permalink to this headline">#</a></h2>
+<section id="list">
+<h2>1 list[]列表<a class="headerlink" href="#list" title="Permalink to this headline">#</a></h2>
 <p><strong>Python</strong>列表是一种数据结构，它以指定的顺序 (或序列) 存储值或对象的集合。<strong>Python</strong>列表的一些特征有：</p>
 <ul class="simple">
 <li><p>它们是可变的，这意味着它们可以被改变或更新。</p></li>
 <li><p><strong>Python</strong>列表可以存储不同类型的对象和不同的数据类型。因此，例如一个列表可以包含 <code class="docutils literal notranslate"><span class="pre">int</span></code>、<code class="docutils literal notranslate"><span class="pre">float</span></code> 和 <code class="docutils literal notranslate"><span class="pre">str</span></code> 值的混合。一个列表还可以包含子列表、数组和其它<strong>Python</strong>数据结构。</p></li>
 <li><p><strong>Python</strong>列表是用<strong>方括号</strong>创建的，对象用<strong>逗号</strong>分隔,像这样<code class="docutils literal notranslate"> <span class="pre">[1,2,3]</span></code></p></li>
 </ul>
-<section id="id2">
-<h3>1.1 Python 列表中的项目可以使用索引进行子集处理<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
-<p>列表中的每个值都被称为一个项目。由于列表是按指定顺序排列的项的序列，所以列表中每个项的位置或顺序号都有一个标签。这个顺序标签被称为<strong>索引</strong>。<strong>索引</strong>允许列表是可迭代的，这意味着可以按照项目在列表对象中出现的顺序访问列表中的每个项目。</p>
-</section>
-<section id="id3">
-<h3>1.2 列表索引<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<p>列表中的每个值都被称为一项。由于列表是按指定顺序排列的项的序列，所以列表中每个项的位置或顺序号都有一个标签。这个顺序标签被称为<strong>索引</strong>。<strong>索引</strong>允许列表是可迭代的，这意味着可以按照项目在列表对象中出现的顺序访问列表中的每个项目。</p>
 <p>可以在 <strong>Python</strong> 中使用一个索引值来访问列表中的对象。默认情况下，Python 的索引总是从 <code class="docutils literal notranslate"><span class="pre">[0]</span></code> 开始，而不是 <code class="docutils literal notranslate"><span class="pre">[1]</span></code>。因此，Python 列表中的第一个项目有一个索引 <code class="docutils literal notranslate"><span class="pre">[0]</span></code>，列表中的第二个项目有一个索引 <code class="docutils literal notranslate"><span class="pre">[1]</span></code>，以此类推，可以使用一个项的索引来访问它的值。例如，使用索引 <code class="docutils literal notranslate"><span class="pre">[1]</span></code> 来获取以下列表中第 2 项 <code class="docutils literal notranslate"><span class="pre">(0.75)</span></code> 的值 <code class="docutils literal notranslate"><span class="pre">[0.70,</span> <span class="pre">0.75,</span> <span class="pre">1.85]</span></code>。</p>
-</section>
-</section>
-<section id="id4">
-<h2>2. 如何创建列表<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<section id="id2">
+<h3>1.1 如何创建列表<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <p>用以下语法创建Python列表：<code class="docutils literal notranslate"><span class="pre">list_name</span> <span class="pre">=</span> <span class="pre">[item_1,</span> <span class="pre">item_2,</span> <span class="pre">item_3]</span></code></p>
 <p>这些值（列表中的项目）括在方括号<code class="docutils literal notranslate"><span class="pre">[]</span></code>内，并使用逗号相互分隔。还可以创建<code class="docutils literal notranslate"><span class="pre">str</span></code>值列表，使用引号将各个文本字符串括起来<code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>即可</p>
 <div class="cell docutils container">
@@ -862,7 +789,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="len">
-<h2>2.1 使用len()打印列表的长度<a class="headerlink" href="#len" title="Permalink to this headline">#</a></h2>
+<h3>1.2 使用len()打印列表的长度<a class="headerlink" href="#len" title="Permalink to this headline">#</a></h3>
 <p>要有效地使用列表索引，了解列表的长度会很有帮助。在这种情况下，长度是指列表中存储了多少项目。可以使用<code class="docutils literal notranslate"><span class="pre">len()</span></code>函数通过将列表的名称作为参数或输入来查询长度，如下所示：<code class="docutils literal notranslate"><span class="pre">len(list_name)</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -889,12 +816,12 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="id5">
-<h2>3. 访问存储在列表中的对象：索引<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<section id="id3">
+<h3>1.3 访问存储在列表中的对象：索引<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <p>上诉提及索引，大家尝试索引<code class="docutils literal notranslate"><span class="pre">months</span></code>列表的第三个值吧。如果想索引最后一个值，可以用<code class="docutils literal notranslate"><span class="pre">-1</span></code>做索引，例如<code class="docutils literal notranslate"><span class="pre">months[-1]</span></code>，查看一下是不是<code class="docutils literal notranslate"><span class="pre">months</span></code>最后一个值吧。以此类推，可以获取倒数第2个、倒数第3个，<code class="docutils literal notranslate"><span class="pre">months[-2]</span></code> <code class="docutils literal notranslate"><span class="pre">months[-3]</span></code>,当然倒数第4个就越界了</p>
 </section>
-<section id="id6">
-<h2>4. 更新（替换）列表中的项目<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<section id="id4">
+<h3>1.4 更新（替换）列表中的项目<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <p>除了查询值之外，我们还可以使用列表索引来更新列表中的项目，方法是为该索引位置分配一个新值，例如：<code class="docutils literal notranslate"><span class="pre">months[index]</span> <span class="pre">=</span> <span class="pre">value</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -910,8 +837,8 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="id7">
-<h2>5. 将项目插入列表<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<section id="id5">
+<h3>1.5 将项目插入列表<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
 <p>还可以使用列表索引将新项目插入到列表中，方法是指定新值位于哪个索引位置，如：<code class="docutils literal notranslate"><span class="pre">list_name.insert(0,</span> <span class="pre">value)</span></code></p>
 <p>下面示例中，月份列表不完整，并且将<strong>一月的值</strong>插入到列表的<strong>开头</strong>，如下：</p>
 <div class="cell docutils container">
@@ -958,8 +885,8 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="id8">
-<h2>6. 从列表中删除项目<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
+<section id="id6">
+<h3>1.6 从列表中删除项目<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
 <p>可以使用<code class="docutils literal notranslate"><span class="pre">del</span></code>语句从现有列表中删除不需要的项目： <code class="docutils literal notranslate"><span class="pre">del</span> <span class="pre">list_name[index]</span></code></p>
 <p>在使用列表索引修改列表之前，最好检查一下列表的长度</p>
 <div class="cell docutils container">
@@ -1005,8 +932,8 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="id9">
-<h2>7. 将项目附加到列表<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
+<section id="id7">
+<h3>1.7 将项目附加到列表<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
 <p>要在列表的<strong>末尾</strong>添加一个项目，可以使用与列表相关的 <code class="docutils literal notranslate"><span class="pre">.append()</span> </code>函数。调用这个方法向列表中添加数值:<code class="docutils literal notranslate"><span class="pre">listname.append(value)</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1051,8 +978,8 @@ title="Print to PDF"
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="dict">
-<h1>dict{} 字典<a class="headerlink" href="#dict" title="Permalink to this headline">#</a></h1>
+<section id="dict">
+<h2>2 dict{} 字典<a class="headerlink" href="#dict" title="Permalink to this headline">#</a></h2>
 <p><strong>Python</strong>内置了字典：<code class="docutils literal notranslate"><span class="pre">dict</span></code>的支持，<code class="docutils literal notranslate"><span class="pre">dict</span></code>全称<code class="docutils literal notranslate"><span class="pre">dictionary</span></code>，使用<code class="docutils literal notranslate"><span class="pre">{}</span></code>与<strong>键-值</strong>（<code class="docutils literal notranslate"><span class="pre">key-value</span></code>）存储，具有极快的查找速度。</p>
 <p>举个例子，假设要根据同学的名字查找对应的成绩，如果用<code class="docutils literal notranslate"><span class="pre">list</span></code>实现，需要两个<code class="docutils literal notranslate"><span class="pre">list</span></code>：</p>
 <div class="cell docutils container">
@@ -1228,8 +1155,8 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="tuple">
-<h1>tuple() 元组<a class="headerlink" href="#tuple" title="Permalink to this headline">#</a></h1>
+<section id="tuple">
+<h2>3 tuple() 元组<a class="headerlink" href="#tuple" title="Permalink to this headline">#</a></h2>
 <p>另一种有序列表叫元组：<code class="docutils literal notranslate"><span class="pre">tuple</span></code>。<code class="docutils literal notranslate"><span class="pre">tuble</span></code>用的是小括号<code class="docutils literal notranslate"><span class="pre">()</span></code>。<code class="docutils literal notranslate"><span class="pre">tuple</span></code>和<code class="docutils literal notranslate"><span class="pre">list</span></code>非常类似，但是<code class="docutils literal notranslate"><span class="pre">tuple</span></code>一旦初始化就不能修改，比如列出同学的名字:<code class="docutils literal notranslate"><span class="pre">classmates</span> <span class="pre">=</span> <span class="pre">('Michael',</span> <span class="pre">'Bob',</span> <span class="pre">'Tracy')</span></code></p>
 <p>现在，<code class="docutils literal notranslate"><span class="pre">classmates</span></code>这个<code class="docutils literal notranslate"><span class="pre">tuple</span></code>不能变了，它也没有<code class="docutils literal notranslate"><span class="pre">append()</span></code>，<code class="docutils literal notranslate"><span class="pre">insert()</span></code>这样的方法。其他获取元素的方法和<code class="docutils literal notranslate"><span class="pre">list</span></code>是一样的，我们可以正常地使用<code class="docutils literal notranslate"><span class="pre">classmates[0]</span></code>，<code class="docutils literal notranslate"><span class="pre">classmates[-1]</span></code>，但<strong>不能赋值</strong>成另外的元素。</p>
 <p><strong>不可变的tuple有什么意义？</strong></p>
@@ -1263,8 +1190,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<section id="id10">
-<h2>“可变的”tuple<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h2>
+<p><strong>“可变的”tuple</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">])</span>
@@ -1283,9 +1209,7 @@ title="Print to PDF"
 <p>这个<code class="docutils literal notranslate"><span class="pre">tuple</span></code>定义的时候有3个元素，分别是<code class="docutils literal notranslate"><span class="pre">'a'</span></code>，<code class="docutils literal notranslate"><span class="pre">'b'</span></code>和一个list。不是说<code class="docutils literal notranslate"><span class="pre">tuple</span></code>一旦定义后就不可变了吗？怎么后来又变了？</p>
 <p>当我们把<code class="docutils literal notranslate"><span class="pre">list</span></code>的元素<code class="docutils literal notranslate"><span class="pre">'A'</span></code>和<code class="docutils literal notranslate"><span class="pre">'B'</span></code>修改为<code class="docutils literal notranslate"><span class="pre">'X'和'Y'</span></code>后，表面上看，<code class="docutils literal notranslate"><span class="pre">tuple</span></code>的元素确实变了，但其实变的不是<code class="docutils literal notranslate"><span class="pre">tuple</span></code>的元素，而是<code class="docutils literal notranslate"><span class="pre">list</span></code>的元素。所以，<code class="docutils literal notranslate"><span class="pre">tuple</span></code>所谓的“不变”是说，<code class="docutils literal notranslate"><span class="pre">tuple</span></code>的每个元素，指向永远不变。即指向<code class="docutils literal notranslate"><span class="pre">'a'</span></code>，就不能改成指向<code class="docutils literal notranslate"><span class="pre">'b'</span></code>，指向一个<code class="docutils literal notranslate"><span class="pre">list</span></code>，就不能改成指向其他对象，但指向的这个<code class="docutils literal notranslate"><span class="pre">list</span></code>本身是可变的！</p>
 <p>理解了“指向不变”后，要创建一个内容也不变的<code class="docutils literal notranslate"><span class="pre">tuple</span></code>怎么做？那就必须保证<code class="docutils literal notranslate"><span class="pre">tuple</span></code>的每一个元素本身也不能变。</p>
-</section>
-<section id="id11">
-<h2>练习<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h2>
+<p><strong>练习</strong></p>
 <p>请用索引取出下面<code class="docutils literal notranslate"><span class="pre">list</span></code>的指定元素：</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span>L = [
     [&#39;Apple&#39;, &#39;Google&#39;, &#39;Microsoft&#39;],
@@ -1307,9 +1231,8 @@ print(?)
 </pre></div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="set">
-<h1>set() 集合<a class="headerlink" href="#set" title="Permalink to this headline">#</a></h1>
+<section id="set">
+<h2>4 set() 集合<a class="headerlink" href="#set" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">set</span></code>和<code class="docutils literal notranslate"><span class="pre">dict</span></code>类似，也是一组<code class="docutils literal notranslate"><span class="pre">key</span></code>的集合，但不存储<code class="docutils literal notranslate"><span class="pre">value</span></code>。由于<code class="docutils literal notranslate"><span class="pre">key</span></code>不能重复，所以，在<code class="docutils literal notranslate"><span class="pre">set</span></code>中，没有重复的<code class="docutils literal notranslate"><span class="pre">key</span></code>。</p>
 <p>要创建一个set，需要提供一个list作为输入集合：</p>
 <div class="cell docutils container">
@@ -1398,6 +1321,7 @@ print(?)
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">set</span></code>和<code class="docutils literal notranslate"><span class="pre">dict</span></code>的唯一区别仅在于没有存储对应的<code class="docutils literal notranslate"><span class="pre">value</span></code>，但是，<code class="docutils literal notranslate"><span class="pre">set</span></code>的原理和<code class="docutils literal notranslate"><span class="pre">dict</span></code>一样，所以，同样不可以放入可变对象，因为无法判断两个可变对象是否相等，也就无法保证<code class="docutils literal notranslate"><span class="pre">set</span></code>内部“不会有重复元素”。试试把<code class="docutils literal notranslate"><span class="pre">list</span></code>放入<code class="docutils literal notranslate"><span class="pre">set</span></code>，看看是否会报错。</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

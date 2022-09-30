@@ -17,11 +17,7 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-from hydrodataset.camels import Camels
-
-camels_us_path = os.path.join("camels", "camels_us")
-us_region = "US"
-camels_us = Camels(camels_us_path, region=us_region)
+import hydrodataset
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
@@ -36,15 +32,13 @@ File [0;32m/usr/share/miniconda/envs/tutorial/lib/python3.8/pathlib.py:1288[0m
 [0;32m-> 1288[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_accessor[49m[38;5;241;43m.[39;49m[43mmkdir[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mmode[49m[43m)[49m
 [1;32m   1289[0m [38;5;28;01mexcept[39;00m [38;5;167;01mFileNotFoundError[39;00m:
 
-[0;31mPermissionError[0m: [Errno 13] Permission denied: '/ftproot'
+[0;31mPermissionError[0m: [Errno 13] Permission denied: '/data/hydrodataset'
 
 During handling of the above exception, another exception occurred:
 
 [0;31mTypeError[0m                                 Traceback (most recent call last)
-Cell [0;32mIn [2], line 1[0m
-[0;32m----> 1[0m [38;5;28;01mfrom[39;00m [38;5;21;01mhydrodataset[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcamels[39;00m [38;5;28;01mimport[39;00m Camels
-[1;32m      3[0m camels_us_path [38;5;241m=[39m os[38;5;241m.[39mpath[38;5;241m.[39mjoin([38;5;124m"[39m[38;5;124mcamels[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mcamels_us[39m[38;5;124m"[39m)
-[1;32m      4[0m us_region [38;5;241m=[39m [38;5;124m"[39m[38;5;124mUS[39m[38;5;124m"[39m
+Cell [0;32mIn [1], line 1[0m
+[0;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mhydrodataset[39;00m
 
 File [0;32m/usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/hydrodataset/__init__.py:39[0m
 [1;32m     36[0m         hydrodataset_root_dir[38;5;241m.[39mmkdir(parents[38;5;241m=[39m[38;5;28;01mTrue[39;00m)

@@ -186,6 +186,11 @@ const thebe_selector_output = ".output, .cell_output"
      地理空间数据–栅格
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp2_file_formats/chp2.4_your_data.html">
+     在平台上上传下载数据
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -586,6 +591,11 @@ title="Print to PDF"
    快速了解Tensor
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#autograd">
+   autograd自动求导
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -610,6 +620,11 @@ title="Print to PDF"
    快速了解Tensor
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#autograd">
+   autograd自动求导
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -623,16 +638,10 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="pytorchtensor">
 <h1>PyTorch中的Tensor基础<a class="headerlink" href="#pytorchtensor" title="Permalink to this headline">#</a></h1>
 <p>PyTorch的tensor和Numpy的Array，Pandas的Series和Dataframe类似，是了解应用这些代码库的基础，这里首先简单快速地了解Tensor及其在PyTorch的作用。</p>
-<p>主要参考：</p>
-<ul class="simple">
-<li><p>TENSORS</p></li>
-<li><p>Speed Up your Algorithms Part 1 — PyTorch</p></li>
-<li><p>PyTorch 101, Part 1: Understanding Graphs, Automatic Differentiation and Autograd</p></li>
-</ul>
 <section id="tensor">
 <h2>快速了解Tensor<a class="headerlink" href="#tensor" title="Permalink to this headline">#</a></h2>
-<p>pytorch作为NumPy的替代品，可以利用GPU的性能进行计算；可作为一个高灵活性、速度快的深度学习平台。</p>
-<p>Tensor（张量）类似于NumPy的ndarray，但还可以在GPU上使用来加速计算。因此经常看到把numpy的数组包装为tensor再运算。tensor的操作和numpy中的数组操作类似，不再赘述，详见官网。下面列举一些简单例子。首先pytorch的导入是import torch，因为torch一直都是那个torch，一开始是别的语言写的，现在在python下，所以就叫pytorch。</p>
+<p>pytorch作为NumPy的替代品，可以利用GPU进行计算，是一个高灵活性、高效率的深度学习工具箱。</p>
+<p>Tensor（张量）类似于NumPy的ndarray，但还可以在GPU上使用来加速计算。因此经常能看到把numpy的数组包装为tensor再运算。tensor的操作和numpy中的数组操作类似，详见官网。下面列举一些简单例子。首先pytorch的导入是import torch，因为torch一直都是那个torch，一开始是别的语言写的，现在在python下，所以就叫pytorch。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
@@ -643,99 +652,133 @@ title="Print to PDF"
 <p>Tensor是pytorch的基本数据类型：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="c1"># 如果想要从tensor中获取到长度的int数据</span>
-<span class="nb">type</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 构建一个 5x3 的矩阵, 未初始化的:</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># 我们经常会联合numpy使用torch，例如这里初始化0到4的张量</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">x</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[2.1715e-18, 1.6410e-07, 2.5964e+20],
-        [4.3248e-05, 2.6660e-09, 3.4181e-06],
-        [2.1252e-07, 1.6616e+22, 1.0547e-08],
-        [1.0751e-05, 5.1972e-08, 2.1707e-18],
-        [1.6678e+19, 7.0976e+22, 2.1715e-18]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([0., 1., 2., 3., 4.])
 </pre></div>
 </div>
 </div>
 </div>
-<p>由此可见，PyTorch提供了Tensor，其在概念上与 numpy 数组相同，也是一个n维数组, 不过PyTorch 提供了很多能在这些 Tensor 上操作的函数。</p>
-<p>任何numpy 数组的操作都可以在 PyTorch Tensor 上开展。另外不像 numpy, PyTorch Tensor 可以利用 GPU 加速他们的数字计算。</p>
-<p>要在 GPU 上运行 PyTorch 张量, 只需将其转换为新的数据类型. 下面就像以往的 numpy 例子一样, 将 PyTorch Tensor 生成的随机数据传入双层的神经网络, 手动实现网络的正向传播和反向传播:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-
-<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
-<span class="c1"># device = torch.device(&#39;cuda&#39;) # Uncomment this to run on GPU</span>
-
-<span class="c1"># N is batch size; D_in is input dimension;</span>
-<span class="c1"># H is hidden dimension; D_out is output dimension.</span>
-<span class="n">N</span><span class="p">,</span> <span class="n">D_in</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">D_out</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span>
-
-<span class="c1"># Create random input and output data</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">D_in</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">D_out</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
-
-<span class="c1"># Randomly initialize weights</span>
-<span class="n">w1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">D_in</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
-<span class="n">w2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">D_out</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
-
-<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">1e-6</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-    <span class="c1"># Forward pass: compute predicted y</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">w1</span><span class="p">)</span>
-    <span class="n">h_relu</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">h_relu</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">w2</span><span class="p">)</span>
-
-    <span class="c1"># Compute and print loss; loss is a scalar, and is stored in a PyTorch Tensor</span>
-    <span class="c1"># of shape (); we can get its value as a Python number with loss.item().</span>
-    <span class="n">loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_pred</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
-
-    <span class="c1"># Backprop to compute gradients of w1 and w2 with respect to loss</span>
-    <span class="n">grad_y_pred</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">y_pred</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span>
-    <span class="n">grad_w2</span> <span class="o">=</span> <span class="n">h_relu</span><span class="o">.</span><span class="n">t</span><span class="p">()</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">grad_y_pred</span><span class="p">)</span>
-    <span class="n">grad_h_relu</span> <span class="o">=</span> <span class="n">grad_y_pred</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">w2</span><span class="o">.</span><span class="n">t</span><span class="p">())</span>
-    <span class="n">grad_h</span> <span class="o">=</span> <span class="n">grad_h_relu</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
-    <span class="n">grad_h</span><span class="p">[</span><span class="n">h</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">grad_w1</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">t</span><span class="p">()</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">grad_h</span><span class="p">)</span>
-
-    <span class="c1"># Update weights using gradient descent</span>
-    <span class="n">w1</span> <span class="o">-=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">grad_w1</span>
-    <span class="n">w2</span> <span class="o">-=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">grad_w2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 构建一个 5x3 的张量:</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">x</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 25342770.0
-1 19825776.0
-2 17693592.0
-3 16532603.0
-4 15027916.0
-5 12913870.0
-6 10238876.0
-7 7621871.0
-8 5367573.5
-9 3700286.75
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.,  1.,  2.],
+        [ 3.,  4.,  5.],
+        [ 6.,  7.,  8.],
+        [ 9., 10., 11.],
+        [12., 13., 14.]])
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 和numpy一样的广播功能</span>
+<span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 1.,  2.,  3.],
+        [ 4.,  5.,  6.],
+        [ 7.,  8.,  9.],
+        [10., 11., 12.],
+        [13., 14., 15.]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>PyTorch提供了Tensor，其在概念上与 numpy 数组相同，也是一个n维数组, PyTorch 也提供了很多能在这些 Tensor 上操作的函数，类似于Numpy上的函数</p>
+<p>但tensor还拥有一个numpy数组没有的功能，就是autograd自动求导，这在构建神经网络时非常重要。关于autograd的介绍可以参考Pytorch的官方文档：<a class="reference external" href="https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html#:~:text=Conceptually%2C%20autograd%20keeps%20a%20record%20of%20data%20%28tensors%29,the%20input%20tensors%2C%20roots%20are%20the%20output%20tensors.">A GENTLE INTRODUCTION TO TORCH.AUTOGRAD</a>，这里我们简单谈谈其中的关键点</p>
+</section>
+<section id="autograd">
+<h2>autograd自动求导<a class="headerlink" href="#autograd" title="Permalink to this headline">#</a></h2>
+<p>通过前面几个<a class="reference external" href="https://space.bilibili.com/88461692/channel/seriesdetail?sid=1528929">B站上3Blue1Brown讲解神经网络原理的视频</a>，大家可以了解到神经网络的前向计算和反向传播过程，其中的梯度计算在PyTorch中就是由autograd来帮助实现的。</p>
+<p>可以说在PyTorch中，所有神经网络实现的核心就是autograd。autograd 为张量上的所有运算都提供了自动求导机制。</p>
+<p>torch.Tensor 是其核心类。如果设置它的属性 .requires_grad 为 True，那么它将会追踪对于该张量的所有运算。当完成计算后可以通过调用 .backward() 来自动计算所有梯度，并自动计入到.grad属性中</p>
+<p>还有一个类对于autograd的实现非常重要：Function。Tensor 和 Function 互相连接生成了一个有向无环图(directed acyclic graph)，就是一个树状的数据结构，它记录了完整的计算历史，这样沿着整个图，根据链式法则，就能计算梯度。Function记录在tensor中，对应其 grad_fn 属性。用户直接创建的tensor的grad_fn 是None，即新建一个tensor，它是没有grad_fn的。</p>
+<p>举个例子：构造一个tensor，设置requires_grad=True来收集梯度信息。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([2., 3.], requires_grad=True)
+</pre></div>
+</div>
+</div>
+</div>
+<p>这个tensor参与一个简单函数计算</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">a</span><span class="o">**</span><span class="mi">3</span>
+<span class="n">q</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([24., 81.], grad_fn=&lt;MulBackward0&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>可以注意到q是一个计算结果，且它有grad_fn属性。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchviz</span> <span class="kn">import</span> <span class="n">make_dot</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">make_dot</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/chp7.1_tensor_13_0.svg" src="../_images/chp7.1_tensor_13_0.svg" /></div>
+</div>
+<p>蓝色叶节点就是输入张量，绿色根节点是输出张量，灰色中间计算结果张量每一步都会被记录下来，并且有对应grad_fn</p>
+<p>现在我们简单看下反向传播</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">external_grad</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">])</span>
+<span class="n">q</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">gradient</span><span class="o">=</span><span class="n">external_grad</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">9</span><span class="o">*</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="n">a</span><span class="o">.</span><span class="n">grad</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([True, True])
+</pre></div>
+</div>
+</div>
+</div>
+<p>可以看到，q关于a的梯度是正确的。</p>
+<p>此外，为了阻止跟踪历史，可以使用 <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">torch.no_grad():</span></code> 包裹代码块，例如评价模型时，我们不要再训练模型，这时候就很有用，后面我们有一个完整实例。</p>
 <p>综上：</p>
 <ul class="simple">
 <li><p>在PyTorch中，torch.Tensor是存储和变换数据的主要工具。</p></li>

@@ -186,6 +186,11 @@ const thebe_selector_output = ".output, .cell_output"
      地理空间数据–栅格
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp2_file_formats/chp2.4_your_data.html">
+     在平台上上传下载数据
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -592,8 +597,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dataloader-dataloaderiter">
-   DataLoader 与 DataLoaderIter
+  <a class="reference internal nav-link" href="#dataloader">
+   Dataloader
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   总结
   </a>
  </li>
 </ul>
@@ -626,8 +636,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dataloader-dataloaderiter">
-   DataLoader 与 DataLoaderIter
+  <a class="reference internal nav-link" href="#dataloader">
+   Dataloader
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   总结
   </a>
  </li>
 </ul>
@@ -642,17 +657,19 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="datasetdataloader">
 <h1>Dataset和DataLoader简介<a class="headerlink" href="#datasetdataloader" title="Permalink to this headline">#</a></h1>
-<p>根据网上查的资料总结下dataset，dataloader等的用法。参考资料有：<a class="reference external" href="https://zhuanlan.zhihu.com/p/30934236">Pytorch数据读取(Dataset, DataLoader, DataLoaderIter)</a>,<a class="reference external" href="https://www.cnblogs.com/marsggbo/p/11308889.html">一文弄懂Pytorch的DataLoader, DataSet, Sampler之间的关系</a>,<a class="reference external" href="https://www.pytorchtutorial.com/pytorch-custom-dataset-examples/">PyTorch 中自定义数据集的读取方法小结</a></p>
-<p>首先在使用Pytorch构建和训练模型的过程中，经常需要把原始数据（图片、文本等）转换为张量的格式。对于小数据集，我们可以手动导入，但是在深度学习中，数据集往往是比较大的，这时pytorch的数据导入功能便发挥了作用，Pytorch导入数据主要依靠 torch.utils.data.DataLoader和 torch.utils.data.Dataset这两个类来完成，并采用以下步骤完成最终的数据读取。</p>
+<p>在使用Pytorch构建和训练模型的过程中，经常需要把原始数据（文本格式数据等）转换为张量的格式，这时pytorch的数据导入功能便能发挥作用。</p>
+<p>Pytorch导入数据主要依靠 torch.utils.data.DataLoader和 torch.utils.data.Dataset这两个类来完成，并采用以下步骤完成最终的数据读取。</p>
 <section id="pytorchpipline">
 <h2>pytorch输入数据pipline“三步走”策略<a class="headerlink" href="#pytorchpipline" title="Permalink to this headline">#</a></h2>
+<p>这里主要引用了这篇blog的内容：<a class="reference external" href="https://blog.csdn.net/loveliuzz/article/details/108756253">https://blog.csdn.net/loveliuzz/article/details/108756253</a></p>
 <p>一般pytorch的数据加载到模型的操作顺序如下：</p>
-<p>1、创建一个 Dataset 对象，必须实现 <strong>len</strong>() ，<strong>getitem</strong>() 两个方法，会用到 transform 对数据进行扩充；</p>
-<p>2、创建一个 DataLoader 对象，对 Dataset 对象进行迭代的，一般不需要事先实现里面其他方法了；</p>
-<p>3、循环遍历DataLoader对象，将img，label 加载到模型中训练。</p>
-<p>注：采样器Sampler、Dataset、DataLoader 这三个类均在 torch.utils.data 中定义，简介代码如下：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torch.utils.data.sampler</span> <span class="kn">import</span> <span class="n">Sampler</span>
-<span class="kn">from</span> <span class="nn">torch.utils.data.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<ol class="simple">
+<li><p>创建一个 Dataset 对象，必须实现 __len__() ，__getitem__() 两个方法；</p></li>
+<li><p>创建一个 DataLoader 对象，对 Dataset 对象进行迭代的，一般不需要事先实现里面其他方法了；</p></li>
+<li><p>循环遍历DataLoader对象，将样本数据加载到模型中训练。</p></li>
+</ol>
+<p>注：Dataset、DataLoader 均在 torch.utils.data 中定义，使用它们的时候代码会有如下形式：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torch.utils.data.dataset</span> <span class="kn">import</span> <span class="n">Dataset</span>
 <span class="kn">from</span> <span class="nn">torch.utils.data.dataloader</span> <span class="kn">import</span> <span class="n">DataLoader</span>
  
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">MyDataset</span><span class="p">()</span> <span class="c1"># 第一步：构建 Dataset 对象</span>
@@ -665,7 +682,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>数据集遍历一般化流程：</p>
-<p><img alt="image.png" src="chp7_intro_to_pytorch/attachment:ac320d14-609f-4d32-a052-745f8b4fc10e.png" /></p>
+<p><img alt="" src="../_images/pytorch_data2.png" /></p>
 <p>for i, data in enumerate(dataloader):  会调用dataloader 的 <strong>iter</strong>() 方法，产生了一个DataLoaderIter（迭代器），这里判断使用单线程还是多线程，调用 DataLoaderIter 的 <strong>next</strong>() 方法来得到 batch data 。在__next__() 方法中使用 __next_index()方法调用sampler（采样器）获得index索引，接着通过 Dataset_fetcher 的 fetch() 方法根据index（索引）调用dataset的 <strong>getitem</strong>() 方法，然后用 collate_fn 把它们打包成batch。当数据读完后， <strong>next</strong>() 抛出一个 StopIteration 异常，for循环结束，dataloader 失效。</p>
 </section>
 <section id="dataset">
@@ -688,7 +705,7 @@ title="Print to PDF"
 </div>
 </div>
 <p>可以看到，img是模型训练的输入数据，label是模型训练的输出数据。</p>
-<p>第二个比较简单, 就是返回整个数据集的长度，比如：</p>
+<p>第二个比较简单, 就是返回整个数据集所有样本的个数，比如：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -698,8 +715,8 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="dataloader-dataloaderiter">
-<h2>DataLoader 与 DataLoaderIter<a class="headerlink" href="#dataloader-dataloaderiter" title="Permalink to this headline">#</a></h2>
+<section id="dataloader">
+<h2>Dataloader<a class="headerlink" href="#dataloader" title="Permalink to this headline">#</a></h2>
 <p>torch.utils.data.DataLoader类定义为:</p>
 <p>class torch.utils.data.DataLoader(dataset, batch_size=1, shuffle=False, sampler=None, batch_sampler=None, num_workers=0, collate_fn=<function default_collate>, pin_memory=False, drop_last=False)</p>
 <p>可以看到, 主要参数有这么几个:</p>
@@ -709,16 +726,14 @@ title="Print to PDF"
 <li><p>num_worker: 非常简单的多线程方法, 只要设置为&gt;=1, 就可以多线程预读数据啦.</p></li>
 </ul>
 <p>这个类一共干了两件事:</p>
-<p>定义了一堆成员变量, 到时候赋给torch.utils.data.dataloader.DataLoaderIter
-然后有一个iter() 函数, 把自己 “装进” DataLoaderIter 里面.</p>
-<p>def <strong>iter</strong>(self):
-return DataLoaderIter(self)</p>
-<p>现在再自上而下理解下，首先看看 DataLoaderIter.next 的源码：</p>
+<p>定义了一堆成员变量, 到时候赋给torch.utils.data.dataloader.DataLoaderIter 然后有一个iter() 函数, 把自己 “装进” DataLoaderIter 里面.</p>
+<p>def iter(self): return DataLoaderIter(self)</p>
+<p>首先我们看一下DataLoader.__next__的源代码长什么样,为方便理解我只选取了num_works为0的情况（num_works简单理解就是能够并行化地读取数据）。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DataLoaderIter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DataLoader</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="o">...</span>
-
+    
     <span class="k">def</span> <span class="fm">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_workers</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  
             <span class="n">indices</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_iter</span><span class="p">)</span>  <span class="c1"># Sampler</span>
@@ -730,13 +745,26 @@ return DataLoaderIter(self)</p>
 </div>
 </div>
 </div>
-<p>稍微解读下这段代码：</p>
-<p>首先 indices = next(self.sample_iter) 这句，假设我们的数据是一组图像，每一张图像对应一个index，那么如果我们要读取数据就只需要对应的index即可，即代码中的indices,而选取index的方式有多种，有按顺序的，也有乱序的，所以这个工作需要Sampler完成，所以DataLoader和Sampler在这里产生了关系。说白点，就是sampler去选择要哪些数据，假如指定了shuffle=True，那就不必再自己定义sampler了，就是直接打乱取样了，indices就会被shuffle好的。</p>
-<p>然后Dataset和DataLoader在什么时候产生关系呢？就是这句：“batch = self.collate_fn([self.dataset[i] for i in indices]) # Dataset”。[self.dataset[i] for i in indices] 将选中的数据集拼到一个list里面，然后利用 collate_fn 将这个list的数据组织成想要的 batch 的形式。collate_fn 可以使用默认的，也可以自己写一个。default_collate （在torch.utils.data._utils.collate.py中） 注释是：r”””Puts each data field into a tensor with outer dimension batch size””” ， 也就是说batch_size 是最外部的维度。</p>
+<p>在阅读上面代码前，我们可以假设我们的数据是一组图像，每一张图像对应一个index，那么如果我们要读取数据就只需要对应的index即可，即上面代码中的indices，而选取index的方式有多种，有按顺序的，也有乱序的，所以这个工作需要Sampler完成，具体的细节如果我们不重写新函数就不用管。</p>
+<p>然后Dataset和DataLoader在什么时候产生关系呢？就是我们已经拿到了indices，那么下一步我们只需要根据index对数据进行读取即可了。</p>
+<p>再下面的if语句的作用简单理解就是，如果pin_memory=True,那么Pytorch会采取一系列操作把数据拷贝到GPU，总之就是为了加速。</p>
 <p>所以有这样的关系图：</p>
-<p><img alt="image.png" src="chp7_intro_to_pytorch/attachment:3a79b0be-cae3-421d-842b-f578738e06a3.png" /></p>
-<p>综上，Dataset和DatasetLoader及数据集切分的基本使用流程如下：</p>
-<p><img alt="image.png" src="chp7_intro_to_pytorch/attachment:1ec49a3f-84cb-4a08-8715-0daa14116d5b.png" /></p>
+<p><img alt="" src="../_images/pytorch_data1.jpg" /></p>
+<p>最后，Dataset和DatasetLoader及数据集切分的基本使用流程如下：</p>
+<p><img alt="" src="../_images/pytorch_data.png" /></p>
+</section>
+<section id="id1">
+<h2>总结<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Dataset是一个抽象类，需要派生一个子类构造数据集，需要改写的方法有__init__，__getitem__等。</p></li>
+<li><p>DataLoader是一个迭代器，方便我们访问Dataset里的对象</p></li>
+</ul>
+<p>如果大家对以上内容感兴趣，接下来这里有些根据网上查的资料总结下的dataset，dataloader等的用法可供大家参考。</p>
+<p>参考资料有：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://zhuanlan.zhihu.com/p/30934236">Pytorch数据读取(Dataset, DataLoader, DataLoaderIter)</a></p></li>
+<li><p><a class="reference external" href="https://www.cnblogs.com/marsggbo/p/11308889.html">一文弄懂Pytorch的DataLoader, DataSet, Sampler之间的关系</a></p></li>
+</ul>
 </section>
 </section>
 

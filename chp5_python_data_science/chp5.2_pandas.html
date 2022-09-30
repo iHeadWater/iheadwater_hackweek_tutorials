@@ -186,6 +186,11 @@ const thebe_selector_output = ".output, .cell_output"
      地理空间数据–栅格
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp2_file_formats/chp2.4_your_data.html">
+     在平台上上传下载数据
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -581,56 +586,39 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Pandas 简介
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pandas-dataframe">
-   2 认识 pandas dataframe
+   1 认识 pandas dataframe
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     2.1 什么是pandas dataframe
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     2.2 pandas dataframe 的特征
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   2 pandas dataframe 的特征
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   3 pandas dataframe 可以用来做什么
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     2.3 pandas dataframe 快速绘图
+     3.1 读取数据
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#csvpandas-dataframe">
-   3 将CSV文件导入pandas dataframe
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   4 使用 pandas dataframe 描述性统计
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     3.2 简单运算
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     4.1 求和
+     3.3 快速绘图
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#std">
-     4.2 std()求标准差
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     4.3 数据汇总描述
+     3.4 pandas dataframe 数据索引
     </a>
    </li>
   </ul>
@@ -654,56 +642,39 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Pandas 简介
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pandas-dataframe">
-   2 认识 pandas dataframe
+   1 认识 pandas dataframe
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     2.1 什么是pandas dataframe
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     2.2 pandas dataframe 的特征
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   2 pandas dataframe 的特征
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   3 pandas dataframe 可以用来做什么
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     2.3 pandas dataframe 快速绘图
+     3.1 读取数据
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#csvpandas-dataframe">
-   3 将CSV文件导入pandas dataframe
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   4 使用 pandas dataframe 描述性统计
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     3.2 简单运算
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     4.1 求和
+     3.3 快速绘图
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#std">
-     4.2 std()求标准差
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     4.3 数据汇总描述
+     3.4 pandas dataframe 数据索引
     </a>
    </li>
   </ul>
@@ -721,206 +692,811 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="pandas">
 <h1>Pandas 简介<a class="headerlink" href="#pandas" title="Permalink to this headline">#</a></h1>
 <p>Pandas，是 python+data+analysis 的组合缩写，是 python 中基于 numpy 和 matplotlib 的第三方数据分析库，与后两者共同构成了 python 数据分析的基础工具包，享有数分三剑客之名。</p>
-<p>我们知道，构建和处理二维、多维数组是一项繁琐的任务。Pandas 为解决这一问题，在ndarray 数组（numpy 中的数组）的基础上构建出了两种不同的数据结构，分别是 Series（一维数据结构） Pandas dataframe （二维数据结构）：</p>
-<p>Series 是带标签的一维数组，这里的标签可以理解为索引，但这个索引并不局限于整数，它也可以是字符类型，比如 a、b、c 等；而 Pandas dataframe 是一种表格型数据结构，它既有行标签，又有列标签。在本节，我们主要介绍 pandas dataframe。</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="pandas-dataframe">
-<h1>2 认识 pandas dataframe<a class="headerlink" href="#pandas-dataframe" title="Permalink to this headline">#</a></h1>
-<section id="id1">
-<h2>2.1 什么是pandas dataframe<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
-<p>pandas dataframe  一个表格型的数据结构，既有行标签（index），又有列标签（columns），它也被称异构数据表，所谓异构，指的是表格中每列的数据类型可以不同，比如可以是字符串、整型或者浮点型等。pandas dataframe 中每个值都称为一个单元格，该单元格在表格结构中具有特定的行索引和列索引。</p>
-</section>
-<section id="id2">
-<h2>2.2 pandas dataframe 的特征<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
-<p>pandas dataframe 的每一行数据都可以看成一个 Series 结构，只不过，pandas dataframe 为这些行中每个数据值增加了一个列标签。并且 pandas dataframe 具有其独特的特征，使其与其他数据结构区分开来：
-（1）pandas dataframe 中的每个列都可以有一个标签名称（即标题名称），并且可以包含与其相邻列不同的数据类型。<br />
-（2）默认情况下，每行都有一个索引，其值范围从0开始。但是，pandas dataframe 中的行索引也可以设置为标签（例如位置名称，日期）。pandas dataframe 中的所有单元格都具有行索引和列索引（即二维表结构），即使pandas dataframe 中只有一个单元格（即值）也是如此。<br />
-（3）除了通过基于位置索引选择单元格（例如，第 1 行第 1 列的单元格）之外，我们还可以根据特定值（例如，查询特定文本字符串或数值）在 pandas dataframe 内查询数据。<br />
-（4）由于其固有的表格结构，pandas 数据帧还允许单元格具有空值（即没有数据值，例如空格，-999 等）。</p>
-</section>
-<section id="id3">
-<h2>2.3 pandas dataframe 快速绘图<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
-<p>Pandas 在数据分析、数据可视化方面有着较为广泛的应用，Pandas 对 Matplotlib 绘图软件包的基础上单独封装了一个 plot() 接口，通过调用该接口可以实现常用的绘图操作。因此我们可以直接调用该接口。下面看一组简单的示例：</p>
+<p>我们知道，构建和处理二维、多维数组是一项繁琐的任务。Pandas 为解决这一问题，在ndarray 数组（numpy 中的数组）的基础上构建出了两种不同的数据结构，分别是 Series（一维数据结构）, Pandas dataframe （二维数据结构）：</p>
+<p>Series 是带标签的一维数组，这里的标签可以理解为索引，但这个索引并不局限于整数，它也可以是字符类型，比如 a、b、c 等；而 Pandas dataframe 是一种表格型数据结构，它既有行标签，又有列标签，基本可以把它当作一个excel表格。</p>
+<p>Series比较简单，例如下面这样，可以认为它是excel的一列，有行标签。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入pandas</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1"># numpy经常和pandas一起使用</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="c1">#创建包含时间序列的数据</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;2/1/2020&#39;</span><span class="p">,</span><span class="n">periods</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;ABCD&#39;</span><span class="p">))</span>
-<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 初始化Series</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="s2">&quot;an element in pd.Series&quot;</span><span class="p">})</span>
+<span class="n">k</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
-</pre></div>
-</div>
-<img alt="../_images/chp5.2_pandas_5_1.png" src="../_images/chp5.2_pandas_5_1.png" />
-</div>
-</div>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="csvpandas-dataframe">
-<h1>3 将CSV文件导入pandas dataframe<a class="headerlink" href="#csvpandas-dataframe" title="Permalink to this headline">#</a></h1>
-<p>在处理较大的数据集时，我们需要直接将数据从 <em>.csv</em>文件导入 pandas dataframe。</p>
-<p>在 pandas 中用于读取文本的函数有两个，分别是： read_csv() 和 read_table() ，它们能够自动地将表格数据转换为 DataFrame 对象。</p>
-<p>其中 read_csv 的语法格式，如下：</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-<span class="n">header</span><span class="o">=</span><span class="s1">&#39;infer&#39;</span><span class="p">,</span><span class="n">names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">header</span><span class="o">=</span><span class="s1">&#39;infer&#39;</span><span class="p">,</span><span class="n">names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;pandas&#39; is not defined
-</pre></div>
-</div>
-</div>
-</div>
-<p>下面，新建一个 txt 文件，并添加以下数据：</p>
-<p>将 txt 文件另存为 person.csv 文件格式，直接修改文件扩展名即可。接下来，对此文件进行操作。</p>
-<p>read_csv() 表示从 CSV 文件中读取数据，并创建 DataFrame 对象。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="c1">#需要注意文件的路径</span>
-<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;C:/Users/Administrator/Desktop/person.csv&quot;</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id4">
-<h1>4 使用 pandas dataframe 描述性统计<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h1>
-<p>从描述统计学角度出发，我们可以对 DataFrame 结构执行聚合计算等其他操作，比如 sum() 求和、mean()求均值等方法。
-在 DataFrame 中，使用聚合类方法时需要指定轴(axis)参数。下面介绍两种传参方式：
-对行操作，默认使用 axis=0 或者使用 “index”；
-对列操作，默认使用 axis=1 或者使用 “columns”。</p>
-<p>创建一个 DataFrame 结构，如下所示：</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="c1">#创建字典型series结构</span>
-<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;小明&#39;</span><span class="p">,</span><span class="s1">&#39;小亮&#39;</span><span class="p">,</span><span class="s1">&#39;小红&#39;</span><span class="p">,</span><span class="s1">&#39;小华&#39;</span><span class="p">,</span><span class="s1">&#39;老赵&#39;</span><span class="p">,</span><span class="s1">&#39;小曹&#39;</span><span class="p">,</span><span class="s1">&#39;小陈&#39;</span><span class="p">,</span>
-   <span class="s1">&#39;老李&#39;</span><span class="p">,</span><span class="s1">&#39;老王&#39;</span><span class="p">,</span><span class="s1">&#39;小冯&#39;</span><span class="p">,</span><span class="s1">&#39;小何&#39;</span><span class="p">,</span><span class="s1">&#39;老张&#39;</span><span class="p">]),</span>
-   <span class="s1">&#39;Age&#39;</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">29</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">51</span><span class="p">,</span><span class="mi">46</span><span class="p">]),</span>
-   <span class="s1">&#39;Rating&#39;</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">4.23</span><span class="p">,</span><span class="mf">3.24</span><span class="p">,</span><span class="mf">3.98</span><span class="p">,</span><span class="mf">2.56</span><span class="p">,</span><span class="mf">3.20</span><span class="p">,</span><span class="mf">4.6</span><span class="p">,</span><span class="mf">3.8</span><span class="p">,</span><span class="mf">3.78</span><span class="p">,</span><span class="mf">2.98</span><span class="p">,</span><span class="mf">4.80</span><span class="p">,</span><span class="mf">4.10</span><span class="p">,</span><span class="mf">3.65</span><span class="p">])</span>
-<span class="p">}</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Name  Age  Rating
-0    小明   25    4.23
-1    小亮   26    3.24
-2    小红   25    3.98
-3    小华   23    2.56
-4    老赵   30    3.20
-5    小曹   29    4.60
-6    小陈   23    3.80
-7    老李   34    3.78
-8    老王   40    2.98
-9    小冯   30    4.80
-10   小何   51    4.10
-11   老张   46    3.65
-</pre></div>
-</div>
-</div>
-</div>
-<section id="id5">
-<h2>4.1 求和<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
-<p>在默认情况下，返回 axis=0 的所有值的和。示例如下：</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="c1">#创建字典型series结构</span>
-<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;小明&#39;</span><span class="p">,</span><span class="s1">&#39;小亮&#39;</span><span class="p">,</span><span class="s1">&#39;小红&#39;</span><span class="p">,</span><span class="s1">&#39;小华&#39;</span><span class="p">,</span><span class="s1">&#39;老赵&#39;</span><span class="p">,</span><span class="s1">&#39;小曹&#39;</span><span class="p">,</span><span class="s1">&#39;小陈&#39;</span><span class="p">,</span>
-   <span class="s1">&#39;老李&#39;</span><span class="p">,</span><span class="s1">&#39;老王&#39;</span><span class="p">,</span><span class="s1">&#39;小冯&#39;</span><span class="p">,</span><span class="s1">&#39;小何&#39;</span><span class="p">,</span><span class="s1">&#39;老张&#39;</span><span class="p">]),</span>
-   <span class="s1">&#39;Age&#39;</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">29</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">51</span><span class="p">,</span><span class="mi">46</span><span class="p">]),</span>
-   <span class="s1">&#39;Rating&#39;</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">4.23</span><span class="p">,</span><span class="mf">3.24</span><span class="p">,</span><span class="mf">3.98</span><span class="p">,</span><span class="mf">2.56</span><span class="p">,</span><span class="mf">3.20</span><span class="p">,</span><span class="mf">4.6</span><span class="p">,</span><span class="mf">3.8</span><span class="p">,</span><span class="mf">3.78</span><span class="p">,</span><span class="mf">2.98</span><span class="p">,</span><span class="mf">4.80</span><span class="p">,</span><span class="mf">4.10</span><span class="p">,</span><span class="mf">3.65</span><span class="p">])</span>
-<span class="p">}</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-<span class="c1">#默认axis=0或者使用sum(&quot;index&quot;)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name      小明小亮小红小华老赵小曹小陈老李老王小冯小何老张
-Age                            382
-Rating                       44.92
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a               [1, 2, 3, 4]
+b    an element in pd.Series
 dtype: object
 </pre></div>
 </div>
 </div>
 </div>
-<p>注意：sum() 和 cumsum() 函数可以同时处理数字和字符串数据。虽然字符聚合通常不被使用，但使用这两个函数并不会抛出异常；而对于 abs()、cumprod() 函数则会抛出异常，因为它们无法操作字符串数据。</p>
+<p>在本节，我们主要介绍 pandas dataframe，了解了它就基本知道pandas的基础用法了。</p>
+<section id="pandas-dataframe">
+<h2>1 认识 pandas dataframe<a class="headerlink" href="#pandas-dataframe" title="Permalink to this headline">#</a></h2>
+<p>pandas dataframe 是一个表格型的数据结构，既有行标签（index），又有列标签（columns），它也被称异构数据表，所谓异构，指的是表格中每列的数据类型可以不同，比如可以是字符串、整型或者浮点型等。pandas dataframe 中每个值都称为一个单元格，该单元格在表格结构中具有特定的行索引和列索引。</p>
 </section>
-<section id="std">
-<h2>4.2 std()求标准差<a class="headerlink" href="#std" title="Permalink to this headline">#</a></h2>
-<p>返回数值列的标准差，示例如下：</p>
+<section id="id1">
+<h2>2 pandas dataframe 的特征<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>pandas dataframe 的每一列数据都可以看成一个 Series 结构，pandas dataframe 为每列数据都设置了列标签，每行数据也可以有行标签。</p>
+<p>pandas dataframe 具有其独特的特征，使其与其他数据结构区分开来：</p>
+<ol class="simple">
+<li><p>pandas dataframe 中的每个列都可以有一个标签名称（即标题名称），并且可以包含与其相邻列不同的数据类型。</p></li>
+<li><p>默认情况下，每行都有一个索引，其值范围从0开始。但是，pandas dataframe 中的行索引也可以设置为标签（例如位置名称，日期）。pandas dataframe 中的所有单元格都具有行索引和列索引（即二维表结构），即使pandas dataframe 中只有一个单元格也是如此。</p></li>
+<li><p>除了通过基于位置索引选择单元格（例如，第 1 行第 1 列的单元格）之外，我们还可以根据特定值（例如，查询特定文本字符串或数值）在 pandas dataframe 内查询数据。</p></li>
+<li><p>由于其固有的表格结构，pandas 数据帧还允许单元格具有空值（即没有数据值，例如NaN值，即Not a Number，-999 等）。</p></li>
+</ol>
+</section>
+<section id="id2">
+<h2>3 pandas dataframe 可以用来做什么<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<section id="id3">
+<h3>3.1 读取数据<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<p>read_csv() 表示从 CSV 文件中读取数据，并创建 DataFrame 对象。<br />
+关于文件读取时，文件路径怎么书写，我们在前边的章节以及学习过了，就不再赘述。<br />
+注：我们在本小节用来示例的csv文件为同一个，是一个网络数据文件。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
-<span class="c1"># 计算总体标准差</span>
-<span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1">#需要注意文件的路径</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://ndownloader.figshare.com/files/12710618&#39;</span><span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.301162633521313
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>months</th>
+      <th>precip</th>
+      <th>seasons</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Jan</td>
+      <td>0.70</td>
+      <td>Winter</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Feb</td>
+      <td>0.75</td>
+      <td>Winter</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Mar</td>
+      <td>1.85</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Apr</td>
+      <td>2.93</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>May</td>
+      <td>3.05</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>June</td>
+      <td>2.02</td>
+      <td>Summer</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>July</td>
+      <td>1.93</td>
+      <td>Summer</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Aug</td>
+      <td>1.62</td>
+      <td>Summer</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Sept</td>
+      <td>1.84</td>
+      <td>Fall</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Oct</td>
+      <td>1.31</td>
+      <td>Fall</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Nov</td>
+      <td>1.39</td>
+      <td>Fall</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Dec</td>
+      <td>0.84</td>
+      <td>Winter</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>查看数据内容</strong><br />
+当数据量很大时我们可以选择查看 pandas dataframe 的某几行，此功能对于无法在 Jupyter  Notebook 中轻松显示的大型数据集非常有用。
+例如读取上述文件前面五行：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>months</th>
+      <th>precip</th>
+      <th>seasons</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Jan</td>
+      <td>0.70</td>
+      <td>Winter</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Feb</td>
+      <td>0.75</td>
+      <td>Winter</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Mar</td>
+      <td>1.85</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Apr</td>
+      <td>2.93</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>May</td>
+      <td>3.05</td>
+      <td>Spring</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>描述数据类型</strong><br />
+pandas dataframe中，利用<em>info()</em> 方法可以返回表格的一些基本信息。例如：输出行数，列数，列名以及数据类型等。
+下面我们来看一个实例：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 12 entries, 0 to 11
+Data columns (total 3 columns):
+ #   Column   Non-Null Count  Dtype  
+---  ------   --------------  -----  
+ 0   months   12 non-null     object 
+ 1   precip   12 non-null     float64
+ 2   seasons  12 non-null     object 
+dtypes: float64(1), object(2)
+memory usage: 416.0+ bytes
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="id6">
-<h2>4.3 数据汇总描述<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
-<p>describe() 函数显示与 DataFrame 数据列相关的统计信息摘要。示例如下：</p>
+<section id="id4">
+<h3>3.2 简单运算<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<p>从描述统计角度出发，我们可以对 DataFrame 结构执行聚合计算等其他操作。
+<em>sum、mean、count、max、min</em> 这五个函数属于最常用的几个函数。</p>
+<p>示例：对precip列求平均值</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;precip&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.6858333333333333
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>数值进行排序</strong></p>
+<p>我们在 numpy 数组小节中介绍过如何识别最大值，最小值，但是要是用在本节的示例文件，使用numpy我们不能使降水与月份产生联系，但是使用 pandas dataframe 我们可以使数据按降序排序，以查找最大值及其对应的月份。</p>
+<p>下面是示例:</p>
+<p>可以看出降水量最大的月份是五月。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sorted</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;precip&quot;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># by指定按哪列排序。ascending表示是否升序</span>
+<span class="n">df_sorted</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>months</th>
+      <th>precip</th>
+      <th>seasons</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>4</th>
+      <td>May</td>
+      <td>3.05</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Apr</td>
+      <td>2.93</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>June</td>
+      <td>2.02</td>
+      <td>Summer</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>July</td>
+      <td>1.93</td>
+      <td>Summer</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Mar</td>
+      <td>1.85</td>
+      <td>Spring</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="id5">
+<h3>3.3 快速绘图<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<p>下一节我们会使用matplotlib绘图，但是用pandas提供的绘图工具能更快地帮助我们初步可视化数据，这里是一个简单的示例：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;小明&#39;</span><span class="p">,</span><span class="s1">&#39;小亮&#39;</span><span class="p">,</span><span class="s1">&#39;小红&#39;</span><span class="p">,</span><span class="s1">&#39;小华&#39;</span><span class="p">,</span><span class="s1">&#39;老赵&#39;</span><span class="p">,</span><span class="s1">&#39;小曹&#39;</span><span class="p">,</span><span class="s1">&#39;小陈&#39;</span><span class="p">,</span>
-   <span class="s1">&#39;老李&#39;</span><span class="p">,</span><span class="s1">&#39;老王&#39;</span><span class="p">,</span><span class="s1">&#39;小冯&#39;</span><span class="p">,</span><span class="s1">&#39;小何&#39;</span><span class="p">,</span><span class="s1">&#39;老张&#39;</span><span class="p">]),</span>
-   <span class="s1">&#39;Age&#39;</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">29</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">51</span><span class="p">,</span><span class="mi">46</span><span class="p">]),</span>
-   <span class="s1">&#39;Rating&#39;</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">4.23</span><span class="p">,</span><span class="mf">3.24</span><span class="p">,</span><span class="mf">3.98</span><span class="p">,</span><span class="mf">2.56</span><span class="p">,</span><span class="mf">3.20</span><span class="p">,</span><span class="mf">4.6</span><span class="p">,</span><span class="mf">3.8</span><span class="p">,</span><span class="mf">3.78</span><span class="p">,</span><span class="mf">2.98</span><span class="p">,</span><span class="mf">4.80</span><span class="p">,</span><span class="mf">4.10</span><span class="p">,</span><span class="mf">3.65</span><span class="p">])</span>
-<span class="p">}</span>
-<span class="c1">#创建DataFrame对象</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-<span class="c1">#求出数据的所有描述信息</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;months&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;precip&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             Age     Rating
-count  12.000000  12.000000
-mean   31.833333   3.743333
-std     9.232682   0.661628
-min    23.000000   2.560000
-25%    25.000000   3.230000
-50%    29.500000   3.790000
-75%    35.500000   4.132500
-max    51.000000   4.800000
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;months&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/chp5.2_pandas_18_1.png" src="../_images/chp5.2_pandas_18_1.png" />
+</div>
+</div>
+</section>
+<section id="id6">
+<h3>3.4 pandas dataframe 数据索引<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<p>pandas dataframe 中有两种索引方式：<strong>基于位置索引</strong>和<strong>基于标签索引</strong>。</p>
+<p>一个 DataFrame 对象表示一个电子表格，带有单元格值、列名和行索引标签。因此，该结构支持使用索引选择数据，例如选择在某在行和列交点的位置标识的单个单元格。我们还可以使用特定标签（如列名称）从 pandas 数据帧中选择数据，而无需知道该数据在 pandas 数据帧中的位置。</p>
+<p><strong>（1）基于标签的索引</strong></p>
+<p>pandas dataframe 也可以使用基于标签的索引进行查询，此功能非常有用，因为我们可以使用要用于组织和查询数据的特定列（即标签）为 pandas dataframe 创建索引。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">&lt;</span><span class="n">row</span> <span class="n">selection</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">column</span> <span class="n">selection</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>当通过标签索引的切片方式来筛选数据时，它的取值前闭后闭，也就是只包括边界值标签（开始和结束）。</p>
+<p><strong>（2）基于位置索引</strong></p>
+<p>我们可以使用基于位置的索引来查询 pandas dataframe 中的数据，并提供行和列选择作为范围(即沿行和列的开始和停止位置)。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">&lt;</span><span class="n">row</span> <span class="n">selection</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">column</span> <span class="n">selection</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>通过整数索引切片选择数据时，前闭后开(不包含边界结束值)。同 python 和 numpy 一样，它们的索引都是从 0 开始。</p>
+<p><strong>（3）筛选数据</strong></p>
+<p>除了使用索引之外，我们还可以通过查询满足特定条件的值来选择或筛选 pandas dataframe中的数据。例如，我们可以使用以下命令根据列中的特定值选择 pandas 数据帧中的数据：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataframe</span><span class="p">[</span><span class="n">dataframe</span><span class="p">[</span><span class="s2">&quot;column&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">value</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>这将返回指定列中包含该值的所有行。</p>
+<p>下面是例子。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 接下来要索引的数据</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>months</th>
+      <th>precip</th>
+      <th>seasons</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Jan</td>
+      <td>0.70</td>
+      <td>Winter</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Feb</td>
+      <td>0.75</td>
+      <td>Winter</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Mar</td>
+      <td>1.85</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Apr</td>
+      <td>2.93</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>May</td>
+      <td>3.05</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>June</td>
+      <td>2.02</td>
+      <td>Summer</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>July</td>
+      <td>1.93</td>
+      <td>Summer</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Aug</td>
+      <td>1.62</td>
+      <td>Summer</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Sept</td>
+      <td>1.84</td>
+      <td>Fall</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Oct</td>
+      <td>1.31</td>
+      <td>Fall</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Nov</td>
+      <td>1.39</td>
+      <td>Fall</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Dec</td>
+      <td>0.84</td>
+      <td>Winter</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>示例1：索引第二行的值，行标签是“1”</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>months        Feb
+precip       0.75
+seasons    Winter
+Name: 1, dtype: object
 </pre></div>
 </div>
 </div>
 </div>
-<p>describe() 函数输出了平均值、std 和 IQR 值(四分位距)等一系列统计信息。通过 describe() 提供的 include 能够筛选字符列或者数字列的摘要信息。</p>
+<p><strong>示例2：读取第二列的值</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="p">:</span> <span class="p">,</span><span class="s2">&quot;months&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      Jan
+1      Feb
+2      Mar
+3      Apr
+4      May
+5     June
+6     July
+7      Aug
+8     Sept
+9      Oct
+10     Nov
+11     Dec
+Name: months, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>示例3: 读取第1行到第2行，第2列到第3列的值</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="s2">&quot;months&quot;</span><span class="p">:</span><span class="s2">&quot;precip&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>months</th>
+      <th>precip</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Feb</td>
+      <td>0.75</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Mar</td>
+      <td>1.85</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Apr</td>
+      <td>2.93</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Pandas中的 iloc 是用基于整数的下标来进行数据定位/选择</p>
+<p>iloc 在 pandas 中是用来通过数字来选择数据中具体的某些行和列。你可以设想每一行都有一个对应的下标（0,1,2，…)，通过 iloc 我们可以利用这些下标去选择相应的行数据。同理，对于行也一样，想象每一列也有对应的下标(0,1,2,…),通过这些下标也可以选择相应的列数据。我们可以选择具体的某行某列，也可以行列混合选择。</p>
+<p><strong>示例4：读取第2行,第2列的值</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.75
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>示例5：进行切片操作</strong></p>
+<p>按 index 和 columns 进行切片操作，读取第2、3行，第2、3列</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>precip</th>
+      <th>seasons</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.75</td>
+      <td>Winter</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.85</td>
+      <td>Spring</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>使用特定值筛选数据</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataframe</span><span class="p">[</span><span class="n">dataframe</span><span class="p">[</span><span class="s2">&quot;column&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">value</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>将返回指定列中包含该值的所有行。</p>
+<p><strong>示例6：筛选出 precip 大于 2mm 的数据</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;precip&quot;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>months</th>
+      <th>precip</th>
+      <th>seasons</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>Apr</td>
+      <td>2.93</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>May</td>
+      <td>3.05</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>June</td>
+      <td>2.02</td>
+      <td>Summer</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>示例7：筛选出夏季的数据</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;seasons&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Summer&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>months</th>
+      <th>precip</th>
+      <th>seasons</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>June</td>
+      <td>2.02</td>
+      <td>Summer</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>July</td>
+      <td>1.93</td>
+      <td>Summer</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Aug</td>
+      <td>1.62</td>
+      <td>Summer</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>示例8：使用筛选出来的值生成一个新的 dataframe</strong>
+我们可以通过将输出设置为等于筛选器的输出，将输出保存到新的数据帧。
+示例：筛选一月的数值保存到新的数据帧</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;months&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Jan&quot;</span><span class="p">]</span>
+<span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>months</th>
+      <th>precip</th>
+      <th>seasons</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Jan</td>
+      <td>0.7</td>
+      <td>Winter</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Pandas也有很多功能，这里也无法一一介绍，大家初步了解即可，更多内容在实际用到的时候再查就行：<a class="reference external" href="https://www.pypandas.cn/docs/">Pandas中文网</a>、<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/index.html">官方用户手册</a>以及 <a class="reference external" href="https://www.yiibai.com/pandas">Pandas教程</a></p>
+</section>
 </section>
 </section>
 

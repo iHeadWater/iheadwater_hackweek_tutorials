@@ -17,18 +17,22 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-#For each list in lists, print attribute shape
-for dlist in lists:
-    print(dlist.shape)
+class Linear(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.lin = nn.Linear(784, 10)
+
+    def forward(self, xb):
+        return self.lin(xb)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mAttributeError[0m                            Traceback (most recent call last)
-Cell [0;32mIn [6], line 3[0m
-[1;32m      1[0m [38;5;66;03m#For each list in lists, print attribute shape[39;00m
-[1;32m      2[0m [38;5;28;01mfor[39;00m dlist [38;5;129;01min[39;00m lists:
-[0;32m----> 3[0m     [38;5;28mprint[39m(dlist[38;5;241m.[39mshape)
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn [10], line 1[0m
+[0;32m----> 1[0m [38;5;28;01mclass[39;00m [38;5;21;01mLinear[39;00m(nn[38;5;241m.[39mModule):
+[1;32m      2[0m     [38;5;28;01mdef[39;00m [38;5;21m__init__[39m([38;5;28mself[39m):
+[1;32m      3[0m         [38;5;28msuper[39m()[38;5;241m.[39m[38;5;21m__init__[39m()
 
-[0;31mAttributeError[0m: 'list' object has no attribute 'shape'
-AttributeError: 'list' object has no attribute 'shape'
+[0;31mNameError[0m: name 'nn' is not defined
+NameError: name 'nn' is not defined
 

@@ -186,6 +186,11 @@ const thebe_selector_output = ".output, .cell_output"
      地理空间数据–栅格
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp2_file_formats/chp2.4_your_data.html">
+     在平台上上传下载数据
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -590,13 +595,6 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#python-for">
    2. 在 Python 中创建 For 循环
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#for">
-     1. 用文本字符串创建For循环
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#python-while">
@@ -605,17 +603,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   4. 将结果添加到新列表
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#z">
-   思考 z 是什么
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   4.1 列表生成式
+   4 列表生成式
   </a>
  </li>
 </ul>
@@ -646,13 +634,6 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#python-for">
    2. 在 Python 中创建 For 循环
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#for">
-     1. 用文本字符串创建For循环
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#python-while">
@@ -661,17 +642,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   4. 将结果添加到新列表
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#z">
-   思考 z 是什么
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   4.1 列表生成式
+   4 列表生成式
   </a>
  </li>
 </ul>
@@ -757,71 +728,6 @@ the current value is: 5
 </div>
 </div>
 <p><strong>占位符随意起的，数字除外。可以被称为<code class="docutils literal notranslate"><span class="pre">x</span></code>，甚至可以是完全不相关的东西，如<code class="docutils literal notranslate"><span class="pre">banana</span></code></strong></p>
-<section id="for">
-<h3>1. 用文本字符串创建For循环<a class="headerlink" href="#for" title="Permalink to this headline">#</a></h3>
-<p>我们可以定义一个包含多个对象的列表。在下面的示例中，<code class="docutils literal notranslate"><span class="pre">print()</span></code>返回列表中每个项目的实际值，因为这些项目是已定义的对象。</p>
-<p><code class="docutils literal notranslate"><span class="pre">fname</span></code>在第一次迭代中为<code class="docutils literal notranslate"><span class="pre">months</span></code>， 在第二次迭代中为<code class="docutils literal notranslate"><span class="pre">avg_monthly_precip</span></code>。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create list of abbreviated month names</span>
-<span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Jan&quot;</span><span class="p">,</span> <span class="s2">&quot;Feb&quot;</span><span class="p">,</span> <span class="s2">&quot;Mar&quot;</span><span class="p">,</span> <span class="s2">&quot;Apr&quot;</span><span class="p">,</span> <span class="s2">&quot;May&quot;</span><span class="p">,</span> <span class="s2">&quot;June&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;July&quot;</span><span class="p">,</span> <span class="s2">&quot;Aug&quot;</span><span class="p">,</span> <span class="s2">&quot;Sept&quot;</span><span class="p">,</span> <span class="s2">&quot;Oct&quot;</span><span class="p">,</span> <span class="s2">&quot;Nov&quot;</span><span class="p">,</span> <span class="s2">&quot;Dec&quot;</span><span class="p">]</span>
-<span class="c1">#Create list of average monthly precip (inches) in Boulder, CO</span>
-<span class="n">avg_monthly_precip</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.70</span><span class="p">,</span>  <span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.85</span><span class="p">,</span> <span class="mf">2.93</span><span class="p">,</span> <span class="mf">3.05</span><span class="p">,</span> <span class="mf">2.02</span><span class="p">,</span>
-                      <span class="mf">1.93</span><span class="p">,</span> <span class="mf">1.62</span><span class="p">,</span> <span class="mf">1.84</span><span class="p">,</span> <span class="mf">1.31</span><span class="p">,</span> <span class="mf">1.39</span><span class="p">,</span> <span class="mf">0.84</span><span class="p">]</span>
-<span class="c1">#List of list names</span>
-<span class="n">lists</span> <span class="o">=</span> <span class="p">[</span><span class="n">months</span><span class="p">,</span> <span class="n">avg_monthly_precip</span><span class="p">]</span>
-<span class="c1">#For each item in list, print value</span>
-<span class="k">for</span> <span class="n">dlist</span> <span class="ow">in</span> <span class="n">lists</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The value of the variable &#39;dlist&#39; is:&quot;</span><span class="p">,</span> <span class="n">dlist</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The value of the variable &#39;dlist&#39; is: [&#39;Jan&#39;, &#39;Feb&#39;, &#39;Mar&#39;, &#39;Apr&#39;, &#39;May&#39;, &#39;June&#39;, &#39;July&#39;, &#39;Aug&#39;, &#39;Sept&#39;, &#39;Oct&#39;, &#39;Nov&#39;, &#39;Dec&#39;]
-The value of the variable &#39;dlist&#39; is: [0.7, 0.75, 1.85, 2.93, 3.05, 2.02, 1.93, 1.62, 1.84, 1.31, 1.39, 0.84]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 可以进行索引</span>
-<span class="k">for</span> <span class="n">dlist</span> <span class="ow">in</span> <span class="n">lists</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">dlist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dec
-0.84
-</pre></div>
-</div>
-</div>
-</div>
-<p>但是，无法调用该数据结构不存在的方法或属性。例如，当<code class="docutils literal notranslate"><span class="pre">.shape</span></code>是<strong>numpy</strong>数组的属性（提供元素或行和列的数量），<code class="docutils literal notranslate"><span class="pre">.shape</span></code>不是列表的属性。尝试调用<code class="docutils literal notranslate"><span class="pre">.shape</span></code>，列表会报错，从而导致循环失败。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#For each list in lists, print attribute shape</span>
-<span class="k">for</span> <span class="n">dlist</span> <span class="ow">in</span> <span class="n">lists</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">dlist</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#For each list in lists, print attribute shape</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">dlist</span> <span class="ow">in</span> <span class="n">lists</span><span class="p">:</span>
-<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="nb">print</span><span class="p">(</span><span class="n">dlist</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-
-<span class="ne">AttributeError</span>: &#39;list&#39; object has no attribute &#39;shape&#39;
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 <section id="python-while">
 <h2>3. 在 Python 中创建 While 循环<a class="headerlink" href="#python-while" title="Permalink to this headline">#</a></h2>
@@ -905,67 +811,7 @@ Final value: 10
 </div>
 </section>
 <section id="id3">
-<h2>4. 将结果添加到新列表<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
-<p>通过循环我们得到新结果，不过如何将新的结果加到新列表中呢？</p>
-<ol class="simple">
-<li><p>首先，创建一个使用<code class="docutils literal notranslate"><span class="pre">listname</span> <span class="pre">=</span> <span class="pre">[]</span></code>接收新值的空列表</p></li>
-<li><p>然后，添加一行新的代码，在计算完每个值后，用<code class="docutils literal notranslate"><span class="pre">listname.append(value)</span></code>追加。</p></li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">*=</span> <span class="mi">10</span>  
-    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>    
-<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10, 20, 30, 40]
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="z">
-<h2>思考 z 是什么<a class="headerlink" href="#z" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">*=</span> <span class="mi">10</span>     
-    <span class="n">z</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10]
-[10, 20]
-[10, 20, 30]
-[10, 20, 30, 40]
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>查看被迭代的列表和循环中的占位符</strong></p>
-<p>上面的例子中的占位符为<code class="docutils literal notranslate"><span class="pre">x</span></code>，<code class="docutils literal notranslate"><span class="pre">x</span></code>在循环结束时，等于分配给它的最后一个值</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="id4">
-<h2>4.1 列表生成式<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<h2>4 列表生成式<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>

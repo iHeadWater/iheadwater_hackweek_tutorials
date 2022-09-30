@@ -186,6 +186,11 @@ const thebe_selector_output = ".output, .cell_output"
      地理空间数据–栅格
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp2.4_your_data.html">
+     在平台上上传下载数据
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -582,20 +587,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#open-txt-csv">
-   open打开.txt与.csv并进行读写
+  <a class="reference internal nav-link" href="#txt-csv">
+   1 .txt与.csv
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#openwith">
-     open配合with关键词
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#xlsx">
-   .xlsx文件
+   2 .xlsx文件
   </a>
  </li>
 </ul>
@@ -618,20 +616,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#open-txt-csv">
-   open打开.txt与.csv并进行读写
+  <a class="reference internal nav-link" href="#txt-csv">
+   1 .txt与.csv
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#openwith">
-     open配合with关键词
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#xlsx">
-   .xlsx文件
+   2 .xlsx文件
   </a>
  </li>
 </ul>
@@ -651,8 +642,8 @@ title="Print to PDF"
 <p>现在我们尝试用Python语言在平台上对xlsx，以及txt与csv进行读取和写入操作，大家看看就行，后续会有更全的实例，</p>
 <p>通过这种方式，能够将读取数据和分析融为一体，并自动化整个流程，方便研究成果的复现。</p>
 <p>有许多种读取文件的方式，我们可以不用任何工具包来打开数据，这是python自带的一种基本操作，即<code class="docutils literal notranslate"><span class="pre">open()</span></code>。我们也可以用工具包来打开，例如我们用<code class="docutils literal notranslate"><span class="pre">pandas</span></code>工具包来打开数据。后续介绍完Python编程基础后，我们会再针对这些内容进一步展开讨论，这里简单了解<strong>读写</strong>文件相关操作即可。</p>
-<section id="open-txt-csv">
-<h2>open打开.txt与.csv并进行读写<a class="headerlink" href="#open-txt-csv" title="Permalink to this headline">#</a></h2>
+<section id="txt-csv">
+<h2>1 .txt与.csv<a class="headerlink" href="#txt-csv" title="Permalink to this headline">#</a></h2>
 <p>首先我们用<code class="docutils literal notranslate"><span class="pre">open</span></code>打开一个txt文件</p>
 <p>这个txt文件是从<a class="reference external" href="https://portal.grdc.bafg.de/applications/public.html?publicuser=PublicUser#dataDownload/Stations">GRDC全球径流数据网站</a>上选择一个站点，把txt下载下来的。这里我们选择了长江流域上的一个小流域杂谷脑（ZAGUNAO）流域。</p>
 <p><img alt="" src="../_images/zagunao.png" /></p>
@@ -719,9 +710,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<section id="openwith">
-<h3>open配合with关键词<a class="headerlink" href="#openwith" title="Permalink to this headline">#</a></h3>
-<p>在python中，打开和关闭文件的最佳做法是使用 with 关键字。这个关键字会在嵌套的代码块<strong>完成后</strong>自动关闭文件。</p>
+<p><strong>在python中，打开和关闭文件的最佳做法是使用 with 关键字。</strong></p>
+<p>这个关键字会在嵌套的代码块<strong>完成后</strong>自动关闭文件。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#读取文件</span>
@@ -901,9 +891,8 @@ title="Print to PDF"
 </div></div></div>
 </div>
 </section>
-</section>
 <section id="xlsx">
-<h2>.xlsx文件<a class="headerlink" href="#xlsx" title="Permalink to this headline">#</a></h2>
+<h2>2 .xlsx文件<a class="headerlink" href="#xlsx" title="Permalink to this headline">#</a></h2>
 <p>excel文件是大家最熟悉的了，用Pandas读取xlsx非常轻松，xlsx内容被读取并打包到一个DataFrame中，然后我们可以通过<code class="docutils literal notranslate"><span class="pre">head()</span></code>函数进行预览。这里简单介绍DataFrame是什么。</p>
 <p>DataFrame 是一个表格型的数据结构。DataFrame 由三个部分组成：data、columns和rows。</p>
 <p><img alt="" src="../_images/dataframe.jpg" /></p>

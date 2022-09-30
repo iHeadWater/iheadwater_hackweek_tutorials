@@ -186,6 +186,11 @@ const thebe_selector_output = ".output, .cell_output"
      地理空间数据–栅格
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chp2.4_your_data.html">
+     在平台上上传下载数据
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -583,29 +588,22 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   1. 矢量数据
+   1 矢量数据
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   2. 存储矢量数据的格式
+   2 存储矢量数据的格式
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#geojson">
-     读写Geojson
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#json-dumps-json">
-     使用json.dumps()对json文件进行写入
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#geojson">
+   3 读写Geojson
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#shp">
-   读写.shp文件
+   4 读写.shp
   </a>
  </li>
 </ul>
@@ -629,29 +627,22 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   1. 矢量数据
+   1 矢量数据
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   2. 存储矢量数据的格式
+   2 存储矢量数据的格式
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#geojson">
-     读写Geojson
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#json-dumps-json">
-     使用json.dumps()对json文件进行写入
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#geojson">
+   3 读写Geojson
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#shp">
-   读写.shp文件
+   4 读写.shp
   </a>
  </li>
 </ul>
@@ -672,7 +663,7 @@ title="Print to PDF"
 <p>地理空间数据的两个主要类型为栅格数据和矢量数据。</p>
 <p><img alt="" src="../_images/raster_vector.png" /></p>
 <section id="id2">
-<h2>1. 矢量数据<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2>1 矢量数据<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>矢量数据就是使用点、线和面表示地理要素的位置和形状的数据。</p>
 <p><strong>位置：</strong> 线和面都由点组成，这些点都是由空间坐标的</p>
 <p><strong>形状：</strong> 使用点表示的水文站点、由线表示的河流和由面表示流域</p>
@@ -684,7 +675,7 @@ title="Print to PDF"
 <p><img alt="" src="../_images/pnt_line_poly.png" /></p>
 </section>
 <section id="id3">
-<h2>2. 存储矢量数据的格式<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<h2>2 存储矢量数据的格式<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <p>矢量数据有很多类型，如下图红框所示。</p>
 <p><img alt="" src="../_images/vector_data_format.jpg" /></p>
 <p>我们常见的有Shapefile格式、GeoJSON格式、GML格式、KML格式等。</p>
@@ -719,8 +710,9 @@ title="Print to PDF"
 <p><strong>其中我们最常见的还是Geojson和shapefile。虽然两个文件格式是平行关系，不过是可以将Geojson格式转换为shapefile格式的，因为空间地理数据最基本的元素就是坐标，他们采取编码的形式不同而已。</strong></p>
 <p>以上的动图是我们提供的geojson文件在QGIS中打开的样式，可以看出是个流域。</p>
 <p>现在我们演示下在Python中对geojson与shapefile进行读写操作。</p>
+</section>
 <section id="geojson">
-<h3>读写Geojson<a class="headerlink" href="#geojson" title="Permalink to this headline">#</a></h3>
+<h2>3 读写Geojson<a class="headerlink" href="#geojson" title="Permalink to this headline">#</a></h2>
 <p>Python自带json模块，因此我们可以直接导入json工具包，使用<code class="docutils literal notranslate"><span class="pre">json.load()</span></code>函数即可读取Geojson。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -793,11 +785,7 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
-<p>json工具包中的<code class="docutils literal notranslate"><span class="pre">.dump()</span></code>或者<code class="docutils literal notranslate"><span class="pre">.dumps()</span></code>函数将python对象转化为各自json对象</p>
-</section>
-<section id="json-dumps-json">
-<h3>使用json.dumps()对json文件进行写入<a class="headerlink" href="#json-dumps-json" title="Permalink to this headline">#</a></h3>
-<p>json工具包中的<code class="docutils literal notranslate"><span class="pre">json.dumps()</span></code>函数，<strong>有助于</strong>将python对象（字典）转化为json对象，不过他需要两个参数（我们经常见的函数：y = ax1 + bx2，其中x1和x2就是函数的参数）：</p>
+<p>json工具包中的<code class="docutils literal notranslate"><span class="pre">.dump()</span></code>或者<code class="docutils literal notranslate"><span class="pre">.dumps()</span></code>函数将python对象转化为各自json对象，<strong>有助于</strong>将python对象（字典）转化为json对象，不过他需要两个参数（我们经常见的函数：y = ax1 + bx2，其中x1和x2就是函数的参数）：</p>
 <ul class="simple">
 <li><p>dictionary：转为json对象的字典名称</p></li>
 <li><p>indent：定义缩进的单位数</p></li>
@@ -846,9 +834,8 @@ title="Print to PDF"
 <p>以上是我们对geojson文件的读写，但是这种方式对后续的GIS分析并不友好，接下来看看使用GIS相关的计算包读写这类数据。</p>
 <p>以下我们将以shapefile这类更常见的格式为例介绍。</p>
 </section>
-</section>
 <section id="shp">
-<h2>读写.shp文件<a class="headerlink" href="#shp" title="Permalink to this headline">#</a></h2>
+<h2>4 读写.shp<a class="headerlink" href="#shp" title="Permalink to this headline">#</a></h2>
 <p>geopandas可以使用<code class="docutils literal notranslate"><span class="pre">geopandas.read_file()</span></code>函数读取几乎任何矢量的空间数据格式，包括shapefile、geojson。</p>
 <p>我们先试试把geojson转为shpafile，即先看看写一个shp文件。</p>
 <div class="cell docutils container">

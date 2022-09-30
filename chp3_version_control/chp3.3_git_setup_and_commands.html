@@ -186,6 +186,11 @@ const thebe_selector_output = ".output, .cell_output"
      地理空间数据–栅格
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp2_file_formats/chp2.4_your_data.html">
+     在平台上上传下载数据
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
@@ -719,7 +724,7 @@ title="Print to PDF"
 <section id="git-status">
 <h2>2. git status 检查更改的状态<a class="headerlink" href="#git-status" title="Permalink to this headline">#</a></h2>
 <p>首先，我们需要了解到的是，git内部主要有untrack,modified,committted和staged四种状态。我们可以先把它们简单地理解为“没有记录”，“修改过”，“已提交”和“暂存”。有了基本的认识之后，我们可以尝试一下操作。</p>
-<p>在开始工作之前，<strong>我们先克隆一个远程GitHub仓库到本地</strong>。用<strong>终端</strong>导航到实践<strong>git</strong>的地方<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">practice-git-skillz</span></code></p>
+<p>在开始工作之前，<strong>我们先克隆一个远程GitHub仓库到本地</strong>。用<strong>终端</strong>导航到实践<strong>git</strong>的地方<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">iheadwater_hackweek_tutorials</span></code>，也可以进入这个文件夹之后再打开终端。</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
 </pre></div>
 </div>
@@ -824,12 +829,11 @@ title="Print to PDF"
 <section id="pull-request">
 <h3>5.3 pull request<a class="headerlink" href="#pull-request" title="Permalink to this headline">#</a></h3>
 <p>我们在之前已经介绍过如何创建分支并且推送到远程，那么现在自己的github上已经有了创建的dev分支，这个分支将是随后发起 Pull Request 时要用到的源分支。</p>
-<p>首先，点击项目简介下的 <strong>Pull Request</strong> 按钮</p>
-<p><img alt="" src="../_images/pull1.png" /></p>
+<p>首先，点击项目简介下的 <strong>Pull Request</strong> 按钮(左上角)</p>
 <p>再点击<strong>New Pull Request</strong></p>
-<p><img alt="" src="../_images/pull2.png" /></p>
+<p><img alt="" src="../_images/pull1.png" /></p>
 <p>最后点击<strong>Create Pull Request</strong>即可，其中自己的仓库默认设置为源仓库（head fork）、询问指定源分支（compare）、目标仓库（base fork）和目标分支（base）。</p>
-<p><img alt="" src="../_images/pull3.png" /></p>
+<p><img alt="" src="../_images/pull2.png" /></p>
 <p>通过以上的步骤，对方就会在在他自己的 GitHub 仓库下的<strong>Pull Request</strong>选项卡中看到所有的<strong>Pull Request</strong>。点击 <strong>Pull Request</strong> 会显示这个<strong>Pull Request</strong>的简介、dev 分支的提交历史，以及这次提交包含的更改。</p>
 <p>如果对方认为 dev 分支已经可以合并了，他只需点击 <strong>Merge Pull Request</strong>按钮来通过这个 <strong>Pull Request</strong>，将dev分支并入他的 <strong>main</strong> 分支。</p>
 <p>最后，对方接受了这些修改，将 dev 分支并入了 main 分支，关闭了这个<strong>Pull Request</strong>。通过以上的操作，所修改的东西现在也已经整合到了项目中，这时其他在 main 分支上工作的开发者就可以使用标准的 <strong>git pull</strong> 命令将这些修改拉取到自己的本地仓库。</p>

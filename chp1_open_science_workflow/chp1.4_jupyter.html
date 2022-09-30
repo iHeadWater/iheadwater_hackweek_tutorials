@@ -188,6 +188,11 @@ const thebe_selector_output = ".output, .cell_output"
      地理空间数据–栅格
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chp2_file_formats/chp2.4_your_data.html">
+     在平台上上传下载数据
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -585,19 +590,19 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   Jupyter Hub/Lab/Notebook 区别与联系
+   1 Jupyter Hub/Lab/Notebook 区别与联系
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#jupyter-notebook">
-   试试编辑Jupyter Notebook
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#markdown">
-   使用markdown编辑文字
+   2 试试编辑Jupyter Notebook
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#markdown">
+     2.1 使用markdown编辑文字
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id2">
      我是三级标题
@@ -650,12 +655,12 @@ title="Print to PDF"
      公式
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     2.2 试试运行一行代码
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id12">
-   试试运行一行代码
-  </a>
  </li>
 </ul>
 
@@ -678,19 +683,19 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   Jupyter Hub/Lab/Notebook 区别与联系
+   1 Jupyter Hub/Lab/Notebook 区别与联系
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#jupyter-notebook">
-   试试编辑Jupyter Notebook
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#markdown">
-   使用markdown编辑文字
+   2 试试编辑Jupyter Notebook
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#markdown">
+     2.1 使用markdown编辑文字
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id2">
      我是三级标题
@@ -743,12 +748,12 @@ title="Print to PDF"
      公式
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     2.2 试试运行一行代码
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id12">
-   试试运行一行代码
-  </a>
  </li>
 </ul>
 
@@ -770,7 +775,7 @@ title="Print to PDF"
 </ul>
 <p>我们用的是Lab，写的是Notebook，Hub支持多人使用Lab。</p>
 <section id="id1">
-<h2>Jupyter Hub/Lab/Notebook 区别与联系<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2>1 Jupyter Hub/Lab/Notebook 区别与联系<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>JupyterHub 是为多个用户提供 Jupyter Notebook 的集成服务系统，JupyterHub 下用户环境彼此隔离，无法相互共享，每个用户需要单独配置自己的 Python/Conda 环境等。</p></li>
 <li><p>JupyterHub 与 Jupyter Notebook/Lab 并非包直接含关系，JupyterHub 初始安装不包含 Jupyter Notebook/Lab，二者甚至不在一台服务器上，需要各自搭建后，通过配置组合在一起。</p></li>
@@ -784,18 +789,18 @@ title="Print to PDF"
 <p>接下来，让我们使用jupyterlab了解jupyter notebook的写法吧。</p>
 </section>
 <section id="jupyter-notebook">
-<h2>试试编辑Jupyter Notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this headline">#</a></h2>
+<h2>2 试试编辑Jupyter Notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this headline">#</a></h2>
 <p>Jupyter Notebook 创建的就是以<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>为后缀的文件。我们可以先来了解一下它的含义，i：云的含义，py：Python，nb：notebook。需要注意的是，不管我们根据什么内核，例如Java，创建的notebook文件也是<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>，不会说是变成<code class="docutils literal notranslate"><span class="pre">.ijvnb</span></code>。</p>
 <p>Jupyter Notebook 文件格式 ( .ipynb) 将描述性文本、代码块和代码输出组合在一个文件中。我们运行代码时，它会在笔记本文件中生成输出，包括绘图和表格。在我们编辑时，<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>单元格有三种模式可切换，其中只需了解两种即可——Markdown与Code。Code就是编写代码的模式，Markdown是本节重点内容。</p>
 <p>当我们想使用Markdown时，我们既可以在jupyter文件(<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>)中创建 <code class="docutils literal notranslate"><span class="pre">markdown</span> <span class="pre">cell</span></code>来编写<code class="docutils literal notranslate"><span class="pre">markdown</span></code>文本，也可以选择新建<code class="docutils literal notranslate"><span class="pre">Markdown</span></code>文档（后缀名为<code class="docutils literal notranslate"><span class="pre">.md</span></code>）来进行。</p>
 <p>下面我们先看看markdown是怎么回事。</p>
-</section>
 <section id="markdown">
-<h2>使用markdown编辑文字<a class="headerlink" href="#markdown" title="Permalink to this headline">#</a></h2>
+<h3>2.1 使用markdown编辑文字<a class="headerlink" href="#markdown" title="Permalink to this headline">#</a></h3>
 <p>Markdown是一种标记语言，而Markdown文件则可以用于格式化文本。此外，它也可以用来制作格式化良好的文档，包括PDF和网页。</p>
 <p>当我们在文档中使用Markdown来格式化文本时，它类似于使用像Microsoft Word或Google Docs这样的文字处理软件中的格式化工具（如粗体、标题1、标题2）。只不过我们不需要使用鼠标来应用格式化，而是使用语法，如<code class="docutils literal notranslate"><span class="pre">**</span></code> 它在markdown中可以对文本加粗 <code class="docutils literal notranslate"><span class="pre">**</span></code>或 <code class="docutils literal notranslate"><span class="pre">#</span></code> 表示这里是一个标题。</p>
 <p>在Markdown语法中，我们可以以多种方式格式化文本，如制作标题、加粗和斜体字、创建列表、添加链接、格式化数学符号和制作表格。这些方式也能让我们的文本以一种视觉上吸引人并且有组织的方式来呈现出来.</p>
 <p>了解了以上的基本知识，下面就让我们来看看如何编写markdown文档，即mardkown常用语法。这里我们只介绍一些最基本的，大家可以跟着做一做，更多内容用到的时候可以随时查询：<a class="reference external" href="https://www.markdownguide.org/cheat-sheet/">markdown语法 </a>。</p>
+</section>
 <section id="id2">
 <h3>我是三级标题<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 一级标题</span>
@@ -876,9 +881,8 @@ title="Print to PDF"
 \[e=\frac 1 2 mv^2\]</div>
 <p>其余的我们可参考<a class="reference external" href="https://github.com/iHeadWater/WaterResources/blob/master/tools/jupyterlab%26markdown.md">这里</a></p>
 </section>
-</section>
 <section id="id12">
-<h2>试试运行一行代码<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h2>
+<h3>2.2 试试运行一行代码<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
 <p>接下来是notebook中的代码模块，让我们先运行一个最简单的代码吧：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -892,6 +896,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+</section>
 </section>
 </section>
 

@@ -18,6 +18,7 @@ chapters:
   - file: chp2_file_formats/chp2.1_txt_csv
   - file: chp2_file_formats/chp2.2_vector_data
   - file: chp2_file_formats/chp2.3_raster_data
+  - file: chp2_file_formats/chp2.4_your_data
 - file: chp3_version_control/chp3.0_introduction
   sections:
   - file: chp3_version_control/chp3.1_get_files_from_github

@@ -12,7 +12,7 @@
 
 首先，我们需要了解到的是，git内部主要有untrack,modified,committted和staged四种状态。我们可以先把它们简单地理解为“没有记录”，“修改过”，“已提交”和“暂存”。有了基本的认识之后，我们可以尝试一下操作。
 
-在开始工作之前，**我们先克隆一个远程GitHub仓库到本地**。用**终端**导航到实践**git**的地方`$ cd practice-git-skillz`
+在开始工作之前，**我们先克隆一个远程GitHub仓库到本地**。用**终端**导航到实践**git**的地方`$ cd iheadwater_hackweek_tutorials`，也可以进入这个文件夹之后再打开终端。
 
 ```Python
 git status
@@ -154,17 +154,15 @@ git fetch origin 远程分支名x:本地分支名x
 
 我们在之前已经介绍过如何创建分支并且推送到远程，那么现在自己的github上已经有了创建的dev分支，这个分支将是随后发起 Pull Request 时要用到的源分支。
 
-首先，点击项目简介下的 **Pull Request** 按钮
-
-![](../img/pull1.png)
+首先，点击项目简介下的 **Pull Request** 按钮(左上角)
 
 再点击**New Pull Request**
 
-![](../img/pull2.png)
+![](../img/pull1.png)
 
 最后点击**Create Pull Request**即可，其中自己的仓库默认设置为源仓库（head fork）、询问指定源分支（compare）、目标仓库（base fork）和目标分支（base）。
 
-![](../img/pull3.png)
+![](../img/pull2.png)
 
 通过以上的步骤，对方就会在在他自己的 GitHub 仓库下的**Pull Request**选项卡中看到所有的**Pull Request**。点击 **Pull Request** 会显示这个**Pull Request**的简介、dev 分支的提交历史，以及这次提交包含的更改。
 

@@ -11,7 +11,7 @@
 5. **使用集成开发环境工具**：用VSCode连接平台使用或贡献代码资源
 6. **技术研发类项目的数字化管理**：联合使用各类工具，与大家分享各种资源
 
-## 1.连接研发中心内网
+## 1 连接研发中心内网
 
 有电脑在研发中心或者411的同志就比较容易了，不需要做任何操作，可以跳过这一步。
 
@@ -19,13 +19,13 @@
 
 VPN的安装使用方式请参考[这里](https://dlut-water.yuque.com/docs/share/4cab7471-0be7-4570-a51a-8936b1c612d1?#)
 
-## 2.平台JupyterHub账号注册与登录
+## 2 平台JupyterHub账号注册与登录
 
 注册与登录和一般网站的没有区别，当你连接入内网后，在浏览器中输入： http://jupyterhub.waterism.com:666/ 就能访问。
 
 如果你需要注册和登录的详细介绍请参考[这里](https://iheadwater.github.io/iheadwater_hackweek_tutorials/start_from_here.html)
 
-## 3.使用JupyterLab
+## 3 使用JupyterLab
 
 关于JupyterLab与JupyterHub还有Jupyter Notebook之间的联系，可以参考[这里](https://iheadwater.github.io/iheadwater_hackweek_tutorials/chp1_open_science_workflow/chp1.4_jupyter.html)，简而言之，我们不用管Hub，我们用的是Lab，写的是Notebook
 
@@ -45,7 +45,7 @@ VPN的安装使用方式请参考[这里](https://dlut-water.yuque.com/docs/shar
 ![](img/jupyterhub_stop_server.png)
 ![](img/jupyterhub_start_server.png)
 
-## 4.与他人协作
+## 4 与他人协作
 
 平台借助Git和GitHub/GitLab等工具实现团队协作。现代科技的进步越来越依赖团队协作，即便是前沿科研，对于我们这种工科类学科，单兵作战的局限性也越来越强，对于技术研发更是如此。
 
@@ -84,13 +84,13 @@ Github现在已经不支持HTTPS协议下对代码的推送（可以简单理解
 
 掌握这些工具后，你应该就能在平台上fork并clone[本教程](https://github.com/iHeadWater/iheadwater_hackweek_tutorials)的代码，并运行其中
 
-## 5.使用集成开发环境工具
+## 5 使用集成开发环境工具
 
 Jupyter是很好的工具，但是也存在一些局限，典型地是它对代码调试不是特别友好，基本上只能在Notebook一个计算单元内调试，另外，对于比较成体系的代码项目，尤其是模型算法等的自主研发，使用它不是很好的选择，所以这里给出使用集成开发环境（IDE）工具来编写代码的方式，并重点介绍关于如何连接到平台的数据和计算资源方面的内容。
 
 因为VSCode是一个以插件驱动各类编程语言开发环境的工具，能有效应对多语言，所以这里就以它为主介绍，这部分内容我们在[这里](https://iheadwater.github.io/iheadwater_hackweek_tutorials/chp8_lstm_camels/chp8.2_run_in_vscode.html)提供了详细的步骤介绍，大家可以跟着一步步执行。
 
-## 6.技术研发类项目的数字化管理
+## 6 技术研发类项目的数字化管理
 
 本教程主要还是初级内容，但是内容已经不少了，所以就不再继续涉及过多关于技术研发所需的编程相关内容了，等大家熟练掌握初级内容后，并且觉得这种教程形式还不错，那么后续我们还会推出新的教程介绍更多研发用得到的内容。但是这里还是有必要提一提关于研发项目的数字化管理这个不是本质问题（本教程介绍的都是手段，不涉及本质问题）的问题的重要性。
 

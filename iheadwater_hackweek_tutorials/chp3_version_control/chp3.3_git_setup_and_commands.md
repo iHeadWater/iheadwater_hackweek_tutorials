@@ -8,7 +8,7 @@
 
 ## 1. git status 检查更改的状态
 
-首先，我们需要了解到的是，git内部主要有untrack,modified,staged和committed四种状态。在开始工作之前，**我们先克隆一个远程GitHub仓库到本地**。用**终端**导航到实践**git**的地方`$ cd iheadwater_hackweek_tutorials`，也可以进入这个文件夹之后再打开终端，之后我们结合一个新文件 **try** 一起来看一下。
+首先，我们需要了解到的是，git内部主要有untrack,modified,staged和committed四种状态。在开始工作之前，**我们先克隆一个远程GitHub仓库到本地**。用**终端**导航到实践**git**的地方`$ cd iheadwater_hackweek_tutorials`，也可以进入这个文件夹之后再打开终端，之后我们一起新建一个 **try** 来看一下它的不同的状态吧。
 
 **untrack**，可以理解为没有记录的意思，我们新创建的**try**文件其实就是这个状态，没有经过任何改动。
 

@@ -31,11 +31,8 @@ GitHub 要求通过认证才能对 repo 进行任何修改。有两种方法来�
 1. 使用个人访问标识，可以在GitHub.com上设置并在本地使用该标识进行认证。这涉及到在GitHub.com上创建一个标识，然后在本地bash中使用它作为 "密码"。
 2. 使用SSH：这需要在本地进行更多的设置，但一旦设置好了，你就可以跳过每次对 repo 进行修改时的认证步骤。
 
-<<<<<<< HEAD
 ### 2.1 建立与GitHub的SSH连接（推荐）
 
-=======
->>>>>>> a57d76723c8f50886829955288a8b4ec67761ec7
 SSH是Secure SHell的缩写，是一种从电脑上认证GitHub的替代方式。SSH一旦设置好，就不必再去验证与GitHub的连接。这是因为电脑上会有一个储存在本地的密钥，可以与储存在 GitHub 账户中的密钥进行验证。
 
 首先，使用如下命令创建密钥文件（如果前面[文件夹上传下载那一节](https://iheadwater.github.io/iheadwater_hackweek_tutorials/chp2_file_formats/chp2.4_your_data.html)已经做过这个了，就不必重复生成密钥了，SSH的简单科普也在那一节中有介绍）：

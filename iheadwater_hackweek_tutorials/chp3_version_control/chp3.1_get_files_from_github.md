@@ -35,7 +35,7 @@ fork仓库:
 `https://github.com/iHeadWater/iheadwater_hackweek_tutorials`
 2. 在仓库页面上，我们会看到右上角有一个按钮，上面写着Fork。该按钮旁边的数字告诉我们该 repo 已经被fork了多少次。
 3. 点击 "fork"按钮，当它询问我们想在哪里fork该版本时，选择你的用户账户。
-4. 一旦fork了该 repo，我们的账户中就会有一个副本。导航到我们的 repo 页面。网址应该是这样的：`https://github.com/your-user-name/practice-git-skillz`
+4. 一旦fork了该 repo，我们的账户中就会有一个副本。导航到我们的 repo 页面。网址应该是这样的：`https://github.com/your-user-name/iheadwater_hackweek_tutorials`
 
 要**fork**一个repo，首先导航到想**fork**的repo。然后点击屏幕右上角的**fork**按钮。然后就可以在我们的账户中创建一个该 repo 的副本。
 

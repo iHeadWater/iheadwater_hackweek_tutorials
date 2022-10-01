@@ -8,15 +8,15 @@
 
 ## 1. git status 检查更改的状态
 
-首先，我们需要了解到的是，git内部主要有untrack,modified,staged和committed四种状态。在开始工作之前，**我们先克隆一个远程GitHub仓库到本地**。用**终端**导航到实践**git**的地方`$ cd iheadwater_hackweek_tutorials`，也可以进入这个文件夹之后再打开终端，之后我们一起新建一个 **try** 来看一下它的不同的状态吧。
+首先，我们需要了解到的是，git内部主要有untrack,modified,staged和committed四种状态。在开始工作之前，**我们先克隆一个远程GitHub仓库到本地**。用**终端**导航到实践**git**的地方`$ cd iheadwater_hackweek_tutorials`，也可以进入这个文件夹之后再打开终端，之后我们来看一下不同的状态吧。
 
-**untrack**，可以理解为没有记录，没有跟踪的意思，我们新创建的**try**文件其实就是这个状态，没有经过任何改动。
+**untrack**，可以理解为没有记录，没有跟踪的意思，我们新创建一个**try**文件，它其实就是这个状态，没有经过任何改动。
 
-**modified**，即修改过，当我们创建**try** 文件之后，保存(ctrl+s)一下再打开随便写入一些文字，输入`git status`命令来看一下，就会提示为这个状态。
+**modified**，即修改过，我们可以随便修改一个已经存在的文件,写入一些文字或者进行修改，可以输入`git status`查看一下，就可以看到**modified**的提示。
 
-**staged**，可以大概理解为暂存的状态，我们修改完**try**文件之后，输入`git add .`命令就可以把改动添加到暂存区。
+**staged**，可以大概理解为暂存的状态，我们修改完文件之后，输入`git add .`命令就可以把改动添加到暂存区。
 
-**committed**，即已提交，我们输入`git commit`命令就是将对**try**文件的修改进行提交。
+**committed**，即已提交，我们输入`git commit`命令就是将对文件的修改进行提交。
 
 ```Python
 git status

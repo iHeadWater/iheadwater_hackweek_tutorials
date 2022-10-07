@@ -783,15 +783,13 @@ title="Print to PDF"
 <li><p>JupyterHub 支持第三方 Oath 认证登录，需要另外开发配置。常见的包括 GitHub、GitLab、Google 等（主要针对编程群体，因此不包括 Facebook、Twitter）。</p></li>
 <li><p>JupyterHub 下又分为三项目：JupyterHub、TLJH、Z2JH，每个项目都各自的文档系统、Git仓库、环境配置。每个项目的环境搭建方式大概又各可分为 3 种方式：Conda/Pip 安装、Docker 安装、Dev 环境安装。对应到开发，要根据具体需求确定一个方向，搭建配置指定的环境项目。</p></li>
 </ul>
-<p>综上，将 Jupyter 系列工具关系总结如下图：</p>
-<p><img alt="" src="../_images/jupyter_hub_lab_nb.jpg" /></p>
-<p>看到这么多你一定很晕，但好在研发中心的工程师们已经给大家安装好了Jupyterhub，我们不用管它是怎么回事，只知道有这么个东西，我们能用它提供给我们的jupyterlab就行了。</p>
+<p>简而言之，在研发中心的工程师们已经给大家安装好了Jupyterhub，我们不用管它是怎么回事，只知道有这么个东西，我们能用它提供给我们的jupyterlab写jupyter notebook就行了。</p>
 <p>接下来，让我们使用jupyterlab了解jupyter notebook的写法吧。</p>
 </section>
 <section id="jupyter-notebook">
 <h2>2 试试编辑Jupyter Notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this headline">#</a></h2>
 <p>Jupyter Notebook 创建的就是以<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>为后缀的文件。我们可以先来了解一下它的含义，i：云的含义，py：Python，nb：notebook。需要注意的是，不管我们根据什么内核，例如Java，创建的notebook文件也是<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>，不会说是变成<code class="docutils literal notranslate"><span class="pre">.ijvnb</span></code>。</p>
-<p>Jupyter Notebook 文件格式 ( .ipynb) 将描述性文本、代码块和代码输出组合在一个文件中。我们运行代码时，它会在笔记本文件中生成输出，包括绘图和表格。在我们编辑时，<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>单元格有三种模式可切换，其中只需了解两种即可——Markdown与Code。Code就是编写代码的模式，Markdown是本节重点内容。</p>
+<p>Jupyter Notebook 文件格式 ( .ipynb) 将描述性文本、代码块和代码输出组合在一个文件中。我们运行代码时，它会在笔记本文件中生成输出，包括绘图和表格。在我们编辑时，<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>单元格有三种模式可切换，其中最常用的两种是——Markdown与Code。Code就是编写代码的模式，Markdown模式下我们能编辑文本。</p>
 <p>当我们想使用Markdown时，我们既可以在jupyter文件(<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>)中创建 <code class="docutils literal notranslate"><span class="pre">markdown</span> <span class="pre">cell</span></code>来编写<code class="docutils literal notranslate"><span class="pre">markdown</span></code>文本，也可以选择新建<code class="docutils literal notranslate"><span class="pre">Markdown</span></code>文档（后缀名为<code class="docutils literal notranslate"><span class="pre">.md</span></code>）来进行。</p>
 <p>下面我们先看看markdown是怎么回事。</p>
 <section id="markdown">
@@ -873,6 +871,10 @@ title="Print to PDF"
 <p>图片的创建方式与超链接相似，只需在<code class="docutils literal notranslate"><span class="pre">[]</span></code>前加上英文感叹号<code class="docutils literal notranslate"><span class="pre">!</span></code>即可。而且和超链接一样也有两种写法，行内式和参考式写法。</p>
 <p>可用相对路径加载图片，<a class="reference external" href="https://www.cnblogs.com/jgg54335/p/14787211.html">什么是相对路径</a>。</p>
 <p>例如：</p>
+<div class="highlight-Markdown notranslate"><div class="highlight"><pre><span></span>![](../img/water.jpg)
+</pre></div>
+</div>
+<p>展示内容如下：</p>
 <p><img alt="" src="../_images/water.jpg" /></p>
 </section>
 <section id="id11">

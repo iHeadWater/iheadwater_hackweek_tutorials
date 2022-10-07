@@ -17,30 +17,104 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import hydrodataset
+import os
+from hydrodataset.camels import Camels
+
+camels_us_path = os.path.join("camels", "camels_us")
+us_region = "US"
+camels_us = Camels(camels_us_path, region=us_region)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mImportError[0m                               Traceback (most recent call last)
-Cell [0;32mIn [1], line 1[0m
-[0;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mhydrodataset[39;00m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+Cell [0;32mIn [2], line 6[0m
+[1;32m      4[0m camels_us_path [38;5;241m=[39m os[38;5;241m.[39mpath[38;5;241m.[39mjoin([38;5;124m"[39m[38;5;124mcamels[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mcamels_us[39m[38;5;124m"[39m)
+[1;32m      5[0m us_region [38;5;241m=[39m [38;5;124m"[39m[38;5;124mUS[39m[38;5;124m"[39m
+[0;32m----> 6[0m camels_us [38;5;241m=[39m Camels(camels_us_path, region[38;5;241m=[39mus_region)
 
-File [0;32m/usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/hydrodataset/__init__.py:47[0m
-[1;32m     45[0m CACHE_DIR [38;5;241m=[39m hydrodataset_cache_dir
-[1;32m     46[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mhydro_dataset[39;00m [38;5;28;01mimport[39;00m [38;5;241m*[39m
-[0;32m---> 47[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mcamels[39;00m [38;5;28;01mimport[39;00m [38;5;241m*[39m
+File [0;32m/usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/hydrodataset/camels.py:93[0m, in [0;36mCamels.__init__[0;34m(self, data_path, download, region)[0m
+[1;32m     91[0m [38;5;28;01mif[39;00m download:
+[1;32m     92[0m     [38;5;28mself[39m[38;5;241m.[39mdownload_data_source()
+[0;32m---> 93[0m [38;5;28mself[39m[38;5;241m.[39mcamels_sites [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mread_site_info[49m[43m([49m[43m)[49m
 
-File [0;32m/usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/hydrodataset/camels.py:10[0m
-[1;32m      1[0m [38;5;124;03m"""[39;00m
-[1;32m      2[0m [38;5;124;03mAuthor: Wenyu Ouyang[39;00m
-[1;32m      3[0m [38;5;124;03mDate: 2022-01-05 18:01:11[39;00m
+File [0;32m/usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/hydrodataset/camels.py:427[0m, in [0;36mCamels.read_site_info[0;34m(self)[0m
+[1;32m    425[0m camels_file [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mdata_source_description[[38;5;124m"[39m[38;5;124mCAMELS_GAUGE_FILE[39m[38;5;124m"[39m]
+[1;32m    426[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mregion [38;5;241m==[39m [38;5;124m"[39m[38;5;124mUS[39m[38;5;124m"[39m:
+[0;32m--> 427[0m     data [38;5;241m=[39m [43mpd[49m[38;5;241;43m.[39;49m[43mread_csv[49m[43m([49m
+[1;32m    428[0m [43m        [49m[43mcamels_file[49m[43m,[49m[43m [49m[43msep[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43m;[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[43mdtype[49m[38;5;241;43m=[39;49m[43m{[49m[38;5;124;43m"[39;49m[38;5;124;43mgauge_id[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[38;5;28;43mstr[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mhuc_02[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[38;5;28;43mstr[39;49m[43m}[49m
+[1;32m    429[0m [43m    [49m[43m)[49m
+[1;32m    430[0m [38;5;28;01melif[39;00m [38;5;28mself[39m[38;5;241m.[39mregion [38;5;241m==[39m [38;5;124m"[39m[38;5;124mAUS[39m[38;5;124m"[39m:
+[1;32m    431[0m     data [38;5;241m=[39m pd[38;5;241m.[39mread_csv(camels_file, sep[38;5;241m=[39m[38;5;124m"[39m[38;5;124m,[39m[38;5;124m"[39m, dtype[38;5;241m=[39m{[38;5;124m"[39m[38;5;124mstation_id[39m[38;5;124m"[39m: [38;5;28mstr[39m})
+
+File [0;32m/usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/pandas/util/_decorators.py:211[0m, in [0;36mdeprecate_kwarg.<locals>._deprecate_kwarg.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m    209[0m     [38;5;28;01melse[39;00m:
+[1;32m    210[0m         kwargs[new_arg_name] [38;5;241m=[39m new_arg_value
+[0;32m--> 211[0m [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m/usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/pandas/util/_decorators.py:317[0m, in [0;36mdeprecate_nonkeyword_arguments.<locals>.decorate.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m    311[0m [38;5;28;01mif[39;00m [38;5;28mlen[39m(args) [38;5;241m>[39m num_allow_args:
+[1;32m    312[0m     warnings[38;5;241m.[39mwarn(
+[1;32m    313[0m         msg[38;5;241m.[39mformat(arguments[38;5;241m=[39marguments),
+[1;32m    314[0m         [38;5;167;01mFutureWarning[39;00m,
+[1;32m    315[0m         stacklevel[38;5;241m=[39mfind_stack_level(inspect[38;5;241m.[39mcurrentframe()),
+[1;32m    316[0m     )
+[0;32m--> 317[0m [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m/usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/pandas/io/parsers/readers.py:950[0m, in [0;36mread_csv[0;34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)[0m
+[1;32m    935[0m kwds_defaults [38;5;241m=[39m _refine_defaults_read(
+[1;32m    936[0m     dialect,
+[1;32m    937[0m     delimiter,
 [0;32m   (...)[0m
-[1;32m      8[0m [38;5;124;03mCopyright (c) 2021-2022 Wenyu Ouyang. All rights reserved.[39;00m
-[1;32m      9[0m [38;5;124;03m"""[39;00m
-[0;32m---> 10[0m [38;5;28;01mfrom[39;00m [38;5;21;01mfunctools[39;00m [38;5;28;01mimport[39;00m cache
-[1;32m     11[0m [38;5;28;01mfrom[39;00m [38;5;21;01mgenericpath[39;00m [38;5;28;01mimport[39;00m isfile
-[1;32m     12[0m [38;5;28;01mimport[39;00m [38;5;21;01mjson[39;00m
+[1;32m    946[0m     defaults[38;5;241m=[39m{[38;5;124m"[39m[38;5;124mdelimiter[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m,[39m[38;5;124m"[39m},
+[1;32m    947[0m )
+[1;32m    948[0m kwds[38;5;241m.[39mupdate(kwds_defaults)
+[0;32m--> 950[0m [38;5;28;01mreturn[39;00m [43m_read[49m[43m([49m[43mfilepath_or_buffer[49m[43m,[49m[43m [49m[43mkwds[49m[43m)[49m
 
-[0;31mImportError[0m: cannot import name 'cache' from 'functools' (/usr/share/miniconda/envs/tutorial/lib/python3.8/functools.py)
-ImportError: cannot import name 'cache' from 'functools' (/usr/share/miniconda/envs/tutorial/lib/python3.8/functools.py)
+File [0;32m/usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/pandas/io/parsers/readers.py:605[0m, in [0;36m_read[0;34m(filepath_or_buffer, kwds)[0m
+[1;32m    602[0m _validate_names(kwds[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mnames[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m))
+[1;32m    604[0m [38;5;66;03m# Create the parser.[39;00m
+[0;32m--> 605[0m parser [38;5;241m=[39m [43mTextFileReader[49m[43m([49m[43mfilepath_or_buffer[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwds[49m[43m)[49m
+[1;32m    607[0m [38;5;28;01mif[39;00m chunksize [38;5;129;01mor[39;00m iterator:
+[1;32m    608[0m     [38;5;28;01mreturn[39;00m parser
+
+File [0;32m/usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1442[0m, in [0;36mTextFileReader.__init__[0;34m(self, f, engine, **kwds)[0m
+[1;32m   1439[0m     [38;5;28mself[39m[38;5;241m.[39moptions[[38;5;124m"[39m[38;5;124mhas_index_names[39m[38;5;124m"[39m] [38;5;241m=[39m kwds[[38;5;124m"[39m[38;5;124mhas_index_names[39m[38;5;124m"[39m]
+[1;32m   1441[0m [38;5;28mself[39m[38;5;241m.[39mhandles: IOHandles [38;5;241m|[39m [38;5;28;01mNone[39;00m [38;5;241m=[39m [38;5;28;01mNone[39;00m
+[0;32m-> 1442[0m [38;5;28mself[39m[38;5;241m.[39m_engine [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_make_engine[49m[43m([49m[43mf[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mengine[49m[43m)[49m
+
+File [0;32m/usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1729[0m, in [0;36mTextFileReader._make_engine[0;34m(self, f, engine)[0m
+[1;32m   1727[0m     is_text [38;5;241m=[39m [38;5;28;01mFalse[39;00m
+[1;32m   1728[0m     mode [38;5;241m=[39m [38;5;124m"[39m[38;5;124mrb[39m[38;5;124m"[39m
+[0;32m-> 1729[0m [38;5;28mself[39m[38;5;241m.[39mhandles [38;5;241m=[39m [43mget_handle[49m[43m([49m
+[1;32m   1730[0m [43m    [49m[43mf[49m[43m,[49m
+[1;32m   1731[0m [43m    [49m[43mmode[49m[43m,[49m
+[1;32m   1732[0m [43m    [49m[43mencoding[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mencoding[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
+[1;32m   1733[0m [43m    [49m[43mcompression[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mcompression[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
+[1;32m   1734[0m [43m    [49m[43mmemory_map[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mmemory_map[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mFalse[39;49;00m[43m)[49m[43m,[49m
+[1;32m   1735[0m [43m    [49m[43mis_text[49m[38;5;241;43m=[39;49m[43mis_text[49m[43m,[49m
+[1;32m   1736[0m [43m    [49m[43merrors[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mencoding_errors[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mstrict[39;49m[38;5;124;43m"[39;49m[43m)[49m[43m,[49m
+[1;32m   1737[0m [43m    [49m[43mstorage_options[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mstorage_options[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
+[1;32m   1738[0m [43m[49m[43m)[49m
+[1;32m   1739[0m [38;5;28;01massert[39;00m [38;5;28mself[39m[38;5;241m.[39mhandles [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m
+[1;32m   1740[0m f [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mhandles[38;5;241m.[39mhandle
+
+File [0;32m/usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/pandas/io/common.py:857[0m, in [0;36mget_handle[0;34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)[0m
+[1;32m    852[0m [38;5;28;01melif[39;00m [38;5;28misinstance[39m(handle, [38;5;28mstr[39m):
+[1;32m    853[0m     [38;5;66;03m# Check whether the filename is to be opened in binary mode.[39;00m
+[1;32m    854[0m     [38;5;66;03m# Binary mode does not support 'encoding' and 'newline'.[39;00m
+[1;32m    855[0m     [38;5;28;01mif[39;00m ioargs[38;5;241m.[39mencoding [38;5;129;01mand[39;00m [38;5;124m"[39m[38;5;124mb[39m[38;5;124m"[39m [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m ioargs[38;5;241m.[39mmode:
+[1;32m    856[0m         [38;5;66;03m# Encoding[39;00m
+[0;32m--> 857[0m         handle [38;5;241m=[39m [38;5;28;43mopen[39;49m[43m([49m
+[1;32m    858[0m [43m            [49m[43mhandle[49m[43m,[49m
+[1;32m    859[0m [43m            [49m[43mioargs[49m[38;5;241;43m.[39;49m[43mmode[49m[43m,[49m
+[1;32m    860[0m [43m            [49m[43mencoding[49m[38;5;241;43m=[39;49m[43mioargs[49m[38;5;241;43m.[39;49m[43mencoding[49m[43m,[49m
+[1;32m    861[0m [43m            [49m[43merrors[49m[38;5;241;43m=[39;49m[43merrors[49m[43m,[49m
+[1;32m    862[0m [43m            [49m[43mnewline[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43m"[39;49m[43m,[49m
+[1;32m    863[0m [43m        [49m[43m)[49m
+[1;32m    864[0m     [38;5;28;01melse[39;00m:
+[1;32m    865[0m         [38;5;66;03m# Binary mode[39;00m
+[1;32m    866[0m         handle [38;5;241m=[39m [38;5;28mopen[39m(handle, ioargs[38;5;241m.[39mmode)
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '/home/runner/.hydrodataset/cache/camels/camels_us/camels_name.txt'
+FileNotFoundError: [Errno 2] No such file or directory: '/home/runner/.hydrodataset/cache/camels/camels_us/camels_name.txt'
 

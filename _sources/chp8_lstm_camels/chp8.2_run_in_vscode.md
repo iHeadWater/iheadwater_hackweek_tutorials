@@ -96,11 +96,11 @@ vscode上方会弹窗让用户选择采用Microsoft还是Github登录，若选�
 
 如果前面已经使用过[Mobaxterm上传下载了文件](https://iheadwater.github.io/iheadwater_hackweek_tutorials/chp2_file_formats/chp2.4_your_data.html#id2)，那么您现在正在使用的电脑应该就已经连接到您个人的平台账号了，即您的本地电脑是客户端，个人平台账号是服务端，两者之间已经建立起SSH连接了。
 
-如果没有请查看[Mobaxterm上传下载文件](https://iheadwater.github.io/iheadwater_hackweek_tutorials/chp2_file_formats/chp2.4_your_data.html#id2)这一节，配置本地客户端和个人平台服务端之间的SSH连接。
+如果没有请查看[Mobaxterm上传下载文件](https://iheadwater.github.io/iheadwater_hackweek_tutorials/chp2_file_formats/chp2.4_your_data.html#id2)中2.1节的内容，配置本地客户端和个人平台服务端之间的SSH连接。
 
 ### 2.3 添加远程服务器连接配置
 
-点击该选项卡，会进入SSH TARGETS的添加，如下图所示，点击设置按钮，vscode会弹框询问选择哪个配置文件，一般只需选择最上面的文件（C:\Users\你的用户名\.ssh\config）：
+点击该选项卡，会进入SSH TARGETS的添加，如下图所示，点击设置按钮，vscode会弹框询问选择哪个配置文件，一般只需选择最上面的文件（C:\Users\你的用户名\\.ssh\config）：
 
 ![](../img/vscode_ssh_setting.png)
 
@@ -121,6 +121,10 @@ Host jupyterhub.waterism.com
 如无意外，SSH Targets中会生成一个jupyterhub.waterism.com项（和你粘贴进去的Host一致），鼠标右键点击此项，选择在“当前窗口”或者“新建窗口”打开，两个选项选择任意一个即可。
 
 ![](../img/vscode_ssh_connect.png)
+
+然后弹出选择操作系统的提示，选择第一个Linux即可；
+
+第二个会询问你是否
 
 remote ssh插件便会为你自动连上jupyter服务器，连接成功后，窗口左下角远程小窗口会出现jupyterhub.waterism.com字样：
 

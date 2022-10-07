@@ -647,11 +647,11 @@ title="Print to PDF"
 <section id="ssh">
 <h3>2.1 通过SSH建立和平台的连接<a class="headerlink" href="#ssh" title="Permalink to this headline">#</a></h3>
 <p>SSH是一种常用的加密通讯协议，可以简单理解为和用户名密码验证方式类似但加密方式不同的东西。如果有兴趣了解它可以看看<a class="reference external" href="https://zhuanlan.zhihu.com/p/108161141">这个科普小短文</a>，我们这里简单科普下，不严谨，但是够用了。</p>
-<p>现在我们需要两个电脑之间建立安全连接，一方是我们本地的电脑（以下称作客户端），一方是平台服务器（以下称作服务端）。在SSH下，我们需要在客户端通过终端调用一个现成的程序生成一对密钥，一个公钥一个私钥，公钥我们会交给服务端，私钥留在本地客户端用于后面连接时的配对验证。这样客户端向服务器端请求连接时，客户端私钥和服务器端公钥就会配对建立连接。</p>
+<p>现在我们需要两个电脑之间建立安全连接，一方是我们本地的电脑（以下称作客户端），一方是平台服务器（以下称作服务端）。在SSH下，我们需要在客户端通过终端调用一个现成的程序生成一对密钥，一个公钥一个私钥，公钥我们会交给服务端，私钥留在本地客户端用于后面连接时的配对验证。这样客户端向服务端请求连接时，客户端私钥和服务端公钥就会配对建立连接。</p>
 <p>具体执行过程如下所示：</p>
 <ol class="simple">
 <li><p>在本地电脑（以Windows为例）生成公钥和私钥。打开 cmd，输入 <code class="docutils literal notranslate"><span class="pre">ssh-keygen</span> <span class="pre">-t</span> <span class="pre">rsa</span> <span class="pre">-C</span> <span class="pre">你的github账号邮箱</span></code>（连接到Github也需要SSH，生成一对key就行了，公钥可以复用），一路回车即可，自己记住自动生成的私钥 id_rsa 和公钥 id_rsa.pub 文件路径。</p></li>
-<li><p>公钥复制到JupyterHub服务器。登录平台 <a class="reference external" href="http://jupyterhub.waterism.com:666/">http://jupyterhub.waterism.com:666/</a> ，打开一个Terminal终端，新建目录 <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">mkdir</span> <span class="pre">~/.ssh/</span></code>，然后编辑文件 <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">nano</span> <span class="pre">~/.ssh/authorized_keys</span></code>，将上一步生成的公钥 id_rsa.pub 文件用记事本打开，复制文件内容(ctrl+c和ctrl+v)到 authorized_keys 中即可，然后按 ctrl+x ，再按y，回车，保存退出即可。</p></li>
+<li><p>公钥复制到JupyterHub服务器。登录平台 <a class="reference external" href="http://jupyterhub.waterism.com:666/">http://jupyterhub.waterism.com:666/</a> 或 <a class="reference external" href="http://10.55.49.100:666/">http://10.55.49.100:666/</a> ，打开一个Terminal终端，新建目录 <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">mkdir</span> <span class="pre">~/.ssh/</span></code>，然后编辑文件 <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">nano</span> <span class="pre">~/.ssh/authorized_keys</span></code>，将上一步生成的公钥 id_rsa.pub 文件用记事本打开，复制文件内容(ctrl+c和ctrl+v)到 authorized_keys 中即可，然后按 ctrl+x ，再按y，回车，保存退出即可。</p></li>
 </ol>
 <p>这样我们就能通过SSH建立本地和平台之间的连接了。</p>
 </section>
@@ -660,7 +660,7 @@ title="Print to PDF"
 <p>Mobaxterm是一个连接服务器常用的工具，它提供了良好的可视化界面来帮助我们浏览服务器上我们自己的文件，运行服务器上的一些程序等。</p>
 <p>首先从官网下载这个软件：<a class="reference external" href="https://mobaxterm.mobatek.net/download-home-edition.html">https://mobaxterm.mobatek.net/download-home-edition.html</a></p>
 <p>Portable和Installer版本的任意一个均可，前者直接解压可以用，后者需要安装下。</p>
-<p>安装成功后，打开这个软件，点击  Session -&gt; SSH，在Remote <a class="reference external" href="http://host%E9%A1%B9%E4%B8%AD%E5%A1%AB%E5%86%99jupyterhub.waterism.com">host项中填写jupyterhub.waterism.com</a>，Specify username（可选）输入登录名，就用你的jupyterhub账号名就行，然后选择 Advanced SSH settings，勾选 Use private key，选择第一步生成的私钥文件路径 id_rsa ，这样就配置完成了。</p>
+<p>安装成功后，打开这个软件，点击  Session -&gt; SSH，在 Remote host 项中填写 <a class="reference external" href="http://jupyterhub.waterism.com">jupyterhub.waterism.com</a>，Specify username（可选）输入登录名，就用你的jupyterhub账号名就行，然后选择 Advanced SSH settings，勾选 Use private key，选择第一步生成的私钥文件路径 id_rsa ，这样就配置完成了。</p>
 <p><img alt="" src="../_images/mobaxterm.png" /></p>
 <p>这时候应该能看到mobaxterm的左边栏有一个你刚刚配置好的连接，双击它，然后输入用户名，回车就会进入到如下图所示的界面了。</p>
 <p><img alt="" src="../_images/mobaxterm_connected.png" /></p>

@@ -616,6 +616,11 @@ title="Print to PDF"
    6. 身份运算符
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   7. 运算符优先级
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -663,6 +668,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
    6. 身份运算符
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   7. 运算符优先级
   </a>
  </li>
 </ul>
@@ -1016,6 +1026,26 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+</section>
+<section id="id7">
+<h2>7. 运算符优先级<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<p>和一般数学运算一样，Python所有运算符都是有优先级的，因此在实际使用的时候要注意，例如上面的例子中，我们不需要括号也能得到一样的结果：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_the_same</span> <span class="o">=</span> <span class="n">temp_1</span> <span class="ow">is</span> <span class="n">temp_2</span>
+
+<span class="n">is_the_same</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>说明is的优先级是高于=赋值符号的，具体的优先级顺序可以参考Python官方文档：<a class="reference external" href="https://docs.python.org/3/reference/expressions.html#operator-precedence">https://docs.python.org/3/reference/expressions.html#operator-precedence</a></p>
+<p>如果平时使用的时候觉得查询太麻烦，那就用括号好了。</p>
 </section>
 </section>
 

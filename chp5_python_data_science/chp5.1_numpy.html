@@ -772,7 +772,7 @@ ndmin：指定生成数组的最小维度</p>
 <section id="id5">
 <h3>4.1 numpy 数组索引与切片<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
 <p>一旦将数据存储在数组中，nunpy 便会提供简单的方法将其取出：</p>
-<p><img alt="" src="img/numpy%E6%95%B0%E7%BB%84%E7%B4%A2%E5%BC%95.jpg" /></p>
+<p><img alt="" src="../_images/numpy_index.jpg" /></p>
 <p>上面展示了各式各样的索引，例如取出某个特定区间，从右往左索引、只取出奇数位等等。
 但它们都是所谓的view，也就是不存储原始数据。并且如果原始数组在被索引后进行更改，则不会反映原始数组的改变。</p>
 <div class="cell docutils container">
@@ -811,7 +811,7 @@ a= [1 2 0 0 5]
 <h3>4.2 向量运算<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
 <p>算术运算是 numpy 速度最引入注目的地方之一。numpy 的向量运算符已达到 C++ 级别，避免了 python 的慢循环。
 numpy 允许像普通数字一样操作整个数组（加减乘除、整除、幂）：</p>
-<p><img alt="" src="img/numpy%E6%95%B0%E7%BB%84%E5%90%91%E9%87%8F%E8%BF%90%E7%AE%97.jpg" /></p>
+<p><img alt="" src="../_images/numpy_vector.jpg" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
@@ -904,7 +904,7 @@ numpy 允许像普通数字一样操作整个数组（加减乘除、整除、�
 <h3>4.3 数组广播<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
 <p>不同形状和维度的数组在某些情况下, numpy 可以执行加减乘除的运算，这种机制就叫做广播机制。
 下面是图片和代码示例：</p>
-<p><img alt="" src="img/numpy%E5%B9%BF%E6%92%AD.jpg" /></p>
+<p><img alt="" src="../_images/numpy_broadcast.jpg" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>

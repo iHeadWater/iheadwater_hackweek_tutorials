@@ -31,7 +31,7 @@ GitHub 要求通过认证才能对 repo 进行任何修改。有两种方法来�
 1. 使用个人访问标识，可以在GitHub.com上设置并在本地使用该标识进行认证。这涉及到在GitHub.com上创建一个标识，然后在本地bash中使用它作为 "密码"。
 2. 使用SSH：这需要在本地进行更多的设置，但一旦设置好了，你就可以跳过每次对 repo 进行修改时的认证步骤。
 
-### 2.1 建立与GitHub的SSH连接（推荐）
+这里我们使用SSH建立与GitHub的连接。
 
 SSH是Secure SHell的缩写，是一种从电脑上认证GitHub的替代方式。SSH一旦设置好，就不必再去验证与GitHub的连接。这是因为电脑上会有一个储存在本地的密钥，可以与储存在 GitHub 账户中的密钥进行验证。
 
@@ -68,7 +68,7 @@ https下下载的方式和ssh下一样，在github中clone时选择HTTPS即可�
 git clone https://github.com/iHeadWater/iheadwater_hackweek_tutorials.git
 ```
 
-如果已经使用了https，想要切换成ssh 变化远程仓库地址 可以按照下面方式操作（参考了这里）。
+如果已经使用了https，想要切换成ssh 变化远程仓库地址 可以按照如下方式操作。
 
 先使用下面语句查看一下远程仓库
 

@@ -563,10 +563,10 @@ title="Print to PDF"
 <h1>关于Git和GitHub<a class="headerlink" href="#gitgithub" title="Permalink to this headline">#</a></h1>
 <p>当我们首次使用 <strong>Git</strong> 和 <strong>GitHub</strong> 时，我们可能会存在疑问：什么是 <strong>Git</strong> ？什么是<strong>Github</strong>？ 二者之间有什么区别？相信阅读完本节后，我们对于 <strong>Git</strong> 与<strong>GitHub</strong> 可以有更深的理解与认识，下边是对二者的一些介绍。</p>
 <p><img alt="" src="../_images/git.jpg" /></p>
-<p><strong>Git</strong>是一个分布式版本控制系统<a class="reference external" href="https://git-scm.com/downloads">Git下载</a>，下面将分解并解释各个措辞：</p>
+<p><strong>Git</strong>是一个分布式版本控制系统<a class="reference external" href="https://git-scm.com/downloads">Git下载</a>，下面将分解解释各术语：</p>
 <ul class="simple">
 <li><p>版本控制系统：版本控制系统（version control system）是一种用来记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。 版本控制系统不仅可以应用于软件源代码的文本文件，而且可以对任何类型的文件进行版本控制。Git 是一个全世界开发者都在用的版本控制系统。它会帮助你与其他开发者合作，以及跟踪你不同版本的代码。</p></li>
-<li><p>分布式版本控制系统（Distributed Version Control System，简称 DVCS）：分布式版本控制系统可以指定若干不同的远端代码仓库进行交互。通过版本控制系统我们可以在同一个项目中，分别和不同工作小组的人相互协作。 同时，我们可以根据需要设定不同的协作流程，比如层次模型式的工作流，而这在以前的集中式系统中是无法实现的。Git有一个存储在服务器中的远程存储库和一个存储在每个开发人员计算机中的本地存储库，这意味着代码不仅存储在中央服务器中，而且代码的完整副本存在于所有开发人员的计算机上。Git作为一个分布式版本控制系统，其代码存在于每个开发人员的计算机上。</p></li>
+<li><p>分布式版本控制系统（Distributed Version Control System，简称 DVCS）：分布式版本控制系统可以指定若干不同的远端代码仓库进行交互。通过版本控制系统我们可以在同一个项目中，分别和不同工作小组的人相互协作。Git有一个存储在服务器中的远程存储库和一个存储在每个开发人员计算机中的本地存储库，这意味着代码不仅存储在中央服务器中，而且代码的完整副本存在于所有开发人员的计算机上。</p></li>
 </ul>
 <p><strong>Git</strong> 允许多个开发人员或其他贡献者处理一个项目，它提供了一种使用一个或多个本地分支并将其推送到远程存储库的方法，它所提供的主要功能包括：</p>
 <ul class="simple">
@@ -584,16 +584,18 @@ title="Print to PDF"
 <p><img alt="" src="../_images/github.jpg" /></p>
 <p><strong>Github</strong> 是一个以<strong>Git</strong> 为核心技术的云平台，<a class="reference external" href="https://github.com/">GitHub</a>简化了开发人员在项目上进行协作的过程，并提供了一个网站、命令行工具和整体流程，它允许开发人员和用户一起工作，并且允许我们将文件储存在云端以便我们可以从任意一台电脑上对其进行访问。<strong>GitHub</strong> 充当前面在 <strong>Git</strong> 部分中提到的“远程存储库”.其提供的主要功能包括：</p>
 <ul class="simple">
-<li><p><strong>GitHub</strong> 上有海量的代码资源，我们一定可以在<strong>GitHub</strong> 中找到我们想要的代码。</p></li>
+<li><p><strong>GitHub</strong> 上有海量的代码资源，我们可以在<strong>GitHub</strong> 中找到我们想要的代码。</p></li>
 <li><p><strong>GitHub</strong> 中的资源以仓库为单位，我们可以为每一个事件、项目等新建一个仓库，我们也可以将其他人的仓库完整地克隆到我们自己的 <strong>GitHub</strong> 主页下，或者将 <strong>GitHub</strong> 中仓库完整地克隆到本地计算机。</p></li>
 </ul>
-<p>总而言之， <strong>GitHub</strong>  是一个代码托管云服务网站，主要用于软件开发者存储和管理其项目源代码，且能够追踪、记录并控制用户对其代码的修改。 甚至我们可以简单粗暴的把它当作一个网盘，用来存储任何东西。一定要注意，<strong>Github</strong> 不是 <strong>Git</strong>，<strong>GitHub</strong>只提供托管服务！</p>
+<p>总而言之， <strong>GitHub</strong>  是一个代码托管云服务网站，主要用于软件开发者存储和管理其项目源代码，且能够追踪、记录并控制用户对其代码的修改。 甚至我们可以简单粗暴的把它当作一个网盘，用来存储代码等文件。一定要注意，<strong>Github</strong> 不是 <strong>Git</strong>，<strong>GitHub</strong>只提供托管服务！</p>
 <p>接下来自己去注册一个Github账号吧。</p>
 <p>如果你不能科学上网，导致Github的访问很慢，或者根本就不能访问，那这边还是建议自己想办法解决下这个问题。</p>
+<p>如果实在无法稳定访问GitHub，我们这里也提供一个Gitlab（类似Github）服务：<a class="reference external" href="http://124.93.160.156:18888/">访问链接</a>，你需要注册它，团队平台管理员会通过你的注册，然后你就可以获取Gitlab上提供的本代码仓：<a class="reference external" href="http://124.93.160.156:18888/ouyangwenyu/iheadwater_hackweek_tutorials">gitlab 上的 iheadwater_hackweek_tutorials</a>。</p>
+<p>但是Github平常使用可能更多，所以后续教程主要以使用它为例来介绍，Gitlab上的操作是类似的，后续就不赘述了。</p>
 <p>接下来我们把本代码仓拉下来。</p>
 <ol class="simple">
 <li><p>打开GitHub上的本代码仓：<a class="reference external" href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials">https://github.com/iHeadWater/iheadwater_hackweek_tutorials</a></p></li>
-<li><p>fork到自己GitHub账号下：<img alt="" src="img/github_fork.png" /></p></li>
+<li><p>fork到自己GitHub账号下：<img alt="" src="../_images/github_fork.png" /></p></li>
 <li><p>使用Git Clone命令clone下来。还记得刚刚提到了我们能使用Bash打开和运行软件吗，这里我们在使用Bash操作Git去下载本教程，在平台终端上输入以下命令：</p></li>
 </ol>
 <div class="highlight-Shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 如果你想创建一个新文件夹放这些代码就执行：</span>

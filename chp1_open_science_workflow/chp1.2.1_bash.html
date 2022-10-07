@@ -628,17 +628,18 @@ title="Print to PDF"
 <p>今天计算机既可以提供命令又可以执行计算，这些计算机还具有图形用户界面（称为 GUI）。</p>
 <p>但是，对于某些任务，访问命令行或终端通常比使用 GUI 更有效，例如，在终端中处理文件比在 Windows 资源管理器等图形环境中处理文件更快、更有效。</p>
 <p>使用终端还能启动和使用其他工具，例如Git。</p>
+<p>如果你对这些概念感兴趣，更多内容可以去查看Crash Course的科普视频<a class="reference external" href="https://www.bilibili.com/video/BV1EW411u7th?spm_id_from=333.337.search-card.all.click">【计算机科学速成课】[40集全/精校] - Crash Course Computer Science P22 和 P23</a></p>
 </section>
 <section id="shell-bash">
 <h2>2 Shell 和 Bash<a class="headerlink" href="#shell-bash" title="Permalink to this headline">#</a></h2>
 <p>Shell是计算机用来接收代码（即命令）并返回执行这些命令产生的信息（即输出）的主要程序。</p>
 <p>这些命令可以通过终端输入和执行，因此我们能通过使用键盘输入命令来控制计算机，而不必要用鼠标/键盘在 GUI 中使用按钮或下拉菜单。</p>
-<p>Bash是一种Shell的具体实现，Linux下面默认的shell实现，通过使用它我们能有效地执行许多任务。例如，通过命令行快速对多个文件执行操作，在Bash中编写和执行脚本。</p>
+<p>Bash是一种Shell的具体实现，是Linux下面默认的shell实现，通过使用它我们能有效地执行许多任务。例如，通过命令行快速对多个文件执行操作，在Bash中编写和执行脚本。</p>
 <p>在终端中使用Bash是一种与计算机交互的强大方式。GUI 和Bash是互补的，两者都有所了解，能大大扩展大家能使用计算机完成的任务范围。</p>
 </section>
 <section id="id2">
 <h2>3 打开 Bash<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
-<p>我们现在了解到终端是命令行界面 (CLI)，可通过它访问Bash。实际上有许多不同的终端程序，例如，Mac 以及许多 Linux 计算机都安装了一个默认终端程序提供Bash. 但是，Windows 计算机上的默认终端则不提供Bash，而是我们常用的cmd.exe</p>
+<p>我们现在了解到终端是命令行界面 (CLI)，可通过它访问Bash。实际上有许多不同的终端程序，例如，Mac 以及许多 Linux 计算机都安装了一个默认终端程序提供Bash. 但是，Windows 计算机上的默认终端则不提供Bash，而是我们常用的cmd</p>
 <p>在本教程中，我们用平台提供的jupyter工具来访问终端和使用Bash。</p>
 <p>如果你无法访问平台也想使用bash，假如你的电脑是linux系统，那直接打开终端即可，如果是windows，那么你可以安装一个linux系统，在win10及win11上安装一个linux系统是比较简单的，参考<a class="reference external" href="https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-11-with-gui-support#1-overview">ubuntu官方文档</a>即可，这里就不多说了。</p>
 <p>还记得你注册的jupyterhub账号么，现在登录它，你将看到类似如下界面：</p>
@@ -648,7 +649,13 @@ title="Print to PDF"
 <p><img alt="" src="../_images/jupyter_terminal.png" /></p>
 <p>界面上美元符号$是一个提示，显示你的Bash正在等待更多输入。</p>
 <p>根据大家具体账号的不同，可能会看到不同提示信息，例如图片上显示的是ouyangwenyu&#64;vm-jupyterhub-server的用户信息，当前目录位置是~，即用户根目录。</p>
-<p>你可以随时通过键入“exit”命令并按回车键来关闭终端。</p>
+<p>如果您是第一次打开平台终端，为了后续方便使用Python，这里需要使用以下命令配置您用户环境下的conda：</p>
+<div class="highlight-Shell notranslate"><div class="highlight"><pre><span></span>conda init
+</pre></div>
+</div>
+<p>conda是一个程序包和代码运行环境的管理工具，平台已经提前安装好，并配置好了本教程代码所需的运行环境，我们后续直接使用它即可。</p>
+<p>配置后，我们需要在终端键入“exit”命令并按回车键来关闭终端。</p>
+<p>然后再打开终端，这样重启后，<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">init</span></code> 的配置才能生效。</p>
 </section>
 </section>
 

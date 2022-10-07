@@ -8,11 +8,11 @@
 
 ## 1. git status 检查更改的状态
 
-首先，我们需要了解到的是，git内部主要有untrack,modified,staged和committed四种状态。在开始工作之前，**我们先克隆一个远程GitHub仓库到本地**。用**终端**导航到实践**git**的地方`$ cd iheadwater_hackweek_tutorials`，也可以进入这个文件夹之后再打开终端，之后我们来看一下不同的状态吧。
+首先，我们需要了解到的是，git内部主要有 untracked,modified,staged和committed四种状态。在开始工作之前，**我们先克隆一个远程GitHub仓库到本地**。用**终端**导航到实践**git**的地方`$ cd iheadwater_hackweek_tutorials`，也可以进入这个文件夹之后再打开终端，之后我们来看一下不同的状态吧。
 
-**untrack**，可以理解为没有记录，没有跟踪的意思，我们新创建一个**try.md**文件，它其实就是这个状态，没有经过任何改动。
+**untracked**，可以理解为没有记录，没有跟踪的意思，我们新创建一个**try.md**文件，它其实就是这个状态，没有经过任何改动。
 
-**modified**，即修改过，我们可以随便修改一个已经存在的文件,写入一些文字或者进行修改，可以输入`git status`查看一下，就可以看到**modified**的提示。
+**modified**，即修改过，我们可以随便修改一个已经存在的文件，写入一些文字或者进行修改，可以输入`git status`查看一下，就可以看到**modified**的提示。
 
 ![](../img/status2.png)
 
@@ -56,7 +56,7 @@ git add README.md
 我们也可以同时添加**所有编辑过的文件**，使用：
 
 ```Python
-git add .
+git add -A
 ```
 
 ## 3. 用git commit提交修改过的文件
@@ -132,23 +132,13 @@ git push origin <你的分支名称>:<你的分支名称>
 git branch -r
 ```
 
-然后，我们来看一下拉取远程分支的方式。第一种方式：
+然后，我们来看一下拉取远程分支的方式。
 
 ```Python
 git checkout -b 本地分支名x origin/远程分支名x  
 ```
 
 需要注意的是，使用该方式会在本地新建分支 x ，并自动切换到该本地分支 x 。采用此种方法建立的本地分支会和远程分支建立映射关系。
-
-方式二：
-
-```Python
-git fetch origin 远程分支名x:本地分支名x  
-```
-
-使用该方式会在本地新建分支x，但是不会自动切换到该本地分支x，需要手动checkout。
-
-采用此种方法建立的本地分支不会和远程分支建立映射关系。以上就是拉取远程分支的两种方式。
 
 当我们在 dev 分支完成了自己的部分时，主分支并不会发生变化，这个时候就需要把我们的代码合并到主分支 main 上来，执行`git merge`命令就可以合并分支。
 
@@ -159,27 +149,9 @@ git fetch origin 远程分支名x:本地分支名x
 
 有添加就有删除，假如分支新建错了，或者dev分支的代码已经顺利合并到 main 分支来了，那么 dev 分支没用了，我们可以用 `git branch -d` 删除。删除分支dev 的语句为 `git branch -d dev` 。
 
-### 4.3 pull request
+关于分支的更多内容，这里有一个git分支交互式学习的网站，可以试试：https://learngitbranching.js.org/
 
-我们在之前已经介绍过如何创建分支并且推送到远程，那么现在自己的github上已经有了创建的dev分支，这个分支将是随后发起 Pull Request 时要用到的源分支。
-
-首先，点击项目简介下的 **Pull Request** 按钮(左上角)
-
-再点击**New Pull Request**
-
-![](../img/pull1.png)
-
-最后点击**Create Pull Request**即可，其中自己的仓库默认设置为源仓库（head fork）、询问指定源分支（compare）、目标仓库（base fork）和目标分支（base）。
-
-![](../img/pull2.png)
-
-通过以上的步骤，对方就会在在他自己的 GitHub 仓库下的**Pull Request**选项卡中看到所有的**Pull Request**。点击 **Pull Request** 会显示这个**Pull Request**的简介、dev 分支的提交历史，以及这次提交包含的更改。
-
-如果对方认为 dev 分支已经可以合并了，他只需点击 **Merge Pull Request**按钮来通过这个 **Pull Request**，将dev分支并入他的 **main** 分支。
-
-最后，对方接受了这些修改，将 dev 分支并入了 main 分支，关闭了这个**Pull Request**。通过以上的操作，所修改的东西现在也已经整合到了项目中，这时其他在 main 分支上工作的开发者就可以使用标准的 **git pull** 命令将这些修改拉取到自己的本地仓库。
-
-### 4.4 fork后同步源仓库新更新的内容
+### 4.3 fork后同步源仓库新更新的内容
 
 在我们fork了其他人的repo后，如果他们的内容有更新，我们又应该怎样把他们的最新内容同步过来呢？
 
@@ -225,7 +197,7 @@ git rebase upstream/main
 git push
 ```
 
-### 4.5 查看历史版本
+### 4.4 查看历史版本
 
 我们可以使用以下的命令：
 
@@ -273,12 +245,12 @@ git pull <远程库名> <远程分支名>:<本地分支名>
 git pull origin dev:dev
 ```
 
-**如果是要与本地当前分支merge，则冒号后面的<本地分支名>可以不写。**
+**如果是要与本地当前分支merge，则直接git pull即可。**
 
-通常，git会将本地库分支与远程分支之间建立一种追踪关系。比如，在git clone的时候，所有本地分支默认与远程库的同名分支建立追踪关系。也就是说，本地的main分支自动追踪origin/main分支。因此，如果当前处于本地dev分支上，并且本地dev分支与远程的dev分支有追踪关系，那么远程的分支名可以省略：
+通常，git会将本地库分支与远程分支之间建立一种追踪关系。比如，在git clone的时候，所有本地分支默认与远程库的同名分支建立追踪关系。也就是说，本地的main分支自动追踪origin/main分支。因此，如果当前处于本地dev分支上，并且本地dev分支与远程的dev分支有追踪关系，那么分支名可以省略：
 
 ```Python
-git pull origin
+git pull
 ```
 
 ## 6. 用.gitignore文件告诉 Git 忽略文件

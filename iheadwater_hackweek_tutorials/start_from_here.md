@@ -21,4 +21,4 @@
 7. 使用深度学习工具Pytorch
 8. 复现基于CAMELS数据集和LSTM模型的研究论文
 
-本文的结构和部分内容重点参考了：[Earth Lab的资源](https://www.earthdatascience.org/)，感兴趣的同学可以去看一看他们的优质教程。
+本教程的结构和部分内容重点参考了：[Earth Lab的资源](https://www.earthdatascience.org/)，感兴趣的同学可以去看一看他们的优质教程。

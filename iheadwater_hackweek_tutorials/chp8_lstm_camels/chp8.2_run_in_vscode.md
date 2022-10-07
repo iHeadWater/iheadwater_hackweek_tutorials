@@ -92,7 +92,13 @@ vscode上方会弹窗让用户选择采用Microsoft还是Github登录，若选�
 
 ![](../img/vscode_remote_plugin.png)
 
-### 2.2 添加远程服务器连接配置
+### 2.2 确认本地电脑已连接个人平台账号
+
+如果前面已经使用过[Mobaxterm上传下载了文件](https://iheadwater.github.io/iheadwater_hackweek_tutorials/chp2_file_formats/chp2.4_your_data.html#id2)，那么您现在正在使用的电脑应该就已经连接到您个人的平台账号了，即您的本地电脑是客户端，个人平台账号是服务端，两者之间已经建立起SSH连接了。
+
+如果没有请查看[Mobaxterm上传下载文件](https://iheadwater.github.io/iheadwater_hackweek_tutorials/chp2_file_formats/chp2.4_your_data.html#id2)这一节，配置本地客户端和个人平台服务端之间的SSH连接。
+
+### 2.3 添加远程服务器连接配置
 
 点击该选项卡，会进入SSH TARGETS的添加，如下图所示，点击设置按钮，vscode会弹框询问选择哪个配置文件，一般只需选择最上面的文件（C:\Users\你的用户名\.ssh\config）：
 
@@ -102,15 +108,15 @@ vscode上方会弹窗让用户选择采用Microsoft还是Github登录，若选�
 
 ```Plain Text
 Host jupyterhub.waterism.com
-  HostName jupyterhub.waterism.com
-  IdentityFile ~/.ssh/id_rsa
-  PreferredAuthentications publickey
-  User 你在jupyter上注册的账号名
+    HostName jupyterhub.waterism.com
+    IdentityFile ~/.ssh/id_rsa
+    PreferredAuthentications publickey
+    User 你在平台jupyterhub上注册的账号名
 ```
 
 然后保存即可。
 
-### 2.3 连接平台
+### 2.4 连接平台
 
 如无意外，SSH Targets中会生成一个jupyterhub.waterism.com项（和你粘贴进去的Host一致），鼠标右键点击此项，选择在“当前窗口”或者“新建窗口”打开，两个选项选择任意一个即可。
 
@@ -140,11 +146,11 @@ remote ssh插件便会为你自动连上jupyter服务器，连接成功后，窗
 
 如果刚刚本地安装了很多插件，这时候远程也会提示你安装相同的插件，安装即可。
 
-## 2.4 运行代码
+### 2.5 运行代码
 
-如果你之前跟着一起实践了git和github部分的操作，那么这里你应该已经有一些代码在服务器上了。
+如果您之前跟着一起实践了git和github部分的操作，那么这里应该已经有一些代码在服务器上了。
 
-这里以本教程的代码为例，如果你已经在服务器上下载过相关代码了，那直接打开 iheadwater_hackweek_tutorials 代码文件夹即可
+这里以本教程的代码为例，如果已经在服务器上下载过，直接打开 iheadwater_hackweek_tutorials 代码文件夹即可
 
 然后，选择Python的解释器：按快捷键 “ctrl+shift+p”，输入 python: select interpreter，选择它，然后选择 平台上已经提供的 tutorial 环境，就为iheadwater_hackweek_tutorials 配置好运行环境了。
 

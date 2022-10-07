@@ -74,7 +74,7 @@ git commit -m "Update title and author name in homework for week 3"
 
 每个提交都有一个唯一的标识符（SHA-1哈希值），并包括提交时对暂存区文件的所有修改（即用`git add`添加到暂存区的所有文件）
 
-## 4. 推送修改后的文件到GitHub.com
+## 4. 推送修改后的文件到 GitHub
 
 到目前的操作为止，我们只是修改了仓库的本地副本并完成了对仓库的本地提交。如果我们想要更新 **GitHub.com** 上的文件，则还需要把修改的文件**push(推送)** 到 **GitHub.com** 上的仓库。
 

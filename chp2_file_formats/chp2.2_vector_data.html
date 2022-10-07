@@ -661,7 +661,7 @@ title="Print to PDF"
 <p>地理空间数据通常涉及从许多不同来源以不同格式收集到的大量空间数据，并且可以包括人口普查数据，卫星图像和天气数据等信息。</p>
 <p>用于收集和分析地理空间数据的技术我们称之为地理空间技术。涉及地理空间技术的软件叫GIS软件，GIS（Geographic Information System），简单理解就是帮助我们处理这些地理空间数据的。常见的GIS工具有ArcGIS、QGIS等，未来我们都会接触到的。</p>
 <p>地理空间数据的两个主要类型为栅格数据和矢量数据。</p>
-<p><img alt="" src="../_images/raster_vector.png" /></p>
+<p><img alt="" src="../_images/spatial_image.jpg" /></p>
 <section id="id2">
 <h2>1 矢量数据<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>矢量数据就是使用点、线和面表示地理要素的位置和形状的数据。</p>
@@ -849,7 +849,7 @@ title="Print to PDF"
         <span class="n">ax</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># 可视化，即显示生成的图片</span>
         <span class="n">data</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s1">&#39;ESRI Shapefile&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--保存成功，文件存放位置：&quot;</span><span class="o">+</span><span class="n">localPath</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--保存成功，文件存放位置：&quot;</span><span class="o">+</span><span class="n">save_path</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------JSON文件不存在，请检查后重试！----&quot;</span><span class="p">)</span>
         <span class="k">pass</span>
@@ -859,7 +859,7 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/chp2.2_vector_data_9_0.png" src="../_images/chp2.2_vector_data_9_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------JSON文件不存在，请检查后重试！----
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--保存成功，文件存放位置：../data/basin
 </pre></div>
 </div>
 </div>

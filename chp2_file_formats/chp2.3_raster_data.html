@@ -593,7 +593,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#netcdf">
-   2 NetCDF格式
+   2 NetCDF
   </a>
  </li>
 </ul>
@@ -622,7 +622,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#netcdf">
-   2 NetCDF格式
+   2 NetCDF
   </a>
  </li>
 </ul>
@@ -659,533 +659,53 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#导入工具</span>
 <span class="kn">from</span> <span class="nn">wis_downloader</span> <span class="kn">import</span> <span class="n">alos_dem</span>
 <span class="c1">#根据四至范围搜索dem下载链接</span>
-<span class="n">hrefs</span><span class="o">=</span><span class="n">alos_dem</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">bbox</span><span class="o">=</span><span class="p">[</span><span class="mf">120.58</span><span class="p">,</span><span class="mf">38.43</span><span class="p">,</span><span class="mf">123.31</span><span class="p">,</span><span class="mf">40.12</span><span class="p">])</span><span class="c1">#此为大连市的经纬度，大家可思考一下四个数字对应的方位</span>
+<span class="n">hrefs</span><span class="o">=</span><span class="n">alos_dem</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">bbox</span><span class="o">=</span><span class="p">[</span><span class="mi">121</span><span class="p">,</span><span class="mi">38</span><span class="p">,</span><span class="mf">121.5</span><span class="p">,</span><span class="mi">39</span><span class="p">])</span>
 <span class="n">hrefs</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;https://ai4edataeuwest.blob.core.windows.net/alos-dem/AW3D30_global/ALPSMLC30_N040E123_DSM.tif&#39;,
- &#39;https://ai4edataeuwest.blob.core.windows.net/alos-dem/AW3D30_global/ALPSMLC30_N040E122_DSM.tif&#39;,
- &#39;https://ai4edataeuwest.blob.core.windows.net/alos-dem/AW3D30_global/ALPSMLC30_N040E121_DSM.tif&#39;,
- &#39;https://ai4edataeuwest.blob.core.windows.net/alos-dem/AW3D30_global/ALPSMLC30_N040E120_DSM.tif&#39;,
- &#39;https://ai4edataeuwest.blob.core.windows.net/alos-dem/AW3D30_global/ALPSMLC30_N039E123_DSM.tif&#39;,
- &#39;https://ai4edataeuwest.blob.core.windows.net/alos-dem/AW3D30_global/ALPSMLC30_N039E122_DSM.tif&#39;,
- &#39;https://ai4edataeuwest.blob.core.windows.net/alos-dem/AW3D30_global/ALPSMLC30_N039E121_DSM.tif&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;https://ai4edataeuwest.blob.core.windows.net/alos-dem/AW3D30_global/ALPSMLC30_N039E121_DSM.tif&#39;,
  &#39;https://ai4edataeuwest.blob.core.windows.net/alos-dem/AW3D30_global/ALPSMLC30_N038E121_DSM.tif&#39;,
- &#39;https://ai4edataeuwest.blob.core.windows.net/alos-dem/AW3D30_global/ALPSMLC30_N038E120_DSM.tif&#39;]
+ &#39;https://ai4edataeuwest.blob.core.windows.net/alos-dem/AW3D30_global/ALPSMLC30_N038E120_DSM.tif&#39;,
+ &#39;https://ai4edataeuwest.blob.core.windows.net/alos-dem/AW3D30_global/ALPSMLC30_N037E121_DSM.tif&#39;,
+ &#39;https://ai4edataeuwest.blob.core.windows.net/alos-dem/AW3D30_global/ALPSMLC30_N037E120_DSM.tif&#39;]
 </pre></div>
 </div>
 </div>
 </div>
 <p>我们可以点击加载出来的链接下载DEM数据，也可以用命令下载。</p>
-<p>我以通过以下命令将数据下载到’../data/dem’文件夹下</p>
+<p>我以通过以下命令将数据全部下载到’../data/dem’文件夹下</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">alos_dem</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">save_dir</span><span class="o">=</span><span class="s1">&#39;../data/dem&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>为了节约时间，我们通过<code class="docutils literal notranslate"><span class="pre">downloader</span></code>中的方法下载hrefs中的某一个dem链接</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alos_dem</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">save_dir</span><span class="o">=</span><span class="s1">&#39;../data/dem&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wis_downloader</span> <span class="kn">import</span> <span class="n">downloader</span>
+<span class="n">downloader</span><span class="o">.</span><span class="n">download_sigletasking</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">hrefs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;../data/dem/dem.tif&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:   0%|          | 0/22504301 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:   1%|          | 225044/22504301 [00:00&lt;01:03, 349621.40it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:   2%|▏         | 450088/22504301 [00:00&lt;00:41, 536925.78it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:   3%|▎         | 675132/22504301 [00:01&lt;00:27, 781925.44it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:   4%|▍         | 900176/22504301 [00:01&lt;00:21, 997182.24it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:   5%|▌         | 1125220/22504301 [00:01&lt;00:18, 1175730.85it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:   7%|▋         | 1575308/22504301 [00:01&lt;00:11, 1760718.36it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:   9%|▉         | 2025396/22504301 [00:01&lt;00:09, 2212716.12it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:  11%|█         | 2475484/22504301 [00:01&lt;00:07, 2556038.34it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:  14%|█▍        | 3150616/22504301 [00:01&lt;00:05, 3294602.78it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:  18%|█▊        | 4050792/22504301 [00:01&lt;00:04, 4317906.34it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:  21%|██        | 4725924/22504301 [00:02&lt;00:04, 4411439.55it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:  24%|██▍       | 5401056/22504301 [00:02&lt;00:03, 4630055.10it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:  29%|██▉       | 6526276/22504301 [00:02&lt;00:02, 5747705.60it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:  34%|███▍      | 7651496/22504301 [00:02&lt;00:02, 6621366.27it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:  38%|███▊      | 8551672/22504301 [00:02&lt;00:02, 6407027.51it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:  44%|████▍     | 9901936/22504301 [00:02&lt;00:01, 7512653.57it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:  51%|█████     | 11477244/22504301 [00:02&lt;00:01, 8839311.12it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:  56%|█████▌    | 12602464/22504301 [00:03&lt;00:01, 8357781.58it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:  65%|██████▌   | 14627860/22504301 [00:03&lt;00:00, 10372783.51it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:  75%|███████▌  | 16878300/22504301 [00:03&lt;00:00, 9462552.57it/s] 
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:  86%|████████▌ | 19353784/22504301 [00:03&lt;00:00, 11715130.77it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif:  94%|█████████▍| 21154136/22504301 [00:03&lt;00:00, 11953082.29it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E123_DSM.tif: 22504400it [00:03, 6010754.30it/s]                               
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:   0%|          | 0/15214446 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:   1%|          | 152145/15214446 [00:00&lt;00:44, 340070.18it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:   2%|▏         | 304290/15214446 [00:00&lt;00:30, 482214.09it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:   3%|▎         | 456435/15214446 [00:00&lt;00:21, 683912.93it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:   4%|▍         | 608580/15214446 [00:00&lt;00:17, 850239.02it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:   5%|▌         | 760725/15214446 [00:01&lt;00:14, 984132.08it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:   6%|▌         | 912870/15214446 [00:01&lt;00:13, 1088231.06it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:   8%|▊         | 1217160/15214446 [00:01&lt;00:09, 1545886.67it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:  10%|█         | 1521450/15214446 [00:01&lt;00:07, 1890708.91it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:  13%|█▎        | 1977885/15214446 [00:01&lt;00:05, 2514869.79it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:  16%|█▌        | 2434320/15214446 [00:01&lt;00:04, 2984682.86it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:  20%|██        | 3042900/15214446 [00:01&lt;00:03, 3717269.06it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:  25%|██▌       | 3803625/15214446 [00:01&lt;00:02, 4611882.96it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:  29%|██▉       | 4412205/15214446 [00:01&lt;00:02, 4676853.33it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:  34%|███▍      | 5172930/15214446 [00:02&lt;00:01, 5304539.56it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:  40%|████      | 6085800/15214446 [00:02&lt;00:01, 6161990.48it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:  47%|████▋     | 7150815/15214446 [00:02&lt;00:01, 7194566.08it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:  56%|█████▌    | 8520120/15214446 [00:02&lt;00:00, 8268072.73it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:  67%|██████▋   | 10193715/15214446 [00:02&lt;00:00, 10224897.54it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:  79%|███████▉  | 12019455/15214446 [00:02&lt;00:00, 12029292.66it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:  87%|████████▋ | 13236615/15214446 [00:02&lt;00:00, 11371825.90it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif:  98%|█████████▊| 14910210/15214446 [00:02&lt;00:00, 12503982.84it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E122_DSM.tif: 15214500it [00:02, 5362331.04it/s]                               
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E121_DSM.tif:   0%|          | 0/1279720 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E121_DSM.tif:   2%|▏         | 25596/1279720 [00:00&lt;00:05, 233887.00it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E121_DSM.tif:   4%|▍         | 51192/1279720 [00:00&lt;00:05, 229692.72it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E121_DSM.tif:   7%|▋         | 89586/1279720 [00:00&lt;00:04, 279951.13it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E121_DSM.tif:  10%|█         | 127980/1279720 [00:00&lt;00:03, 304501.78it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E121_DSM.tif:  15%|█▌        | 191970/1279720 [00:00&lt;00:02, 399575.08it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E121_DSM.tif:  21%|██        | 268758/1279720 [00:00&lt;00:02, 494894.49it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E121_DSM.tif:  29%|██▉       | 371142/1279720 [00:00&lt;00:01, 628808.94it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E121_DSM.tif:  39%|███▉      | 499122/1279720 [00:00&lt;00:00, 785622.01it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E121_DSM.tif:  52%|█████▏    | 665496/1279720 [00:01&lt;00:00, 998236.85it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E121_DSM.tif:  67%|██████▋   | 857466/1279720 [00:01&lt;00:00, 1215585.04it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E121_DSM.tif:  86%|████████▌ | 1100628/1279720 [00:01&lt;00:00, 1502597.86it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E121_DSM.tif: 1279800it [00:01, 1027476.52it/s]                             
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E120_DSM.tif:   0%|          | 0/11226460 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E120_DSM.tif:   1%|          | 112265/11226460 [00:00&lt;00:39, 284594.66it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E120_DSM.tif:   2%|▏         | 224530/11226460 [00:00&lt;00:31, 352622.17it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E120_DSM.tif:   3%|▎         | 336795/11226460 [00:00&lt;00:22, 479885.10it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E120_DSM.tif:   4%|▍         | 449060/11226460 [00:00&lt;00:18, 579452.22it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E120_DSM.tif:   5%|▌         | 561325/11226460 [00:01&lt;00:16, 655520.74it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E120_DSM.tif:   7%|▋         | 785855/11226460 [00:01&lt;00:10, 950190.22it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E120_DSM.tif:  10%|█         | 1122650/11226460 [00:01&lt;00:07, 1406604.62it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E120_DSM.tif:  12%|█▏        | 1347180/11226460 [00:01&lt;00:06, 1489860.88it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E120_DSM.tif:  16%|█▌        | 1796240/11226460 [00:01&lt;00:04, 2049452.22it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E120_DSM.tif:  21%|██        | 2357565/11226460 [00:01&lt;00:03, 2698976.07it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E120_DSM.tif:  26%|██▌       | 2918890/11226460 [00:01&lt;00:02, 3162827.69it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E120_DSM.tif:  33%|███▎      | 3704745/11226460 [00:01&lt;00:01, 3962325.10it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E120_DSM.tif:  38%|███▊      | 4266070/11226460 [00:02&lt;00:01, 3934172.32it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E120_DSM.tif:  46%|████▌     | 5164190/11226460 [00:02&lt;00:01, 4774520.60it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E120_DSM.tif:  56%|█████▌    | 6286840/11226460 [00:02&lt;00:00, 5872054.40it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E120_DSM.tif:  68%|██████▊   | 7634020/11226460 [00:02&lt;00:00, 7148439.32it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E120_DSM.tif:  75%|███████▌  | 8419875/11226460 [00:02&lt;00:00, 6641669.99it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E120_DSM.tif:  90%|█████████ | 10103850/11226460 [00:02&lt;00:00, 8426358.35it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N040E120_DSM.tif: 11226500it [00:02, 3990412.12it/s]                              
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E123_DSM.tif:   0%|          | 0/2987640 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E123_DSM.tif:   1%|          | 29877/2987640 [00:00&lt;00:10, 277296.24it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E123_DSM.tif:   2%|▏         | 59754/2987640 [00:00&lt;00:10, 272085.44it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E123_DSM.tif:   3%|▎         | 89631/2987640 [00:00&lt;00:10, 270371.41it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E123_DSM.tif:   4%|▍         | 119508/2987640 [00:00&lt;00:10, 269568.56it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E123_DSM.tif:   7%|▋         | 209139/2987640 [00:00&lt;00:06, 462482.43it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E123_DSM.tif:   9%|▉         | 268893/2987640 [00:00&lt;00:05, 487171.58it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E123_DSM.tif:  13%|█▎        | 388401/2987640 [00:00&lt;00:03, 677315.71it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E123_DSM.tif:  17%|█▋        | 507909/2987640 [00:00&lt;00:03, 802515.53it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E123_DSM.tif:  24%|██▍       | 717048/2987640 [00:01&lt;00:01, 1136155.32it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E123_DSM.tif:  31%|███       | 926187/2987640 [00:01&lt;00:01, 1366684.84it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E123_DSM.tif:  40%|████      | 1195080/2987640 [00:01&lt;00:01, 1688249.93it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E123_DSM.tif:  50%|█████     | 1493850/2987640 [00:01&lt;00:00, 1990339.06it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E123_DSM.tif:  64%|██████▍   | 1912128/2987640 [00:01&lt;00:00, 2529144.01it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E123_DSM.tif:  81%|████████  | 2420037/2987640 [00:01&lt;00:00, 3142042.86it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E123_DSM.tif: 2987700it [00:01, 3723918.19it/s]                             
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E123_DSM.tif: 2987700it [00:01, 1788419.61it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:   0%|          | 0/10106608 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:   1%|          | 101067/10106608 [00:00&lt;00:33, 300808.76it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:   2%|▏         | 202134/10106608 [00:00&lt;00:26, 372714.87it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:   3%|▎         | 303201/10106608 [00:00&lt;00:19, 508061.99it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:   5%|▌         | 505335/10106608 [00:00&lt;00:11, 853499.56it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:   7%|▋         | 707469/10106608 [00:00&lt;00:08, 1113118.35it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:   9%|▉         | 909603/10106608 [00:01&lt;00:07, 1304014.56it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:  11%|█         | 1111737/10106608 [00:01&lt;00:06, 1443653.25it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:  13%|█▎        | 1313871/10106608 [00:01&lt;00:05, 1546383.62it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:  17%|█▋        | 1718139/10106608 [00:01&lt;00:03, 2142260.91it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:  21%|██        | 2122407/10106608 [00:01&lt;00:03, 2565028.24it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:  27%|██▋       | 2728809/10106608 [00:01&lt;00:02, 3394279.79it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:  33%|███▎      | 3335211/10106608 [00:01&lt;00:01, 3979413.08it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:  40%|████      | 4042680/10106608 [00:01&lt;00:01, 4704182.80it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:  45%|████▌     | 4548015/10106608 [00:01&lt;00:01, 4491788.87it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:  51%|█████     | 5154417/10106608 [00:02&lt;00:01, 4779023.86it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:  61%|██████    | 6165087/10106608 [00:02&lt;00:00, 6012009.07it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:  72%|███████▏  | 7276824/10106608 [00:02&lt;00:00, 7140936.85it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:  83%|████████▎ | 8388561/10106608 [00:02&lt;00:00, 7973875.55it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:  91%|█████████ | 9197097/10106608 [00:02&lt;00:00, 7609786.31it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif:  99%|█████████▉| 10005633/10106608 [00:02&lt;00:00, 7506607.56it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E122_DSM.tif: 10106700it [00:02, 3868788.27it/s]                              
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E121_DSM.tif:   0%|          | 0/6848172 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E121_DSM.tif:   1%|          | 68482/6848172 [00:00&lt;00:21, 309995.10it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E121_DSM.tif:   2%|▏         | 136964/6848172 [00:00&lt;00:21, 308335.76it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E121_DSM.tif:   3%|▎         | 205446/6848172 [00:00&lt;00:16, 398496.44it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E121_DSM.tif:   4%|▍         | 273928/6848172 [00:00&lt;00:14, 462530.42it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E121_DSM.tif:   6%|▌         | 410892/6848172 [00:00&lt;00:09, 690578.55it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E121_DSM.tif:   8%|▊         | 547856/6848172 [00:00&lt;00:07, 848497.30it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E121_DSM.tif:  11%|█         | 753302/6848172 [00:01&lt;00:05, 1147258.24it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E121_DSM.tif:  14%|█▍        | 958748/6848172 [00:01&lt;00:04, 1355718.32it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E121_DSM.tif:  18%|█▊        | 1232676/6848172 [00:01&lt;00:03, 1687991.16it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E121_DSM.tif:  24%|██▍       | 1643568/6848172 [00:01&lt;00:02, 2288734.67it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E121_DSM.tif:  32%|███▏      | 2191424/6848172 [00:01&lt;00:01, 3071792.97it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E121_DSM.tif:  41%|████      | 2807762/6848172 [00:01&lt;00:01, 3800835.11it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E121_DSM.tif:  52%|█████▏    | 3561064/6848172 [00:01&lt;00:00, 4688078.05it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E121_DSM.tif:  62%|██████▏   | 4245884/6848172 [00:01&lt;00:00, 5007400.57it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E121_DSM.tif:  77%|███████▋  | 5273114/6848172 [00:01&lt;00:00, 6250092.33it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E121_DSM.tif:  93%|█████████▎| 6368826/6848172 [00:02&lt;00:00, 7318053.68it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N039E121_DSM.tif: 6848200it [00:02, 3388781.34it/s]                             
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E121_DSM.tif:   0%|          | 0/1954057 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E121_DSM.tif:   1%|          | 19541/1954057 [00:00&lt;00:10, 179975.22it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E121_DSM.tif:   2%|▏         | 39082/1954057 [00:00&lt;00:10, 177521.46it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E121_DSM.tif:   5%|▌         | 97705/1954057 [00:00&lt;00:05, 337969.14it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E121_DSM.tif:   7%|▋         | 136787/1954057 [00:00&lt;00:05, 343155.32it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E121_DSM.tif:  10%|█         | 195410/1954057 [00:00&lt;00:04, 409113.03it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E121_DSM.tif:  14%|█▍        | 273574/1954057 [00:00&lt;00:03, 504945.79it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E121_DSM.tif:  19%|█▉        | 371279/1954057 [00:00&lt;00:02, 628661.50it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E121_DSM.tif:  26%|██▌       | 508066/1954057 [00:00&lt;00:01, 818045.95it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E121_DSM.tif:  34%|███▍      | 664394/1954057 [00:01&lt;00:01, 1003099.97it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E121_DSM.tif:  44%|████▍     | 859804/1954057 [00:01&lt;00:00, 1236704.64it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E121_DSM.tif:  59%|█████▉    | 1152919/1954057 [00:01&lt;00:00, 1663573.31it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E121_DSM.tif:  77%|███████▋  | 1504657/1954057 [00:01&lt;00:00, 2119829.58it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E121_DSM.tif:  98%|█████████▊| 1915018/1954057 [00:01&lt;00:00, 2593845.23it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E121_DSM.tif: 1954100it [00:01, 1348644.81it/s]                             
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E120_DSM.tif:   0%|          | 0/177672 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E120_DSM.tif:   9%|▉         | 15993/177672 [00:00&lt;00:01, 146603.92it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E120_DSM.tif:  19%|█▉        | 33763/177672 [00:00&lt;00:00, 153349.92it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E120_DSM.tif:  46%|████▌     | 81742/177672 [00:00&lt;00:00, 279340.99it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E120_DSM.tif:  65%|██████▌   | 115505/177672 [00:00&lt;00:00, 287175.44it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/ALPSMLC30_N038E120_DSM.tif: 177700it [00:00, 394037.28it/s]                            
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>下载文件 ../data/dem/dem.tif:   0%|          | 0/6848172 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">wis_downloader</span> <span class="kn">import</span> <span class="n">downloader</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">downloader</span><span class="o">.</span><span class="n">download_sigletasking</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">hrefs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;../data/dem/dem.tif&#39;</span><span class="p">)</span>
+
+<span class="nn">File /usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/wis_downloader/downloader.py:90,</span> in <span class="ni">download_sigletasking</span><span class="nt">(url, file_name)</span>
+<span class="g g-Whitespace">     </span><span class="mi">88</span> <span class="n">chunk_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">file_size</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span> <span class="n">bar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">file_size</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;下载文件 </span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">90</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">91</span>     <span class="c1"># 写入分块文件</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span>     <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span>         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../data/dem/dem.tif&#39;
 </pre></div>
 </div>
 </div>
@@ -1201,7 +721,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imgpath</span><span class="o">=</span><span class="s1">&#39;../data/dem/ALPSMLC30_N040E120_DSM.tif&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imgpath</span><span class="o">=</span><span class="s1">&#39;../data/dem/dem.tif&#39;</span>
 <span class="n">img</span><span class="o">=</span><span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">imgpath</span><span class="p">)</span>
 <span class="n">img</span>
 </pre></div>
@@ -1564,16 +1084,16 @@ dl.xr-attrs {
 [12960000 values with dtype=int16]
 Coordinates:
   * band         (band) int64 1
-  * x            (x) float64 120.0 120.0 120.0 120.0 ... 121.0 121.0 121.0 121.0
-  * y            (y) float64 41.0 41.0 41.0 41.0 41.0 ... 40.0 40.0 40.0 40.0
+  * x            (x) float64 121.0 121.0 121.0 121.0 ... 122.0 122.0 122.0 122.0
+  * y            (y) float64 40.0 40.0 40.0 40.0 40.0 ... 39.0 39.0 39.0 39.0
     spatial_ref  int64 0
 Attributes:
     AREA_OR_POINT:        Area
     TIFFTAG_XRESOLUTION:  1
     TIFFTAG_YRESOLUTION:  1
     scale_factor:         1.0
-    add_offset:           0.0</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>band</span>: 1</li><li><span class='xr-has-index'>y</span>: 3600</li><li><span class='xr-has-index'>x</span>: 3600</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-b921e1dc-f9c3-4004-a703-f1fbf4c38414' class='xr-array-in' type='checkbox' checked><label for='section-b921e1dc-f9c3-4004-a703-f1fbf4c38414' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>...</span></div><div class='xr-array-data'><pre>[12960000 values with dtype=int16]</pre></div></div></li><li class='xr-section-item'><input id='section-e1ad404c-26bf-49d9-907c-01c870725052' class='xr-section-summary-in' type='checkbox'  checked><label for='section-e1ad404c-26bf-49d9-907c-01c870725052' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>band</span></div><div class='xr-var-dims'>(band)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1</div><input id='attrs-ec8b25b4-93b2-48dc-a4f9-9abd4cbd4080' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-ec8b25b4-93b2-48dc-a4f9-9abd4cbd4080' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-80e81586-0798-439d-911d-09564430cd11' class='xr-var-data-in' type='checkbox'><label for='data-80e81586-0798-439d-911d-09564430cd11' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([1])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>120.0 120.0 120.0 ... 121.0 121.0</div><input id='attrs-1203b4de-de64-4bf6-a9c6-d5dc30b58098' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-1203b4de-de64-4bf6-a9c6-d5dc30b58098' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-39f9c1df-be53-4e4c-8181-878eff1f3f75' class='xr-var-data-in' type='checkbox'><label for='data-39f9c1df-be53-4e4c-8181-878eff1f3f75' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([120.000139, 120.000417, 120.000694, ..., 120.999306, 120.999583,
-       120.999861])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>41.0 41.0 41.0 ... 40.0 40.0 40.0</div><input id='attrs-4a0e9709-e2da-40c1-935e-9d16daba7bf5' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-4a0e9709-e2da-40c1-935e-9d16daba7bf5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-787b2c20-dbc5-421a-ab03-9fd5f06f70c9' class='xr-var-data-in' type='checkbox'><label for='data-787b2c20-dbc5-421a-ab03-9fd5f06f70c9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([40.999861, 40.999583, 40.999306, ..., 40.000694, 40.000417, 40.000139])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-753765aa-3252-4fb3-8e13-aa4c7e616266' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-753765aa-3252-4fb3-8e13-aa4c7e616266' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-307c2193-4956-4cf9-989f-1e485d883c23' class='xr-var-data-in' type='checkbox'><label for='data-307c2193-4956-4cf9-989f-1e485d883c23' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AXIS[&quot;Latitude&quot;,NORTH],AXIS[&quot;Longitude&quot;,EAST],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>grid_mapping_name :</span></dt><dd>latitude_longitude</dd><dt><span>spatial_ref :</span></dt><dd>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AXIS[&quot;Latitude&quot;,NORTH],AXIS[&quot;Longitude&quot;,EAST],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</dd><dt><span>GeoTransform :</span></dt><dd>120.0 0.0002777777777777778 0.0 41.0 0.0 -0.0002777777777777778</dd></dl></div><div class='xr-var-data'><pre>array(0)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-55d1cc92-a2ba-4394-9881-9c70407ed743' class='xr-section-summary-in' type='checkbox'  checked><label for='section-55d1cc92-a2ba-4394-9881-9c70407ed743' class='xr-section-summary' >Attributes: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>AREA_OR_POINT :</span></dt><dd>Area</dd><dt><span>TIFFTAG_XRESOLUTION :</span></dt><dd>1</dd><dt><span>TIFFTAG_YRESOLUTION :</span></dt><dd>1</dd><dt><span>scale_factor :</span></dt><dd>1.0</dd><dt><span>add_offset :</span></dt><dd>0.0</dd></dl></div></li></ul></div></div></div></div>
+    add_offset:           0.0</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>band</span>: 1</li><li><span class='xr-has-index'>y</span>: 3600</li><li><span class='xr-has-index'>x</span>: 3600</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-2af2cc0f-a2ad-4164-8930-bc5abcb69185' class='xr-array-in' type='checkbox' checked><label for='section-2af2cc0f-a2ad-4164-8930-bc5abcb69185' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>...</span></div><div class='xr-array-data'><pre>[12960000 values with dtype=int16]</pre></div></div></li><li class='xr-section-item'><input id='section-68df789e-a2b6-409a-aa97-95558978df28' class='xr-section-summary-in' type='checkbox'  checked><label for='section-68df789e-a2b6-409a-aa97-95558978df28' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>band</span></div><div class='xr-var-dims'>(band)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1</div><input id='attrs-e16276d7-ec16-4f93-98ce-61af7f42e2e9' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-e16276d7-ec16-4f93-98ce-61af7f42e2e9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-470c905f-174b-472e-a5ff-1493946a6eae' class='xr-var-data-in' type='checkbox'><label for='data-470c905f-174b-472e-a5ff-1493946a6eae' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([1])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>121.0 121.0 121.0 ... 122.0 122.0</div><input id='attrs-abd7084d-b96f-436f-81c9-36edea76aa75' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-abd7084d-b96f-436f-81c9-36edea76aa75' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ba84c7b4-b328-42f2-931b-533be2063aaa' class='xr-var-data-in' type='checkbox'><label for='data-ba84c7b4-b328-42f2-931b-533be2063aaa' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([121.000139, 121.000417, 121.000694, ..., 121.999306, 121.999583,
+       121.999861])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>40.0 40.0 40.0 ... 39.0 39.0 39.0</div><input id='attrs-717cbff2-bb12-414c-826a-361e10e11d9c' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-717cbff2-bb12-414c-826a-361e10e11d9c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-139b7b67-02c3-47ab-b9d5-e4459cf40083' class='xr-var-data-in' type='checkbox'><label for='data-139b7b67-02c3-47ab-b9d5-e4459cf40083' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([39.999861, 39.999583, 39.999306, ..., 39.000694, 39.000417, 39.000139])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-3c8ab3f8-23df-4eb1-8ca2-911154932c6f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3c8ab3f8-23df-4eb1-8ca2-911154932c6f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-22dd8b1c-7acb-4f20-a649-e4a5abd68ae6' class='xr-var-data-in' type='checkbox'><label for='data-22dd8b1c-7acb-4f20-a649-e4a5abd68ae6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AXIS[&quot;Latitude&quot;,NORTH],AXIS[&quot;Longitude&quot;,EAST],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>grid_mapping_name :</span></dt><dd>latitude_longitude</dd><dt><span>spatial_ref :</span></dt><dd>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AXIS[&quot;Latitude&quot;,NORTH],AXIS[&quot;Longitude&quot;,EAST],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</dd><dt><span>GeoTransform :</span></dt><dd>121.0 0.0002777777777777778 0.0 40.0 0.0 -0.0002777777777777778</dd></dl></div><div class='xr-var-data'><pre>array(0)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-7ab998ca-4b54-4104-a14f-b97520ece236' class='xr-section-summary-in' type='checkbox'  checked><label for='section-7ab998ca-4b54-4104-a14f-b97520ece236' class='xr-section-summary' >Attributes: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>AREA_OR_POINT :</span></dt><dd>Area</dd><dt><span>TIFFTAG_XRESOLUTION :</span></dt><dd>1</dd><dt><span>TIFFTAG_YRESOLUTION :</span></dt><dd>1</dd><dt><span>scale_factor :</span></dt><dd>1.0</dd><dt><span>add_offset :</span></dt><dd>0.0</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>我们来可视化它</p>
 <div class="cell docutils container">
@@ -1583,7 +1103,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7f8da4675dc0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7fac413e2d00&gt;
 </pre></div>
 </div>
 <img alt="../_images/chp2.3_raster_data_9_1.png" src="../_images/chp2.3_raster_data_9_1.png" />
@@ -1592,7 +1112,7 @@ Attributes:
 <p>这里就不进一步展开了，大家了解到使用python能很方便地读取栅格数据即可。</p>
 </section>
 <section id="netcdf">
-<h2>2 NetCDF格式<a class="headerlink" href="#netcdf" title="Permalink to this headline">#</a></h2>
+<h2>2 NetCDF<a class="headerlink" href="#netcdf" title="Permalink to this headline">#</a></h2>
 <p>我们会经常遇见<code class="docutils literal notranslate"><span class="pre">.nc</span></code>文件，也就是NetCDF格式文件。</p>
 <ul class="simple">
 <li><p>从数学上来说，NetCDF存储的数据就是多个多自变量的单值函数。一个函数用公式来说就是f(x,y,z,…)=value；</p></li>
@@ -1619,44 +1139,6 @@ Attributes:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">PermissionError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="n">File</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">tutorial</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">hydrodataset</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">36</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">36</span>     <span class="n">hydrodataset_root_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="k">except</span> <span class="ne">PermissionError</span><span class="p">:</span>
-
-<span class="nn">File /usr/share/miniconda/envs/tutorial/lib/python3.8/pathlib.py:1288,</span> in <span class="ni">Path.mkdir</span><span class="nt">(self, mode, parents, exist_ok)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1287</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1288</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_accessor</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1289</span> <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
-
-<span class="ne">PermissionError</span>: [Errno 13] Permission denied: &#39;/data/hydrodataset&#39;
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">hydrodataset</span>
-
-<span class="n">File</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">tutorial</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">hydrodataset</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">39</span>
-<span class="g g-Whitespace">     </span><span class="mi">36</span>         <span class="n">hydrodataset_root_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span>     <span class="k">except</span> <span class="ne">PermissionError</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span>         <span class="nb">print</span><span class="p">(</span>
-<span class="ne">---&gt; </span><span class="mi">39</span>             <span class="s2">&quot;You cannot create this directory: &quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span>             <span class="o">+</span> <span class="n">hydrodataset_root_dir</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span>             <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Please change the first line in &quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span>             <span class="o">+</span> <span class="n">hydrodataset_setting_file</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span>             <span class="o">+</span> <span class="s2">&quot; to a directory you have permission and run the code agian&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span>         <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="c1"># set some constants for hydrodataset</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="n">ROOT_DIR</span> <span class="o">=</span> <span class="n">hydrodataset_root_dir</span>
-
-<span class="ne">TypeError</span>: can only concatenate str (not &quot;PosixPath&quot;) to str
-</pre></div>
-</div>
-</div>
 </div>
 <p>接下来，我们需要配置CAMELS数据集的文件路径，在平台jupyterlab首页打开终端，然后输入以下命令打开hydrodataset配置文件：</p>
 <div class="highlight-Shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 进入配置文件所在文件夹</span>
@@ -1670,6 +1152,24 @@ vim settings.txt
 <p>然后输入和上图中一样的内容，即 <code class="docutils literal notranslate"><span class="pre">/ftproot</span></code>，ftproot是我们在服务器上放置公共数据的默认文件夹，处理好的CAMELS数据集文件都在这个文件夹下面。</p>
 <p>然后再按“:”（注意是英文输入法下的冒号）进入命令模式，然后输入“wq”并按回车键，就能写入（即保存）并退出了。</p>
 <p><img alt="" src="../_images/vim_wq.png" /></p>
+<p>然后我们需要重新打开当前文件，重新导入hydrodataset：</p>
+<ol class="simple">
+<li><p>先关闭本文件的kernel <img alt="" src="../_images/jupyterlab_shutdown_kernel.png" /></p></li>
+<li><p>然后再次打开kernel，重新执行上面的 <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">hydrodataset</span></code> 即可</p></li>
+</ol>
+<p>下面检查数据目录是否正确：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hydrodataset</span><span class="o">.</span><span class="n">ROOT_DIR</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PosixPath(&#39;/ftproot&#39;)
+</pre></div>
+</div>
+</div>
+</div>
 <p>现在数据已经配置好了，我们就能读取一个nc文件试试了。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2051,11 +1551,11 @@ Coordinates:
   * basin       (basin) object &#x27;01013500&#x27; &#x27;01022500&#x27; ... &#x27;14362250&#x27; &#x27;14400000&#x27;
   * time        (time) datetime64[ns] 1980-01-01 1980-01-02 ... 2014-12-31
 Data variables:
-    streamflow  (basin, time) float64 ...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-395d1e58-ab17-495f-a516-8e3a329e3e73' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-395d1e58-ab17-495f-a516-8e3a329e3e73' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>basin</span>: 671</li><li><span class='xr-has-index'>time</span>: 12784</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-e42a0450-543a-46ae-b64d-c20ab3dbb933' class='xr-section-summary-in' type='checkbox'  checked><label for='section-e42a0450-543a-46ae-b64d-c20ab3dbb933' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>basin</span></div><div class='xr-var-dims'>(basin)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>&#x27;01013500&#x27; ... &#x27;14400000&#x27;</div><input id='attrs-1ec5e8da-f681-44b2-9c3a-0499c1e72946' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-1ec5e8da-f681-44b2-9c3a-0499c1e72946' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2201f8e8-7c10-4715-a119-1a3f049b618e' class='xr-var-data-in' type='checkbox'><label for='data-2201f8e8-7c10-4715-a119-1a3f049b618e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;01013500&#x27;, &#x27;01022500&#x27;, &#x27;01030500&#x27;, ..., &#x27;14325000&#x27;, &#x27;14362250&#x27;,
-       &#x27;14400000&#x27;], dtype=object)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1980-01-01 ... 2014-12-31</div><input id='attrs-f54f6662-8611-48f1-974f-ad36e7172e24' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-f54f6662-8611-48f1-974f-ad36e7172e24' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b8268988-4812-4104-91e7-7a79e8908f46' class='xr-var-data-in' type='checkbox'><label for='data-b8268988-4812-4104-91e7-7a79e8908f46' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;1980-01-01T00:00:00.000000000&#x27;, &#x27;1980-01-02T00:00:00.000000000&#x27;,
+    streamflow  (basin, time) float64 ...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-1ddfd90a-1b2c-4d4c-a75c-5865444ce39f' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-1ddfd90a-1b2c-4d4c-a75c-5865444ce39f' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>basin</span>: 671</li><li><span class='xr-has-index'>time</span>: 12784</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-c76a81b1-9a92-4df7-96f6-2f5b44e88677' class='xr-section-summary-in' type='checkbox'  checked><label for='section-c76a81b1-9a92-4df7-96f6-2f5b44e88677' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>basin</span></div><div class='xr-var-dims'>(basin)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>&#x27;01013500&#x27; ... &#x27;14400000&#x27;</div><input id='attrs-c23bc73b-26b4-4a73-ad6a-4ae65cd812e3' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-c23bc73b-26b4-4a73-ad6a-4ae65cd812e3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c4e80e3c-437c-4c7c-ad0e-eb1271ebb31f' class='xr-var-data-in' type='checkbox'><label for='data-c4e80e3c-437c-4c7c-ad0e-eb1271ebb31f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;01013500&#x27;, &#x27;01022500&#x27;, &#x27;01030500&#x27;, ..., &#x27;14325000&#x27;, &#x27;14362250&#x27;,
+       &#x27;14400000&#x27;], dtype=object)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1980-01-01 ... 2014-12-31</div><input id='attrs-534da753-6604-49a5-9604-06746ce2b15b' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-534da753-6604-49a5-9604-06746ce2b15b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bbdb4fe1-a596-463c-bac7-e772ce84183d' class='xr-var-data-in' type='checkbox'><label for='data-bbdb4fe1-a596-463c-bac7-e772ce84183d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;1980-01-01T00:00:00.000000000&#x27;, &#x27;1980-01-02T00:00:00.000000000&#x27;,
        &#x27;1980-01-03T00:00:00.000000000&#x27;, ..., &#x27;2014-12-29T00:00:00.000000000&#x27;,
        &#x27;2014-12-30T00:00:00.000000000&#x27;, &#x27;2014-12-31T00:00:00.000000000&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-60543b61-f418-4f2a-acfa-72ab04078f88' class='xr-section-summary-in' type='checkbox'  checked><label for='section-60543b61-f418-4f2a-acfa-72ab04078f88' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>streamflow</span></div><div class='xr-var-dims'>(basin, time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-6538f0ba-e08b-460e-a988-bcad46d5565e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6538f0ba-e08b-460e-a988-bcad46d5565e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-54749374-1129-483c-99fd-b7920ea170b1' class='xr-var-data-in' type='checkbox'><label for='data-54749374-1129-483c-99fd-b7920ea170b1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>cfs</dd></dl></div><div class='xr-var-data'><pre>[8578064 values with dtype=float64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-acb3c9c9-ffd9-4d13-b20e-7c885c8bd423' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-acb3c9c9-ffd9-4d13-b20e-7c885c8bd423' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-044106ee-8d93-4920-8097-79d506f17006' class='xr-section-summary-in' type='checkbox'  checked><label for='section-044106ee-8d93-4920-8097-79d506f17006' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>streamflow</span></div><div class='xr-var-dims'>(basin, time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-1df1752b-3ef9-4b98-abb6-3c4e511e9a97' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1df1752b-3ef9-4b98-abb6-3c4e511e9a97' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8bc72ce4-9389-4bcd-b221-cec4815e8786' class='xr-var-data-in' type='checkbox'><label for='data-8bc72ce4-9389-4bcd-b221-cec4815e8786' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>cfs</dd></dl></div><div class='xr-var-data'><pre>[8578064 values with dtype=float64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-fec28501-f9ae-4273-9f5e-c76608961ea9' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-fec28501-f9ae-4273-9f5e-c76608961ea9' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 <p>可以看见Netcdf文件的维度、坐标、属性与变量。</p>
 <p>查看有哪些流域：</p>
@@ -2422,9 +1922,9 @@ dl.xr-attrs {
 array([&#x27;01013500&#x27;, &#x27;01022500&#x27;, &#x27;01030500&#x27;, ..., &#x27;14325000&#x27;, &#x27;14362250&#x27;,
        &#x27;14400000&#x27;], dtype=object)
 Coordinates:
-  * basin    (basin) object &#x27;01013500&#x27; &#x27;01022500&#x27; ... &#x27;14362250&#x27; &#x27;14400000&#x27;</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'basin'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>basin</span>: 671</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-2cc8dbec-3474-4d4a-8e15-e5b5b352ea11' class='xr-array-in' type='checkbox' checked><label for='section-2cc8dbec-3474-4d4a-8e15-e5b5b352ea11' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>&#x27;01013500&#x27; &#x27;01022500&#x27; &#x27;01030500&#x27; ... &#x27;14325000&#x27; &#x27;14362250&#x27; &#x27;14400000&#x27;</span></div><div class='xr-array-data'><pre>array([&#x27;01013500&#x27;, &#x27;01022500&#x27;, &#x27;01030500&#x27;, ..., &#x27;14325000&#x27;, &#x27;14362250&#x27;,
-       &#x27;14400000&#x27;], dtype=object)</pre></div></div></li><li class='xr-section-item'><input id='section-79c07c85-5b2e-4aeb-89db-c0693606a639' class='xr-section-summary-in' type='checkbox'  checked><label for='section-79c07c85-5b2e-4aeb-89db-c0693606a639' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>basin</span></div><div class='xr-var-dims'>(basin)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>&#x27;01013500&#x27; ... &#x27;14400000&#x27;</div><input id='attrs-6374edc5-61e3-429e-84fd-c6a29235d666' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-6374edc5-61e3-429e-84fd-c6a29235d666' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4732836c-70c3-47a1-bf7c-d67224200ab1' class='xr-var-data-in' type='checkbox'><label for='data-4732836c-70c3-47a1-bf7c-d67224200ab1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;01013500&#x27;, &#x27;01022500&#x27;, &#x27;01030500&#x27;, ..., &#x27;14325000&#x27;, &#x27;14362250&#x27;,
-       &#x27;14400000&#x27;], dtype=object)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-6a06984c-3236-422e-abae-5e34561e635a' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-6a06984c-3236-422e-abae-5e34561e635a' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+  * basin    (basin) object &#x27;01013500&#x27; &#x27;01022500&#x27; ... &#x27;14362250&#x27; &#x27;14400000&#x27;</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'basin'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>basin</span>: 671</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-cddc894c-e8be-4cd8-bb8a-bb3b8c77149c' class='xr-array-in' type='checkbox' checked><label for='section-cddc894c-e8be-4cd8-bb8a-bb3b8c77149c' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>&#x27;01013500&#x27; &#x27;01022500&#x27; &#x27;01030500&#x27; ... &#x27;14325000&#x27; &#x27;14362250&#x27; &#x27;14400000&#x27;</span></div><div class='xr-array-data'><pre>array([&#x27;01013500&#x27;, &#x27;01022500&#x27;, &#x27;01030500&#x27;, ..., &#x27;14325000&#x27;, &#x27;14362250&#x27;,
+       &#x27;14400000&#x27;], dtype=object)</pre></div></div></li><li class='xr-section-item'><input id='section-b4458278-3b3f-43cd-b245-fc7edd2366e6' class='xr-section-summary-in' type='checkbox'  checked><label for='section-b4458278-3b3f-43cd-b245-fc7edd2366e6' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>basin</span></div><div class='xr-var-dims'>(basin)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>&#x27;01013500&#x27; ... &#x27;14400000&#x27;</div><input id='attrs-c44108e1-67c7-450b-ac9c-fdc19c9be4cb' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-c44108e1-67c7-450b-ac9c-fdc19c9be4cb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4518e880-1280-42cc-8874-584e2fcbc594' class='xr-var-data-in' type='checkbox'><label for='data-4518e880-1280-42cc-8874-584e2fcbc594' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;01013500&#x27;, &#x27;01022500&#x27;, &#x27;01030500&#x27;, ..., &#x27;14325000&#x27;, &#x27;14362250&#x27;,
+       &#x27;14400000&#x27;], dtype=object)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-dc5d1ec7-a68f-4851-a241-deb26985c9a3' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-dc5d1ec7-a68f-4851-a241-deb26985c9a3' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 <p>后面我们会有更多例子来更详细介绍这些内容</p>
 </section>

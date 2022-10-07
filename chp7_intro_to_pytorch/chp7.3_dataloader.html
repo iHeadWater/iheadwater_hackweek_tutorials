@@ -588,22 +588,17 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pytorchpipline">
-   pytorch输入数据pipline“三步走”策略
+   1 pytorch输入数据pipline“三步走”策略
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dataset">
-   Dataset
+   2 Dataset
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dataloader">
-   Dataloader
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   总结
+   3 Dataloader
   </a>
  </li>
 </ul>
@@ -627,22 +622,17 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pytorchpipline">
-   pytorch输入数据pipline“三步走”策略
+   1 pytorch输入数据pipline“三步走”策略
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dataset">
-   Dataset
+   2 Dataset
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dataloader">
-   Dataloader
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   总结
+   3 Dataloader
   </a>
  </li>
 </ul>
@@ -660,7 +650,7 @@ title="Print to PDF"
 <p>在使用Pytorch构建和训练模型的过程中，经常需要把原始数据（文本格式数据等）转换为张量的格式，这时pytorch的数据导入功能便能发挥作用。</p>
 <p>Pytorch导入数据主要依靠 torch.utils.data.DataLoader和 torch.utils.data.Dataset这两个类来完成，并采用以下步骤完成最终的数据读取。</p>
 <section id="pytorchpipline">
-<h2>pytorch输入数据pipline“三步走”策略<a class="headerlink" href="#pytorchpipline" title="Permalink to this headline">#</a></h2>
+<h2>1 pytorch输入数据pipline“三步走”策略<a class="headerlink" href="#pytorchpipline" title="Permalink to this headline">#</a></h2>
 <p>这里主要引用了这篇blog的内容：<a class="reference external" href="https://blog.csdn.net/loveliuzz/article/details/108756253">https://blog.csdn.net/loveliuzz/article/details/108756253</a></p>
 <p>一般pytorch的数据加载到模型的操作顺序如下：</p>
 <ol class="simple">
@@ -686,7 +676,7 @@ title="Print to PDF"
 <p>for i, data in enumerate(dataloader):  会调用dataloader 的 <strong>iter</strong>() 方法，产生了一个DataLoaderIter（迭代器），这里判断使用单线程还是多线程，调用 DataLoaderIter 的 <strong>next</strong>() 方法来得到 batch data 。在__next__() 方法中使用 __next_index()方法调用sampler（采样器）获得index索引，接着通过 Dataset_fetcher 的 fetch() 方法根据index（索引）调用dataset的 <strong>getitem</strong>() 方法，然后用 collate_fn 把它们打包成batch。当数据读完后， <strong>next</strong>() 抛出一个 StopIteration 异常，for循环结束，dataloader 失效。</p>
 </section>
 <section id="dataset">
-<h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">#</a></h2>
+<h2>2 Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">#</a></h2>
 <p>torch.utils.data.Dataset是一个抽象类, 自定义的Dataset需要继承它并且实现两个成员方法:</p>
 <ul class="simple">
 <li><p>getitem()</p></li>
@@ -716,7 +706,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="dataloader">
-<h2>Dataloader<a class="headerlink" href="#dataloader" title="Permalink to this headline">#</a></h2>
+<h2>3 Dataloader<a class="headerlink" href="#dataloader" title="Permalink to this headline">#</a></h2>
 <p>torch.utils.data.DataLoader类定义为:</p>
 <p>class torch.utils.data.DataLoader(dataset, batch_size=1, shuffle=False, sampler=None, batch_sampler=None, num_workers=0, collate_fn=<function default_collate>, pin_memory=False, drop_last=False)</p>
 <p>可以看到, 主要参数有这么几个:</p>
@@ -752,9 +742,6 @@ title="Print to PDF"
 <p><img alt="" src="../_images/pytorch_data1.jpg" /></p>
 <p>最后，Dataset和DatasetLoader及数据集切分的基本使用流程如下：</p>
 <p><img alt="" src="../_images/pytorch_data.png" /></p>
-</section>
-<section id="id1">
-<h2>总结<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Dataset是一个抽象类，需要派生一个子类构造数据集，需要改写的方法有__init__，__getitem__等。</p></li>
 <li><p>DataLoader是一个迭代器，方便我们访问Dataset里的对象</p></li>

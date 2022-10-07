@@ -27,7 +27,7 @@ SSH是一种常用的加密通讯协议，可以简单理解为和用户名密�
 具体执行过程如下所示：
 
 1. 在本地电脑（以Windows为例）生成公钥和私钥。打开 cmd，输入 `ssh-keygen -t rsa -C 你的github账号邮箱`（连接到Github也需要SSH，生成一对key就行了，公钥可以复用），一路回车即可，自己记住自动生成的私钥 id_rsa 和公钥 id_rsa.pub 文件路径。
-2. 公钥复制到JupyterHub服务器。登录平台 http://jupyterhub.waterism.com:666/ ，打开一个Terminal终端，新建目录 `$ mkdir ~/.ssh/`，然后编辑文件 `$ nano ~/.ssh/authorized_keys`，将上一步生成的公钥 id_rsa.pub 文件用记事本打开，复制文件内容(ctrl+c和ctrl+v)到 authorized_keys 中即可，然后按 ctrl+x ，再按y，保存退出即可。
+2. 公钥复制到JupyterHub服务器。登录平台 http://jupyterhub.waterism.com:666/ ，打开一个Terminal终端，新建目录 `$ mkdir ~/.ssh/`，然后编辑文件 `$ nano ~/.ssh/authorized_keys`，将上一步生成的公钥 id_rsa.pub 文件用记事本打开，复制文件内容(ctrl+c和ctrl+v)到 authorized_keys 中即可，然后按 ctrl+x ，再按y，回车，保存退出即可。
 
 这样我们就能通过SSH建立本地和平台之间的连接了。
 

@@ -558,19 +558,21 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gitgithub">
-   1. 版本控制的Git和GitHub工作流程
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   2. 在电脑上配置git用户名和电子邮件
+   1. 在电脑上配置git用户名和电子邮件
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#githubgit">
-   3. 通过GitHub为Git设置身份验证
+   2. 通过GitHub为Git设置身份验证
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#githubssh">
+     2.1 建立与GitHub的SSH连接（推荐）
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -592,19 +594,21 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gitgithub">
-   1. 版本控制的Git和GitHub工作流程
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   2. 在电脑上配置git用户名和电子邮件
+   1. 在电脑上配置git用户名和电子邮件
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#githubgit">
-   3. 通过GitHub为Git设置身份验证
+   2. 通过GitHub为Git设置身份验证
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#githubssh">
+     2.1 建立与GitHub的SSH连接（推荐）
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -618,12 +622,9 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="git">
 <h1>配置Git<a class="headerlink" href="#git" title="Permalink to this headline">#</a></h1>
-<section id="gitgithub">
-<h2>1. 版本控制的Git和GitHub工作流程<a class="headerlink" href="#gitgithub" title="Permalink to this headline">#</a></h2>
-<p>之前学过如何<code class="docutils literal notranslate"><span class="pre">fork</span></code> <strong>GitHub</strong> 仓库以复制其他用户的仓库，也学过如何下载 <strong>GitHub</strong> 仓库的副本（即<code class="docutils literal notranslate"><span class="pre">clone</span></code>）到电脑上。在这一页，我们将学习如何在电脑上设置<strong>git</strong></p>
-</section>
+<p>之前学过如何<code class="docutils literal notranslate"><span class="pre">fork</span></code> <strong>GitHub</strong> 仓库以复制其他用户的仓库，也学过如何下载 <strong>GitHub</strong> 仓库的副本（即<code class="docutils literal notranslate"><span class="pre">clone</span></code>）到电脑上。在这一页，我们将学习如何在电脑上设置<strong>git</strong>。下面我们一起来看一下如何操作吧！</p>
 <section id="id1">
-<h2>2. 在电脑上配置git用户名和电子邮件<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2>1. 在电脑上配置git用户名和电子邮件<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>第一次在电脑上使用 <strong>git</strong> 时，需要给 <strong>git</strong> 配置用户名和电子邮件地址，这些信息将被用来记录谁对 <strong>git</strong> 中的文件进行了修改。配置的时候，我们最好使用<strong><a class="reference external" href="http://GitHub.com">GitHub.com</a></strong>上设置的电子邮件地址和用户名。</p>
 <p>首先，可以在<strong>终端</strong>上输入<strong><a class="reference external" href="http://Github.com">Github.com</a></strong>的用户名来设置。</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">user.name</span> <span class="pre">&quot;username&quot;</span></code></p>
@@ -636,12 +637,14 @@ title="Print to PDF"
 <p>这些设置可以确保对仓库所做的修改归于我们的用户名和电子邮件。</p>
 </section>
 <section id="githubgit">
-<h2>3. 通过GitHub为Git设置身份验证<a class="headerlink" href="#githubgit" title="Permalink to this headline">#</a></h2>
+<h2>2. 通过GitHub为Git设置身份验证<a class="headerlink" href="#githubgit" title="Permalink to this headline">#</a></h2>
 <p>GitHub 要求通过认证才能对 repo 进行任何修改。有两种方法来设置GitHub的认证。</p>
 <ol class="simple">
 <li><p>使用个人访问标识，可以在GitHub.com上设置并在本地使用该标识进行认证。这涉及到在GitHub.com上创建一个标识，然后在本地bash中使用它作为 “密码”。</p></li>
 <li><p>使用SSH：这需要在本地进行更多的设置，但一旦设置好了，你就可以跳过每次对 repo 进行修改时的认证步骤。</p></li>
 </ol>
+<section id="githubssh">
+<h3>2.1 建立与GitHub的SSH连接（推荐）<a class="headerlink" href="#githubssh" title="Permalink to this headline">#</a></h3>
 <p>SSH是Secure SHell的缩写，是一种从电脑上认证GitHub的替代方式。SSH一旦设置好，就不必再去验证与GitHub的连接。这是因为电脑上会有一个储存在本地的密钥，可以与储存在 GitHub 账户中的密钥进行验证。</p>
 <p>首先，使用如下命令创建密钥文件（如果前面<a class="reference external" href="https://iheadwater.github.io/iheadwater_hackweek_tutorials/chp2_file_formats/chp2.4_your_data.html">文件夹上传下载那一节</a>已经做过这个了，就不必重复生成密钥了，SSH的简单科普也在那一节中有介绍）：</p>
 <div class="highlight-Shell notranslate"><div class="highlight"><pre><span></span>ssh-keygen -t rsa -C 你的github账号邮箱
@@ -675,6 +678,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>再次执行<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">-v</span></code>查看远程仓库，可以看到发生了变化。</p>
+</section>
 </section>
 </section>
 

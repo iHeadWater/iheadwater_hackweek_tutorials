@@ -651,7 +651,7 @@ title="Print to PDF"
 <p>具体执行过程如下所示：</p>
 <ol class="simple">
 <li><p>在本地电脑（以Windows为例）生成公钥和私钥。打开 cmd，输入 <code class="docutils literal notranslate"><span class="pre">ssh-keygen</span> <span class="pre">-t</span> <span class="pre">rsa</span> <span class="pre">-C</span> <span class="pre">你的github账号邮箱</span></code>（连接到Github也需要SSH，生成一对key就行了，公钥可以复用），一路回车即可，自己记住自动生成的私钥 id_rsa 和公钥 id_rsa.pub 文件路径。</p></li>
-<li><p>公钥复制到JupyterHub服务器。登录平台 <a class="reference external" href="http://jupyterhub.waterism.com:666/">http://jupyterhub.waterism.com:666/</a> ，打开一个Terminal终端，新建目录 <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">mkdir</span> <span class="pre">~/.ssh/</span></code>，然后编辑文件 <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">nano</span> <span class="pre">~/.ssh/authorized_keys</span></code>，将上一步生成的公钥 id_rsa.pub 文件用记事本打开，复制文件内容(ctrl+c和ctrl+v)到 authorized_keys 中即可，然后按 ctrl+x ，再按y，保存退出即可。</p></li>
+<li><p>公钥复制到JupyterHub服务器。登录平台 <a class="reference external" href="http://jupyterhub.waterism.com:666/">http://jupyterhub.waterism.com:666/</a> ，打开一个Terminal终端，新建目录 <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">mkdir</span> <span class="pre">~/.ssh/</span></code>，然后编辑文件 <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">nano</span> <span class="pre">~/.ssh/authorized_keys</span></code>，将上一步生成的公钥 id_rsa.pub 文件用记事本打开，复制文件内容(ctrl+c和ctrl+v)到 authorized_keys 中即可，然后按 ctrl+x ，再按y，回车，保存退出即可。</p></li>
 </ol>
 <p>这样我们就能通过SSH建立本地和平台之间的连接了。</p>
 </section>

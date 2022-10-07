@@ -21,38 +21,26 @@ import hydrodataset
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mPermissionError[0m                           Traceback (most recent call last)
-File [0;32m/usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/hydrodataset/__init__.py:36[0m
-[1;32m     35[0m [38;5;28;01mtry[39;00m:
-[0;32m---> 36[0m     [43mhydrodataset_root_dir[49m[38;5;241;43m.[39;49m[43mmkdir[49m[43m([49m[43mparents[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m)[49m
-[1;32m     37[0m [38;5;28;01mexcept[39;00m [38;5;167;01mPermissionError[39;00m:
-
-File [0;32m/usr/share/miniconda/envs/tutorial/lib/python3.8/pathlib.py:1288[0m, in [0;36mPath.mkdir[0;34m(self, mode, parents, exist_ok)[0m
-[1;32m   1287[0m [38;5;28;01mtry[39;00m:
-[0;32m-> 1288[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_accessor[49m[38;5;241;43m.[39;49m[43mmkdir[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mmode[49m[43m)[49m
-[1;32m   1289[0m [38;5;28;01mexcept[39;00m [38;5;167;01mFileNotFoundError[39;00m:
-
-[0;31mPermissionError[0m: [Errno 13] Permission denied: '/data/hydrodataset'
-
-During handling of the above exception, another exception occurred:
-
-[0;31mTypeError[0m                                 Traceback (most recent call last)
+[0;31mImportError[0m                               Traceback (most recent call last)
 Cell [0;32mIn [1], line 1[0m
 [0;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mhydrodataset[39;00m
 
-File [0;32m/usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/hydrodataset/__init__.py:39[0m
-[1;32m     36[0m         hydrodataset_root_dir[38;5;241m.[39mmkdir(parents[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
-[1;32m     37[0m     [38;5;28;01mexcept[39;00m [38;5;167;01mPermissionError[39;00m:
-[1;32m     38[0m         [38;5;28mprint[39m(
-[0;32m---> 39[0m             [38;5;124;43m"[39;49m[38;5;124;43mYou cannot create this directory: [39;49m[38;5;124;43m"[39;49m
-[1;32m     40[0m [43m            [49m[38;5;241;43m+[39;49m[43m [49m[43mhydrodataset_root_dir[49m
-[1;32m     41[0m             [38;5;241m+[39m [38;5;124m"[39m[38;5;130;01m\n[39;00m[38;5;124m Please change the first line in [39m[38;5;124m"[39m
-[1;32m     42[0m             [38;5;241m+[39m hydrodataset_setting_file
-[1;32m     43[0m             [38;5;241m+[39m [38;5;124m"[39m[38;5;124m to a directory you have permission and run the code agian[39m[38;5;124m"[39m
-[1;32m     44[0m         )
-[1;32m     45[0m [38;5;66;03m# set some constants for hydrodataset[39;00m
-[1;32m     46[0m ROOT_DIR [38;5;241m=[39m hydrodataset_root_dir
+File [0;32m/usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/hydrodataset/__init__.py:47[0m
+[1;32m     45[0m CACHE_DIR [38;5;241m=[39m hydrodataset_cache_dir
+[1;32m     46[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mhydro_dataset[39;00m [38;5;28;01mimport[39;00m [38;5;241m*[39m
+[0;32m---> 47[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mcamels[39;00m [38;5;28;01mimport[39;00m [38;5;241m*[39m
 
-[0;31mTypeError[0m: can only concatenate str (not "PosixPath") to str
-TypeError: can only concatenate str (not "PosixPath") to str
+File [0;32m/usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/hydrodataset/camels.py:10[0m
+[1;32m      1[0m [38;5;124;03m"""[39;00m
+[1;32m      2[0m [38;5;124;03mAuthor: Wenyu Ouyang[39;00m
+[1;32m      3[0m [38;5;124;03mDate: 2022-01-05 18:01:11[39;00m
+[0;32m   (...)[0m
+[1;32m      8[0m [38;5;124;03mCopyright (c) 2021-2022 Wenyu Ouyang. All rights reserved.[39;00m
+[1;32m      9[0m [38;5;124;03m"""[39;00m
+[0;32m---> 10[0m [38;5;28;01mfrom[39;00m [38;5;21;01mfunctools[39;00m [38;5;28;01mimport[39;00m cache
+[1;32m     11[0m [38;5;28;01mfrom[39;00m [38;5;21;01mgenericpath[39;00m [38;5;28;01mimport[39;00m isfile
+[1;32m     12[0m [38;5;28;01mimport[39;00m [38;5;21;01mjson[39;00m
+
+[0;31mImportError[0m: cannot import name 'cache' from 'functools' (/usr/share/miniconda/envs/tutorial/lib/python3.8/functools.py)
+ImportError: cannot import name 'cache' from 'functools' (/usr/share/miniconda/envs/tutorial/lib/python3.8/functools.py)
 

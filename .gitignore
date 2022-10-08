@@ -137,3 +137,4 @@ dmypy.json
 /iheadwater_hackweek_tutorials/data/*modified*
 /iheadwater_hackweek_tutorials/*.nc
 *.pt
+*.tif

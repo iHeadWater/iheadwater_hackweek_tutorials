@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>管理目录和文件的Bash命令 &#8212; iHeadWater Hackweek Tutorials</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,61 +62,104 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chp1_open_science_workflow/chp1.2.2_common';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="关于Git和GitHub" href="chp1.3_git.html" />
     <link rel="prev" title="Bash 简介以及在命令行中操作文件和目录" href="chp1.2.1_bash.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.jpg" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">iHeadWater Hackweek Tutorials</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/logo.jpg" class="logo__image only-light" alt="iHeadWater Hackweek Tutorials - Home"/>
+    <script>document.write(`<img src="../_static/logo.jpg" class="logo__image only-dark" alt="iHeadWater Hackweek Tutorials - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -114,642 +169,344 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../start_from_here.html">
-   从这里开始
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="chp1.0_intro.html">
-   编程概念及相关工具
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="chp1.1.1_workflow.html">
-     可复现科研的一般工作流程
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="chp1.1.2_tools.html">
-     常用工具
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="chp1.2.1_bash.html">
-     Bash 简介以及在命令行中操作文件和目录
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     管理目录和文件的Bash命令
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="chp1.3_git.html">
-     关于Git和GitHub
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="chp1.4_jupyter.html">
-     Jupyter Hub/Lab/Notebook 简介
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chp2_file_formats/chp2.0_intro.html">
-   常见的数据文件格式
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp2_file_formats/chp2.1_txt_csv.html">
-     文本类数据
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp2_file_formats/chp2.2_vector_data.html">
-     地理空间数据–矢量
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp2_file_formats/chp2.3_raster_data.html">
-     地理空间数据–栅格
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp2_file_formats/chp2.4_your_data.html">
-     在平台上上传下载数据
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chp3_version_control/chp3.0_introduction.html">
-   使用版本控制工具
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp3_version_control/chp3.1_get_files_from_github.html">
-     从Github获取文件
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp3_version_control/chp3.2_setup_git.html">
-     配置Git
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp3_version_control/chp3.3_git_setup_and_commands.html">
-     使用Git命令进行版本控制
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp3_version_control/chp3.4_team_work.html">
-     在GitHub上协作工作
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chp4_intro_to_python/chp4.0_intro.html">
-   Python编程基础
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp4_intro_to_python/chp4.1_about_python.html">
-     Python编程语言简介
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp4_intro_to_python/chp4.2_python_variables.html">
-     Python 中的变量
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp4_intro_to_python/chp4.3_list_dict_tuble_set.html">
-     常用数据结构
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp4_intro_to_python/chp4.4_python_operators.html">
-     基本运算符
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp4_intro_to_python/chp4.5_conditional_statements.html">
-     条件语句
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp4_intro_to_python/chp4.6_loops.html">
-     循环
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp4_intro_to_python/chp4.7_functions.html">
-     函数
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chp5_python_data_science/chp5.0_intro.html">
-   Python 数据分析常用工具包
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp5_python_data_science/chp5.1_numpy.html">
-     Numpy 简介
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp5_python_data_science/chp5.2_pandas.html">
-     Pandas 简介
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp5_python_data_science/chp5.3_matplotlib.html">
-     matplotlib简介
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chp6_deep_learning_review/chp6.0_intro.html">
-   深度学习简介
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp6_deep_learning_review/chp6.1_common_nn.html">
-     深度学习常见算法及模型的简介
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp6_deep_learning_review/chp6.2_hydro.html">
-     深度学习在水文领域中的应用研究
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.0_intro.html">
-   初探PyTorch
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.1_tensor.html">
-     PyTorch中的Tensor基础
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.2_neural_network.html">
-     torch.nn简介
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.3_dataloader.html">
-     Dataset和DataLoader简介
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chp8_lstm_camels/chp8.0_intro.html">
-   使用CAMELS数据集构建基于LSTM的降雨径流模型
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp8_lstm_camels/chp8.1_run_in_jupyter.html">
-     LSTM降雨径流建模
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp8_lstm_camels/chp8.2_run_in_vscode.html">
-     使用VSCode编写运行代码
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../tldr.html">
-   TLDR页
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../citations.html">
-   参考资料
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../start_from_here.html">从这里开始</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="chp1.0_intro.html">编程概念及相关工具</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="chp1.1.1_workflow.html">可复现科研的一般工作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chp1.1.2_tools.html">常用工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chp1.2.1_bash.html">Bash 简介以及在命令行中操作文件和目录</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">管理目录和文件的Bash命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chp1.3_git.html">关于Git和GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chp1.4_jupyter.html">Jupyter Hub/Lab/Notebook 简介</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chp2_file_formats/chp2.0_intro.html">常见的数据文件格式</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chp2_file_formats/chp2.1_txt_csv.html">文本类数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp2_file_formats/chp2.2_vector_data.html">地理空间数据–矢量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp2_file_formats/chp2.3_raster_data.html">地理空间数据–栅格</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp2_file_formats/chp2.4_your_data.html">在平台上上传下载数据</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chp3_version_control/chp3.0_introduction.html">使用版本控制工具</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chp3_version_control/chp3.1_get_files_from_github.html">从Github获取文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp3_version_control/chp3.2_setup_git.html">配置Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp3_version_control/chp3.3_git_setup_and_commands.html">使用Git命令进行版本控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp3_version_control/chp3.4_team_work.html">在GitHub上协作工作</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chp4_intro_to_python/chp4.0_intro.html">Python编程基础</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chp4_intro_to_python/chp4.1_about_python.html">Python编程语言简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp4_intro_to_python/chp4.2_python_variables.html">Python 中的变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp4_intro_to_python/chp4.3_list_dict_tuble_set.html">常用数据结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp4_intro_to_python/chp4.4_python_operators.html">基本运算符</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp4_intro_to_python/chp4.5_conditional_statements.html">条件语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp4_intro_to_python/chp4.6_loops.html">循环</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp4_intro_to_python/chp4.7_functions.html">函数</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chp5_python_data_science/chp5.0_intro.html">Python 数据分析常用工具包</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chp5_python_data_science/chp5.1_numpy.html">Numpy 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp5_python_data_science/chp5.2_pandas.html">Pandas 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp5_python_data_science/chp5.3_matplotlib.html">matplotlib简介</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chp6_deep_learning_review/chp6.0_intro.html">深度学习简介</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chp6_deep_learning_review/chp6.1_common_nn.html">深度学习常见算法及模型的简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp6_deep_learning_review/chp6.2_hydro.html">深度学习在水文领域中的应用研究</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chp7_intro_to_pytorch/chp7.0_intro.html">初探PyTorch</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chp7_intro_to_pytorch/chp7.1_tensor.html">PyTorch中的Tensor基础</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp7_intro_to_pytorch/chp7.2_neural_network.html">torch.nn简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp7_intro_to_pytorch/chp7.3_dataloader.html">Dataset和DataLoader简介</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chp8_lstm_camels/chp8.0_intro.html">使用CAMELS数据集构建基于LSTM的降雨径流模型</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chp8_lstm_camels/chp8.1_run_in_jupyter.html">LSTM降雨径流建模</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp8_lstm_camels/chp8.2_run_in_vscode.html">使用VSCode编写运行代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tldr.html">TLDR页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">参考资料</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials/issues/new?title=Issue%20on%20page%20%2Fchp1_open_science_workflow/chp1.2.2_common.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
 
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
 
 
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chp1_open_science_workflow/chp1.2.2_common.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
   </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials/issues/new?title=Issue%20on%20page%20%2Fchp1_open_science_workflow/chp1.2.2_common.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/chp1_open_science_workflow/chp1.2.2_common.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pwd">
-   1. 打印当前工作目录 ( pwd )
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cd">
-   2. 更改当前工作目录 (cd)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mkdir">
-   3.创建新目录 (mkdir)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ls">
-   4. 打印文件和子目录列表 (ls)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#rm">
-   5. 删除文件 (rm)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#rm-r">
-   6.删除目录 (rm -r)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cp">
-   7. 复制文件 (cp)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cp-r">
-   8. 复制目录及其内容 (cp -r)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#touch">
-   9. 使用单个命令 (touch)创建新文件
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#vim">
-   10. 使用vim编辑文件
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>管理目录和文件的Bash命令</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pwd">
-   1. 打印当前工作目录 ( pwd )
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cd">
-   2. 更改当前工作目录 (cd)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mkdir">
-   3.创建新目录 (mkdir)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ls">
-   4. 打印文件和子目录列表 (ls)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#rm">
-   5. 删除文件 (rm)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#rm-r">
-   6.删除目录 (rm -r)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cp">
-   7. 复制文件 (cp)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cp-r">
-   8. 复制目录及其内容 (cp -r)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#touch">
-   9. 使用单个命令 (touch)创建新文件
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#vim">
-   10. 使用vim编辑文件
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>管理目录和文件的Bash命令</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pwd">1. 打印当前工作目录 ( pwd )</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cd">2. 更改当前工作目录 (cd)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mkdir">3.创建新目录 (mkdir)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ls">4. 打印文件和子目录列表 (ls)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rm">5. 删除文件 (rm)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rm-r">6.删除目录 (rm -r)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cp">7. 复制文件 (cp)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cp-r">8. 复制目录及其内容 (cp -r)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#touch">9. 使用单个命令 (touch)创建新文件</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vim">10. 使用vim编辑文件</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="bash">
-<h1>管理目录和文件的Bash命令<a class="headerlink" href="#bash" title="Permalink to this headline">#</a></h1>
+<h1>管理目录和文件的Bash命令<a class="headerlink" href="#bash" title="Permalink to this heading">#</a></h1>
 <p>根据计算机设置，会看到不同的字符作为提示或提示之前的附加信息，例如在计算机文件结构中的当前位置（即当前的工作目录）。</p>
 <p>接下来我们尝试操作一些常用的bash命令，主要是管理目录文件的一些命令，其他命令在自己实际科研工作中用到了再查即可。</p>
 <p>开始之前，大家需要知道一点关于文件系统目录结构的常识，可以看一看<a class="reference external" href="https://zhuanlan.zhihu.com/p/258028162">这里</a>的介绍。</p>
 <p><strong>注意:</strong> 输入命令时，请勿键入美元符号（或其他字符提示符），只键入它后面的命令即可。</p>
 <p>下面是一些常用的<code class="docutils literal notranslate"><span class="pre">bash</span></code>命令，让我们来操作下吧。</p>
 <section id="pwd">
-<h2>1. 打印当前工作目录 ( pwd )<a class="headerlink" href="#pwd" title="Permalink to this headline">#</a></h2>
+<h2>1. 打印当前工作目录 ( pwd )<a class="headerlink" href="#pwd" title="Permalink to this heading">#</a></h2>
 <p>要打印当前工作目录的名称，键入命令 pwd : <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pwd</span></code></p>
 <p>由于这是Bash在此会话中执行的第一个命令，因此结果pwd是主目录的完整路径。主目录是每次启动新Bash会话时将位于的默认目录。</p>
 <p>请注意，Terminal使用正斜杠 (/) 来指示路径中的目录。这与使用反斜杠 () 指示路径中的目录的 Windows 文件资源管理器不同。</p>
 </section>
 <section id="cd">
-<h2>2. 更改当前工作目录 (cd)<a class="headerlink" href="#cd" title="Permalink to this headline">#</a></h2>
+<h2>2. 更改当前工作目录 (cd)<a class="headerlink" href="#cd" title="Permalink to this heading">#</a></h2>
 <p>通常，想要更改当前工作目录，以便可以访问不同的子目录和文件。</p>
 <p>要更改目录，请使用<code class="docutils literal notranslate"><span class="pre">cd</span></code>后跟目录名称的命令（例如<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">downloads</span></code>）。然后，可以再次打印当前工作目录以检查新路径。</p>
 <p>可以使用<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code>命令返回任何当前目录的父目录。</p>
 <p>也可以随时使用<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~</span></code>命令（称为波浪号的字符）返回主目录</p>
 </section>
 <section id="mkdir">
-<h2>3.创建新目录 (mkdir)<a class="headerlink" href="#mkdir" title="Permalink to this headline">#</a></h2>
+<h2>3.创建新目录 (mkdir)<a class="headerlink" href="#mkdir" title="Permalink to this heading">#</a></h2>
 <p>创建新目录的第一步是导航到希望成为该新目录的父目录。</p>
 <p>然后，使用命令<code class="docutils literal notranslate"><span class="pre">mkdir</span></code>后跟要为新目录命名的名称（例如<code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">directory-name</span></code>）</p>
 <p><strong>注意:</strong><code class="docutils literal notranslate"><span class="pre">mkdir</span></code>命令没有输出。</p>
 </section>
 <section id="ls">
-<h2>4. 打印文件和子目录列表 (ls)<a class="headerlink" href="#ls" title="Permalink to this headline">#</a></h2>
+<h2>4. 打印文件和子目录列表 (ls)<a class="headerlink" href="#ls" title="Permalink to this heading">#</a></h2>
 <p>要查看<strong>当前</strong>工作目录中所有<strong>子目录</strong>和<strong>文件</strong>的列表，请使用<code class="docutils literal notranslate"><span class="pre">ls</span></code>命令。</p>
 <p>有些隐藏文件只输入ls是看不到的，所以我们可以输入 <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">--help</span></code> 看看ls命令都有什么参数项可以设置。</p>
 <p>例如 <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-a</span></code> 可以帮助我们查看当前文件夹下面的所有文件，多个命令也能叠加，例如我们想要看所有文件全部信息：</p>
-<div class="highlight-Shell notranslate"><div class="highlight"><pre><span></span>ls -al
+<div class="highlight-Shell notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-al
 </pre></div>
 </div>
 </section>
 <section id="rm">
-<h2>5. 删除文件 (rm)<a class="headerlink" href="#rm" title="Permalink to this headline">#</a></h2>
+<h2>5. 删除文件 (rm)<a class="headerlink" href="#rm" title="Permalink to this heading">#</a></h2>
 <p>要删除特定文件，可以使用<code class="docutils literal notranslate"><span class="pre">rm</span></code>命令，后面跟要删除的文件的名称（例如<code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">filename</span></code>）</p>
 </section>
 <section id="rm-r">
-<h2>6.删除目录 (rm -r)<a class="headerlink" href="#rm-r" title="Permalink to this headline">#</a></h2>
+<h2>6.删除目录 (rm -r)<a class="headerlink" href="#rm-r" title="Permalink to this heading">#</a></h2>
 <p>要删除一个目录及其包含的所有子目录和文件，请导航到其父目录，然后使用<code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-r</span></code>命令后跟要删除的目录的名称（例如<code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">directory-name</span></code>）</p>
 <p><code class="docutils literal notranslate"><span class="pre">rm</span></code>代表删除，而有<code class="docutils literal notranslate"><span class="pre">-r</span></code>是告诉<code class="docutils literal notranslate"><span class="pre">Bash</span></code>它需要通过对父目录中所有文件和子目录的列表递归来删除所有文件。</p>
 </section>
 <section id="cp">
-<h2>7. 复制文件 (cp)<a class="headerlink" href="#cp" title="Permalink to this headline">#</a></h2>
+<h2>7. 复制文件 (cp)<a class="headerlink" href="#cp" title="Permalink to this heading">#</a></h2>
 <p>还可以使用<code class="docutils literal notranslate"><span class="pre">cp</span></code>命令将特定文件复制到新目录，<code class="docutils literal notranslate"><span class="pre">cp</span></code>后跟要复制的文件的名称以及要将文件复制到的目录的名称（例如<code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">filename</span> <span class="pre">directory-name</span></code>）</p>
 <p>请注意，文件的原始副本仍保留在原始目录中</p>
 </section>
 <section id="cp-r">
-<h2>8. 复制目录及其内容 (cp -r)<a class="headerlink" href="#cp-r" title="Permalink to this headline">#</a></h2>
+<h2>8. 复制目录及其内容 (cp -r)<a class="headerlink" href="#cp-r" title="Permalink to this heading">#</a></h2>
 <p>同样，可以将整个目录复制到另一个目录，使用<code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-r</span></code>后跟要复制的目录名称和要复制目录的目录名称（例如<code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">directory-name-1</span> <span class="pre">directory-name-2</span></code>）。</p>
 </section>
 <section id="touch">
-<h2>9. 使用单个命令 (touch)创建新文件<a class="headerlink" href="#touch" title="Permalink to this headline">#</a></h2>
+<h2>9. 使用单个命令 (touch)创建新文件<a class="headerlink" href="#touch" title="Permalink to this heading">#</a></h2>
 <p>可以使用单个<code class="docutils literal notranslate"><span class="pre">touch</span></code>命令（例如<code class="docutils literal notranslate"><span class="pre">touch</span> <span class="pre">file-name.txt</span></code>）创建一个新的空文件。此命令最初是为了管理文件的时间戳而创建的。但是，如果文件尚不存在，则该命令将生成该文件。</p>
 <p>这是一种以编程方式快速创建新的空文件的非常有用的方法，该文件可以在以后填充。</p>
 </section>
 <section id="vim">
-<h2>10. 使用vim编辑文件<a class="headerlink" href="#vim" title="Permalink to this headline">#</a></h2>
+<h2>10. 使用vim编辑文件<a class="headerlink" href="#vim" title="Permalink to this heading">#</a></h2>
 <p>刚刚我们使用torch创建了file-name.txt文件，接下来，如果我们想编辑这个文件的内容要怎么做呢？</p>
 <p>使用vim等工具能帮助我们做到这一点。</p>
 <p>首先使用下面的命令即可用vim打开file-name.txt文件</p>
-<div class="highlight-Shell notranslate"><div class="highlight"><pre><span></span>$ vim file-name.txt
+<div class="highlight-Shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>vim<span class="w"> </span>file-name.txt
 </pre></div>
 </div>
 <p>vim有不同的模式，浏览和编辑属于不同模式，我们刚进入vim的时候默认是包括浏览等功能的正常模式，要想进入能编辑的插入模式，需要键盘点击“i”键，然后就能进入插入模式，编辑文件。</p>
@@ -770,7 +527,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./chp1_open_science_workflow"
         },
         predefinedOutput: true
@@ -778,50 +535,111 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="chp1.2.1_bash.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Bash 简介以及在命令行中操作文件和目录</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chp1.2.1_bash.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Bash 简介以及在命令行中操作文件和目录</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="chp1.3_git.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="chp1.3_git.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">关于Git和GitHub</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pwd">1. 打印当前工作目录 ( pwd )</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cd">2. 更改当前工作目录 (cd)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mkdir">3.创建新目录 (mkdir)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ls">4. 打印文件和子目录列表 (ls)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rm">5. 删除文件 (rm)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rm-r">6.删除目录 (rm -r)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cp">7. 复制文件 (cp)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cp-r">8. 复制目录及其内容 (cp -r)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#touch">9. 使用单个命令 (touch)创建新文件</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vim">10. 使用vim编辑文件</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Wenyu Ouyang, Ziwen Meng, Xiaoning Liu, Xiangyi Le, Yaxin Lou, Jingyuan Huang<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Wenyu Ouyang, Ziwen Meng, Xiaoning Liu, Xiangyi Le, Yaxin Lou, Jingyuan Huang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

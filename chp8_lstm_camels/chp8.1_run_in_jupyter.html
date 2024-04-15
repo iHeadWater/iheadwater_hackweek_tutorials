@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>LSTM降雨径流建模 &#8212; iHeadWater Hackweek Tutorials</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,61 +62,104 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chp8_lstm_camels/chp8.1_run_in_jupyter';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="使用VSCode编写运行代码" href="chp8.2_run_in_vscode.html" />
     <link rel="prev" title="使用CAMELS数据集构建基于LSTM的降雨径流模型" href="chp8.0_intro.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.jpg" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">iHeadWater Hackweek Tutorials</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/logo.jpg" class="logo__image only-light" alt="iHeadWater Hackweek Tutorials - Home"/>
+    <script>document.write(`<img src="../_static/logo.jpg" class="logo__image only-dark" alt="iHeadWater Hackweek Tutorials - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -114,586 +169,284 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../start_from_here.html">
-   从这里开始
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chp1_open_science_workflow/chp1.0_intro.html">
-   编程概念及相关工具
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp1_open_science_workflow/chp1.1.1_workflow.html">
-     可复现科研的一般工作流程
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp1_open_science_workflow/chp1.1.2_tools.html">
-     常用工具
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp1_open_science_workflow/chp1.2.1_bash.html">
-     Bash 简介以及在命令行中操作文件和目录
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp1_open_science_workflow/chp1.2.2_common.html">
-     管理目录和文件的Bash命令
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp1_open_science_workflow/chp1.3_git.html">
-     关于Git和GitHub
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp1_open_science_workflow/chp1.4_jupyter.html">
-     Jupyter Hub/Lab/Notebook 简介
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chp2_file_formats/chp2.0_intro.html">
-   常见的数据文件格式
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp2_file_formats/chp2.1_txt_csv.html">
-     文本类数据
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp2_file_formats/chp2.2_vector_data.html">
-     地理空间数据–矢量
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp2_file_formats/chp2.3_raster_data.html">
-     地理空间数据–栅格
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp2_file_formats/chp2.4_your_data.html">
-     在平台上上传下载数据
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chp3_version_control/chp3.0_introduction.html">
-   使用版本控制工具
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp3_version_control/chp3.1_get_files_from_github.html">
-     从Github获取文件
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp3_version_control/chp3.2_setup_git.html">
-     配置Git
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp3_version_control/chp3.3_git_setup_and_commands.html">
-     使用Git命令进行版本控制
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp3_version_control/chp3.4_team_work.html">
-     在GitHub上协作工作
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chp4_intro_to_python/chp4.0_intro.html">
-   Python编程基础
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp4_intro_to_python/chp4.1_about_python.html">
-     Python编程语言简介
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp4_intro_to_python/chp4.2_python_variables.html">
-     Python 中的变量
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp4_intro_to_python/chp4.3_list_dict_tuble_set.html">
-     常用数据结构
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp4_intro_to_python/chp4.4_python_operators.html">
-     基本运算符
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp4_intro_to_python/chp4.5_conditional_statements.html">
-     条件语句
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp4_intro_to_python/chp4.6_loops.html">
-     循环
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp4_intro_to_python/chp4.7_functions.html">
-     函数
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chp5_python_data_science/chp5.0_intro.html">
-   Python 数据分析常用工具包
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp5_python_data_science/chp5.1_numpy.html">
-     Numpy 简介
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp5_python_data_science/chp5.2_pandas.html">
-     Pandas 简介
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp5_python_data_science/chp5.3_matplotlib.html">
-     matplotlib简介
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chp6_deep_learning_review/chp6.0_intro.html">
-   深度学习简介
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp6_deep_learning_review/chp6.1_common_nn.html">
-     深度学习常见算法及模型的简介
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp6_deep_learning_review/chp6.2_hydro.html">
-     深度学习在水文领域中的应用研究
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.0_intro.html">
-   初探PyTorch
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.1_tensor.html">
-     PyTorch中的Tensor基础
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.2_neural_network.html">
-     torch.nn简介
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chp7_intro_to_pytorch/chp7.3_dataloader.html">
-     Dataset和DataLoader简介
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="chp8.0_intro.html">
-   使用CAMELS数据集构建基于LSTM的降雨径流模型
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     LSTM降雨径流建模
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="chp8.2_run_in_vscode.html">
-     使用VSCode编写运行代码
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../tldr.html">
-   TLDR页
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../citations.html">
-   参考资料
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../start_from_here.html">从这里开始</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chp1_open_science_workflow/chp1.0_intro.html">编程概念及相关工具</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chp1_open_science_workflow/chp1.1.1_workflow.html">可复现科研的一般工作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp1_open_science_workflow/chp1.1.2_tools.html">常用工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp1_open_science_workflow/chp1.2.1_bash.html">Bash 简介以及在命令行中操作文件和目录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp1_open_science_workflow/chp1.2.2_common.html">管理目录和文件的Bash命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp1_open_science_workflow/chp1.3_git.html">关于Git和GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp1_open_science_workflow/chp1.4_jupyter.html">Jupyter Hub/Lab/Notebook 简介</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chp2_file_formats/chp2.0_intro.html">常见的数据文件格式</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chp2_file_formats/chp2.1_txt_csv.html">文本类数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp2_file_formats/chp2.2_vector_data.html">地理空间数据–矢量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp2_file_formats/chp2.3_raster_data.html">地理空间数据–栅格</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp2_file_formats/chp2.4_your_data.html">在平台上上传下载数据</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chp3_version_control/chp3.0_introduction.html">使用版本控制工具</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chp3_version_control/chp3.1_get_files_from_github.html">从Github获取文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp3_version_control/chp3.2_setup_git.html">配置Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp3_version_control/chp3.3_git_setup_and_commands.html">使用Git命令进行版本控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp3_version_control/chp3.4_team_work.html">在GitHub上协作工作</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chp4_intro_to_python/chp4.0_intro.html">Python编程基础</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chp4_intro_to_python/chp4.1_about_python.html">Python编程语言简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp4_intro_to_python/chp4.2_python_variables.html">Python 中的变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp4_intro_to_python/chp4.3_list_dict_tuble_set.html">常用数据结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp4_intro_to_python/chp4.4_python_operators.html">基本运算符</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp4_intro_to_python/chp4.5_conditional_statements.html">条件语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp4_intro_to_python/chp4.6_loops.html">循环</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp4_intro_to_python/chp4.7_functions.html">函数</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chp5_python_data_science/chp5.0_intro.html">Python 数据分析常用工具包</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chp5_python_data_science/chp5.1_numpy.html">Numpy 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp5_python_data_science/chp5.2_pandas.html">Pandas 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp5_python_data_science/chp5.3_matplotlib.html">matplotlib简介</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chp6_deep_learning_review/chp6.0_intro.html">深度学习简介</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chp6_deep_learning_review/chp6.1_common_nn.html">深度学习常见算法及模型的简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp6_deep_learning_review/chp6.2_hydro.html">深度学习在水文领域中的应用研究</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chp7_intro_to_pytorch/chp7.0_intro.html">初探PyTorch</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chp7_intro_to_pytorch/chp7.1_tensor.html">PyTorch中的Tensor基础</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp7_intro_to_pytorch/chp7.2_neural_network.html">torch.nn简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chp7_intro_to_pytorch/chp7.3_dataloader.html">Dataset和DataLoader简介</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="chp8.0_intro.html">使用CAMELS数据集构建基于LSTM的降雨径流模型</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">LSTM降雨径流建模</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chp8.2_run_in_vscode.html">使用VSCode编写运行代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tldr.html">TLDR页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">参考资料</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/iHeadWater/iheadwater_hackweek_tutorials/main?urlpath=tree/docs/chp8_lstm_camels/chp8.1_run_in_jupyter.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials/issues/new?title=Issue%20on%20page%20%2Fchp8_lstm_camels/chp8.1_run_in_jupyter.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chp8_lstm_camels/chp8.1_run_in_jupyter.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/iHeadWater/iheadwater_hackweek_tutorials/issues/new?title=Issue%20on%20page%20%2Fchp8_lstm_camels/chp8.1_run_in_jupyter.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/chp8_lstm_camels/chp8.1_run_in_jupyter.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lstm-camels">
-   1 LSTM-CAMELS简介
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#camels">
-   2 获取CAMELS数据
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pytorchlstm-camels">
-   3 PyTorch实现LSTM-CAMELS
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pytorch-datasetdataloadercamels">
-     3.1 用PyTorch Dataset与Dataloader组织CAMELS数据
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     3.2 搭建LSTM模型
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
-   4 训练模型
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
-   5 评价模型
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>LSTM降雨径流建模</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lstm-camels">
-   1 LSTM-CAMELS简介
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#camels">
-   2 获取CAMELS数据
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pytorchlstm-camels">
-   3 PyTorch实现LSTM-CAMELS
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pytorch-datasetdataloadercamels">
-     3.1 用PyTorch Dataset与Dataloader组织CAMELS数据
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     3.2 搭建LSTM模型
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
-   4 训练模型
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
-   5 评价模型
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>LSTM降雨径流建模</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lstm-camels">1 LSTM-CAMELS简介</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#camels">2 获取CAMELS数据</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorchlstm-camels">3 PyTorch实现LSTM-CAMELS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-datasetdataloadercamels">3.1 用PyTorch Dataset与Dataloader组织CAMELS数据</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.2 搭建LSTM模型</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4 训练模型</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5 评价模型</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="lstm">
-<h1>LSTM降雨径流建模<a class="headerlink" href="#lstm" title="Permalink to this headline">#</a></h1>
+<h1>LSTM降雨径流建模<a class="headerlink" href="#lstm" title="Permalink to this heading">#</a></h1>
 <p>本节给出一个关于如何建立和训练LSTM-CAMELS模型的例子。如果你使用了平台提供的jupyterlab，那就能直接使用平台上的GPU计算资源来完成相应的计算。因为我们会有一些人同时运行代码，所以为了避免机器资源不够，以及快速地交互给出结果，这里只给出了少量流域上训练测试模型的示例，更多流域的完整复现Kratzert等<span id="id1">[<a class="reference internal" href="../citations.html#id7" title="F. Kratzert, D. Klotz, C. Brenner, K. Schulz, and M. Herrnegger. Rainfall–runoff modelling using long short-term memory (lstm) networks. Hydrology and Earth System Sciences, 22(11):6005–6022, 2018. URL: https://hess.copernicus.org/articles/22/6005/2018/, doi:10.5194/hess-22-6005-2018.">KKB+18</a>]</span>论文的例子也是一样的，大家可以自行尝试。</p>
 <section id="lstm-camels">
-<h2>1 LSTM-CAMELS简介<a class="headerlink" href="#lstm-camels" title="Permalink to this headline">#</a></h2>
+<h2>1 LSTM-CAMELS简介<a class="headerlink" href="#lstm-camels" title="Permalink to this heading">#</a></h2>
 <p>首先，我们简单看看模型输入输出以及模型结构，如下图所示，左边是数据集数据情况，右边是模型的基本结构，中间深蓝色箭头表示哪些数据以什么形式送入模型中。</p>
 <p>CAMELS数据集包含的流域层面数据有径流数据、流域平均的气象时间序列数据和流域平均的气候地理属性数据；</p>
 <p>其中，属性数据也能为建模提供帮助（可以参考Kratzert等另一篇文章 <span id="id2">[<a class="reference internal" href="../citations.html#id8" title="F. Kratzert, D. Klotz, G. Shalev, G. Klambauer, S. Hochreiter, and G. Nearing. Towards learning universal, regional, and local hydrological behaviors via machine learning applied to large-sample datasets. Hydrology and Earth System Sciences, 23(12):5089–5110, 2019. URL: https://hess.copernicus.org/articles/23/5089/2019/, doi:10.5194/hess-23-5089-2019.">KKS+19</a>]</span>），因为LSTM接受的是时序输入，所以需要把它们复制到每个时段和其他时序输入拼接在一起后送入LSTM模型；径流数据就在训练中用于和模型输出比较计算损失函数值。</p>
@@ -702,12 +455,36 @@ title="Print to PDF"
 <p><img alt="" src="../_images/LSTM-CAMELS.png" /></p>
 </section>
 <section id="camels">
-<h2>2 获取CAMELS数据<a class="headerlink" href="#camels" title="Permalink to this headline">#</a></h2>
+<h2>2 获取CAMELS数据<a class="headerlink" href="#camels" title="Permalink to this heading">#</a></h2>
 <p>在开始正式实现LSTM-CAMELS之前，我们需要先获取CAMELS数据，为了方便大家使用CAMELS数据，我们已经将数据下载到平台服务器了，并且打包了读取CAMELS数据的代码，还将其内置在目前的python环境下了，所以我们现在直接写一些简单的调用代码就能读取CAMELS数据了。</p>
 <p>因为我们的包还不知道下载的CAMELS数据集在哪，所以开始前需要设置一个配置文件，运行以下代码即可：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hydrodataset</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7fbfbf; text-decoration-color: #7fbfbf">[09:48:30] </span><span style="color: #008000; text-decoration-color: #008000">DEBUG   </span> No module named <span style="color: #008000; text-decoration-color: #008000">'forge'</span>                                                        <a href="file:///usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/aiohttp_client_cache/signatures.py" target="_blank"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">signatures.py</span></a><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">:</span><a href="file:///usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/aiohttp_client_cache/signatures.py#40" target="_blank"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">40</span></a>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7fbfbf; text-decoration-color: #7fbfbf">           </span><span style="color: #008000; text-decoration-color: #008000">DEBUG   </span> No module named <span style="color: #008000; text-decoration-color: #008000">'forge'</span>                                                        <a href="file:///usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/aiohttp_client_cache/signatures.py" target="_blank"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">signatures.py</span></a><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">:</span><a href="file:///usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/aiohttp_client_cache/signatures.py#40" target="_blank"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">40</span></a>
+</pre>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unexpected error: Configuration file not found: /home/runner/hydro_setting.yml
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">hydrodataset</span>
+
+<span class="n">File</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">tutorial</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">hydrodataset</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">73</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span>     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span> <span class="c1"># set some constants for hydrodataset</span>
+<span class="ne">---&gt; </span><span class="mi">73</span> <span class="n">ROOT_DIR</span> <span class="o">=</span> <span class="n">SETTING</span><span class="p">[</span><span class="s2">&quot;local_data_path&quot;</span><span class="p">][</span><span class="s2">&quot;datasets-origin&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span> <span class="n">CACHE_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">hydro_file</span><span class="o">.</span><span class="n">get_cache_dir</span><span class="p">())</span>
+<span class="g g-Whitespace">     </span><span class="mi">77</span> <span class="c1"># set some constants for datasets</span>
+
+<span class="ne">NameError</span>: name &#39;SETTING&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -722,101 +499,6 @@ title="Print to PDF"
 <span class="n">camels_us_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;camels&quot;</span><span class="p">,</span> <span class="s2">&quot;camels_us&quot;</span><span class="p">)</span>
 <span class="n">us_region</span> <span class="o">=</span> <span class="s2">&quot;US&quot;</span>
 <span class="n">camels_us</span> <span class="o">=</span> <span class="n">Camels</span><span class="p">(</span><span class="n">camels_us_path</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">us_region</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">camels_us_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;camels&quot;</span><span class="p">,</span> <span class="s2">&quot;camels_us&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">us_region</span> <span class="o">=</span> <span class="s2">&quot;US&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">camels_us</span> <span class="o">=</span> <span class="n">Camels</span><span class="p">(</span><span class="n">camels_us_path</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">us_region</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/hydrodataset/camels.py:93,</span> in <span class="ni">Camels.__init__</span><span class="nt">(self, data_path, download, region)</span>
-<span class="g g-Whitespace">     </span><span class="mi">91</span> <span class="k">if</span> <span class="n">download</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">92</span>     <span class="bp">self</span><span class="o">.</span><span class="n">download_data_source</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">93</span> <span class="bp">self</span><span class="o">.</span><span class="n">camels_sites</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_site_info</span><span class="p">()</span>
-
-<span class="nn">File /usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/hydrodataset/camels.py:427,</span> in <span class="ni">Camels.read_site_info</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">425</span> <span class="n">camels_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_source_description</span><span class="p">[</span><span class="s2">&quot;CAMELS_GAUGE_FILE&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">426</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">region</span> <span class="o">==</span> <span class="s2">&quot;US&quot;</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">427</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">428</span>         <span class="n">camels_file</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;gauge_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;huc_02&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">}</span>
-<span class="g g-Whitespace">    </span><span class="mi">429</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">430</span> <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">region</span> <span class="o">==</span> <span class="s2">&quot;AUS&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">431</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">camels_file</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;station_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">})</span>
-
-<span class="nn">File /usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/pandas/util/_decorators.py:211,</span> in <span class="ni">deprecate_kwarg.&lt;locals&gt;._deprecate_kwarg.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">209</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">210</span>         <span class="n">kwargs</span><span class="p">[</span><span class="n">new_arg_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_arg_value</span>
-<span class="ne">--&gt; </span><span class="mi">211</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/pandas/util/_decorators.py:317,</span> in <span class="ni">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">311</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_allow_args</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">312</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">313</span>         <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">314</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">315</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">find_stack_level</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">currentframe</span><span class="p">()),</span>
-<span class="g g-Whitespace">    </span><span class="mi">316</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">317</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/pandas/io/parsers/readers.py:950,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">935</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">936</span>     <span class="n">dialect</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">937</span>     <span class="n">delimiter</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">946</span>     <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;delimiter&quot;</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span><span class="p">},</span>
-<span class="g g-Whitespace">    </span><span class="mi">947</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">948</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">950</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/pandas/io/parsers/readers.py:605,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">602</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">604</span> <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">605</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">607</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">608</span>     <span class="k">return</span> <span class="n">parser</span>
-
-<span class="nn">File /usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1442,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1439</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1441</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">-&gt; </span><span class="mi">1442</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1729,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1727</span>     <span class="n">is_text</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="g g-Whitespace">   </span><span class="mi">1728</span>     <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;rb&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1729</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1730</span>     <span class="n">f</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1731</span>     <span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1732</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1733</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1734</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1735</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1736</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1737</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1738</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1739</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1740</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
-
-<span class="nn">File /usr/share/miniconda/envs/tutorial/lib/python3.8/site-packages/pandas/io/common.py:857,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">852</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">853</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
-<span class="g g-Whitespace">    </span><span class="mi">854</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
-<span class="g g-Whitespace">    </span><span class="mi">855</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">856</span>         <span class="c1"># Encoding</span>
-<span class="ne">--&gt; </span><span class="mi">857</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">858</span>             <span class="n">handle</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">859</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">860</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">861</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">862</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">863</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">864</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">865</span>         <span class="c1"># Binary mode</span>
-<span class="g g-Whitespace">    </span><span class="mi">866</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/home/runner/.hydrodataset/cache/camels/camels_us/camels_name.txt&#39;
 </pre></div>
 </div>
 </div>
@@ -1314,7 +996,7 @@ Data variables:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;time&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/chp8.1_run_in_jupyter_15_1.png" src="../_images/chp8.1_run_in_jupyter_15_1.png" />
+<img alt="../_images/9a3f3ba56babe0ccda198116e71bc54cb984a804e1d39bb9cdab21b3b65e730a.png" src="../_images/9a3f3ba56babe0ccda198116e71bc54cb984a804e1d39bb9cdab21b3b65e730a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1907,7 +1589,7 @@ Attributes:
 </div>
 </section>
 <section id="pytorchlstm-camels">
-<h2>3 PyTorch实现LSTM-CAMELS<a class="headerlink" href="#pytorchlstm-camels" title="Permalink to this headline">#</a></h2>
+<h2>3 PyTorch实现LSTM-CAMELS<a class="headerlink" href="#pytorchlstm-camels" title="Permalink to this heading">#</a></h2>
 <p>接下来，我们使用PyTorch来具体实现该模型，本节代码重点参考了：<a class="reference external" href="https://github.com/kratzert/pangeo_lstm_example/blob/master/LSTM_for_rainfall_runoff_modelling.ipynb">kratzert/pangeo_lstm_example</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1941,14 +1623,14 @@ Attributes:
 </div>
 </div>
 <section id="pytorch-datasetdataloadercamels">
-<h3>3.1 用PyTorch Dataset与Dataloader组织CAMELS数据<a class="headerlink" href="#pytorch-datasetdataloadercamels" title="Permalink to this headline">#</a></h3>
+<h3>3.1 用PyTorch Dataset与Dataloader组织CAMELS数据<a class="headerlink" href="#pytorch-datasetdataloadercamels" title="Permalink to this heading">#</a></h3>
 <p>首先，构建读取CAMELS数据集数据的PyTorch Dataset和Dataloader.</p>
 <p>模型训练时，会将样本分成一系列小批次（mini-batch），并使用随机梯度下降类算法完成各小批次的梯度下降计算。在计算机中执行运算时，每批次的输入数据会被组织成样本-时段-变量的三维数组，即tensor。其中，第一维的长度表示从总体样本中随机选择出的一部分样本的数目，即批次大小；第二维的长度表示LSTM的时序变量时段长度，训练中该长度是固定的；第三维代表各类型的输入变量。例如，数据集总流域数是100个，训练时间总长是1000天，变量共10种，一个批次时段长选择100天，则总样本数量就是100 *（1000-100+1），如果每个批次中包含从总样本中随机抽取的10个样本，那么每个样本就是数据量为100天*10个变量的二维张量，一个批次就是数据量为10*100*10的张量。</p>
 <p>Dataset和DataLoader就是处理这些内容的。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CamelsDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Base data set class to load and preprocess data (batch-first) using PyTroch&#39;s Dataset&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base data set class to load and preprocess data (batch-first) using PyTroch&#39;s Dataset&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -1962,7 +1644,7 @@ Attributes:
         <span class="n">means</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">stds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize Dataset containing the data of multiple basins.</span>
 
 <span class="sd">        Parameters</span>
@@ -2041,7 +1723,7 @@ Attributes:
         <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">xc</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">(),</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_load_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;load data from nc and feather files&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;load data from nc and feather files&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">loader_type</span> <span class="o">==</span> <span class="s2">&quot;train&quot;</span><span class="p">:</span>
             <span class="n">train_mode</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="n">df_mean_forcings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_forcing</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
@@ -2072,12 +1754,12 @@ Attributes:
         <span class="bp">self</span><span class="o">.</span><span class="n">_create_lookup_table</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_local_normalization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">variable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Normalize features with local mean/std.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Normalize features with local mean/std.&quot;&quot;&quot;</span>
         <span class="n">feature</span> <span class="o">=</span> <span class="p">(</span><span class="n">feature</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">means</span><span class="p">[</span><span class="n">variable</span><span class="p">])</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">stds</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">feature</span>
 
     <span class="k">def</span> <span class="nf">_create_lookup_table</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;create a index table for __getitem__ functions&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;create a index table for __getitem__ functions&quot;&quot;&quot;</span>
         <span class="n">lookup</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="c1"># list to collect basins ids of basins without a single training sample</span>
         <span class="n">seq_length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">seq_length</span>
@@ -2096,7 +1778,7 @@ Attributes:
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stds</span>
 
     <span class="k">def</span> <span class="nf">local_denormalization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="s2">&quot;streamflow&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;revert the normalization for streaflow&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;revert the normalization for streaflow&quot;&quot;&quot;</span>
         <span class="n">feature</span> <span class="o">=</span> <span class="n">feature</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">stds</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">means</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">feature</span>
 </pre></div>
@@ -2105,15 +1787,15 @@ Attributes:
 </div>
 </section>
 <section id="id4">
-<h3>3.2 搭建LSTM模型<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<h3>3.2 搭建LSTM模型<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>借助已有的神经网络模块，在PyTorch中实现一个深度学习模型是比较简单的。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LSTM_CAMELS</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Implementation of a two-layer LSTM network&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Implementation of a two-layer LSTM network&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Construct LSTM-CAMELS</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct LSTM-CAMELS</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2138,7 +1820,7 @@ Attributes:
         <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Forward pass through the Network&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Forward pass through the Network&quot;&quot;&quot;</span>
         <span class="n">output</span><span class="p">,</span> <span class="p">(</span><span class="n">h_n</span><span class="p">,</span> <span class="n">c_n</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
         <span class="c1"># perform prediction only at the end of the input sequence</span>
@@ -2151,12 +1833,12 @@ Attributes:
 </section>
 </section>
 <section id="id5">
-<h2>4 训练模型<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<h2>4 训练模型<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
 <p>训练用的主函数</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train_epoch</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">loader</span><span class="p">,</span> <span class="n">loss_func</span><span class="p">,</span> <span class="n">epoch</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Train model for a single epoch&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Train model for a single epoch&quot;&quot;&quot;</span>
     <span class="c1"># set model to train mode (important for dropout)</span>
     <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
     <span class="n">pbar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">notebook</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span><span class="n">loader</span><span class="p">)</span>
@@ -2185,7 +1867,7 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">eval_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">loader</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Evaluate the model&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Evaluate the model&quot;&quot;&quot;</span>
     <span class="c1"># set model to eval mode (important for dropout)</span>
     <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
     <span class="n">obs</span> <span class="o">=</span> <span class="p">[]</span>
@@ -2211,7 +1893,7 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_streamflow</span><span class="p">(</span><span class="n">ds_flow</span><span class="p">,</span> <span class="n">ds_attr</span><span class="p">,</span> <span class="n">basins</span><span class="p">,</span> <span class="n">time_range</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;load streamflow data in the time_range and transform its unit from ft3/s to mm/day</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;load streamflow data in the time_range and transform its unit from ft3/s to mm/day</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -2247,7 +1929,7 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_random_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Set a random seed to guarantee the reproducibility</span>
 
 <span class="sd">    Parameters</span>
@@ -2873,21 +2555,17 @@ Data variables:
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "dad10e3b9c9f4f7a9a192727d9038a23", "version_major": 2, "version_minor": 0}
-</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation NSE mean: 0.58
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "dad10e3b9c9f4f7a9a192727d9038a23", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation NSE mean: 0.58
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "fd98e24738b74753b99cf505905ea4d9", "version_major": 2, "version_minor": 0}
-</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation NSE mean: 0.68
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "fd98e24738b74753b99cf505905ea4d9", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation NSE mean: 0.68
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="id6">
-<h2>5 评价模型<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<h2>5 评价模型<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <p>最后，我们来看看如何评价模型</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2941,8 +2619,8 @@ Data variables:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/chp8.1_run_in_jupyter_47_0.png" src="../_images/chp8.1_run_in_jupyter_47_0.png" />
-<img alt="../_images/chp8.1_run_in_jupyter_47_1.png" src="../_images/chp8.1_run_in_jupyter_47_1.png" />
+<img alt="../_images/593787155cbaf2b606ca78d1a84c27c8c52db03f8c41cab4d267774ddf9b4108.png" src="../_images/593787155cbaf2b606ca78d1a84c27c8c52db03f8c41cab4d267774ddf9b4108.png" />
+<img alt="../_images/27908398f1612a92e054c114f5e28f17e8e317f95227c56a5ab7e060dd3d5850.png" src="../_images/27908398f1612a92e054c114f5e28f17e8e317f95227c56a5ab7e060dd3d5850.png" />
 </div>
 </div>
 </section>
@@ -2960,7 +2638,7 @@ Data variables:
             mode: "tutorial"
         },
         kernelOptions: {
-            kernelName: "tutorial",
+            name: "tutorial",
             path: "./chp8_lstm_camels"
         },
         predefinedOutput: true
@@ -2968,50 +2646,110 @@ Data variables:
     </script>
     <script>kernelName = 'tutorial'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="chp8.0_intro.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">使用CAMELS数据集构建基于LSTM的降雨径流模型</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chp8.0_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">使用CAMELS数据集构建基于LSTM的降雨径流模型</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="chp8.2_run_in_vscode.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="chp8.2_run_in_vscode.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">使用VSCode编写运行代码</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lstm-camels">1 LSTM-CAMELS简介</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#camels">2 获取CAMELS数据</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorchlstm-camels">3 PyTorch实现LSTM-CAMELS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-datasetdataloadercamels">3.1 用PyTorch Dataset与Dataloader组织CAMELS数据</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.2 搭建LSTM模型</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4 训练模型</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5 评价模型</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Wenyu Ouyang, Ziwen Meng, Xiaoning Liu, Xiangyi Le, Yaxin Lou, Jingyuan Huang<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Wenyu Ouyang, Ziwen Meng, Xiaoning Liu, Xiangyi Le, Yaxin Lou, Jingyuan Huang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
